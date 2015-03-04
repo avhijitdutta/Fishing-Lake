@@ -1,0 +1,184 @@
+<div class="page">
+
+    <div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
+    <div class="pop-filter" ng-class="{'pop-animate': rightPanel}">
+        <div class="inner-content">
+            <!--<div class="sub-heading">Locations & Travels</div>
+            <ul>
+              <li><img src="images/ico-travels.png"   alt="">Travels <div class="drop-arrow"></div></li>
+            </ul>-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th class="border-bottom">Fish Species</th>
+                    <th colspan="2" class="small-txt border-bottom">Normal /Specimine</th>
+                </tr>
+
+                <tr ng-repeat="item in currentFilter">
+                    <td class="border-bottom">{{item.name}}</td>
+                    <td class="small-txt border-bottom">  <img ng-class="{'active-img':item.active,'deactive-img':!item.active}" ng-click="toggleItem(item,false)"> </td>
+                    <td class="small-txt border-bottom">  <img ng-class="{'active-img':item.specimen,'deactive-img':!item.specimen}" ng-click="toggleItem(item,true)"> </td>
+                </tr>
+
+ <!--               <tr>
+                    <td>Carp</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Roach</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Tench</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Rudd</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Ruffe</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Gudgeon</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Bleak</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Chub</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Barbel</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Bream</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Rainbow Trout</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Brown Trout</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Golden Orf</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Perch</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Koi</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Catfish</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Pike</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Zander</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Dace</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Eel</td>
+                    <td class="small-txt"><img src="images/ico-cross-big.png" alt=""></td>
+                    <td class="small-txt"><img src="images/tick.png" alt=""></td>
+                </tr>
+-->
+            </table>
+
+
+
+        </div>
+    </div>
+  <!-------------- ncr-header -------------------->
+  <div class="ncr-header">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="settings" ng-click="goBack()"><div class="header-fish"> <img src="images/header-fish.png" alt=""> </div></td>
+        <td align="right" class="title">
+          <div class="header-tag"><img src="images/header-history.png" alt=""></div>
+          <div class="header-tag"><img src="images/header-tag.png" alt=""></div>
+        </td>
+        <td align="right" class="settings"><div class="header-magnify"><img src="images/ico-magnify.png" alt=""></div></td>
+      </tr>
+    </table>
+  </div>
+  <!-------------- ncr-content start-------------------->
+  <div class="ncr-content no-footer listing">
+  
+    <!-------------- tab -------------------->
+      <div class="tabs">
+          <ul>
+              <li ng-repeat="tab in tabs" ng-click="toggle(tab.id)"  ng-class="{'active':tab.state}"> <img ng-src="{{tab.active}}">
+                  <p>{{tab.name}}</p>
+              </li>
+          </ul>
+          <div class="clr"></div>
+      </div>
+    
+    <div class="searchlisting-outercontent">
+    	<div class="searchlisting-innercontent">
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            	<tr>
+                	<td align="left" class="left-content"><img src="images/search-pin.png" alt=""></td>
+                	<td><h2>Current Location</h2></td>
+                	<td align="right"><img src="images/search-cross.png" alt=""></td>
+                </tr>
+            </table>	
+        </div>
+        
+        
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr class="row" ng-repeat="filter in filterOptions" ng-click="showFilter(filter.id)">
+                    <td class="left-content"><img ng-src="{{filter.url}}" alt=""> </td>
+                    <td class="right-content">{{filter.name}}</td>
+            	</tr>
+			</table>
+        
+    </div>
+    
+    
+  </div>
+  <!-------------- ncr-content end-------------------->
+
+
+  <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+  
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title> Fishing </title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/tab_portrait.css" rel="stylesheet" type="text/css" />
+<link href="css/mob_landscape.css" rel="stylesheet" type="text/css" />
+<link href="css/mob_portrait.css" rel="stylesheet" type="text/css" />
+<link href="css/mob_sm.css" rel="stylesheet" type="text/css" />
+<link href="bower_components/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+<!-- scripts core library -->
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="js/angular/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/angular/ng-calendar.js"></script>
+
+<script type="text/javascript" src="bower_components/fullcalendar/fullcalendar.js"></script>
+<script type="text/javascript" src="bower_components/fullcalendar/gcal.js"></script>
+<!--my custom directives -->
+<script src="js/customDirective/pageSlider.js"> </script>
+<!-- static data -->
+<script type="text/javascript" src="staticData/message.js"></script>
+<script type="text/javascript" src="staticData/salon.js"></script>
+<!-- scripts my library -->
+<script type="text/javascript" src="js/api/keyboardService.js"> </script>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="js/web-services.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/factories.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/paypal-mobile-js-helper.js"> </script>
+
+
+
+</head>
+
+<body>
+    <!--<div ng-view="" ng-class="{'slide-left':left,'at-view-slide-in-top':bottom}" class="page-size"> </div>-->
+    <div ng-view="" class="page-size" ng-class="animation" mobile-slider> </div>
+</body>
+
+</html>

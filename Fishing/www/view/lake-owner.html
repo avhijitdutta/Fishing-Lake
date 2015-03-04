@@ -1,0 +1,294 @@
+<div class="page">
+<div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
+<div class="pop-filter rating" ng-class="{'pop-animate': rightPanelAddMember}">
+    <div class="inner-content ">
+        <div class="heading">
+            <label>
+                Add membership details
+            </label>
+        </div>
+
+        <div class="write-review"><label>Write your membership details</label>
+            <div class="fld-review">
+                <textarea>
+
+                </textarea>
+            </div>
+        </div>
+
+        <div class="btn-add-review" ng-click="addReview()">
+            <img src="images/ico-write.png" alt="">
+           Update Details
+        </div>
+    </div>
+
+</div>
+
+<div class="pop-screen-overlay" ng-click="hidePanelTime()" ng-show="rightPanelTime"></div>
+<div class="pop-filter timing" ng-class="{'pop-animate': rightPanelTime}">
+<div class="inner-content">
+    <div class="heading">
+        Monday
+        Opening time
+    </div>
+
+    <div class="time-edit">
+
+    <div class="hour">
+
+      <div class="up" ng-click="increseTime(true,true)"><img src="images/arrow-up.png"  alt=""></div>
+      <div class="time"> <span ng-if="selectedTime.hours <= 9">0 </span>{{selectedTime.hours}}</div>
+      <div class="down" ng-click="increseTime(true,false)"><img src="images/arrow-down2.png"  alt=""></div></div>
+      <div class="separetor">:</div>
+      <div class="min">
+          <div class="up" ng-click="increseTime(false,true)"><img src="images/arrow-up.png"  alt=""></div>
+          <div class="time"><span ng-if="selectedTime.minutes <= 9">0</span>{{selectedTime.minutes}}</div>
+          <div class="down" ng-click="increseTime(false,false)"><img src="images/arrow-down2.png"  alt=""></div>
+      </div>
+
+      <div class="am-pm" ng-click="changeMidday()">{{selectedTime.midday}}</div>
+
+      <div class="clr"></div>
+
+    </div>
+
+
+    <div class="close-today">
+        <input type="checkbox" id="chk1" checked class="css-checkbox"/>
+        <label class="css-label" for="chk1">Closed today</label>
+    </div>
+
+    <div class="btn-opening-time" ng-click="updateOpening()"><img src="images/ico-upload.png"> Update Opening Time</div>
+</div>
+</div>
+
+<div class="pop-screen-overlay" ng-click="hidePanelLake()" ng-show="rightPanelLake"></div>
+<div class="pop-filter add-lake" ng-class="{'pop-animate': rightPanelLake}">
+    <div class="inner-content" ng-hide="showClaimForm">
+    <div class="heading">Link another lake you
+own at this venue</div>
+    <div class="lake-info">Search or select from the list below
+        <div class="lake-name"><input type="text" ng-model="searchText" placeholder="Lake Name"/></div>
+    </div>
+
+    <div class="nl-heading"><h2><span>Nearby Lakes</span></h2></div>
+
+<div class="list-lakes">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+      <tr ng-repeat="item in nearByLacks | filter : searchText">
+        <td>{{item.name}}
+
+            <!-- if already added by user-->
+            <div class="txt-green" ng-if="item.added">Claimed by you</div>
+
+            <!--user can claim-->
+            <div class="txt-blue" ng-if="item.is_claim">Unclaimed (yours?)</div>
+
+            <!--already calimed by someone -->
+            <div class="txt-red" ng-if="item.claim_already">Claimed by someone else</div>
+        </td>
+
+        <td>
+            <!-- if already added by user-->
+            <div class="added" ng-if="item.added"><img src="images/ico-tick-bgreen.png"  alt="">Added</div>
+
+            <div class="add" ng-if="item.can_add" ng-click="addLake(item)"><img src="images/ico-plus.png"  alt=""> Add</div>
+            <!--user can claim-->
+            <div ng-click="showClaimBox()" class="btn-claim" ng-if="item.is_claim">Claim <img src="images/arrow-next.png"  alt=""></div>
+        </td>
+
+      </tr>
+    </table>
+</div>
+
+
+</div>
+
+
+    <div class="inner-content" ng-show="showClaimForm">
+        <div class="heading-claim" align="center"><span>Your Lake? Claim it!</span> Woodgrove Farm</div>
+        <div class="address"><strong>Address</strong>
+            19 Woogrove Road,<br>
+
+            Wolverhampton<br>
+
+            WV34 AER</div>
+
+        <div class="form">
+            <div class="fld" ng-repeat="item in claimLakeDetails"><input type="{{item.name}}" placeholder="{{item.placeHolder}}" ng-model="claimLakeModel[item.name]" /></div>
+        </div>
+
+        <div class="msg">A representative of Hotfishin will contact you within the next 7 days to validate your identity.</div>
+
+        <div class="info">Please enter an email address,
+            your name and a contact number</div>
+         <div class="btn-update-my-lake" ng-click="claimLakeUpdate()"><img src="images/ico-write.png"  alt=""> Update my lake</div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+  <!-------------- ncr-header -------------------->
+  <ng-include src="'templates/header.html'"></ng-include>
+  <div class="ncr-heading" align="center">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+              <td>&nbsp;</td>
+              <td align="center">John, this is your lake <div class="not-yours">(not yours?)</div></td>
+              <td align="right">&nbsp;</td>
+          </tr>
+      </table>
+  </div>
+
+  <!-------------- ncr-content start-------------------->
+  <div class="ncr-content lake-owner heading-space ">
+  <div class="preview-as-visitor" ng-click="showPrev()">Preview as a visitor</div>
+  <div class="lake-name"><div class="fld"><input type="text" placeholder="Himley Hall Top Pool"/> <span class="click" ng-click="emptyInput($event)"></span> </div><a class="btn-update" ng-click="updateLakeName($event)"><img src="images/ico-write.png"  alt="">Update</a> <!--<a class="btn-updated"><img src="images/ico-tick-bgreen.png"  alt="">Update</a>--></div>
+  	<div class="cover-photo"><div class="upload"><img src="images/ico-upload.png" alt="">Upload</div>
+    	<img src="images/listing_img1.jpg" alt="">
+        </div>
+
+       <div class="cont-area"> <div class="venue-address"><div class="add"><span>Venue Address</span> <a class="btn-update" ng-click="updateVenue($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
+
+    <div class="lo-form">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr ng-repeat="aad in vanueAdd">
+            <td align="right">{{aad.name}}</td>
+            <td>
+                <div class="fld">
+                    <input type="text" ng-model="vanueAddModel[aad.name]"/> <span class="click" ng-click="emptyInput($event)"></span>
+                </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+
+
+<div class="venue-address"><div class="add"><span>The venue description</span> <a class="btn-update" ng-click="updateDesc($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
+<div class="venue-des">
+    <textarea></textarea>
+</div>
+       <div class="venue-address"><div class="add"><span>List your facilities</span> </div></div>
+
+       <div class="list-facility">
+       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr ng-repeat="item in facilites">
+    <td>{{item.name}}</td>
+    <td ng-class="{'no':item.active}" ng-click="itemActive(item,facilites)"></td>
+    <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,facilites)"></td>
+  </tr>
+</table>
+</div>
+
+       <div class="venue-address"><div class="add"><span>Fishing Rules</span> </div></div>
+
+       <div class="list-facility">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr ng-repeat="item in fishingRules">
+        <td>{{item.name}}</td>
+        <td ng-class="{'no':item.active}" ng-click="itemActive(item,fishingRules)"></td>
+        <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,fishingRules)"></td>
+      </tr>
+</table>
+</div>
+
+
+<div class="venue-address"><div class="add"><span>Fish Species</span> </div></div>
+
+<div class="list-facility">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td></td>
+        <td></td>
+        <td>Specimen</td>
+      </tr>
+
+      <tr ng-repeat="item in fishSpecies">
+        <td>{{item.name}}</td>
+        <td ng-class="{'no':item.active}" ng-click="itemActive(item,fishSpecies)"> </td>
+        <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,fishSpecies)"></td>
+        <td> </td>
+        <td ng-class="{'yes':item.specimen}" ng-click="itemToggle(item,fishSpecies)"></td>
+      </tr>
+
+    </table>
+</div>
+
+<div class="venue-address"><div class="add"><span>Prices</span></div></div>
+
+<div class="lo-form">
+    <table width="80%" border="0" cellspacing="0" cellpadding="0">
+
+      <tr ng-repeat="item in pricesArr">
+        <td align="right" width="40%">{{item.name}}</td>
+        <td><div class="fld"> <input readonly ng-value="item.name" type="text"/> <span class="click" ng-click="updateFish(item)"></span> </div></td>
+      </tr>
+
+      <tr>
+        <td align="right">Options</td>
+        <td><div class="fld ad-details"><input type="text" ng-click="showAddBox()" readonly value="Add Details"/></div></td>
+      </tr>
+
+    </table>
+</div>
+
+
+<div class="venue-address"><div class="add"><span>Opening Hours</span> </div></div>
+
+ <div class="opening-hours">
+<table width="80%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td ></td>
+    <td>Opening</td>
+    <td></td>
+    <td>Closing</td>
+  </tr>
+
+  <tr ng-repeat="day in days">
+    <td> {{day.name}}</td>
+    <td class="open" ng-click="addTime(day,true)"> <span ng-if="day.close"> Closed </span> <span ng-if="!day.close"> <span ng-if="day.Opening.hours<=9">0</span>{{day.Opening.hours}} : <span ng-if="day.Opening.minutes<=9">0</span>{{day.Opening.minutes}} </span> </td>
+    <td>&nbsp;</td>
+    <td class="close" ng-click="addTime(day,false)"> <span ng-if="day.close"> Closed </span> <span ng-if="!day.close"> <span ng-if="day.Closing.hours<=9">0</span>{{day.Closing.hours}} : <span ng-if="day.Closing.minutes<=9">0</span>{{day.Closing.minutes}} </span></td>
+  </tr>
+</table>
+</div>
+
+
+<div class="venue-address"><div class="add"><span>Contact Details</span> <a class="btn-update" ng-click="updateContactDetail()"><img src="images/ico-write.png"  alt="">Update</a></div></div>
+
+    <div class="lo-form">
+         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr ng-repeat="field in contactDetail">
+            <td >{{field.name}}</td>
+            <td><div class="fld"><input type="{{field.type}}" ng-model="contactDetailModel[field.name]" /><span class="click" ng-click="emptyInput($event)"></span></div></td>
+          </tr>
+        </table>
+    </div>
+
+<div class="venue-address"><div class="add"><span>Photos</span> </div></div>
+<div class="photos">
+  <div class="thumb" ng-repeat="item in photoList"><img ng-src="{{item.url}}"  alt=""><div class="delete" ng-click="removePhoto(item)"><img src="images/ico-cross.png"  alt=""></div></div>
+
+  <div class="thumb upload"><img src="images/img-upload.png"  alt="" ng-click="uploadImage()"> </div>
+</div>
+
+<div class="venue-address"><div class="add"><span>Link another lake</span> <a class="btn-update btn-add" ng-click="showRightLake()"><img src="images/ico-plus.png"  alt="">Add</a></div></div>
+
+<div class="hall-pool">Himley Hall Pool <a class="remove"><img src="images/ico-cross.png"  alt=""> Remove</a></div>
+
+    </div>
+
+
+  </div>
+  <!-------------- ncr-content end-------------------->
+
+
+  <!-------------- ncr-footer -------------------->
+  <ng-include src="'templates/footer.html'"></ng-include>
+</div>

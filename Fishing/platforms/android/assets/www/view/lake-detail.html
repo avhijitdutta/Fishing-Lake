@@ -1,0 +1,557 @@
+<div class="page">
+<div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
+<div class="pop-filter rating" ng-class="{'pop-animate': rightPanel}">
+    <div class="inner-content ">
+        <div ng-hide="showAddReview">
+            <div class="heading">
+                <label>Write a review of
+                Himley Hall Top Pool</label>
+            </div>
+            <div class="stars">
+                How many stars would you give this lake?
+                <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)">
+                </div>
+                <div class="your-rating">Your Rating
+                    <div class="rate">4 / 5</div>
+                    <div class="offer">20% of the people who rated this lake gave it 4 or more stars.</div>
+                    <div class="share">Share with
+                        <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-add-review" ng-click="addReview()">
+                <img src="images/star-gray.png" alt="">
+                Add my Rating
+            </div>
+            <div class="txt">
+                If you have few minutes,consider writing a review to help other visitors choose the best lakes.
+            </div>
+        </div>
+
+        <div class="write-review" ng-show="showAddReview"><label>Write your review for others to read</label>
+            <div class="fld-review">
+                <textarea>
+
+                </textarea>
+            </div>
+
+            <div class="anonymous">
+                <div class="chk-box" ng-class="{'checked':check}" ng-click="chengeCheck()"></div>
+                <div class="txt">
+                    <h3>Post as Anonymous</h3>
+                    Your review will show your name as registered on your account unless you tick this box.</div>
+            </div>
+            <div class="share">Share with
+                <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
+            </div>
+        </div>
+        <div class="btn-add-review" ng-click="addReview()">
+            <img src="images/ico-write.png" alt="">
+            Add my review
+        </div>
+
+    </div>
+</div>
+<!-------------- ncr-header -------------------->
+<ng-include src="'templates/header.html'"></ng-include>
+<div class="ncr-heading" align="center" ng-click="showOwner()">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>&nbsp;</td>
+
+            <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
+
+            <td align="center" ng-if="lakeId=='owner' ">Edit your lake details </td>
+
+            <td align="right">&nbsp;</td>
+        </tr>
+    </table>
+</div>
+
+<!-------------- ncr-content start-------------------->
+<div class="ncr-content detail heading-space no-footer">
+<div class="detail-img">
+<img src="images/listing_img1.jpg" alt="">
+<div class="img-content">
+    <div class="left-content">
+        <div class="name">Himley Hall Top Pool</div>
+        WOLVERHAMPTON<br>
+        <a href="#/review" class="reviews">6 Reviews</a>
+        <p>Day tickets from</p>
+        <div class="price">£6</div>
+    </div>
+    <div class="right-content">
+        <div class="votes">4.6<br>
+            <p>17<br>
+                Votes</p>
+        </div>
+        <div class="bookmark">
+            <img alt="" src="images/ico-tag.png">
+            Bookmark
+        </div>
+    </div>
+</div>
+
+<div class="img-bottomcontent">
+<div class="part-one">
+    <ul>
+        <li ng-click="showCheckIn()"><img src="images/ico-checkin.png" alt=""><br>
+            <span>Check in</span>
+        </li>
+        <li ng-click="showDirection()"><img src="images/ico-direction.png" alt=""><br>
+            <span>Directions</span>
+        </li>
+        <li ng-click="showRate()"><img src="images/ico-rate.png" alt=""><br>
+            <span>Rate</span>
+        </li>
+        <li ng-click="showReview()"><img src="images/ico-review.png" alt=""><br>
+            <span>Review</span>
+        </li>
+        <li ng-click="showShare()"><img src="images/ico-share.png" alt=""><br>
+            <span>Share</span>
+        </li>
+    </ul>
+</div>
+<div class="part-two">
+    <ul>
+        <li>
+            <span style="color:#128b91;">Address</span><br>
+            56 Stockholm Street,<br>
+            Wolverhampton<br>
+            WV6 0UT
+        </li>
+        <li>
+            <span style="color:#128b91;">Details</span><br>
+            Course Fishing<br>
+            Specimen Carp<br>
+            5 Acre Lake <br>
+            <span><img src="images/ico-wheel-chair.png" alt=""></span>
+            <span><img src="images/ico-men-women.png" alt=""></span>
+            <span><img src="images/ico-private.png" alt=""></span>
+        </li>
+    </ul>
+    <div class="clr"></div>
+</div>
+<div class="part-three map">
+    <img src="images/detail-map.png" alt="">
+    <div class="map-content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td><img src="images/ico-direction-arrow.png" alt=""></td>
+                <td>1.3km</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:0;">Directions</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="part-four">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
+        <tr>
+            <td><h1 class="one"><span>The Venue</span></h1></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}" alt=""></td>
+        </tr>
+    </table>
+    <div class="tab" ng-show="isOpenTab(1)">
+        <div class="tabs">
+            <ul>
+<!--                <li>
+                    <img src="images/ico-amenities.png">
+                    <p>Amenities</p>
+                </li>
+                <li class="active">
+                    <img src="images/ico-ts-inactive.png">
+                    <p>Fishing Rules</p>
+                </li>
+                <li>
+                    <img src="images/ico-coarse-active.png">
+                    <p>Fish Species</p>
+                </li>-->
+
+                <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)">
+                    <img ng-src="{{tab.url}}">
+                    <p>{{tab.name}}</p>
+                </li>
+            </ul>
+            <div class="clr"></div>
+        </div>
+
+        <div class="part-four" ng-show="tab == 1">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Pellets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Boilies</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Ground bait</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Keep nets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Barbless hooks</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>2 rods per person</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait in tins</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait boats</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Nuts</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Floating baits</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>cat and dog food </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="part-four" ng-show="tab == 2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Pellets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Boilies</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Ground bait</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Keep nets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Barbless hooks</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>2 rods per person</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait in tins</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait boats</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Nuts</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Floating baits</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>cat and dog food </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="part-four" ng-show="tab == 3">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Pellets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Boilies</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Ground bait</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Keep nets</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Barbless hooks</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>2 rods per person</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait in tins</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+                    <td>Bait boats</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Nuts</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>Floating baits</td>
+                </tr>
+                <tr>
+                    <td class="tick-img"><img alt="" src="images/tick.png"></td>
+                    <td>cat and dog food </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+<div class="part-four">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(2)">
+        <tr>
+            <td><h1 class="one"><span>Prices</span></h1></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(2),'deactive-tab-img':!isOpenTab(2)}"></td>
+        </tr>
+    </table>
+    <div class="prices" ng-show="isOpenTab(2)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>&nbsp;</th>
+                <th>Standard</th>
+                <th align="left">Members</th>
+            </tr>
+            <tr>
+                <td align="right">Day</td>
+                <td align="center">£7.50</td>
+                <td rowspan="7"  valign="top" width="45%">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. </td>
+            </tr>
+            <tr>
+                <td align="right">24 Hour</td>
+                <td align="center">£20.00</td>
+            </tr>
+            <tr>
+                <td align="right">Night</td>
+                <td align="center">£10.00</td>
+            </tr>
+            <tr>
+                <td align="right">Children</td>
+                <td align="center">£5.00</td>
+            </tr>
+            <tr>
+                <td align="right">OAP</td>
+                <td align="center">£5.00</td>
+            </tr>
+            <tr>
+                <td align="right">Students</td>
+                <td align="center">£6.00</td>
+            </tr>
+            <tr>
+                <td align="right">Sunday</td>
+                <td align="center">08:00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="part-four">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(3)">
+        <tr>
+            <td><h1 class="one"><span>Opening Times</span></h1></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(3),'deactive-tab-img':!isOpenTab(3)}"></td>
+        </tr>
+    </table>
+
+    <div class="times" ng-show="isOpenTab(3)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>&nbsp;</th>
+                <th>Opening</th>
+                <th>Closing</th>
+            </tr>
+            <tr>
+                <td align="right">Monday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Tuesday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Wednesday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Thursday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Friday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Saturday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Sunday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="part-four">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(4)">
+        <tr>
+            <td><h1 class="one"><span>Contact Details</span></h1></td>
+            <td class="right-img"><img  alt="" ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}"></td>
+        </tr>
+    </table>
+    <div class="contacts" ng-show="isOpenTab(4)">
+         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="right">Lake Contact</td>
+                <td >Testing Name</td>
+            </tr>
+            <tr>
+                <td align="right">Phone</td>
+                <td >01234 567 890</td>
+            </tr>
+            <tr>
+                <td align="right">Email</td>
+                <td >testing@testing.com</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</div>
+
+<div class="img-bottomcontent">
+    <div class="part-four">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(5)">
+            <tr>
+                <td><h1 class="one"><span>Reviews - 7 Available</span></h1></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(5),'deactive-tab-img':!isOpenTab(5)}" alt=""></td>
+            </tr>
+        </table>
+        <div class="collapsed-content" ng-show="isOpenTab(5)">
+            <div class="row-review">
+                <div class="review">
+                    <div class="reviewer">A. Reviewer</div>
+                    <div class="stars"><img src="images/star-review.png" alt=""> <img src="images/star-review.png" alt=""> <img src="images/star-review.png" alt=""> <img src="images/star-off-review.png" alt=""> <img src="images/star-off-review.png" alt=""></div>
+                    <div class="clr"></div>
+                </div>
+                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis. Sed eget lobortis nisi. Proin cursus odio nisi, at tincidunt ligula dignissim et. Morbi feugiat diam orci, eget aliquam mauris varius ac. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque efficitur lorem id felis eleifend, at maximus leo vulputate. Sed tempor tincidunt massa, sit amet scelerisque leo interdum in. Etiam ac est ac nisl tincidunt ultricies. Quisque porta dui arcu, non vehicula ipsum malesuada ac. Nulla facilisi. </div>
+            </div>
+            <div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png"  alt=""> Read more reviews</div>
+            <div class="btn-rnw-review war"><img src="images/ico-writereview.png"  alt=""> Write a Review</div>
+        </div>
+    </div>
+</div>
+    <!---
+    <div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png"  alt=""> Read more reviews</div>
+    <div class="btn-rnw-review war"><img src="images/ico-writereview.png"  alt=""> Write a Review</div>
+    -->
+<div class="img-bottomcontent">
+    <div class="part-four">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(6)">
+            <tr>
+                <td><h1 class="one"><span>Photos - 23 Available</span></h1></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(6),'deactive-tab-img':!isOpenTab(6)}" alt=""></td>
+            </tr>
+        </table>
+        <div class="collapsed-content" ng-show="isOpenTab(6)">
+            <div class="photos">
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+            </div>
+            <div class="btn-rnw-review" ng-click="showMorePhoto()"><img src="images/ico-morereview.png"  alt=""> See more photos</div>
+            <div class="btn-rnw-review"><img src="images/ico-upload.png"  alt=""> Upload a photo</div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="btn-rnw-review" ng-click="showMorePhoto()"><img src="images/ico-morereview.png"  alt=""> See more photos</div>
+<div class="btn-rnw-review"><img src="images/ico-upload.png"  alt=""> Upload a photo</div>-->
+
+<div class="img-bottomcontent">
+    <div class="part-four" ng-click="openTab(7)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td><h1 class="one"><span>Other Lakes at this Venue</span></h1></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}" alt=""></td>
+            </tr>
+        </table>
+
+        <div class="collapsed-content" ng-show="isOpenTab(7)">
+            <div class="row-venue"><div class="l"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool</div> <div class="arrow"></div><div class="clr"></div></div>
+            <div class="row-venue"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool <div class="arrow"></div><div class="clr"></div></div>
+            <div class="row-venue"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool <div class="arrow"></div><div class="clr"></div></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="img-bottomcontent">
+    <div class="part-four">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(8)">
+            <tr>
+                <td><h1 class="one"><span>Ask a question</span></h1></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(8),'deactive-tab-img':!isOpenTab(8)}" ></td>
+            </tr>
+        </table>
+        <div class="collapsed-content" ng-show="isOpenTab(8)">
+            <div class="question">
+                <textarea name="textarea" id="textarea"  rows="5"></textarea>
+            </div>
+            <div class="send-question-btn"><img src="images/ico-question.png"  alt="">Send my question</div>
+        </div>
+    </div>
+</div>
+<!--<div class="send-question-btn"><img src="images/ico-question.png"  alt="">Send my question</div>-->
+</div>
+
+
+</div>
+<!-------------- ncr-content end-------------------->
+
+
+<!-------------- ncr-footer -------------------->
+<ng-include src="'templates/footer.html'"></ng-include>
+
+</div>

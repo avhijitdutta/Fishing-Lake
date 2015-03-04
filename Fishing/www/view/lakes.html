@@ -1,0 +1,52 @@
+<div class="page">
+  <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+
+  <!-------------- ncr-content start-------------------->
+  <div class="ncr-content no-footer lakes">
+  
+    
+    
+    <!-------------- list -------------------->     
+    <div class="list">
+      <div class="row-list" ng-repeat="lake in lackList" ng-click="lakeDetailView(lake.id)"> <img ng-src="images/listing_img1.jpg" alt="">
+        <div class="info">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left" class="left-content"><div class="name">{{lake.name}}</div>
+              {{lake.place}}</td>
+              <td align="right">
+                  <div class="rating">
+                        <div class="tag"><img src="images/ico-tag.png" alt=""></div>
+                        <div class="outernumber">
+                            <div class="innernumber">{{lake.rating}}</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+          </table>
+        </div>
+        <div class="bottominfo" ng-class="{select: $even, deselect: $odd}">
+        	<div class="content">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                	<tr>
+                    	<td align="left">{{lake.type}}<br/>
+                        ${{lake.review}} Day Ticket<br/>
+                        {{lake.review}} Reviews - {{lake.photo}} photos<br/>
+                        </td>
+                    	<td align="right">{{lake.distance}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <!-------------- ncr-content end-------------------->
+
+
+  <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+
+</div>

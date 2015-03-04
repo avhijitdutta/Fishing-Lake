@@ -1,0 +1,25 @@
+<div class="page">
+    <div class="signup">
+        <div class="signup-heading">
+            Sign in <div class="cross" ng-click="goBack()"><img src="images/icon-cross.png"  alt=""></div>
+        </div>
+        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate >
+            <div class="signin-form">
+                <div class="row">
+                    <input type="text" name="email" placeholder="Email or username" ng-model="user.email" required>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="row">
+                    <input type="password" name="password" placeholder="Password" ng-model="user.password" required>
+                    <div class="clr"></div>
+                </div>
+
+                <button type="submit" class="btn-create-account">Login</button>
+
+                <a class="forgot-pass" href="#/forgot">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="fb-connect"><img src="images/fb-login.png" alt=""></div>
+    </div>
+</div>

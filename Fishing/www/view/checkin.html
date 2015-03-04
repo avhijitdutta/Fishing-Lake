@@ -1,0 +1,20 @@
+<div class="page">
+  <!-------------- ncr-header -------------------->
+  <ng-include src="'templates/header.html'"></ng-include>
+  <!-------------- ncr-content start-------------------->
+  <div class="ncr-content checkin ">
+      <div class="checkin-heading" align="center">
+          Himley Hall Top Pool
+      </div>
+
+      <div class="attach-photo"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+      <div class="checked-in"><img src="images/user-photo.jpg"  alt="">I just checked in!</div>
+      <div class="who-with-you"> Who are you with? Add another person</div>
+      <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)"> </div>
+      <div class="map"><div class="pointer"></div><img src="images/detail-map.png"  alt=""></div>
+  </div>
+  <!-------------- ncr-content end-------------------->
+
+  <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+</div>

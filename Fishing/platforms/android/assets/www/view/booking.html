@@ -1,0 +1,157 @@
+<div class="page">
+  <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+  <!-------------- ncr-content start-------------------->
+  <div class="ncr-content booking">
+  	<div class="part-one">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	<tr>
+            	<td class="hdng">Location</td>
+            	<td class="contnt">Himley Park, Dudley,<br>
+West Midlands, DY3 4DF</td>
+            </tr>
+            <tr>
+            	<td class="hdng">Ticket</td>
+            	<td  ng-class="{'nonselctd': ticket == '' , 'contnt': ticket !=''} ">
+                    <span ng-if="ticket==''">None Selected</span>
+                    <span ng-if="ticket!=''">{{ticket}} </span>
+            	</td>
+            </tr>
+            <tr>
+            	<td class="hdng">Date</td>
+            	<td class="nonselctd" ng-class="{'nonselctd': date == 'None Selected' , 'contnt': date !='None Selected'} ">{{date}}</td>
+            </tr>
+            <tr>
+            	<td class="hdng">Price</td>
+            	<td class="nonselctd" ng-class="{'nonselctd': totalPrice < 1 , 'contnt': totalPrice > 0} ">
+                    {{totalPrice}}
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <div class="part-two">
+    	You will receive a text message that is your ticket once purchased
+    </div>
+    <div class="search-btn">Confirm your date below</div>
+    <div class="tabs">
+      <ul>
+        <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)"> <img ng-src="{{tab.url}}">
+          <p>{{tab.name}}</p>
+        </li>
+      </ul>
+      <div class="clr"></div>
+    </div>
+        
+        
+        <!-------------- Prices Start-------------------->
+        <div class="prices" ng-show="tab == 1">
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            	<tr>
+                	<th>Type</th>
+                	<th>Price</th>
+                	<th style="text-align:center">Quantity</th>
+                </tr>
+                <tr class="value" ng-repeat="price in arrPrices">
+                	<td>{{price.name}}</td>
+                	<td>£ {{price.price || myCurrency}}</td>
+                	<td class="quantity">
+                        <ul>
+                            <li ng-click="qtyPlusMin(price.id,0)"><img src="images/minus.png" alt=""></li>
+                            <li>{{price.qty}}</li>
+                            <li ng-click="qtyPlusMin(price.id,1)"><img src="images/plus.png" alt=""></li>
+                        </ul>
+                    </td>
+                </tr>
+               <!-- <tr>
+                	<td>Child <span>(under 16)</span></td>
+                	<td>£3.000</td>
+                	<td class="quantity">
+                        <ul>
+                            <li><img src="images/minus.png" alt=""></li> 
+                            <li>0</li> 
+                            <li><img src="images/plus.png" alt=""></li>
+                        </ul>
+                    </td>
+                </tr>-->
+            </table>
+            <div class="confrmnt" ng-show="totalPrice < 1">
+            	<ul>
+                	<li class="img">
+                        <img src="images/ico-exclamation-blue.png" alt="">
+                    </li>
+
+                    <li class="txt">
+                        Please confirm your ticket date<br>
+                        Before you can make a booking
+                    </li>
+                </ul>
+                 <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <!-------------- Prices End-------------------->
+        
+        <!-------------- Dates Start-------------------->
+        <div class="dates" ng-show="tab == 2">
+        	<!--<img src="images/calendar.png" alt="">-->
+            <div ui-calendar="uiConfig.calendar" class="span8 calendar"></div>
+            <div class="confrmnt" ng-show="date=='None Selected'">
+            	<ul>
+                	<li class="img"><img src="images/ico-exclamation-blue.png" alt=""></li>
+                    <li class="txt">
+                        Please confirm your ticket date<br>
+                        before you can make a booking</li>
+                </ul>
+                 <div class="clr"></div>
+            </div>
+        <div class="clr"></div>
+        </div>
+        <!-------------- Dates End---------------------->
+        
+        
+        <!-------------- Location Start-------------------->
+        <div class="location" ng-show="tab == 3">
+        <div class="part-three map">
+            <img src="images/detail-map.png" alt="">
+                <div class="map-content">
+                	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    	<tr>
+                        	<td><img src="images/ico-direction-arrow.png" alt=""></td>
+                            <td>1.3km</td>
+                        </tr>
+                        <tr>
+                        	<td colspan="2" style="padding:0;">Directions</td>
+                        </tr>
+                    </table>
+                	
+                </div>
+            </div>
+        <div class="part-four">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><h1 class="one"><span>Location</span></h1>  </td>                  
+                    <td class="right-img"><img src="images/arrow-blue.png" alt=""></td>
+                </tr>
+                </table>
+                <p>Himley Park, Dudley, West Midlands, DY3 4DF</p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><h1 class="one"><span>Lake Rules</span></h1></td>
+                    <td class="right-img"><img src="images/arrow-blue.png" alt=""></td>
+                </tr>
+            </table>
+            <p>Himley Park, Dudley, West Midlands, DY3 4DF</p>
+        </div>
+        <div class="clr"></div>
+        </div>
+        <!-------------- Location End-------------------->
+    
+    
+  </div>
+  <!-------------- ncr-content end-------------------->
+
+
+  <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+</div>

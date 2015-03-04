@@ -1,0 +1,233 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Mobile Portrait Size to Mobile Size (devices and browsers) */
+@media only screen and (max-width:350px) {
+
+body{font-size:14px;}
+
+/*header*/
+.ncr-header td{padding:3px 5px;}
+.ncr-header td:first-child{width:9%;}
+.ncr-header td:last-child{width:9%;}
+.ncr-header td:first-child img{width:22px;}
+.ncr-header td:last-child img{width:22px;}
+.ncr-header td.title img{height:22px;}
+.ncr-header td .lang{ right:40px; top:5px; font-size:14px; height:28px; width:28px; line-height:28px; }
+.ncr-header td.title h2{font-size:18px; text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+/*30-01-2014*/
+.ncr-header td .header-tag { width:20%; float:right; text-align:center; }
+
+
+
+/*footer*/
+.ncr-footer td{padding:16px 0px;}
+.ncr-footer .btn-big{ font-size:16px; padding:4px 12px;}
+.ncr-footer .btn-big img{width:8px; vertical-align:2px; margin:0 6px 0 0;}
+.ncr-footer td img{width:26px; margin:2px 0;}
+.ncr-footer td a{font-size:14px; padding:0px 10px; }
+
+
+/*main heading*/
+.ncr-heading{ padding:8px 4px 4px 4px; height:30px; line-height:28px; top:37px; font-size:16px; }
+.ncr-heading img{width:10px; vertical-align:0;}
+
+/*main search*/
+.ncr-search{ padding:10px 4px 4px 4px; height:27px; line-height:20px;  top:37px; margin-top:-6px;}
+.ncr-search img{width:24px; vertical-align:-6px; margin-right:5px;}
+.ncr-search input{ width:80%; padding-left:10px;}
+
+/*main content area*/
+.ncr-content{ top:37px; bottom:38px;}
+.ncr-content.heading-space{ top:79px; }
+.ncr-content.search-bar-space{ top:72px; }
+
+
+
+/*screen popup*/
+.ncr-pop-left{ width:200px;}
+.ncr-pop-left .heading{padding:8px; }
+.ncr-pop-left li{padding:8px;}
+.ncr-pop-left li img{width:20px; vertical-align:-4px; margin-right:10px;}
+
+
+.ncr-pop-right{width:200px;}
+.ncr-pop-right .heading{padding:8px;  margin-bottom:8px;}
+.ncr-pop-right li{padding:12px 8px;  background-size:10px;}
+.ncr-pop-right li img{width:20px; vertical-align:-4px; margin-right:10px;}
+
+.pop-filter{ width:80%; background:url(../images/arrow-menu.png) center left 4px no-repeat #128b91; background-size:20px;}
+.pop-filter .heading{padding:8px;}
+.pop-filter .sub-heading{ padding:8px;}
+.pop-filter li{padding:13px 8px;  }
+.pop-filter li img{width:20px; vertical-align:-4px; margin-right:5px;}
+.pop-filter ul.sublinks{padding-left:18px;}
+.pop-filter .btn-apply{ padding:13px 22px; margin:25px auto;  width:70px; }
+
+.pop-filter .inner-content { left:10%; }
+.pop-filter .inner-content td, .pop-filter .inner-content th { font-size:17px; padding:6px 0px; }
+.pop-filter .inner-content td.border-bottom, .pop-filter .inner-content th.border-bottom { border-bottom:1px solid #0b4a4d; }
+.pop-filter .inner-content td.small-txt, .pop-filter .inner-content th.small-txt { font-size:9px; width:46px; }
+.pop-filter .inner-content td.small-txt + .small-txt { border-left:1px solid #0b4a4d; }
+
+
+/*listing*/
+.listing{ top:44px;}
+.listing .row-list{ /*margin-bottom:5px;*/ margin-bottom:17px; /*padding:7px;*/}
+.listing .row-list .image{width:70px; margin-right:6px;}
+.listing .row-list .image img{width:100%;}
+.listing .row-list .info{ /*width:65%;*/   }
+.listing .row-list .left-content { width:79%; }
+.listing .row-list .info .name{ font-size:20px; }
+.listing .row-list .info .name .small-txt{font-size:16px;}
+.listing .row-list .rating{ /*top:7px; right:7px;*/ }
+.listing .row-list .rating img{width:17px;}
+.listing .row-list .rating .price{ font-size:25px; padding-top:4px; }
+.listing .row-list .rating .seats{ padding:1px 6px; font-size:7px; height:54px; }
+.listing .list{ top:140px; bottom:50px; padding:7px; }
+.listing .tabs ul li{padding:6px 0; }
+/*.listing .tabs ul li.active img{ width:15px; left:48%; bottom:-6px;}*/
+
+/*30-01-2014*/
+.listing .tabs ul li img{ width:27px; }
+.listing .row-list img { max-height:70px; }
+
+
+/*30-01-2014*/
+
+.ncr-qcksearch { height:68px; }
+.ncr-qcksearch .left-content { width:78%; padding-left:20px; }
+.ncr-qcksearch .left-content h2 { color:#fff; font-size:20px; }
+.ncr-qcksearch .right-content img { width:27px; }
+.ncr-qcksearch .right-content .advsrch-txt { color:#063a3d; font-size:13px; line-height:13px; }
+
+
+
+/*.searchlisting-innercontent tr td:first-child { padding-left:10px; }
+.searchlisting-innercontent tr td:last-child { padding-right:10px; }*/
+.searchlisting-innercontent td h2 { font-size:16px; }
+.searchlisting-innercontent td img { width:30px; }
+.searchlisting-innercontent td.left-content { width:30px; }
+.searchlisting-outercontent tr.row td.left-content img { width:27px; }
+.searchlisting-outercontent tr.row td.right-content { font-size:17px; }
+.search-btn { font-size:16px; height:45px; line-height:43px; }
+
+
+.lakes .list{ bottom:52px; padding:7px;}
+.lakes .row-list { margin-bottom:13px; height:182px }
+.lakes .row-list img, .lakes .row-list .info { max-height:115px; }
+.lakes .row-list .left-content { width:80%; font-size:12px; padding:0 0 10px 15px; }
+.lakes .row-list .info .name{ font-size:18px;  }
+.lakes .row-list .rating .tag{ width:40px; }
+.lakes .row-list .rating .outernumber{ width:40px; }
+.lakes .row-list .rating .innernumber{ padding:5px 10px; font-size:18px; }
+.lakes .row-list .bottominfo{ top:115px; height:66px; }
+.lakes .row-list .bottominfo .content{ padding:5px 10px; font-size:14px; }
+
+/************02-02-2015***********/
+/*Detail*/
+
+
+.detail.heading-space{ top:79px; bottom:100px; }
+.detail .detail-img img { height:200px;  }
+.detail .detail-img .img-content { top:5px; height:195px; }
+.detail .detail-img .left-content { width:64%; font-size:12px; padding:0 0 0px 10px; }
+.detail .detail-img .left-content .name{ font-size:20px; line-height:34px; }
+.detail .detail-img .left-content .reviews {
+	font-size:20px;
+	padding: 4px 50px 4px 10px;
+	background-size:20px;
+	margin-left:-12px;
+	margin-top:11px;
+}
+.detail .detail-img .left-content p { font-size:18px; line-height:34px; }
+.detail .detail-img .left-content .price { color:#fff; font-size:38px; font-weight:normal; line-height:40px; }
+.detail .detail-img .right-content .votes {
+	width:100px;
+	margin-bottom:10px;
+	font-size:26px;
+	line-height:38px;
+	height:80px;
+}
+.detail .detail-img .right-content .votes p { font-size:16px; line-height:17px; }
+.detail .detail-img .right-content .bookmark {
+	width:100px;
+	height:80px;
+	font-size:16px; line-height:8px;
+}
+.detail .detail-img .right-content .bookmark img { width:50px; height:60px; }
+.detail .detail-img .img-bottomcontent { padding:0px 10px; }
+.detail .detail-img .img-bottomcontent .part-one { top:-30px; }
+.detail .detail-img .img-bottomcontent .part-one ul li { width:20%; }
+.detail .detail-img .img-bottomcontent .part-one ul li + li { padding-left:0px; }
+.detail .detail-img .img-bottomcontent .part-one ul li img { width: 46px; }
+.detail .detail-img .img-bottomcontent .part-one ul li span { font-size:12px; }
+.detail .detail-img .img-bottomcontent .part-two { padding-top:60px; }
+.detail .detail-img .img-bottomcontent .part-two ul li { font-size:14px; }
+.detail .detail-img .img-bottomcontent .part-two ul li img { width: 20px;  }
+.detail .detail-img .img-bottomcontent .part-two ul li span { width:30px; }
+.detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four { position:relative; margin-top:10px; }
+.detail .detail-img .img-bottomcontent .part-three.map { height:105px; }
+.detail .detail-img .img-bottomcontent .part-three img { height:100px; }
+.detail .detail-img .img-bottomcontent .part-three .map-content { height:100px; font-size:18px; padding:0 20px; }
+.detail .detail-img .img-bottomcontent .part-three .map-content td { padding:10px 0; }
+.detail .detail-img .img-bottomcontent .part-three .map-content img { width:22px; }
+.detail .detail-img .img-bottomcontent .part-four td { padding:0 5px; }
+.detail-img .img-bottomcontent .part-four h1 { position: relative; margin-top:0px; }
+.detail-img .img-bottomcontent .part-four h1 span { padding: 0 10px; font-size:16px; top:-5px; }
+.detail .detail-img .img-bottomcontent .part-four td.right-img { width:20px; }
+.detail .detail-img .img-bottomcontent .part-four td.tick-img { width:15px; }
+.detail .tabs ul li{padding:6px 0; }
+.detail .tabs ul li img{ width:27px; }
+
+/************03-02-2015***********/
+/*Booking*/
+.booking.heading-space{ bottom:52px; }
+.booking .part-one { padding:10px 0 0 0; }
+.booking .part-one td { padding:5px; font-size:12px; }
+.booking .part-one td.hdng { font-size:17px; padding-left:20px; }
+.booking .part-one td { border-bottom:1px solid #0b4a4d; }
+.booking .part-two { padding:20px; font-size:12px; }
+.booking .tabs ul li{padding:6px 0; }
+.booking .tabs ul li img{ width:47px; }
+.booking .part-three, .booking .part-four { position:relative; margin-top:10px; }
+.booking .part-three.map { height:105px; }
+.booking .part-three img { height:100px; }
+.booking .part-three .map-content { height:100px; font-size:18px; padding:0 20px; }
+.booking .part-three .map-content td { padding:10px 0; }
+.booking .part-three .map-content img { width:20px; }
+.booking .part-four td { padding:0 5px 20px 5px; }
+.booking .part-four h1 { position: relative; margin-top:0px; }
+.booking .part-four h1 span { padding: 0 10px 0 0; font-size:16px; top:-5px; }
+.booking .part-four td.right-img { width:20px; padding-right:20px; }
+.booking .part-four p { font-size:12px; padding-left:5px; }
+.booking .dates { padding:20px 10px 20px 10px;}
+.booking .confrmnt {padding:10px 20px; margin-top:20px; }
+.booking .confrmnt ul li.img { width:50px; }
+.booking .confrmnt ul li.img img { width:30px; }
+.booking .confrmnt ul li.txt { font-size:12px; line-height:11px; }
+.booking .prices th { font-size:15px; }
+.booking .prices td { font-size:17px; }
+.booking .prices td span { font-size:11px; }
+.booking .prices td.quantity li img { width:25px; }
+
+
+
+/*reviews*/
+.reviews{bottom:100px;}
+
+
+/*checkin*/
+.checkin{bottom:100px;}
+
+/*photos*/
+.photos{bottom:100px;}
+.photos .thumb-container .thumb{width:100px;  margin:5px;}
+
+.detail .detail-img .part-four .times th{padding:5px;}
+.detail .detail-img .part-four .times td{padding:3px;}
+
+.detail .detail-img .part-four .contacts td{padding:3px;}
+
+.lake-owner{bottom:100px;}
+}

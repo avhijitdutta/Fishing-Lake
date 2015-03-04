@@ -1,0 +1,10 @@
+<div class="ncr-footer" ng-controller="footerCtrl">
+    <div class="search-btn" ng-click="bookNow()" ng-if="bookOnline"><img ng-src="{{bookImg}}" alt="" ng-if="bookImg!=''"> {{bookText}}</div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>&nbsp;</td>
+            <td align="center"><a>Add Photo</a> <a>Me</a> <a ng-click="showList()">Nearby</a> <a>More</a></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</div>
