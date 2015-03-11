@@ -19,7 +19,17 @@
 
 package com.fishing.fish;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+
 import org.apache.cordova.*;
 
 public class CordovaApp extends CordovaActivity
@@ -27,6 +37,20 @@ public class CordovaApp extends CordovaActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+	   	 try {
+	         PackageInfo info = getPackageManager().getPackageInfo(
+	                 "com.fishing.fish", 
+	                 PackageManager.GET_SIGNATURES);
+	         for (Signature signature : info.signatures) {
+	             MessageDigest md = MessageDigest.getInstance("SHA");
+	             md.update(signature.toByteArray());
+	             Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+	          }
+	     } catch (NameNotFoundException e) {
+	
+	     } catch (NoSuchAlgorithmException e) {
+	
+	     }
         super.onCreate(savedInstanceState);
         super.init();
         // Set by <content src="index.html" /> in config.xml

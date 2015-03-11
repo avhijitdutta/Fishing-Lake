@@ -138,7 +138,7 @@ body{font-size:16px;}
 .detail .detail-img img { height:200px;  }
 .detail .detail-img .img-content { top:5px; height:195px; }
 .detail .detail-img .left-content { width:64%; font-size:12px; padding:0 0 0px 10px; }
-.detail .detail-img .left-content .name{ font-size:20px; line-height:34px; }
+.detail .detail-img .left-content .name{ line-height:34px; }
 .detail .detail-img .left-content .reviews {
 	font-size:20px;
 	padding: 4px 50px 4px 10px;

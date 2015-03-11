@@ -116,7 +116,8 @@ app.config(['$routeProvider',"$keyboardProvider",
             });
     }]);
 app.value("keyboardHeight",0);
-app.run(['$location', '$rootScope','keyboardHeight', function($location, $rootScope,keyboardHeight) {
+app.run(['$location', '$rootScope','keyboardHeight',"$keyboard", function($location,$rootScope,keyboardHeight,$keyboard) {
+    $keyboard.restrictSpecialChar();
     $rootScope.stateHistory = [];
     $rootScope.goBack=function()
     {

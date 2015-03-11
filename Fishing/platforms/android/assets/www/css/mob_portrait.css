@@ -9,7 +9,7 @@ body{font-size:15px;}
 /*header*/
 .ncr-header td{padding:6px;}
 .ncr-header td:first-child{width:9%;}
-3.ncr-header td:last-child{width:9%;}
+.ncr-header td:last-child{width:9%;}
 .ncr-header td:first-child img{width:25px;}
 .ncr-header td:last-child img{width:25px;}
 .ncr-header td.title img{height:25px;}
@@ -159,8 +159,8 @@ label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touc
 .detail.heading-space{ top:85px; bottom:104px; }
 .detail .detail-img img { height:200px;  }
 .detail .detail-img .img-content { top:5px; height:195px; }
-.detail .detail-img .left-content { width:64%; font-size:12px; padding:0 0 0px 10px; }
-.detail .detail-img .left-content .name{ font-size:20px; line-height:34px; }
+.detail .detail-img .left-content { width:70%; font-size:12px; padding:0 0 0px 10px; }
+.detail .detail-img .left-content .name{ font-size:25px; line-height:34px; }
 .detail .detail-img .left-content .reviews {
 	font-size:20px;
 	padding: 4px 50px 4px 10px;
@@ -168,22 +168,24 @@ label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touc
 	margin-left:-12px;
 	margin-top:11px;
 }
-.detail .detail-img .left-content p { font-size:18px; line-height:34px; }
-.detail .detail-img .left-content .price { color:#fff; font-size:38px; font-weight:normal; line-height:40px; }
+.detail .detail-img .left-content p { font-size:16px; line-height:34px; }
+.detail .detail-img .left-content .price { color:#fff; font-size:50px; font-weight:normal; line-height:40px; }
 .detail .detail-img .right-content .votes {
-	width:100px;
-	margin-bottom:10px;
-	font-size:26px;
-	line-height:38px;
-	height:80px;
+    width: 66px;
+    margin-bottom: 10px;
+    font-size: 19px;
+    line-height: 38px;
+    height: 76px;
 }
-.detail .detail-img .right-content .votes p { font-size:16px; line-height:17px; }
+.detail .detail-img .right-content .votes p { font-size: 12px; line-height: 17px; }
 .detail .detail-img .right-content .bookmark {
-	width:100px;
-	height:80px;
-	font-size:16px; line-height:8px;
+    width: 66px;
+    height: 73px;
+    font-size: 12px;
+    line-height: 6px;
 }
-.detail .detail-img .right-content .bookmark img { width:50px; height:60px; }
+.detail .detail-img .right-content .bookmark img {width: 47px;
+    height: 53px; }
 .detail .detail-img .img-bottomcontent { padding:0px 10px; }
 .detail .detail-img .img-bottomcontent .part-one { top:-30px; }
 .detail .detail-img .img-bottomcontent .part-one ul li { width:20%; }
@@ -281,5 +283,8 @@ label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touc
 
 .lake-owner{bottom:104px;}
 
+.rating .stars img{
+    width: 30px;
+ }
 
 }
