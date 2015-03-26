@@ -1,0 +1,323 @@
+<div class="page">
+<!-------------- ncr-header -------------------->
+<ng-include src="'templates/header.html'"></ng-include>
+<!-------------- ncr-content start-------------------->
+<div class="ncr-content detail">
+<div class="booking"><h4 class="your-ticket">This is your ticket for:</h4>
+
+    <div class="part-one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="hdng">Location</td>
+                <td class="contnt">Himley Park, Dudley,<br>
+                    West Midlands, DY3 4DF
+                </td>
+            </tr>
+            <tr>
+                <td class="hdng">Ticket</td>
+                <td class="contnt">1 Day, 1 Child
+                </td>
+            </tr>
+            <tr>
+                <td class="hdng">Date</td>
+                <td class="contnt">19th January 2015
+                </td>
+            </tr>
+            <tr>
+                <td class="hdng">Price</td>
+                <td class="contnt">£9.00
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="detail-img">
+
+
+<div class="img-bottomcontent">
+
+
+<div class="your-utr">Your UTR is: <h5>JAK-827-22A</h5></div>
+<div class="back-to-app"><a ng-click="backHome()">Back to the app </a> <a ng-click="rateApp()"> Rate in the app
+    store</a></div>
+<div class="part-three map">
+
+    <img src="images/detail-map.png" alt="">
+
+    <div class="map-content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td><img src="images/ico-direction-arrow.png" alt=""></td>
+                <td>1.3km</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:0;">Directions</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<div class="tabs">
+    <ul>
+        <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)">
+            <img ng-src="{{tab.url}}">
+
+            <p>{{tab.name}}</p>
+        </li>
+    </ul>
+    <div class="clr"></div>
+</div>
+
+<div class="part-four" ng-show="tab == 1">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Pellets</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Boilies</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Ground bait</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Keep nets</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Barbless hooks</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>2 rods per person</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Bait in tins</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Bait boats</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Nuts</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Floating baits</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>cat and dog food</td>
+        </tr>
+    </table>
+</div>
+
+<div class="part-four" ng-show="tab == 2">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Pellets</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Boilies</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Ground bait</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Keep nets</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Barbless hooks</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>2 rods per person</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Bait in tins</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/ico-cross-big.png"></td>
+            <td>Bait boats</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Nuts</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>Floating baits</td>
+        </tr>
+        <tr>
+            <td class="tick-img"><img alt="" src="images/tick.png"></td>
+            <td>cat and dog food</td>
+        </tr>
+    </table>
+</div>
+
+<div class="part-four">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(2)">
+        <tr>
+            <td><h1 class="one"><span>Prices</span></h1></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(2),'deactive-tab-img':!isOpenTab(2)}"></td>
+        </tr>
+    </table>
+    <div class="prices" ng-show="isOpenTab(2)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>&nbsp;</th>
+                <th>Standard</th>
+                <th align="left">Members</th>
+            </tr>
+            <tr>
+                <td align="right">Day</td>
+                <td align="center">£7.50</td>
+                <td rowspan="7" valign="top" width="45%">Fusce egestas, lectus blandit commodo tempor, elit tortor
+                    sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas
+                    sed.
+                </td>
+            </tr>
+            <tr>
+                <td align="right">24 Hour</td>
+                <td align="center">£20.00</td>
+            </tr>
+            <tr>
+                <td align="right">Night</td>
+                <td align="center">£10.00</td>
+            </tr>
+            <tr>
+                <td align="right">Children</td>
+                <td align="center">£5.00</td>
+            </tr>
+            <tr>
+                <td align="right">OAP</td>
+                <td align="center">£5.00</td>
+            </tr>
+            <tr>
+                <td align="right">Students</td>
+                <td align="center">£6.00</td>
+            </tr>
+            <tr>
+                <td align="right">Sunday</td>
+                <td align="center">08:00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="part-four">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(3)">
+        <tr>
+            <td><h1 class="one"><span>Opening Times</span></h1></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(3),'deactive-tab-img':!isOpenTab(3)}"></td>
+        </tr>
+    </table>
+
+    <div class="times" ng-show="isOpenTab(3)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>&nbsp;</th>
+                <th>Opening</th>
+                <th>Closing</th>
+            </tr>
+            <tr>
+                <td align="right">Monday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Tuesday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Wednesday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Thursday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Friday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Saturday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+            <tr>
+                <td align="right">Sunday</td>
+                <td align="center">08:00</td>
+                <td align="center">22:00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="part-four">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(4)">
+        <tr>
+            <td><h1 class="one"><span>Contact Details</span></h1></td>
+            <td class="right-img"><img alt=""
+                                       ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}"></td>
+        </tr>
+    </table>
+    <div class="contacts" ng-show="isOpenTab(4)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="right">Lake Contact</td>
+                <td>Testing Name</td>
+            </tr>
+            <tr>
+                <td align="right">Phone</td>
+                <td>01234 567 890</td>
+            </tr>
+            <tr>
+                <td align="right">Email</td>
+                <td>testing@testing.com</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</div>
+
+
+<div class="img-bottomcontent">
+    <div class="part-four">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(5)">
+            <tr>
+                <td><h1 class="one"><span>Ask a question</span></h1></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(5),'deactive-tab-img':!isOpenTab(5)}"
+                                           alt=""></td>
+            </tr>
+        </table>
+        <div class="question" ng-show="isOpenTab(5)"><textarea name="textarea" id="textarea" rows="5"></textarea></div>
+    </div>
+
+</div>
+<div class="send-question-btn"><img src="images/ico-question.png" alt="">Send my question</div>
+</div>
+</div>
+<!-------------- ncr-content end-------------------->
+
+<!-------------- ncr-footer -------------------->
+<ng-include src="'templates/footer.html'"></ng-include>
+</div>

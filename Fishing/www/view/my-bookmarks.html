@@ -1,0 +1,166 @@
+<div class="page">
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content  no-footer lakes bookmark">
+
+
+        <!-------------- list -------------------->
+        <div class="list">
+            <div class="heading">My Bookmarks</div>
+            <div class="row-list" ng-repeat="lake in lakeList">
+                <div class="visit-lake" ng-click="linkBookMark(lake)">
+                    <div class="delete" ng-click="deleteBookmark(lake)">Delete this bookmark</div>
+                    Visit this fishing site
+                </div>
+                <img src="images/listing_img1.jpg" alt="">
+
+                <div class="info">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" class="left-content">
+                                <div class="name">Himley Hall Top Pool</div>
+                                WOLVERHAMPTON
+                            </td>
+                            <td align="right">
+                                <div class="rating">
+
+                                    <div class="outernumber">
+                                        <div class="innernumber">4.6</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="bottominfo select">
+                    <div class="content">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left">Coarse<br/>
+                                    $7 Day Ticket<br/>
+                                    10 Reviews - 5 photos<br/>
+                                </td>
+                                <td align="right">12.8 miles</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="btn-booking" ng-click="goBooking(lake)">Make a booking at this site now</div>
+            </div>
+
+            <!--  <div class="row-list">
+                  <div class="visit-lake"><div class="delete">Delete this bookmark</div>Visit this fishing site</div>
+                  <img src="images/listing_img1.jpg" alt="">
+                <div class="info">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left" class="left-content"><div class="name">Himley Hall Top Pool</div>
+                      WOLVERHAMPTON</td>
+                      <td align="right">
+                          <div class="rating">
+
+                                <div class="outernumber">
+                                    <div class="innernumber">4.6</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="bottominfo select">
+                    <div class="content">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left">Coarse<br/>
+                                $7 Day Ticket<br/>
+                                10 Reviews - 5 photos<br/>
+                                </td>
+                                <td align="right">12.8 miles</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="btn-booking">Make a booking at this site now</div>
+              </div>
+              <div class="row-list">
+                  <div class="visit-lake"><div class="delete">Delete this bookmark</div>Visit this fishing site</div> <img src="images/listing_img1.jpg" alt="">
+                <div class="info">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left" class="left-content"><div class="name">Himley Hall Top Pool</div>
+                      WOLVERHAMPTON</td>
+                      <td align="right">
+                          <div class="rating">
+
+                                <div class="outernumber">
+                                    <div class="innernumber">4.6</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="bottominfo select">
+                    <div class="content">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left">Coarse<br/>
+                                $7 Day Ticket<br/>
+                                10 Reviews - 5 photos<br/>
+                                </td>
+                                <td align="right">12.8 miles</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="btn-booking">Make a booking at this site now</div>
+              </div>
+              <div class="row-list"><div class="visit-lake"><div class="delete">Delete this bookmark</div>Visit this fishing site</div> <img src="images/listing_img1.jpg" alt="">
+                <div class="info">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left" class="left-content"><div class="name">Himley Hall Top Pool</div>
+                      WOLVERHAMPTON</td>
+                      <td align="right">
+                          <div class="rating">
+
+                                <div class="outernumber">
+                                    <div class="innernumber">4.6</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="bottominfo select">
+                    <div class="content">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left">Coarse<br/>
+                                $7 Day Ticket<br/>
+                                10 Reviews - 5 photos<br/>
+                                </td>
+                                <td align="right">12.8 miles</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="btn-booking">Make a booking at this site now</div>
+              </div>-->
+
+        </div>
+
+    </div>
+    <!-------------- ncr-content end-------------------->
+
+
+    <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+
+</div>

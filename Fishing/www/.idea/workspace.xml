@@ -2,29 +2,83 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce10f8e7-2ab5-4e9b-9c58-4a2e19098b85" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/connect-accounts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/contact-us.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/my-bookmarks.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/my-tickets.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/report-bug.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/send-feedback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/suggest-location.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ticket-screen.html" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\ico-travels.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-driver.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-reserved.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-select.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper-reserved-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper-reserved.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper-select-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper-select.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat-sleeper.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\platforms\android\assets\www\images\img-seat.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\ico-travels.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-driver.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-reserved.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-select.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper-reserved-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper-reserved.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper-select-h.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper-select.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat-sleeper.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Client Project\Fishing\Fishing\www\images\img-seat.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug-unaligned.apk" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug.apk" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp.ap_" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/CordovaApp.class" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/CordovaApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/CordovaApp.class" afterPath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/CordovaApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/Fishing.apk" afterPath="$PROJECT_DIR$/../platforms/android/bin/Fishing.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R$string.class" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R$string.class" afterPath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R$xml.class" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R$xml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R$xml.class" afterPath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R$xml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R.class" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes/com/fishing/fish/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R.class" afterPath="$PROJECT_DIR$/../platforms/android/bin/classes/com/fishing/fish/R.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes.dex" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/classes.dex" afterPath="$PROJECT_DIR$/../platforms/android/bin/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/resources.ap_" afterPath="$PROJECT_DIR$/../platforms/android/bin/resources.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/src/com/fishing/fish/CordovaApp.java" afterPath="$PROJECT_DIR$/../platforms/android/src/com/fishing/fish/CordovaApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/AndroidManifest.cordova.xml" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/AndroidManifest.cordova.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../platforms/android/bin/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug-unaligned.apk.d" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp-debug-unaligned.apk.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp.ap_.d" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/CordovaApp.ap_.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/R.txt" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/R.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/bin/R.txt" afterPath="$PROJECT_DIR$/../platforms/android/bin/R.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../plugins/android.json" afterPath="$PROJECT_DIR$/../plugins/android.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/view/booking.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/view/booking.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/booking.html" afterPath="$PROJECT_DIR$/view/booking.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/build.prop" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/build.prop" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/view/email-registration.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/view/email-registration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/email-registration.html" afterPath="$PROJECT_DIR$/view/email-registration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/home.html" afterPath="$PROJECT_DIR$/view/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/api/keyboardService.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/api/keyboardService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/api/keyboardService.js" afterPath="$PROJECT_DIR$/js/api/keyboardService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/ant-build/classes.dex.d" afterPath="$PROJECT_DIR$/../platforms/android/ant-build/classes.dex.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" afterPath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/controllers.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers.js" afterPath="$PROJECT_DIR$/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/cordova_plugins.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/templates/footer.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/templates/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/footer.html" afterPath="$PROJECT_DIR$/templates/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/bower_components/fullcalendar/fullcalendar.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/bower_components/fullcalendar/fullcalendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.css" afterPath="$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/view/lake-detail.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/view/lake-detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/lake-detail.html" afterPath="$PROJECT_DIR$/view/lake-detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/view/loginpage.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/view/loginpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/loginpage.html" afterPath="$PROJECT_DIR$/view/loginpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/mob_landscape.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/mob_landscape.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/mob_landscape.css" afterPath="$PROJECT_DIR$/css/mob_landscape.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/mob_portrait.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/mob_portrait.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/mob_portrait.css" afterPath="$PROJECT_DIR$/css/mob_portrait.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/mob_sm.css" afterPath="$PROJECT_DIR$/css/mob_sm.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/view/search.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/view/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/search.html" afterPath="$PROJECT_DIR$/view/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/web-services.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/web-services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/web-services.js" afterPath="$PROJECT_DIR$/js/web-services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
@@ -48,21 +102,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5397412" vertical-offset="377" max-vertical-offset="918">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7939" max-vertical-offset="19346">
+              <caret line="467" column="37" selection-start-line="467" selection-start-column="37" selection-end-line="467" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers.js">
+      <file leaf-file-name="email-registration.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/email-registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="15827">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.3231939" vertical-offset="0" max-vertical-offset="1105">
+              <caret line="10" column="95" selection-start-line="10" selection-start-column="95" selection-end-line="10" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -71,28 +125,18 @@
       <file leaf-file-name="signup.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/signup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="170" max-vertical-offset="561">
-              <caret line="10" column="57" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="561">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/style.css">
+      <file leaf-file-name="loginpage.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/loginpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="18190">
-              <caret line="20" column="167" selection-start-line="20" selection-start-column="165" selection-end-line="20" selection-end-column="167" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mob_portrait.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/mob_portrait.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2553" max-vertical-offset="5015">
-              <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="527">
+              <caret line="5" column="67" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -101,38 +145,58 @@
       <file leaf-file-name="mob_sm.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/mob_sm.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2213" max-vertical-offset="4165">
-              <caret line="143" column="67" selection-start-line="143" selection-start-column="65" selection-end-line="143" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3647" max-vertical-offset="4284">
+              <caret line="245" column="50" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mob_landscape.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/mob_landscape.css">
+      <file leaf-file-name="connect-accounts.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/connect-accounts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.36" vertical-offset="2204" max-vertical-offset="4437">
-              <caret line="139" column="44" selection-start-line="139" selection-start-column="42" selection-end-line="139" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="1071">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/home.html">
+      <file leaf-file-name="my-tickets.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/my-tickets.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="18.923077" vertical-offset="492" max-vertical-offset="1020">
-              <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1377">
+              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="email-registration.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/email-registration.html">
+      <file leaf-file-name="my-bookmarks.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/my-bookmarks.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="556" max-vertical-offset="1105">
-              <caret line="48" column="56" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="2839">
+              <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="3451">
+              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/footer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="663">
+              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -151,19 +215,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/view/about.html" />
-        <option value="$PROJECT_DIR$/view/account.html" />
-        <option value="$PROJECT_DIR$/view/deal.html" />
-        <option value="$PROJECT_DIR$/view/login.html" />
-        <option value="$PROJECT_DIR$/view/registration.html" />
-        <option value="$PROJECT_DIR$/js/filter.js" />
-        <option value="$PROJECT_DIR$/view/salon-details.html" />
-        <option value="$PROJECT_DIR$/view/add-card.html" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/view/payment-option.html" />
         <option value="$PROJECT_DIR$/view/google-wallet.html" />
         <option value="$PROJECT_DIR$/view/net-banking.html" />
-        <option value="$PROJECT_DIR$/js/web-services.js" />
         <option value="$PROJECT_DIR$/view/city-list.html" />
         <option value="$PROJECT_DIR$/view/calender.html" />
         <option value="$PROJECT_DIR$/css/index.css" />
@@ -177,31 +231,41 @@
         <option value="$PROJECT_DIR$/view/listing.html" />
         <option value="$PROJECT_DIR$/view/book-seat.html" />
         <option value="$PROJECT_DIR$/templates/header.html" />
-        <option value="$PROJECT_DIR$/templates/footer.html" />
         <option value="$PROJECT_DIR$/view/forget-pass.html" />
         <option value="$PROJECT_DIR$/view/photos.html" />
         <option value="$PROJECT_DIR$/view/reviews.html" />
         <option value="$PROJECT_DIR$/view/lakes.html" />
         <option value="$PROJECT_DIR$/view/search-options.html" />
-        <option value="$PROJECT_DIR$/view/loginpage.html" />
         <option value="$PROJECT_DIR$/staticData/salon.js" />
-        <option value="$PROJECT_DIR$/view/search.html" />
         <option value="$PROJECT_DIR$/view/checkin.html" />
         <option value="$PROJECT_DIR$/view/lake-owner.html" />
-        <option value="$PROJECT_DIR$/view/lake-detail.html" />
         <option value="$PROJECT_DIR$/view/signup.html" />
-        <option value="$PROJECT_DIR$/js/controllers.js" />
         <option value="$PROJECT_DIR$/js/customDirective/pageSlider.js" />
-        <option value="$PROJECT_DIR$/view/booking.html" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/js/api/keyboardService.js" />
         <option value="$PROJECT_DIR$/view/email-registration.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/view/home.html" />
-        <option value="$PROJECT_DIR$/css/mob_landscape.css" />
+        <option value="$PROJECT_DIR$/js/web-services.js" />
+        <option value="$PROJECT_DIR$/view/loginpage.html" />
+        <option value="$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.css" />
+        <option value="$PROJECT_DIR$/view/search.html" />
+        <option value="$PROJECT_DIR$/view/booking.html" />
+        <option value="$PROJECT_DIR$/view/lake-detail.html" />
+        <option value="$PROJECT_DIR$/view/ticket-screen.html" />
+        <option value="$PROJECT_DIR$/view/suggest-location.html" />
+        <option value="$PROJECT_DIR$/view/report-bug.html" />
+        <option value="$PROJECT_DIR$/view/contact-us.html" />
+        <option value="$PROJECT_DIR$/view/send-feedback.html" />
+        <option value="$PROJECT_DIR$/view/my-bookmarks.html" />
+        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/css/mob_sm.css" />
         <option value="$PROJECT_DIR$/css/mob_portrait.css" />
+        <option value="$PROJECT_DIR$/css/mob_landscape.css" />
+        <option value="$PROJECT_DIR$/view/connect-accounts.html" />
+        <option value="$PROJECT_DIR$/templates/footer.html" />
+        <option value="$PROJECT_DIR$/js/controllers.js" />
+        <option value="$PROJECT_DIR$/view/my-tickets.html" />
+        <option value="$PROJECT_DIR$/css/mob_sm.css" />
       </list>
     </option>
   </component>
@@ -309,6 +373,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -318,17 +410,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Service Request/ServiceRequest/platforms/android/assets/www" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Client Project\Fishing\Fishing\www\js\api" />
       <recent name="D:\Client Project\Fishing\Fishing\www\view" />
+      <recent name="D:\Client Project\Fishing\Fishing\www\js\api" />
       <recent name="D:\Client Project\Fishing\Fishing\www\css" />
       <recent name="D:\Client Project\Fishing\Fishing\www\images" />
       <recent name="D:\Client Project\Fishing\www" />
@@ -432,7 +525,7 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView" selected-index="3">
+  <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
       <are-packages-shown value="false" />
       <are-modules-shown value="false" />
@@ -454,18 +547,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736155" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981412" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2550186" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2550186" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39739415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -516,66 +609,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bower_components/jquery-ui/ui/jquery-ui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255238">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/angular-ui-calendar/src/calendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7536946" vertical-offset="459" max-vertical-offset="4471">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.795301" vertical-offset="11798" max-vertical-offset="103887">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/angular-route/angular-route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.94253" vertical-offset="16408" max-vertical-offset="17017">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/angular-touch/angular-touch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="8705" max-vertical-offset="10676">
-          <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/angular/angular.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="59.18624" vertical-offset="0" max-vertical-offset="374595">
-          <caret line="2075" column="35" selection-start-line="2075" selection-start-column="20" selection-end-line="2075" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/angular/ng-calendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.955665" vertical-offset="4270" max-vertical-offset="4879">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="609">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="609">
@@ -632,31 +669,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
-          <caret line="5" column="75" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10115">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cordova_plugins.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/factories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027914613" vertical-offset="391" max-vertical-offset="3995">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -674,20 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/reviews.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="272">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/loginpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="527">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/images/star-off-review.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -697,13 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="3230">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -721,10 +716,115 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/search-options.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5384617" vertical-offset="2201" max-vertical-offset="3179">
+          <caret line="141" column="24" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="293" max-vertical-offset="3043">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/lakes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="986">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/api/keyboardService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.24319728" vertical-offset="1962" max-vertical-offset="2550">
+          <caret line="107" column="53" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="18.923077" vertical-offset="492" max-vertical-offset="1020">
+          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15402">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/customDirective/pageSlider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16485508" vertical-offset="793" max-vertical-offset="3264">
+          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/web-services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="972" max-vertical-offset="2108">
+          <caret line="2" column="116" selection-start-line="2" selection-start-column="107" selection-end-line="2" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/factories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="3995">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/fullcalendar/fullcalendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2676" max-vertical-offset="10166">
+          <caret line="173" column="135" selection-start-line="173" selection-start-column="135" selection-end-line="173" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/reviews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614" vertical-offset="17" max-vertical-offset="1377">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/lake-detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8670" max-vertical-offset="9554">
-          <caret line="534" column="115" selection-start-line="534" selection-start-column="115" selection-end-line="534" selection-end-column="115" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="8908" max-vertical-offset="9333">
+          <caret line="524" column="61" selection-start-line="524" selection-start-column="39" selection-end-line="524" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1513">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/ticket-screen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="5440">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="918">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -737,154 +837,143 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/staticData/salon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2166" max-vertical-offset="2754">
-          <caret line="129" column="15" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="591" max-vertical-offset="2754">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/booking.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="764" max-vertical-offset="2754">
-          <caret line="63" column="25" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
+        <state vertical-scroll-proportion="-15.730769" vertical-offset="2379" max-vertical-offset="2907">
+          <caret line="164" column="59" selection-start-line="164" selection-start-column="4" selection-end-line="164" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/customDirective/pageSlider.js">
+    <entry file="file://$PROJECT_DIR$/view/contact-us.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3264">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+        <state vertical-scroll-proportion="-32.03846" vertical-offset="0" max-vertical-offset="952">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/web-services.js">
+    <entry file="file://$PROJECT_DIR$/view/report-bug.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+        <state vertical-scroll-proportion="-33.346153" vertical-offset="0" max-vertical-offset="986">
+          <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/search-options.html">
+    <entry file="file://$PROJECT_DIR$/view/suggest-location.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5384617" vertical-offset="2201" max-vertical-offset="3179">
-          <caret line="141" column="24" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+        <state vertical-scroll-proportion="-16.23077" vertical-offset="343" max-vertical-offset="935">
+          <caret line="45" column="38" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/index.css">
+    <entry file="file://$PROJECT_DIR$/view/send-feedback.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="293" max-vertical-offset="3043">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/lakes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="986">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/api/keyboardService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24319728" vertical-offset="1962" max-vertical-offset="2550">
-          <caret line="107" column="53" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15759">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="561">
-          <caret line="10" column="57" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="18.923077" vertical-offset="492" max-vertical-offset="1020">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="2703">
-          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15402">
+        <state vertical-scroll-proportion="12.538462" vertical-offset="326" max-vertical-offset="867">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="972" max-vertical-offset="2108">
-          <caret line="2" column="116" selection-start-line="2" selection-start-column="107" selection-end-line="2" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/email-registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="556" max-vertical-offset="1105">
-          <caret line="48" column="56" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/mob_landscape.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.36" vertical-offset="2204" max-vertical-offset="4437">
-          <caret line="139" column="44" selection-start-line="139" selection-start-column="42" selection-end-line="139" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="18190">
-          <caret line="20" column="167" selection-start-line="20" selection-start-column="165" selection-end-line="20" selection-end-column="167" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="19644" max-vertical-offset="21573">
+          <caret line="1177" column="91" selection-start-line="1177" selection-start-column="91" selection-end-line="1177" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mob_portrait.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5245" max-vertical-offset="5899">
+          <caret line="339" column="50" selection-start-line="339" selection-start-column="50" selection-end-line="339" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mob_landscape.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4531" max-vertical-offset="5168">
+          <caret line="297" column="50" selection-start-line="297" selection-start-column="50" selection-end-line="297" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/connect-accounts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="1071">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="663">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/my-bookmarks.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="2839">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/my-tickets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1377">
+          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/mob_sm.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2213" max-vertical-offset="4165">
-          <caret line="143" column="67" selection-start-line="143" selection-start-column="65" selection-end-line="143" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3647" max-vertical-offset="4284">
+          <caret line="245" column="50" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/mob_portrait.css">
+    <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2553" max-vertical-offset="5015">
-          <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3383">
+          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/view/loginpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5397412" vertical-offset="377" max-vertical-offset="918">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="527">
+          <caret line="5" column="67" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="561">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7925" max-vertical-offset="19278">
+          <caret line="467" column="37" selection-start-line="467" selection-start-column="37" selection-end-line="467" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/email-registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3231939" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="10" column="95" selection-start-line="10" selection-start-column="95" selection-end-line="10" selection-end-column="95" />
           <folding />
         </state>
       </provider>

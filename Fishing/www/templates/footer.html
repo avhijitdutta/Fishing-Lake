@@ -1,9 +1,35 @@
 <div class="ncr-footer" ng-controller="footerCtrl">
     <div class="search-btn" ng-click="bookNow()" ng-if="bookOnline"><img ng-src="{{bookImg}}" alt="" ng-if="bookImg!=''"> {{bookText}}</div>
+    <div class="bot-link-popup" id="animationSandbox">
+        <div class="pop-navigation" ng-click="closePopUp('animationSandbox')"></div>
+        <div class="links-me">
+            <a href="#/mybookmark">Bookmarks</a>
+            <a>Payments</a>
+            <a href="#/connectac">Connect Accounts</a>
+            <a href="#/mytickets">My Tickets</a>
+            <a ng-click="signout=1" ng-show="signout==0">Sign Out</a>
+            <a class="tap" ng-show="signout==1" ng-swipe-right="signout=2">Sign Out</a>
+            <a class="swipe" ng-show="signout==2">Sign Out<span ng-click="logOut()">Yes</span></a>
+        </div>
+    </div>
+
+    <div class="bot-link-popup" id="moreBox">
+        <div class="pop-navigation" ng-click="closePopUp('moreBox')"></div>
+        <div class="links-me">
+            <a href="#/sendFeedback">Send Feedback</a>
+            <a>Rate in app store</a>
+            <a href="#/contactus">Contact us</a>
+            <a href="#/reportBug">Report a bug</a>
+            <a href="#/suggestLocation">Suggest a location</a>
+        </div>
+    </div>
+
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td>&nbsp;</td>
-            <td align="center"><a>Add Photo</a> <a>Me</a> <a ng-click="showList()">Nearby</a> <a>More</a></td>
+            <td align="center"><a ng-click="addPic()">Add Photo</a> <a
+                    ng-click="showMePopup($event,'animationSandbox')">Me</a> <a ng-click="showList()">Nearby</a> <a
+                    ng-click="showMePopup($event,'moreBox')">More</a></td>
             <td>&nbsp;</td>
         </tr>
     </table>

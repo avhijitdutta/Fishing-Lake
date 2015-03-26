@@ -157,19 +157,6 @@
     <div class="tab" ng-show="isOpenTab(1)">
         <div class="tabs">
             <ul>
-<!--                <li>
-                    <img src="images/ico-amenities.png">
-                    <p>Amenities</p>
-                </li>
-                <li class="active">
-                    <img src="images/ico-ts-inactive.png">
-                    <p>Fishing Rules</p>
-                </li>
-                <li>
-                    <img src="images/ico-coarse-active.png">
-                    <p>Fish Species</p>
-                </li>-->
-
                 <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)">
                     <img ng-src="{{tab.url}}">
                     <p>{{tab.name}}</p>

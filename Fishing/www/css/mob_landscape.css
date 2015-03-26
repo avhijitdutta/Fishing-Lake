@@ -3,254 +3,916 @@
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-body{font-size:16px;}
+    body {
+        font-size: 16px;
+    }
 
-/*header*/
-.ncr-header td{padding:8px;}
-.ncr-header td:first-child{width:9%;}
-.ncr-header td:last-child{width:9%;}
-.ncr-header td:first-child img{width:35px;}
-.ncr-header td:last-child img{width:35px;}
-.ncr-header td.title img{height:35px;}
-.ncr-header td .lang{ right:62px; top:8px; font-size:16px; height:40px; width:40px; line-height:40px; }
-.ncr-header td.title h2{font-size:23px;}
-/*30-01-2014*/
-.ncr-header td .header-tag { width:55px; float:right; text-align:center; }
+    /*header*/
+    .ncr-header td {
+        padding: 8px;
+    }
 
+    .ncr-header td:first-child {
+        width: 9%;
+    }
 
-/*footer*/
-.ncr-footer td{padding:18px 0;}
-.ncr-footer .btn-big{ font-size:20px; padding:6px 18px;}
-.ncr-footer .btn-big img{width:14px; vertical-align:1px; margin:0 7px 0 0 ;}
-.ncr-footer td img{width:30px; margin:2px 0;}
-.ncr-footer td a{font-size:16px;}
+    .ncr-header td:last-child {
+        width: 9%;
+    }
 
-/*main heading*/
-.ncr-heading{ padding:10px 6px 6px 6px; height:24px; line-height:22px; top:51px; }
-.ncr-heading img{width:14px; vertical-align:-1px;}
+    .ncr-header td:first-child img {
+        width: 35px;
+    }
 
+    .ncr-header td:last-child img {
+        width: 35px;
+    }
 
-/*main search*/
-.ncr-search{ padding:12px 6px 6px 6px; height:31px; line-height:22px;  top:51px; margin-top:-6px;}
-.ncr-search img{width:27px; vertical-align:-7px; margin-right:5px;}
-.ncr-search input{ width:80%; padding-left:10px;}
+    .ncr-header td.title img {
+        height: 35px;
+    }
 
-/*main content area*/
-.ncr-content{ top:51px; bottom:52px;}
-.ncr-content.heading-space{ top:90px; }
-.ncr-content.search-bar-space{ top:94px; }
+    .ncr-header td .lang {
+        right: 62px;
+        top: 8px;
+        font-size: 16px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
 
+    .ncr-header td.title h2 {
+        font-size: 23px;
+    }
 
-/*search*/
-.ncr-header td.title .search-icon{ top:14px; right:0;}
-.ncr-header td.title .search-icon img{width:24px;}
-.ncr-header td.title .search{  background-size:22px; }
-.ncr-header td.title .search input{font-size:16px;   margin-top: 10px;  margin-left:35px;}
+    /*30-01-2014*/
+    .ncr-header td .header-tag {
+        width: 55px;
+        float: right;
+        text-align: center;
+    }
 
+    /*footer*/
+    .ncr-footer td {
+        padding: 18px 0;
+    }
 
+    .ncr-footer .btn-big {
+        font-size: 20px;
+        padding: 6px 18px;
+    }
 
+    .ncr-footer .btn-big img {
+        width: 14px;
+        vertical-align: 1px;
+        margin: 0 7px 0 0;
+    }
 
-/*screen popup*/
-.ncr-pop-left{ width:300px;}
-.ncr-pop-left li img{width:22px; vertical-align:-4px; margin-right:10px;}
+    .ncr-footer td img {
+        width: 30px;
+        margin: 2px 0;
+    }
 
+    .ncr-footer td a {
+        font-size: 16px;
+    }
 
-.ncr-pop-right{ width:300px;}
-.ncr-pop-right li img{width:22px; vertical-align:-4px; margin-right:10px;}
+    /*main heading*/
+    .ncr-heading {
+        padding: 10px 6px 6px 6px;
+        height: 24px;
+        line-height: 22px;
+        top: 51px;
+    }
 
+    .ncr-heading img {
+        width: 14px;
+        vertical-align: -1px;
+    }
 
-.pop-filter{ width:400px; background:url(../images/arrow-menu.png) center left 4px no-repeat #128b91; background-size:30px;}
-.pop-filter li{padding:15px 10px;  }
-.pop-filter li img{width:22px; vertical-align:-4px; margin-right:6px;}
+    /*main search*/
+    .ncr-search {
+        padding: 12px 6px 6px 6px;
+        height: 31px;
+        line-height: 22px;
+        top: 51px;
+        margin-top: -6px;
+    }
 
-.pop-filter .inner-content { left:10%; }
-.pop-filter .inner-content td, .pop-filter .inner-content th { font-size:20px; padding:3px;}
-.pop-filter .inner-content td.border-bottom, .pop-filter .inner-content th.border-bottom { border-bottom:2px solid #0b4a4d; }
-.pop-filter .inner-content td.small-txt, .pop-filter .inner-content th.small-txt { font-size:12px; width:60px; }
-.pop-filter .inner-content td.small-txt + .small-txt { border-left:2px solid #0b4a4d; }
+    .ncr-search img {
+        width: 27px;
+        vertical-align: -7px;
+        margin-right: 5px;
+    }
 
+    .ncr-search input {
+        width: 80%;
+        padding-left: 10px;
+    }
 
+    /*main content area*/
+    .ncr-content {
+        top: 51px;
+        bottom: 52px;
+    }
 
+    .ncr-content.heading-space {
+        top: 90px;
+    }
 
+    .ncr-content.search-bar-space {
+        top: 94px;
+    }
 
-/*listing*/
-.listing{ top:65px;}
-.listing .row-list{ /*margin-bottom:7px;*/ margin-bottom:16px; /*padding:14px;*/}
-.listing .row-list .image{width:90px; margin-right:12px;}
-.listing .row-list .image img{width:100%;}
-.listing .row-list .info{ /*width:70%; */  }
-.listing .row-list .left-content { width:84%; }
-.listing .row-list .info .name{ font-size:24px;}
-.listing .row-list .info strong{width:62px;}
-.listing .row-list .info .name .small-txt{font-size:18px;}
-.listing .row-list .rating{ /*top:13px; right:5px;*/ }
-.listing .row-list .rating img{width:17px;}
-.listing .row-list .rating .price{ font-size:30px; padding-top:7px; }
-.listing .row-list .rating .seats{ padding:1px 7px; font-size:11px; height:76px;}
+    /*search*/
+    .ncr-header td.title .search-icon {
+        top: 14px;
+        right: 0;
+    }
 
+    .ncr-header td.title .search-icon img {
+        width: 24px;
+    }
 
-.listing .list{ /*top:48px;*/ top:190px; bottom:61px; padding:9px; }
-.listing .tabs ul li{padding:13px 0; }
-/*.listing .tabs ul li.active img{ width:15px; left:48%; bottom:-6px;}*/
+    .ncr-header td.title .search {
+        background-size: 22px;
+    }
 
-/*30-01-2014*/
-.listing .tabs ul li img{ width:35px; }
-.listing .row-list img { max-height:90px; }
+    .ncr-header td.title .search input {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-left: 35px;
+    }
 
+    /*screen popup*/
+    .ncr-pop-left {
+        width: 300px;
+    }
 
-.ncr-qcksearch { height:86px; }
-.ncr-qcksearch .left-content { width:85%; padding-left:23px; }
-.ncr-qcksearch .left-content h2 { color:#fff; font-size:25px; }
-.ncr-qcksearch .right-content img { width:35px; }
-.ncr-qcksearch .right-content .advsrch-txt { color:#063a3d; font-size:15px; line-height:17px; }
+    .ncr-pop-left li img {
+        width: 22px;
+        vertical-align: -4px;
+        margin-right: 10px;
+    }
 
+    .ncr-pop-right {
+        width: 300px;
+    }
 
+    .ncr-pop-right li img {
+        width: 22px;
+        vertical-align: -4px;
+        margin-right: 10px;
+    }
 
+    .pop-filter {
+        width: 400px;
+        background: url(../images/arrow-menu.png) center left 4px no-repeat #128b91;
+        background-size: 30px;
+    }
 
-/*.searchlisting-innercontent tr td:first-child { padding-left:30px; }
-.searchlisting-innercontent tr td:last-child { padding-right:30px; }*/
-.searchlisting-innercontent td h2 { font-size:18px; }
-.searchlisting-innercontent td img { width:38px; }
-.searchlisting-innercontent td.left-content { width:38px; }
-.searchlisting-outercontent tr.row td.left-content img { width:35px; }
-.searchlisting-outercontent tr.row td.right-content { font-size:20px; }
-.searchlisting-outercontent tr.row td.left-content img { width:35px; }
-.search-btn { font-size:20px; height:56px; line-height:53px; }
+    .pop-filter li {
+        padding: 15px 10px;
+    }
 
+    .pop-filter li img {
+        width: 22px;
+        vertical-align: -4px;
+        margin-right: 6px;
+    }
 
+    .pop-filter .inner-content {
+        left: 10%;
+    }
 
-.lakes .list{ bottom:61px; padding:9px;}
-.lakes .row-list { margin-bottom:22px; height:240px }
-.lakes .row-list img, .lakes .row-list .info { max-height:150px; }
-.lakes .row-list .left-content { width:80%; font-size:13px; padding:0 0 10px 15px; }
-.lakes .row-list .info .name{ font-size:24px;}
-.lakes .row-list .rating .tag, .lakes .row-list .rating .outernumber{ width:60px; }
-.lakes .row-list .rating .innernumber{ padding:8px 10px; font-size:22px; }
-.lakes .row-list .bottominfo{ top:150px; height:90px; }
-.lakes .row-list .bottominfo .content{ padding:13px 10px; font-size:16px; }
+    .pop-filter .inner-content td, .pop-filter .inner-content th {
+        font-size: 20px;
+        padding: 3px;
+    }
 
+    .pop-filter .inner-content td.border-bottom, .pop-filter .inner-content th.border-bottom {
+        border-bottom: 2px solid #0b4a4d;
+    }
 
-/************03-02-2015***********/
-/*Detail*/
+    .pop-filter .inner-content td.small-txt, .pop-filter .inner-content th.small-txt {
+        font-size: 12px;
+        width: 60px;
+    }
 
+    .pop-filter .inner-content td.small-txt + .small-txt {
+        border-left: 2px solid #0b4a4d;
+    }
 
-.detail.heading-space{ top:91px; bottom:118px; }
-.detail .detail-img img { height:200px;  }
-.detail .detail-img .img-content { top:5px; height:195px; }
-.detail .detail-img .left-content { width:64%; font-size:12px; padding:0 0 0px 10px; }
-.detail .detail-img .left-content .name{ line-height:34px; }
-.detail .detail-img .left-content .reviews {
-	font-size:20px;
-	padding: 4px 50px 4px 10px;
-	background-size:20px;
-	margin-left:-12px;
-	margin-top:11px;
-}
-.detail .detail-img .left-content p { font-size:18px; line-height:34px; }
-.detail .detail-img .left-content .price { color:#fff; font-size:38px; font-weight:normal; line-height:40px; }
-.detail .detail-img .right-content .votes {
-	width:100px;
-	margin-bottom:10px;
-	font-size:26px;
-	line-height:38px;
-	height:80px;
-}
-.detail .detail-img .right-content .votes p { font-size:16px; line-height:17px; }
-.detail .detail-img .right-content .bookmark {
-	width:100px;
-	height:80px;
-	font-size:16px; line-height:8px;
-}
-.detail .detail-img .right-content .bookmark img { width:50px; height:60px; }
-.detail .detail-img .img-bottomcontent { padding:0px 10px; }
-.detail .detail-img .img-bottomcontent .part-one { top:-30px; }
-.detail .detail-img .img-bottomcontent .part-one ul li { width:20%; }
-.detail .detail-img .img-bottomcontent .part-one ul li + li { padding-left:0px; }
-.detail .detail-img .img-bottomcontent .part-one ul li img { width: 52px; }
-.detail .detail-img .img-bottomcontent .part-one ul li span { font-size:15px; }
-.detail .detail-img .img-bottomcontent .part-two { padding-top:60px; }
-.detail .detail-img .img-bottomcontent .part-two ul li { font-size:17px; }
-.detail .detail-img .img-bottomcontent .part-two ul li img { width: 20px;  }
-.detail .detail-img .img-bottomcontent .part-two ul li span { width:30px; }
-.detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four { position:relative; margin-top:10px; }
-.detail .detail-img .img-bottomcontent .part-three.map { height:140px; }
-.detail .detail-img .img-bottomcontent .part-three img { height:135px; }
-.detail .detail-img .img-bottomcontent .part-three .map-content { height:135px; font-size:21px; padding:0 20px; }
-.detail .detail-img .img-bottomcontent .part-three .map-content td { padding:18px 0; }
-.detail .detail-img .img-bottomcontent .part-three .map-content img { width:28px; }
-.detail .detail-img .img-bottomcontent .part-four td { padding:0 5px; }
-.detail-img .img-bottomcontent .part-four h1 { position: relative; margin-top:0px; }
-.detail-img .img-bottomcontent .part-four h1 span { padding: 0 10px; font-size:16px; top:-5px; }
-.detail .detail-img .img-bottomcontent .part-four td.right-img { width:25px; }
- .detail .detail-img .img-bottomcontent .part-four td.tick-img { width:15px; }
-.detail .tabs ul li{padding:6px 0; }
-.detail .tabs ul li img{ width:27px; }
+    /*listing*/
+    .listing {
+        top: 65px;
+    }
 
+    .listing .row-list {
+        /*margin-bottom:7px;*/
+        margin-bottom: 16px; /*padding:14px;*/
+    }
 
+    .listing .row-list .image {
+        width: 90px;
+        margin-right: 12px;
+    }
 
-/************03-02-2015***********/
-/*Booking*/
-.booking.heading-space{ bottom:61px; }
+    .listing .row-list .image img {
+        width: 100%;
+    }
 
-.booking .part-one { padding:10px 0 0 0; }
-.booking .part-one td { padding:9px; font-size:14px; }
-.booking .part-one td.hdng { font-size:20px; padding-left:20px; }
-.booking .part-one td { border-bottom:1px solid #0b4a4d; }
-.booking .part-two { padding:30px; font-size:17px; }
+    .listing .row-list .info {
+        /*width:70%; */
+    }
 
-.booking .tabs ul li{padding:6px 0; }
-.booking .tabs ul li img{ width:47px; }
-.booking .part-three, .booking .part-four { position:relative; margin-top:10px; }
-.booking .part-three.map { height:140px; }
-.booking .part-three img { height:135px; }
-.booking .part-three .map-content { height:135px; font-size:21px; padding:0 20px; }
-.booking .part-three .map-content td { padding:18px 0; }
-.booking .part-three .map-content img { width:25px; }
-.booking .part-four td { padding:0 5px 20px 5px; }
-.booking .part-four h1 { position: relative; margin-top:0px; }
-.booking .part-four h1 span { padding: 0 10px 0 0; font-size:16px; top:-5px; }
-.booking .part-four td.right-img { width:25px; padding-right:20px; }
+    .listing .row-list .left-content {
+        width: 84%;
+    }
 
-.booking .part-four p { font-size:12px; padding-left:5px; }
-.booking .dates { padding:20px 10px 20px 10px;}
-.booking .dates img { width:100%;}
-.booking .confrmnt { background:#bdca57; padding:10px 20px; margin-top:20px; }
-.booking .confrmnt ul { margin:0; padding:0; list-style-type:none; display:table; }
-.booking .confrmnt ul li { display:table-cell; vertical-align:middle; }
-.booking .confrmnt ul li.img { width:50px; }
-.booking .confrmnt ul li.img img { width:30px; }
-.booking .confrmnt ul li.txt { color:#062c2e; font-size:12px; line-height:11px; }
-.booking .prices th { font-size:17px; color:#128b91; padding:10px 5px; border-bottom:2px solid #073436; font-weight:normal; text-align:center; }
-.booking .prices td { font-size:20px; color:#fff; padding:5px; text-align:left; }
-.booking .prices td span { font-size:14px; }
-.booking .prices td.quantity li img { width:35px; }
+    .listing .row-list .info .name {
+        font-size: 24px;
+    }
 
+    .listing .row-list .info strong {
+        width: 62px;
+    }
 
+    .listing .row-list .info .name .small-txt {
+        font-size: 18px;
+    }
 
-.detail .detail-img .btn-rnw-review{font-size: 20px;    height: 56px;    line-height: 53px;}
+    .listing .row-list .rating {
+        /*top:13px; right:5px;*/
+    }
 
-.detail .detail-img .btn-rnw-review img{width:50px;}
+    .listing .row-list .rating img {
+        width: 17px;
+    }
 
-.detail .detail-img .send-question-btn {font-size: 20px;    height: 56px;    line-height: 53px;}
-.detail .detail-img .send-question-btn img{width:50px;}
+    .listing .row-list .rating .price {
+        font-size: 30px;
+        padding-top: 7px;
+    }
 
-/*reviews*/
-.reviews{bottom:118px;}
-.reviews .review-heading{background-size:10px;  padding:10px; font-size:22px;}
+    .listing .row-list .rating .seats {
+        padding: 1px 7px;
+        font-size: 11px;
+        height: 76px;
+    }
 
-/*checkin*/
-.checkin{bottom:118px;}
-.checkin .checkin-heading{background-size:10px;  padding:10px; font-size:22px;}
+    .listing .list {
+        /*top:48px;*/
+        top: 190px;
+        bottom: 61px;
+        padding: 9px;
+    }
 
-/*photos*/
-.photos {bottom:118px;}
-.photos .photos-heading{background-size:10px;  padding:10px; font-size:22px;}
-.photos .thumb-container .thumb{width:120px;  margin:10px;}
+    .listing .tabs ul li {
+        padding: 13px 0;
+    }
 
-.detail .detail-img .part-four .times th{padding:5px;}
-.detail .detail-img .part-four .times td{padding:5px;}
+    /*.listing .tabs ul li.active img{ width:15px; left:48%; bottom:-6px;}*/
+    /*30-01-2014*/
+    .listing .tabs ul li img {
+        width: 35px;
+    }
 
-.detail .detail-img .part-four .contacts td{padding:5px;}
+    .listing .row-list img {
+        max-height: 90px;
+    }
 
-.lake-owner{bottom:118px;}
+    .ncr-qcksearch {
+        height: 86px;
+    }
+
+    .ncr-qcksearch .left-content {
+        width: 85%;
+        padding-left: 23px;
+    }
+
+    .ncr-qcksearch .left-content h2 {
+        color: #fff;
+        font-size: 25px;
+    }
+
+    .ncr-qcksearch .right-content img {
+        width: 35px;
+    }
+
+    .ncr-qcksearch .right-content .advsrch-txt {
+        color: #063a3d;
+        font-size: 15px;
+        line-height: 17px;
+    }
+
+    /*.searchlisting-innercontent tr td:first-child { padding-left:30px; }
+    .searchlisting-innercontent tr td:last-child { padding-right:30px; }*/
+    .searchlisting-innercontent td h2 {
+        font-size: 18px;
+    }
+
+    .searchlisting-innercontent td img {
+        width: 38px;
+    }
+
+    .searchlisting-innercontent td.left-content {
+        width: 38px;
+    }
+
+    .searchlisting-outercontent tr.row td.left-content img {
+        width: 35px;
+    }
+
+    .searchlisting-outercontent tr.row td.right-content {
+        font-size: 20px;
+    }
+
+    .searchlisting-outercontent tr.row td.left-content img {
+        width: 35px;
+    }
+
+    .search-btn {
+        font-size: 20px;
+        height: 56px;
+        line-height: 53px;
+    }
+
+    .lakes .list {
+        bottom: 61px;
+        padding: 9px;
+    }
+
+    .lakes .row-list {
+        margin-bottom: 22px;
+        height: 240px
+    }
+
+    .lakes .row-list img, .lakes .row-list .info {
+        max-height: 150px;
+    }
+
+    .lakes .row-list .left-content {
+        width: 80%;
+        font-size: 13px;
+        padding: 0 0 10px 15px;
+    }
+
+    .lakes .row-list .info .name {
+        font-size: 24px;
+    }
+
+    .lakes .row-list .rating .tag, .lakes .row-list .rating .outernumber {
+        width: 60px;
+    }
+
+    .lakes .row-list .rating .innernumber {
+        padding: 8px 10px;
+        font-size: 22px;
+    }
+
+    .lakes .row-list .bottominfo {
+        top: 150px;
+        height: 90px;
+    }
+
+    .lakes .row-list .bottominfo .content {
+        padding: 13px 10px;
+        font-size: 16px;
+    }
+
+    /************03-02-2015***********/
+    /*Detail*/
+    .detail.heading-space {
+        top: 91px;
+        bottom: 118px;
+    }
+
+    .detail .detail-img img {
+        height: 200px;
+    }
+
+    .detail .detail-img .img-content {
+        top: 5px;
+        height: 195px;
+    }
+
+    .detail .detail-img .left-content {
+        width: 64%;
+        font-size: 12px;
+        padding: 0 0 0px 10px;
+    }
+
+    .detail .detail-img .left-content .name {
+        line-height: 34px;
+    }
+
+    .detail .detail-img .left-content .reviews {
+        font-size: 20px;
+        padding: 4px 50px 4px 10px;
+        background-size: 20px;
+        margin-left: -12px;
+        margin-top: 11px;
+    }
+
+    .detail .detail-img .left-content p {
+        font-size: 18px;
+        line-height: 34px;
+    }
+
+    .detail .detail-img .left-content .price {
+        color: #fff;
+        font-size: 38px;
+        font-weight: normal;
+        line-height: 40px;
+    }
+
+    .detail .detail-img .right-content .votes {
+        width: 100px;
+        margin-bottom: 10px;
+        font-size: 26px;
+        line-height: 38px;
+        height: 80px;
+    }
+
+    .detail .detail-img .right-content .votes p {
+        font-size: 16px;
+        line-height: 17px;
+    }
+
+    .detail .detail-img .right-content .bookmark {
+        width: 100px;
+        height: 80px;
+        font-size: 16px;
+        line-height: 8px;
+    }
+
+    .detail .detail-img .right-content .bookmark img {
+        width: 50px;
+        height: 60px;
+    }
+
+    .detail .detail-img .img-bottomcontent {
+        padding: 0px 10px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one {
+        top: -30px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li {
+        width: 20%;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li + li {
+        padding-left: 0px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li img {
+        width: 52px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li span {
+        font-size: 15px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two {
+        padding-top: 60px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li {
+        font-size: 17px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li img {
+        width: 20px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li span {
+        width: 30px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
+        position: relative;
+        margin-top: 10px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three.map {
+        height: 140px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three img {
+        height: 135px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content {
+        height: 135px;
+        font-size: 21px;
+        padding: 0 20px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content td {
+        padding: 18px 0;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content img {
+        width: 28px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td {
+        padding: 0 5px;
+    }
+
+    .detail-img .img-bottomcontent .part-four h1 {
+        position: relative;
+        margin-top: 0px;
+    }
+
+    .detail-img .img-bottomcontent .part-four h1 span {
+        padding: 0 10px;
+        font-size: 16px;
+        top: -5px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td.right-img {
+        width: 25px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td.tick-img {
+        width: 15px;
+    }
+
+    .detail .tabs ul li {
+        padding: 6px 0;
+    }
+
+    .detail .tabs ul li img {
+        width: 27px;
+    }
+
+    /************03-02-2015***********/
+    /*Booking*/
+    .booking.heading-space {
+        bottom: 61px;
+    }
+
+    .booking .part-one {
+        padding: 10px 0 0 0;
+    }
+
+    .booking .part-one td {
+        padding: 9px;
+        font-size: 14px;
+    }
+
+    .booking .part-one td.hdng {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+
+    .booking .part-one td {
+        border-bottom: 1px solid #0b4a4d;
+    }
+
+    .booking .part-two {
+        padding: 30px;
+        font-size: 17px;
+    }
+
+    .booking .tabs ul li {
+        padding: 6px 0;
+    }
+
+    .booking .tabs ul li img {
+        width: 47px;
+    }
+
+    .booking .part-three, .booking .part-four {
+        position: relative;
+        margin-top: 10px;
+    }
+
+    .booking .part-three.map {
+        height: 140px;
+    }
+
+    .booking .part-three img {
+        height: 135px;
+    }
+
+    .booking .part-three .map-content {
+        height: 135px;
+        font-size: 21px;
+        padding: 0 20px;
+    }
+
+    .booking .part-three .map-content td {
+        padding: 18px 0;
+    }
+
+    .booking .part-three .map-content img {
+        width: 25px;
+    }
+
+    .booking .part-four td {
+        padding: 0 5px 20px 5px;
+    }
+
+    .booking .part-four h1 {
+        position: relative;
+        margin-top: 0px;
+    }
+
+    .booking .part-four h1 span {
+        padding: 0 10px 0 0;
+        font-size: 16px;
+        top: -5px;
+    }
+
+    .booking .part-four td.right-img {
+        width: 25px;
+        padding-right: 20px;
+    }
+
+    .booking .part-four p {
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .booking .dates {
+        padding: 20px 10px 20px 10px;
+    }
+
+    .booking .dates img {
+        width: 100%;
+    }
+
+    .booking .confrmnt {
+        background: #bdca57;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+
+    .booking .confrmnt ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: table;
+    }
+
+    .booking .confrmnt ul li {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .booking .confrmnt ul li.img {
+        width: 50px;
+    }
+
+    .booking .confrmnt ul li.img img {
+        width: 30px;
+    }
+
+    .booking .confrmnt ul li.txt {
+        color: #062c2e;
+        font-size: 12px;
+        line-height: 11px;
+    }
+
+    .booking .prices th {
+        font-size: 17px;
+        color: #128b91;
+        padding: 10px 5px;
+        border-bottom: 2px solid #073436;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .booking .prices td {
+        font-size: 20px;
+        color: #fff;
+        padding: 5px;
+        text-align: left;
+    }
+
+    .booking .prices td span {
+        font-size: 14px;
+    }
+
+    .booking .prices td.quantity li img {
+        width: 35px;
+    }
+
+    .detail .detail-img .btn-rnw-review {
+        font-size: 20px;
+        height: 56px;
+        line-height: 53px;
+    }
+
+    .detail .detail-img .btn-rnw-review img {
+        width: 50px;
+    }
+
+    .detail .detail-img .send-question-btn {
+        font-size: 20px;
+        height: 56px;
+        line-height: 53px;
+    }
+
+    .detail .detail-img .send-question-btn img {
+        width: 50px;
+    }
+
+    /*reviews*/
+    .reviews {
+        bottom: 118px;
+    }
+
+    .reviews .review-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 22px;
+    }
+
+    /*checkin*/
+    .checkin {
+        bottom: 118px;
+    }
+
+    .checkin .checkin-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 22px;
+    }
+
+    /*photos*/
+    .photos {
+        bottom: 118px;
+    }
+
+    .photos .photos-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 22px;
+    }
+
+    .photos .thumb-container .thumb {
+        width: 120px;
+        margin: 10px;
+    }
+
+    .detail .detail-img .part-four .times th {
+        padding: 5px;
+    }
+
+    .detail .detail-img .part-four .times td {
+        padding: 5px;
+    }
+
+    .detail .detail-img .part-four .contacts td {
+        padding: 5px;
+    }
+
+    .lake-owner {
+        bottom: 118px;
+    }
+
+    .rating .btn-add-review img {
+        width: auto;
+    }
+
+    /*03/20/2015*/
+    /*bookmark*/
+    .bookmark .heading {
+        font-size: 20px;
+        margin-bottom: 16px;
+        padding: 10px 0;
+    }
+
+    .bookmark .row-list {
+        height: auto;
+    }
+
+    .bookmark .row-list .info {
+        top: 80px;
+    }
+
+    .bookmark .row-list .visit-lake .delete {
+        font-size: 11px;
+        padding: 10px 22px 10px 10px;
+        width: 60px;
+        margin-right: 20px;
+    }
+
+    .bookmark .row-list .btn-booking {
+        padding: 10px;
+        margin-top: 42px;
+    }
+
+    /*connect-accounts*/
+    .connect-accounts {
+        padding: 14px;
+    }
+
+    .connect-accounts .heading {
+        font-size: 20px;
+        margin-bottom: 18px;
+        padding: 10px 0;
+    }
+
+    .connect-accounts .row-account {
+        margin-bottom: 18px;
+    }
+
+    .connect-accounts .row-account .l {
+        padding: 12px;
+    }
+
+    .connect-accounts .row-account .r {
+        width: 75px;
+        padding: 8% 10px 10px 10px;
+        font-size: 12px;
+    }
+
+    .connect-accounts .connected-as {
+        font-size: 10px;
+        padding-left: 40px;
+        margin-top: 6px;
+    }
+
+    .connect-accounts .account {
+        color: #00ccff;
+        padding-top: 4px;
+        height: 30px;
+    }
+
+    .connect-accounts .account img {
+        width: 30px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .connect-accounts .post-activity {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .connect-accounts .chkbox {
+        width: 25px;
+        height: 25px;
+        vertical-align: -10px;
+        margin-left: 25px;
+    }
+
+    /*My Tickets*/
+    .myticket .heading {
+        font-size: 20px;
+        margin: 18px 0;
+        padding: 10px;
+    }
+
+    .myticket .row-ticket {
+        border-bottom: solid 2px #0b4a4d;
+        padding: 10px;
+    }
+
+    .myticket .row-ticket .r {
+        width: 75px;
+        padding: 10% 10px 10px 10px;
+        font-size: 12px;
+        margin: 8px;
+    }
+
+    .myticket .row-ticket .l .no {
+        font-size: 28px;
+        padding: 5px 0;
+    }
+
+    .myticket .row-ticket table {
+        font-size: 14px;
+    }
+
+    .myticket .row-ticket table td {
+        padding: 2px 0;
+        min-width: 80px;
+    }
+
+    .myticket .row-ticket table td:first-child {
+        padding-right: 10px;
+    }
+
+    /*send-feedback*/
+    .ncr-content.send-feedback {
+        bottom: 120px;
+    }
+
+    /*Contact Us*/
+    .ncr-content.contact-us {
+        bottom: 120px;
+    }
+
+    /*suggest-location*/
+    .ncr-content.suggest-location {
+        bottom: 120px;
+    }
 }

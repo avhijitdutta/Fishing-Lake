@@ -160,7 +160,7 @@ label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touc
 .detail .detail-img img { height:200px;  }
 .detail .detail-img .img-content { top:5px; height:195px; }
 .detail .detail-img .left-content { width:70%; font-size:12px; padding:0 0 0px 10px; }
-.detail .detail-img .left-content .name{ font-size:25px; line-height:34px; }
+.detail .detail-img .left-content .name{ font-size:21px; line-height:34px; }
 .detail .detail-img .left-content .reviews {
 	font-size:20px;
 	padding: 4px 50px 4px 10px;
@@ -286,5 +286,57 @@ label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touc
 .rating .stars img{
     width: 30px;
  }
+
+.detail .detail-img .img-bottomcontent .your-utr h5{font-size:55px;}
+
+    /*03/20/2015*/
+
+    /*bot-link-popup*/
+    .bot-link-popup{bottom:48px;}
+    .bot-link-popup .links-me a{ padding:12px;  margin:8px 0;}
+    .pop-navigation{ height:34px; margin:-10px -10px 0 -10px;}
+
+
+
+
+    /*bookmark*/
+    .bookmark .heading{font-size:18px; margin-bottom:12px;  padding:10px 0;}
+    .bookmark .row-list{height:auto;}
+    .bookmark .row-list .info{top:60px;}
+    .bookmark .row-list .visit-lake .delete{ font-size:11px;  padding:5px 22px 5px 5px; width:60px; margin-right:16px; vertical-align:-6px; }
+    .bookmark .row-list .btn-booking{ padding:8px; margin-top:28px;}
+
+
+
+    /*connect-accounts*/
+    .connect-accounts{padding:12px;}
+    .connect-accounts .heading{font-size:18px; margin-bottom:12px;  padding:6px 0;}
+    .connect-accounts .row-account{ margin-bottom:16px;}
+    .connect-accounts .row-account .l{ padding:10px;}
+    .connect-accounts .row-account .r{width:75px; padding:11% 6px 6px 6px; font-size:12px; }
+    .connect-accounts .connected-as{font-size:10px; padding-left:35px; margin-top:6px;}
+    .connect-accounts .account{padding-top:4px;height:26px;}
+    .connect-accounts .account img{width:25px; margin-right:10px; }
+    .connect-accounts .post-activity{font-size:12px; margin-top:6px; }
+    .connect-accounts .chkbox{ width:25px; height:25px;  vertical-align:-10px; margin-left:25px;}
+
+
+
+
+    /*My Tickets*/
+    .myticket .heading{font-size:18px; margin:16px 0; padding:8px;}
+    .myticket .row-ticket{ padding:8px;}
+    .myticket .row-ticket .r{ width:70px; padding:12% 6px 6px 6px; font-size:12px;  margin:8px; }
+    .myticket .row-ticket .l .no{font-size:25px; padding:5px 0;}
+    .myticket .row-ticket table{font-size:14px; }
+    .myticket .row-ticket table td{padding:2px 0; min-width:80px;}
+    .myticket .row-ticket table td:first-child{padding-right:10px;}
+
+    /*send-feedback*/
+    .ncr-content.send-feedback{ bottom:105px;}
+    /*Contact Us*/
+    .ncr-content.contact-us{ bottom:105px;}
+    /*suggest-location*/
+    .ncr-content.suggest-location{  bottom:105px;}
 
 }

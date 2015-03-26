@@ -5,7 +5,7 @@
  */
 app.factory("webservice", function() {
     var e = {};
-    var t = "http://www.terminaldetransporte.net/web/index.php/webservice/";
+    var t = "http://ncrts.com/fishing_lake/webservice/";
     e.getService = function(e) {
         return t + e
     };

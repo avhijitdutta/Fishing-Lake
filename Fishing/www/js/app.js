@@ -111,6 +111,46 @@ app.config(['$routeProvider',"$keyboardProvider",
                 templateUrl:'view/lake-owner.html',
                 controller :'lakeOwner'
             })
+            .when('/confirm', {
+                title: 'Confirm Booking',
+                templateUrl: 'view/ticket-screen.html',
+                controller: 'ticketBookCtrl'
+            })
+            .when('/mybookmark', {
+                title: 'My Bookmark',
+                templateUrl: 'view/my-bookmarks.html',
+                controller: 'bookmarkCtrl'
+            })
+            .when('/mytickets', {
+                title: 'My Tickets',
+                templateUrl: 'view/my-tickets.html',
+                controller: 'myTicketCtrl'
+            })
+            .when('/connectac', {
+                title: 'Connect Account',
+                templateUrl: 'view/connect-accounts.html',
+                controller: 'connectAccCtrl'
+            })
+            .when('/suggestLocation', {
+                title: 'Suggest Location',
+                templateUrl: 'view/suggest-location.html',
+                controller: 'suggestCtrl'
+            })
+            .when('/sendFeedback', {
+                title: 'Send Feedback',
+                templateUrl: 'view/send-feedback.html',
+                controller: 'feedbackCtrl'
+            })
+            .when('/reportBug', {
+                title: 'Report Bug',
+                templateUrl: 'view/report-bug.html',
+                controller: 'reportCtrl'
+            })
+            .when('/contactus', {
+                title: 'Contact Us',
+                templateUrl: 'view/contact-us.html',
+                controller: 'contactCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

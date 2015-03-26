@@ -1,0 +1,61 @@
+<div class="page">
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content   connect-account contact-us">
+
+        <div class="heading">Report a bug</div>
+        <div class="txt-small">We appreciate any and all bug reports you submit and we'll investigate any bugs that are
+            reported. In order to do that we need <strong><strong>as much detail as possible:</strong></strong>
+        </div>
+
+        <div class="form">
+            <div class="fld select">
+                <select name="select" id="select">
+                    <option>The bug I have found relates to...</option>
+                    <option>Logging in</option>
+                    <option>Lakes Pages</option>
+                    <option>Payment Systems</option>
+                    <option>Search Functions</option>
+                    <option>Claim my lake systems</option>
+                    <option>Contact forms</option>
+                    <option>Bookmarks</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="row-chk">
+                <div class="l">This has happened only once</div>
+                <div class="chk-box"></div>
+                <div class="clr"></div>
+            </div>
+            <div class="row-chk">
+                <div class="l">I have been able to repeat this bug by following
+                    the steps below
+                </div>
+                <div class="chk-box checked"></div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="fld">
+                <textarea name="textarea" id="textarea" cols="45" rows="5">Write about the bug here. Please be as
+                    detailed as possible, and if you can tell us exactly what you were doing/did when you found the bug.
+                </textarea>
+            </div>
+
+            <div class="upload">
+                <div class="l">Where appropriate, please upload a screenshot of the bug you found.</div>
+                <div class="btn-upload"><img src="images/ico-upload.png" alt="">Upload a screenshot</div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-------------- ncr-content end-------------------->
+
+
+    <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+
+</div>

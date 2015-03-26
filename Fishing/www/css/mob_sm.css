@@ -237,4 +237,20 @@ body{font-size:13px;}
     .rating .stars img{
         width: 25px;
     }
+
+    .pop-filter .fc-grid .fc-day-number {
+        font-size: 14px;
+    }
+
+    .pop-filter .inner-content td, .pop-filter .inner-content th {
+        font-size: 12px;
+    }
+
+    .pop-filter .booking .dates {
+        padding: 0;
+    }
+
+    .pop-filter .fc-text-arrow {
+        vertical-align: 1px;
+    }
 }

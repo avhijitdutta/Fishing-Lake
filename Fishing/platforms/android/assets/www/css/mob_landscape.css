@@ -253,4 +253,47 @@ body{font-size:16px;}
 .detail .detail-img .part-four .contacts td{padding:5px;}
 
 .lake-owner{bottom:118px;}
+
+ .rating .btn-add-review img{width: auto;}
+
+    /*03/20/2015*/
+
+    /*bookmark*/
+    .bookmark .heading{font-size:20px; margin-bottom:16px;  padding:10px 0;}
+    .bookmark .row-list{height:auto;}
+    .bookmark .row-list .info{top:80px;}
+    .bookmark .row-list .visit-lake .delete{ font-size:11px;  padding:10px 22px 10px 10px; width:60px; margin-right:20px; }
+    .bookmark .row-list .btn-booking{ padding:10px; margin-top:42px;}
+
+
+
+
+    /*connect-accounts*/
+    .connect-accounts{padding:14px;}
+    .connect-accounts .heading{font-size:20px; margin-bottom:18px;  padding:10px 0;}
+    .connect-accounts .row-account{ margin-bottom:18px;}
+    .connect-accounts .row-account .l{ padding:12px;}
+    .connect-accounts .row-account .r{width:75px; padding:8% 10px 10px 10px; font-size:12px; }
+    .connect-accounts .connected-as{font-size:10px; padding-left:40px; margin-top:6px;}
+    .connect-accounts .account{color:#00ccff; padding-top:4px;height:30px;}
+    .connect-accounts .account img{width:30px; margin-right:10px; vertical-align:middle;}
+    .connect-accounts .post-activity{font-size:12px; margin-top:10px; }
+    .connect-accounts .chkbox{ width:25px; height:25px;  vertical-align:-10px; margin-left:25px;}
+
+
+    /*My Tickets*/
+    .myticket .heading{font-size:20px; margin:18px 0; padding:10px;}
+    .myticket .row-ticket{border-bottom:solid 2px #0b4a4d; padding:10px;}
+    .myticket .row-ticket .r{ width:75px; padding:10% 10px 10px 10px; font-size:12px;  margin:8px; }
+    .myticket .row-ticket .l .no{font-size:28px; padding:5px 0;}
+    .myticket .row-ticket table{font-size:14px; }
+    .myticket .row-ticket table td{padding:2px 0; min-width:80px;}
+    .myticket .row-ticket table td:first-child{padding-right:10px;}
+
+    /*send-feedback*/
+    .ncr-content.send-feedback{ bottom:120px;}
+    /*Contact Us*/
+    .ncr-content.contact-us{ bottom:120px;}
+    /*suggest-location*/
+    .ncr-content.suggest-location{  bottom:120px;}
 }

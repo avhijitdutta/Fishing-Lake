@@ -143,7 +143,10 @@ app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','
         var formattedDate = new Date(date);
         if(formattedDate.setHours(0,0,0,0)>=today.setHours(0,0,0,0))
         {
-           $scope.date=date.toISODate();
+            $scope.date = date.toISODate();
+            if ($scope.date != "None Selected" && $scope.ticket != "") {
+                $scope.bookOnline = true;
+            }
         }else{
 
             localFactory.alert("You can't choose previous date ",function()
@@ -151,7 +154,6 @@ app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','
 
             },"Alert","Ok");
         }
-
     }
 
     /* config object */
@@ -162,63 +164,18 @@ app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','
             header:{
                 left: 'title',
                 center: '',
-                right: 'prev,next'
+                right: 'next'
             },
             dayClick: $scope.alertOnEventClick
         }
     };
 
-    $scope.currentTab=1;
-    $scope.tabs=[
-        {
-            id:1,
-            name:"Prices",
-            active:"images/ico-pound-active.png",
-            inactive:"images/ico-pound-inactive.png",
-            url:"images/ico-pound-active.png"
-        },
-        {
-            id:2,
-            name:"Dates",
-            inactive:"images/ico-cal-inactive.png",
-            active:"images/ico-cal-active.png",
-            url:"images/ico-cal-inactive.png"
-        },
-        {
-            id:3,
-            name:"Location",
-            active:"images/ico-location-active.png",
-            inactive:"images/ico-location-inactive.png",
-            url:"images/ico-location-inactive.png"
-        }
-    ]
-
     $scope.tab = 1;
-
-    $scope.setTab = function (tab) {
-        $scope.tab=tab.id;
-        for(i=0;i<$scope.tabs.length;i++)
-        {
-            if($scope.tab==$scope.tabs[i].id)
-            {
-                $scope.tabs[i].url= $scope.tabs[i].active;
-            }else{
-                $scope.tabs[i].url= $scope.tabs[i].inactive;
-            }
-        }
-    };
-
-    $scope.isSet = function (active) {
-
-        return active.id == $scope.tab;
-
-    };
 
     $scope.arrPrices=[
         {id:1,name:"Day",price:6,qty:0,totalPrice:0},
         {id:2,name:"Child (under 16 )",price:3,qty:0,totalPrice:0}
     ]
-
 
     $scope.qtyPlusMin=function(id,sign){
         $scope.ticket="";
@@ -249,12 +206,43 @@ app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','
                 }
             }
         }
+        if ($scope.date != "None Selected" && $scope.ticket != "") {
+            $scope.bookOnline = true;
+        }
     }
 
+    $scope.rightPanel = false;
+    $scope.showPopup = function (value) {
+        $scope.tab = value;
+        $scope.showAddReview = false;
+        if ($scope.rightPanel) {
+            $scope.rightPanel = false;
+
+        } else {
+
+            $scope.rightPanel = true;
+        }
+    }
+
+    // filter click function
+    $scope.hideRightPanel = function (value) {
+        $scope.rightPanel = false; // filter out
+    }
+
+    //book button
+    $scope.bookOnline = false;
+    $scope.bookText = "Book Now";
+    $scope.bookImg = "";
+
+
+    //confirm ticket booking
+    $scope.bookNow = function () {
+        $location.path("confirm");
+    }
 }]);
 
 app.controller('lakeListCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
-    currentPage="lakeListCtrl"
+    currentPage = "lakeListCtrl";
     $scope.lackList=lacks;
 
     $scope.lakeDetailView=function(value)
@@ -471,10 +459,34 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
 app.controller('loginPageCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
     $scope.submitForm = function() {
+
         // check to make sure the form is completely valid
         if ($scope.userForm.$valid) {
+            console.log($scope.user);
+            var postData = $scope.user;
+            localFactory.load();
+            var login = localFactory.post('login', postData);
+            login.success(function (data) {
+                console.log(data);
+                localFactory.unload();
+                if (data.result) {
+                    $location.path("home");
+                } else {
+                    localFactory.alert(data.msg, function () {
 
-            $location.path("home");
+                    }, "Message", 'OK');
+                }
+
+            });
+            login.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
+
+        } else {
+
+            localFactory.alert("Please enter valid userid", function () {
+
+            }, "Message", 'OK');
         }
     };
 
@@ -912,10 +924,184 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory', fu
 
 }]);
 
+app.controller('ticketBookCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.backHome = function () {
+        $location.path("home");
+    }
+
+    $scope.rateApp = function () {
+
+    }
+
+    //initiate an array to hold all active tabs
+    $scope.activeTabs = [];
+
+    //check if the tab is active
+    $scope.isOpenTab = function (tab) {
+        //check if this tab is already in the activeTabs array
+        if ($scope.activeTabs.indexOf(tab) > -1) {
+            //if so, return true
+            return true;
+        } else {
+            //if not, return false
+            return false;
+        }
+    }
+
+    //function to 'open' a tab
+    $scope.openTab = function (tab) {
+        //check if tab is already open
+        if ($scope.isOpenTab(tab)) {
+            //if it is, remove it from the activeTabs array
+            $scope.activeTabs.splice($scope.activeTabs.indexOf(tab), 1);
+        } else {
+            //if it's not, add it!
+            $scope.activeTabs.push(tab);
+        }
+    }
+
+    $scope.currentTab = 1;
+    $scope.tabs = [
+        {
+            id: 1,
+            name: "Amenities",
+            active: "images/ico-amenities-inactive.png",
+            inactive: "images/ico-amenities.png",
+            url: "images/ico-amenities.png"
+        },
+        {
+            id: 2,
+            name: "Fishing Rules",
+            inactive: "images/ico-ts-active.png",
+            active: "images/ico-ts-inactive.png",
+            url: "images/ico-ts-inactive.png"
+        }
+    ]
+
+    $scope.tab = 2;
+
+    $scope.setTab = function (tab) {
+        $scope.tab = tab.id;
+        for (i = 0; i < $scope.tabs.length; i++) {
+            if ($scope.tab == $scope.tabs[i].id) {
+                $scope.tabs[i].url = $scope.tabs[i].active;
+            } else {
+                $scope.tabs[i].url = $scope.tabs[i].inactive;
+            }
+        }
+    };
+
+    $scope.isSet = function (active) {
+        return active.id == $scope.tab;
+    };
+
+
+}]);
+
+app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.lakeList = lacks;
+    $scope.deleteBookmark = function (obj) {
+
+    }
+
+    $scope.linkBookMark = function (obj) {
+        $location.path("lakeDetail/1");
+    }
+
+    $scope.goBooking = function (obj) {
+        $location.path("booking");
+    }
+
+}]);
+
+app.controller('myTicketCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.tab = 1;
+    $scope.futureTicket = function () {
+        $scope.tab = 2;
+    }
+
+    $scope.pastTicket = function () {
+        $scope.tab = 1;
+    }
+
+}]);
+
+app.controller('connectAccCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+
+}]);
+
+
 app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
     $scope.showList=function(){
         $location.path("lakelist");
     }
+
+    $scope.showMePopup = function (event, id) {
+        $(event.target).addClass('active');
+        $scope.openPopUp(id);
+    }
+
+    $scope.closePopUp = function (event) {
+        $scope.closePopUp(id)
+    }
+
+    $scope.openPopUp = function (id) {
+        $('#' + id).show();
+        $('#' + id).addClass('slideInUp' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $(this).show();
+            $(this).removeClass('slideInUp' + ' animated')
+        });
+    }
+
+    $scope.closePopUp = function (id) {
+        $('#' + id).addClass('slideOutDown' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $(this).hide();
+            $(this).removeClass('slideOutDown' + ' animated')
+        });
+    }
+
+    $scope.addPic = function () {
+        var pictureSource = navigator.camera.PictureSourceType;
+        var destinationType = navigator.camera.DestinationType;
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 80, correctOrientation: true, sourceType: pictureSource.SAVEDPHOTOALBUM});
+        function onPhotoDataSuccess(imageData) {
+
+        }
+
+        function onFail(message) {
+            //alert('Failed to load picture because: ' + message);
+        }
+    }
+
+
+    $scope.signout = 0;
+
+    $scope.logOut = function () {
+        $location.path("/");
+    }
+
+}]);
+
+
+app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.bookOnline = true;
+    $scope.bookText = "Send my bug report";
+}]);
+
+app.controller('contactCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.bookOnline = true;
+    $scope.bookText = "Send my message";
+}]);
+
+app.controller('feedbackCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.bookOnline = true;
+    $scope.bookText = "Send my feedback";
+}]);
+
+app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+    $scope.bookOnline = true;
+    $scope.bookText = "Suggest this location";
+    $scope.bookImg = "images/thumb.png";
 }]);
 
 app.controller('headerCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
