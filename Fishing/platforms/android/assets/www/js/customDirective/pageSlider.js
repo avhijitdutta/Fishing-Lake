@@ -7,7 +7,7 @@ These restrictions can all be combined as needed:
 'AEC' - matches either attribute or element or class name
 */
 angular.module('page',[])
-.directive('mobileSlider', function () {
+.directive('mobileSlider', ['$browser', '$location', function($browser, $location) {
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             require: '?ngClass',/*^ -- Look for the controller on parent elements, not just on the local scope ? -- Don't raise an error if the controller isn't found*/
@@ -16,40 +16,60 @@ angular.module('page',[])
                  //@ reads the attribute value, = provides two-way binding, & works with functions
             },
             link: function ($scope, element, attrs) {//Embed a custom controller in the directive
-                element.bind('click', function () {
-                    //element.html('You clicked me!');
+                /*$browser.onUrlChange(function(newUrl) {
+                    if ($location.absUrl() === newUrl) {
+                        console.log('Back');
+                        element.addClass('reverse');
+                    }
                 });
+
+
+                $scope.__childrenCount = 0;
+                $scope.$watch(function() {
+                    $scope.__childrenCount = element.length;
+                });
+
+                $scope.$watch('__childrenCount', function(newCount, oldCount) {
+                    if (newCount !== oldCount && newCount === 1) {
+                        element.removeClass('reverse');
+                    }
+                });*/
+
             }, //DOM manipulation
             controller: ['$scope',"$route","$location","$rootScope",function($scope,$route,$location,$rootScope) {
-
-                $scope.animationClass={'slideLeft':'slide-left','slideRight':'slide-right','slideIn':"at-view-slide-in-top",slideOut:"at-view-slide-out-bottom",fadeIn:'at-view-fade-in',fadeOut:'at-view-fade-out'};
+                $scope.animationClass={'slideLeft':'slide','slideRight':'slide-right','slideIn':"slidedown",slideOut:"at-view-slide-out-bottom",fadeIn:'slide-pop',fadeOut:'at-view-fade-out'};
 
                 // Use this function if you want PageSlider to automatically determine the sliding direction based on the state history
-                var l = $rootScope.stateHistory.length,
+                 var l = $rootScope.stateHistory.length,
                     state = window.location.hash;
 
                 if (l === 0) {
                     $rootScope.stateHistory.push(state);
-                    slidePageFrom($scope.animationClass.fadeIn);
+                    slidePageFrom(2);
                     return;
                 }
                 if (state === $rootScope.stateHistory[l-2]) {
                     console.log("pop");
                     $rootScope.stateHistory.pop();
-                    slidePageFrom($rootScope.animation, 1);
+                    slidePageFrom(0);
                 } else {
                     $rootScope.stateHistory.push(state);
-                    slidePageFrom($rootScope.animation);
+                    slidePageFrom(1);
                 }
                 //console.log($rootScope.stateHistory);
                 // Use this function directly if you want to control the sliding direction outside PageSlider
-                function slidePageFrom(page,prevFlag) {
-                    if(prevFlag)
+               function slidePageFrom(prevFlag) {
+
+                    if(prevFlag==0)
                     {
-                        $rootScope.animation=$scope.animationClass.slideOut;
-                    }else
-                    {
-                        $rootScope.animation=$scope.animationClass.slideIn;
+                        $rootScope.animation='reverse '+$rootScope.anim;
+
+                    }else if(prevFlag==1){
+
+                        $rootScope.animation=$rootScope.anim;
+
+                    }else{
+                        $rootScope.animation=$scope.animationClass['fadeIn'];
                     }
 
                 }
@@ -57,7 +77,7 @@ angular.module('page',[])
             }]
 
         }
-});
+}]);
 
 angular.module("keyboard",[])
     .directive('keyboardAttach',['keyboardHeight', function(keyboardHeight) {
@@ -183,11 +203,4 @@ angular.module('validation.match').filter('myCurrency', ['$filter', function ($f
         return '$' + input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 }]);
-/*
-window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-function keyboardShowHandler(e){
-    $('#project-body').animate({
-        scrollTop: $('#').position().top + parseInt($("#project-body").scrollTop())
-    }, 1000);
-}*/

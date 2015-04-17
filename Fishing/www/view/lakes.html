@@ -4,22 +4,28 @@
 
   <!-------------- ncr-content start-------------------->
   <div class="ncr-content no-footer lakes">
-  
-    
-    
-    <!-------------- list -------------------->     
+
+      <!-------------- list images/listing_img1.jpg -------------------->
     <div class="list">
-      <div class="row-list" ng-repeat="lake in lackList" ng-click="lakeDetailView(lake.id)"> <img ng-src="images/listing_img1.jpg" alt="">
-        <div class="info">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <div class="row-list" ng-repeat="lake in lackList" ng-click="lakeDetailView(lake.id)"><img
+                image-source="http://www.tavistocktroutfishery.co.uk/wp-content/uploads/2012/09/trout-fishing-lake-tavistock-devon-MAIN.jpg"
+                image-placeholder="images/listing_img1.jpg" alt="" imageonload>
+
+            <div class="info">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="left" class="left-content"><div class="name">{{lake.name}}</div>
-              {{lake.place}}</td>
-              <td align="right">
-                  <div class="rating">
-                        <div class="tag"><img src="images/ico-tag.png" alt=""></div>
+                <td align="left" class="left-content">
+                    <div class="name">{{lake.lake_name}}</div>
+                    {{lake.town}}
+                </td>
+                <td align="right">
+                    <div class="rating">
+                        <div class="tag" ng-click="bookmark(lake);" stop-event='click'>
+                            <img src="images/ico-tag.png" alt="" ng-if="lake.fav_id==''">
+                            <img src="images/header-tag-marked.png" alt="" ng-if="lake.fav_id!=''">
+                        </div>
                         <div class="outernumber">
-                            <div class="innernumber">{{lake.rating}}</div>
+                        <div class="innernumber">{{lake.rating}}</div>
                         </div>
                     </div>
                 </td>
@@ -30,11 +36,11 @@
         	<div class="content">
             	<table width="100%" border="0" cellspacing="0" cellpadding="0">
                 	<tr>
-                    	<td align="left">{{lake.type}}<br/>
-                        ${{lake.review}} Day Ticket<br/>
-                        {{lake.review}} Reviews - {{lake.photo}} photos<br/>
+                        <td align="left">{{lake.name}}<br/>
+                            ${{lake.price}} {{lake.description}}<br/>
+                            {{lake.total_review}} Reviews - {{lake.total_image}} photos<br/>
                         </td>
-                    	<td align="right">{{lake.distance}}</td>
+                        <td align="right">{{lake.distance}} Miles</td>
                     </tr>
                 </table>
             </div>

@@ -4,339 +4,1026 @@
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
 
-body{font-size:15px;}
-
-/*header*/
-.ncr-header td{padding:6px;}
-.ncr-header td:first-child{width:9%;}
-.ncr-header td:last-child{width:9%;}
-.ncr-header td:first-child img{width:25px;}
-.ncr-header td:last-child img{width:25px;}
-.ncr-header td.title img{height:25px;}
-.ncr-header td .lang{ right:48px; top:6px; font-size:15px; height:33px; width:33px; line-height:33px; }
-.ncr-header td.title h2{font-size:21px;}
-/*30-01-2014*/
-.ncr-header td .header-tag { width:40px; float:right; text-align:center; }
-.ncr-header td .header-tag .msg{left:6%; width:18px; height:18px; font-size:15px;}
-
-
-
-
-/*footer*/
-.ncr-footer td{padding:16px 0px;}
-.ncr-footer .btn-big{ font-size:18px; padding:5px 16px;}
-.ncr-footer .btn-big img{width:11px; vertical-align:2px; margin:0 8px 0 0 ;}
-.ncr-footer td img{width:26px; margin:2px 0;}
-.ncr-footer td a{ font-size:15px; padding:0px 13px; }
-
-/*main heading*/
-.ncr-heading{ padding:8px 5px 5px 5px; height:30px; line-height:28px; top:42px; font-size:17px;  }
-.ncr-heading img{width:11px; vertical-align:0;}
-
-/*main search*/
-.ncr-search{ padding:12px 5px 5px 5px; height:27px; line-height:20px;  top:42px; margin-top:-7px;}
-.ncr-search img{width:24px; vertical-align:-6px; margin-right:5px;}
-.ncr-search input{ width:80%; padding-left:10px;}
-
-
-/*main content area*/
-.ncr-content{ top:42px; bottom:40px;}
-.ncr-content.heading-space{ top:85px;}
-.ncr-content.search-bar-space{ top:78px;}
-
-
-/*form element*/
-.chk{ width:16px; height:16px; vertical-align:-6px;margin-right:6px; }
-
-.radio{ width:18px; height:18px; margin-right:6px;  }
-.radio.checked span{width:10px; height:10px;  left:4px; top:4px;}
-
-
-input[type=radio].css-radio {display:none;	}
-input[type=radio].css-radio + label.css-label {padding-left:28px;	 	display:inline-block; 	background-repeat:no-repeat;	background-size: 19px;	
-vertical-align:middle;	cursor:pointer; width:auto; float:none;}
-
-input[type=radio].css-radio:checked + label.css-label {background-position: 0 -41px;	}
-
-
-input[type=checkbox].css-checkbox {display:none;	}
-input[type=checkbox].css-checkbox + label.css-label { padding-left:28px;	 	display:inline-block; 	background-repeat:no-repeat;	background-size: 19px;	vertical-align:middle;	cursor:pointer; width:auto; float:none; background-position:0 -70px; }
-
-input[type=checkbox].css-checkbox:checked + label.css-label {background-position: 0 -112px;	}
-
-label.css-label { background:url(../images/radio-bg.png) no-repeat;	-webkit-touch-callout: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	user-select: none; }
-
-
-
-/*screen popup*/
-.ncr-pop-left{ width:250px;}
-.ncr-pop-left .heading{padding:8px; }
-.ncr-pop-left li{padding:8px;}
-.ncr-pop-left li img{width:20px; vertical-align:-4px; margin-right:10px;}
-
-.ncr-pop-right{width:250px;}
-.ncr-pop-right .heading{padding:8px;  margin-bottom:8px;}
-.ncr-pop-right li{padding:12px 8px;  background-size:10px;}
-.ncr-pop-right li img{width:20px; vertical-align:-4px; margin-right:10px;}
-
-
-
-.pop-filter{ width:80%; background:url(../images/arrow-menu.png) center left 4px no-repeat #128b91; background-size:25px; }
-.pop-filter .heading{padding:8px;}
-.pop-filter .sub-heading{ padding:8px;}
-.pop-filter li{padding:14px 8px;  }
-.pop-filter li img{width:20px; vertical-align:-4px; margin-right:5px;}
-.pop-filter ul.sublinks{padding-left:18px;}
-.pop-filter .btn-apply{ padding:14px 22px; margin:25px auto;  width:70px; }
-
-.pop-filter .inner-content { left:11%; }
-.pop-filter .inner-content td, .pop-filter .inner-content th { font-size:17px; padding:6px 0px; }
-.pop-filter .inner-content td.border-bottom, .pop-filter .inner-content th.border-bottom { border-bottom:1px solid #0b4a4d; }
-.pop-filter .inner-content td.small-txt, .pop-filter .inner-content th.small-txt { font-size:9px; width:46px; }
-.pop-filter .inner-content td.small-txt + .small-txt { border-left:1px solid #0b4a4d; }
-
-
-
-/*listing*/
-.listing{ top:52px;}
-.listing .row-list{ /*margin-bottom:6px;*/ margin-bottom:16px; /*padding:10px;*/}
-.listing .row-list .image{width:77px; margin-right:8px;}
-.listing .row-list .image img{width:100%;}
-.listing .row-list .info{ /*width:66%;*/   }
-.listing .row-list .left-content { width:79%; }
-.listing .row-list .info .name{ font-size:22px; /*margin-bottom:2px;*/}
-.listing .row-list .info .name .small-txt{font-size:16px;}
-.listing .row-list .rating{ /*top:10px; right:7px;*/ }
-.listing .row-list .rating img{width:17px;}
-.listing .row-list .rating .price{ font-size:30px; padding-top:8px; }
-.listing .row-list .rating .seats{ padding:1px 7px; font-size:8px; height:66px; }
-.listing .list{ /*top:41px;*/ top:165px; bottom:52px; padding:8px;}
-.listing .tabs ul li{padding:10px 0; }
-/*.listing .tabs ul li.active img{ width:15px; left:48%; bottom:-6px;}*/
-
-/*30-01-2014*/
-.listing .tabs ul li img{ width:30px; }
-.listing .row-list img { max-height:80px; }
-
-
-
-.ncr-qcksearch { height:80px; }
-.ncr-qcksearch .left-content { width:78%; padding-left:23px; }
-.ncr-qcksearch .left-content h2 { color:#fff; font-size:23px; }
-.ncr-qcksearch .right-content img { width:30px; }
-.ncr-qcksearch .right-content .advsrch-txt { color:#063a3d; font-size:14px; line-height:16px; }
-
-
-
-
-/*.searchlisting-innercontent tr td:first-child { padding-left:20px; }
-.searchlisting-innercontent tr td:last-child { padding-right:30px; }*/
-.searchlisting-innercontent td h2 { font-size:17px; }
-.searchlisting-innercontent td img { width:33px; }
-.searchlisting-innercontent td.left-content { width:33px; }
-.searchlisting-outercontent tr.row td.left-content img { width:30px; }
-.searchlisting-outercontent tr.row td.right-content { font-size:18px; }
-.search-btn { font-size:17px; height:50px; line-height:47px; }
-
-
-.lakes .list{ bottom:52px; padding:8px;}
-.lakes .row-list { margin-bottom:15px; height:182px }
-.lakes .row-list img, .lakes .row-list .info { max-height:115px; }
-.lakes .row-list .left-content { width:80%; font-size:12px; padding:0 0 10px 15px; }
-.lakes .row-list .info .name{ font-size:18px; }
-.lakes .row-list .rating .tag{ width:40px; }
-.lakes .row-list .rating .outernumber{ width:40px; }
-.lakes .row-list .rating .innernumber{ padding:5px 10px; font-size:18px; }
-.lakes .row-list .bottominfo{ top:115px; height:66px; }
-.lakes .row-list .bottominfo .content{ padding:5px 10px; font-size:14px; }
-
-
-
-/************02-02-2015***********/
-/*Detail*/
-
-
-.detail.heading-space{ top:85px; bottom:104px; }
-.detail .detail-img img { height:200px;  }
-.detail .detail-img .img-content { top:5px; height:195px; }
-.detail .detail-img .left-content { width:70%; font-size:12px; padding:0 0 0px 10px; }
-.detail .detail-img .left-content .name{ font-size:21px; line-height:34px; }
-.detail .detail-img .left-content .reviews {
-	font-size:20px;
-	padding: 4px 50px 4px 10px;
-	background-size:20px;
-	margin-left:-12px;
-	margin-top:11px;
-}
-.detail .detail-img .left-content p { font-size:16px; line-height:34px; }
-.detail .detail-img .left-content .price { color:#fff; font-size:50px; font-weight:normal; line-height:40px; }
-.detail .detail-img .right-content .votes {
-    width: 66px;
-    margin-bottom: 10px;
-    font-size: 19px;
-    line-height: 38px;
-    height: 76px;
-}
-.detail .detail-img .right-content .votes p { font-size: 12px; line-height: 17px; }
-.detail .detail-img .right-content .bookmark {
-    width: 66px;
-    height: 73px;
-    font-size: 12px;
-    line-height: 6px;
-}
-.detail .detail-img .right-content .bookmark img {width: 47px;
-    height: 53px; }
-.detail .detail-img .img-bottomcontent { padding:0px 10px; }
-.detail .detail-img .img-bottomcontent .part-one { top:-30px; }
-.detail .detail-img .img-bottomcontent .part-one ul li { width:20%; }
-.detail .detail-img .img-bottomcontent .part-one ul li + li { padding-left:0px; }
-.detail .detail-img .img-bottomcontent .part-one ul li img { width: 50px; }
-.detail .detail-img .img-bottomcontent .part-one ul li span { font-size:12px; }
-.detail .detail-img .img-bottomcontent .part-two { padding-top:60px; }
-.detail .detail-img .img-bottomcontent .part-two ul li { font-size:15px; }
-.detail .detail-img .img-bottomcontent .part-two ul li img { width: 20px;  }
-.detail .detail-img .img-bottomcontent .part-two ul li span { width:30px; }
-.detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four { position:relative; margin-top:10px; }
-.detail .detail-img .img-bottomcontent .part-three.map { height:105px; }
-.detail .detail-img .img-bottomcontent .part-three img { height:100px; }
-.detail .detail-img .img-bottomcontent .part-three .map-content { height:100px; font-size:18px; padding:0 20px; }
-.detail .detail-img .img-bottomcontent .part-three .map-content td { padding:10px 0; }
-.detail .detail-img .img-bottomcontent .part-three .map-content img { width:25px; }
-.detail .detail-img .img-bottomcontent .part-four td { padding:0 5px; }
-.detail-img .img-bottomcontent .part-four h1 { position: relative; margin-top:0px; }
-.detail-img .img-bottomcontent .part-four h1 span { padding: 0 10px; font-size:16px; top:-5px; }
-.detail .detail-img .img-bottomcontent .part-four td.right-img { width:20px; }
- .detail .detail-img .img-bottomcontent .part-four td.tick-img { width:15px; }
-.detail .tabs ul li{padding:6px 0; }
-.detail .tabs ul li img{ width:27px; }
-
-/************03-02-2015***********/
-/*Booking*/
-.booking.heading-space{ bottom:52px; }
-
-.booking .part-one { padding:10px 0 0 0; }
-.booking .part-one td { padding:5px; font-size:12px; }
-.booking .part-one td.hdng { font-size:18px; padding-left:20px; }
-.booking .part-one td { border-bottom:1px solid #0b4a4d; }
-.booking .part-two { padding:20px; font-size:14px; }
-
-.booking .tabs ul li{padding:6px 0; }
-.booking .tabs ul li img{ width:47px; }
-.booking .part-three, .booking .part-four { position:relative; margin-top:10px; }
-.booking .part-three.map { height:105px; }
-.booking .part-three img { height:100px; }
-.booking .part-three .map-content { height:100px; font-size:18px; padding:0 20px; }
-.booking .part-three .map-content td { padding:10px 0; }
-.booking .part-three .map-content img { width:20px; }
-.booking .part-four td { padding:0 5px 20px 5px; }
-.booking .part-four h1 { position: relative; margin-top:0px; }
-.booking .part-four h1 span { padding: 0 10px 0 0; font-size:16px; top:-5px; }
-.booking .part-four td.right-img { width:20px; padding-right:20px; }
-.booking .part-four p { font-size:12px; padding-left:5px; }
-.booking .dates { padding:20px 10px 20px 10px;}
-.booking .confrmnt { padding:10px 20px; margin-top:20px; }
-.booking .confrmnt ul li.img { width:50px; }
-.booking .confrmnt ul li.img img { width:30px; }
-.booking .confrmnt ul li.txt { font-size:13px; line-height:15px; }
-.booking .prices th { font-size:15px; }
-.booking .prices td { font-size:17px; }
-.booking .prices td span { font-size:11px; }
-.booking .prices td.quantity li img { width:30px; }
-
-
-
-.detail .detail-img .btn-rnw-review{ font-size: 17px;height: 50px;line-height: 47px;}
-
-.detail .detail-img .btn-rnw-review img{width:35px;}
-
-.part-four .row-review .stars img{width:20px;}
-
-
-.detail .row-venue{margin-top:8px;}
-.detail .row-venue .vote{padding:5px 8px; margin-right:5px;}
-.detail .row-venue .vote .no{font-size: 11px;line-height: 10px; margin-left: 10px; vertical-align: -4px; width: 30px;}
-.detail .row-venue .arrow{height:25px; width:30px;}
-
-
-
-.detail .detail-img .send-question-btn {font-size: 17px;height: 50px;line-height: 47px;}
-.detail .detail-img .send-question-btn img{width:35px;}
-
-/*reviews*/
-.reviews{bottom:104px;}
-.reviews .review-heading{ background-size:10px;  padding:10px; font-size:20px;}
-
-
-/*checkin*/
-.checkin{bottom:104px;}
-.checkin .checkin-heading{ background-size:10px;  padding:10px; font-size:20px;}
-
-/*photos*/
-.photos {bottom:104px;}
-.photos .photos-heading{ background-size:10px;  padding:10px; font-size:20px;}
-.photos .thumb-container .thumb{width:120px;  margin:8px;}
-
-.detail .detail-img .part-four .times th{padding:5px;}
-.detail .detail-img .part-four .times td{padding:3px;}
-
-.detail .detail-img .part-four .contacts td{padding:3px;}
-
-.lake-owner{bottom:104px;}
-
-.rating .stars img{
-    width: 30px;
- }
-
-.detail .detail-img .img-bottomcontent .your-utr h5{font-size:55px;}
+    body {
+        font-size: 15px;
+    }
+
+    /*header*/
+    .ncr-header td {
+        padding: 6px;
+    }
+
+    .ncr-header td:first-child {
+        width: 9%;
+    }
+
+    .ncr-header td:last-child {
+        width: 9%;
+    }
+
+    .ncr-header td:first-child img {
+        width: 25px;
+    }
+
+    .ncr-header td:last-child img {
+        width: 25px;
+    }
+
+    .ncr-header td.title img {
+        height: 25px;
+    }
+
+    .ncr-header td .lang {
+        right: 48px;
+        top: 6px;
+        font-size: 15px;
+        height: 33px;
+        width: 33px;
+        line-height: 33px;
+    }
+
+    .ncr-header td.title h2 {
+        font-size: 21px;
+    }
+
+    /*30-01-2014*/
+    .ncr-header td .header-tag {
+        width: 40px;
+        float: right;
+        text-align: center;
+    }
+
+    .ncr-header td .header-tag .msg {
+        left: 6%;
+        width: 18px;
+        height: 18px;
+        font-size: 15px;
+    }
+
+    /*footer*/
+    .ncr-footer td {
+        padding: 16px 0px;
+    }
+
+    .ncr-footer .btn-big {
+        font-size: 18px;
+        padding: 5px 16px;
+    }
+
+    .ncr-footer .btn-big img {
+        width: 11px;
+        vertical-align: 2px;
+        margin: 0 8px 0 0;
+    }
+
+    .ncr-footer td img {
+        width: 26px;
+        margin: 2px 0;
+    }
+
+    .ncr-footer td a {
+        font-size: 15px;
+        padding: 0px 13px;
+    }
+
+    /*main heading*/
+    .ncr-heading {
+        padding: 8px 5px 5px 5px;
+        height: 30px;
+        line-height: 28px;
+        top: 42px;
+        font-size: 17px;
+    }
+
+    .ncr-heading img {
+        width: 11px;
+        vertical-align: 0;
+    }
+
+    /*main search*/
+    .ncr-search {
+        padding: 12px 5px 5px 5px;
+        height: 27px;
+        line-height: 20px;
+        top: 42px;
+        margin-top: -7px;
+    }
+
+    .ncr-search img {
+        width: 24px;
+        vertical-align: -6px;
+        margin-right: 5px;
+    }
+
+    .ncr-search input {
+        width: 80%;
+        padding-left: 10px;
+    }
+
+    /*main content area*/
+    .ncr-content {
+        top: 42px;
+        bottom: 40px;
+    }
+
+    .ncr-content.heading-space {
+        top: 85px;
+    }
+
+    .ncr-content.search-bar-space {
+        top: 78px;
+    }
+
+    /*form element*/
+    .chk {
+        width: 16px;
+        height: 16px;
+        vertical-align: -6px;
+        margin-right: 6px;
+    }
+
+    .radio {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+    }
+
+    .radio.checked span {
+        width: 10px;
+        height: 10px;
+        left: 4px;
+        top: 4px;
+    }
+
+    input[type=radio].css-radio {
+        display: none;
+    }
+
+    input[type=radio].css-radio + label.css-label {
+        padding-left: 28px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: 19px;
+        vertical-align: middle;
+        cursor: pointer;
+        width: auto;
+        float: none;
+    }
+
+    input[type=radio].css-radio:checked + label.css-label {
+        background-position: 0 -41px;
+    }
+
+    input[type=checkbox].css-checkbox {
+        display: none;
+    }
+
+    input[type=checkbox].css-checkbox + label.css-label {
+        padding-left: 28px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: 19px;
+        vertical-align: middle;
+        cursor: pointer;
+        width: auto;
+        float: none;
+        background-position: 0 -70px;
+    }
+
+    input[type=checkbox].css-checkbox:checked + label.css-label {
+        background-position: 0 -112px;
+    }
+
+    label.css-label {
+        background: url(../images/radio-bg.png) no-repeat;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /*screen popup*/
+    .ncr-pop-left {
+        width: 250px;
+    }
+
+    .ncr-pop-left .heading {
+        padding: 8px;
+    }
+
+    .ncr-pop-left li {
+        padding: 8px;
+    }
+
+    .ncr-pop-left li img {
+        width: 20px;
+        vertical-align: -4px;
+        margin-right: 10px;
+    }
+
+    .ncr-pop-right {
+        width: 250px;
+    }
+
+    .ncr-pop-right .heading {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .ncr-pop-right li {
+        padding: 12px 8px;
+        background-size: 10px;
+    }
+
+    .ncr-pop-right li img {
+        width: 20px;
+        vertical-align: -4px;
+        margin-right: 10px;
+    }
+
+    .pop-filter {
+        width: 80%;
+        background: url(../images/arrow-menu.png) center left 4px no-repeat #128b91;
+        background-size: 25px;
+    }
+
+    .pop-filter .heading {
+        padding: 8px;
+    }
+
+    .pop-filter .sub-heading {
+        padding: 8px;
+    }
+
+    .pop-filter li {
+        padding: 14px 8px;
+    }
+
+    .pop-filter li img {
+        width: 20px;
+        vertical-align: -4px;
+        margin-right: 5px;
+    }
+
+    .pop-filter ul.sublinks {
+        padding-left: 18px;
+    }
+
+    .pop-filter .btn-apply {
+        padding: 14px 22px;
+        margin: 25px auto;
+        width: 70px;
+    }
+
+    .pop-filter .inner-content {
+        left: 11%;
+    }
+
+    .pop-filter .inner-content td, .pop-filter .inner-content th {
+        font-size: 17px;
+        padding: 6px 0px;
+    }
+
+    .pop-filter .inner-content td.border-bottom, .pop-filter .inner-content th.border-bottom {
+        border-bottom: 1px solid #0b4a4d;
+    }
+
+    .pop-filter .inner-content td.small-txt, .pop-filter .inner-content th.small-txt {
+        font-size: 9px;
+        width: 46px;
+    }
+
+    .pop-filter .inner-content td.small-txt + .small-txt {
+        border-left: 1px solid #0b4a4d;
+    }
+
+    /*listing*/
+    .listing {
+        top: 52px;
+    }
+
+    .listing .row-list {
+        /*margin-bottom:6px;*/
+        margin-bottom: 16px; /*padding:10px;*/
+    }
+
+    .listing .row-list .image {
+        width: 77px;
+        margin-right: 8px;
+    }
+
+    .listing .row-list .image img {
+        width: 100%;
+    }
+
+    .listing .row-list .info {
+        /*width:66%;*/
+    }
+
+    .listing .row-list .left-content {
+        width: 79%;
+    }
+
+    .listing .row-list .info .name {
+        font-size: 22px; /*margin-bottom:2px;*/
+    }
+
+    .listing .row-list .info .name .small-txt {
+        font-size: 16px;
+    }
+
+    .listing .row-list .rating {
+        /*top:10px; right:7px;*/
+    }
+
+    .listing .row-list .rating img {
+        width: 17px;
+    }
+
+    .listing .row-list .rating .price {
+        font-size: 30px;
+        padding-top: 8px;
+    }
+
+    .listing .row-list .rating .seats {
+        padding: 1px 7px;
+        font-size: 8px;
+        height: 66px;
+    }
+
+    .listing .list {
+        /*top:41px;*/
+        top: 165px;
+        bottom: 52px;
+        padding: 8px;
+    }
+
+    .listing .tabs ul li {
+        padding: 10px 0;
+    }
+
+    /*.listing .tabs ul li.active img{ width:15px; left:48%; bottom:-6px;}*/
+    /*30-01-2014*/
+    .listing .tabs ul li img {
+        width: 30px;
+    }
+
+    .listing .row-list img {
+        max-height: 80px;
+    }
+
+    .ncr-qcksearch {
+        height: 80px;
+    }
+
+    .ncr-qcksearch .left-content {
+        width: 78%;
+        padding-left: 23px;
+    }
+
+    .ncr-qcksearch .left-content h2 {
+        color: #fff;
+        font-size: 23px;
+    }
+
+    .ncr-qcksearch .right-content img {
+        width: 30px;
+    }
+
+    .ncr-qcksearch .right-content .advsrch-txt {
+        color: #063a3d;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    /*.searchlisting-innercontent tr td:first-child { padding-left:20px; }
+    .searchlisting-innercontent tr td:last-child { padding-right:30px; }*/
+    .searchlisting-innercontent td h2 {
+        font-size: 17px;
+    }
+
+    .searchlisting-innercontent td img {
+        width: 33px;
+    }
+
+    .searchlisting-innercontent td.left-content {
+        width: 33px;
+    }
+
+    .searchlisting-outercontent tr.row td.left-content img {
+        width: 30px;
+    }
+
+    .searchlisting-outercontent tr.row td.right-content {
+        font-size: 18px;
+    }
+
+    .search-btn {
+        font-size: 17px;
+        height: 50px;
+        line-height: 47px;
+    }
+
+    .lakes .list {
+        bottom: 52px;
+        padding: 8px;
+    }
+
+    .lakes .row-list {
+        margin-bottom: 15px;
+        height: 182px
+    }
+
+    .lakes .row-list img, .lakes .row-list .info {
+        max-height: 115px;
+    }
+
+    .lakes .row-list .left-content {
+        width: 80%;
+        font-size: 12px;
+        padding: 0 0 10px 15px;
+    }
+
+    .lakes .row-list .info .name {
+        font-size: 18px;
+    }
+
+    .lakes .row-list .rating .tag {
+        width: 40px;
+    }
+
+    .lakes .row-list .rating .outernumber {
+        width: 40px;
+    }
+
+    .lakes .row-list .rating .innernumber {
+        padding: 5px 10px;
+        font-size: 18px;
+    }
+
+    .lakes .row-list .bottominfo {
+        top: 115px;
+        height: 66px;
+    }
+
+    .lakes .row-list .bottominfo .content {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    /************02-02-2015***********/
+    /*Detail*/
+    .detail.heading-space {
+        top: 85px;
+        bottom: 104px;
+    }
+
+    .detail .detail-img img {
+        height: 200px;
+    }
+
+    .detail .detail-img .img-content {
+        top: 5px;
+        height: 195px;
+    }
+
+    .detail .detail-img .left-content {
+        width: 70%;
+        font-size: 12px;
+        padding: 0 0 0px 10px;
+    }
+
+    .detail .detail-img .left-content .name {
+        font-size: 21px;
+        line-height: 34px;
+    }
+
+    .detail .detail-img .left-content .reviews {
+        font-size: 20px;
+        padding: 4px 50px 4px 10px;
+        background-size: 20px;
+        margin-left: -12px;
+        margin-top: 11px;
+    }
+
+    .detail .detail-img .left-content p {
+        font-size: 16px;
+        line-height: 34px;
+    }
+
+    .detail .detail-img .left-content .price {
+        color: #fff;
+        font-size: 50px;
+        font-weight: normal;
+        line-height: 40px;
+    }
+
+    .detail .detail-img .right-content .votes {
+        width: 66px;
+        margin-bottom: 10px;
+        font-size: 19px;
+        line-height: 38px;
+        height: 76px;
+    }
+
+    .detail .detail-img .right-content .votes p {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .detail .detail-img .right-content .bookmark {
+        width: 66px;
+        height: 73px;
+        font-size: 12px;
+        line-height: 6px;
+    }
+
+    .detail .detail-img .right-content .bookmark img {
+        width: 47px;
+        height: 53px;
+    }
+
+    .detail .detail-img .img-bottomcontent {
+        padding: 0px 10px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one {
+        top: -30px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li {
+        width: 20%;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li + li {
+        padding-left: 0px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li img {
+        width: 50px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-one ul li span {
+        font-size: 12px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two {
+        padding-top: 60px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li {
+        font-size: 15px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li img {
+        width: 20px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-two ul li span {
+        width: 30px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
+        position: relative;
+        margin-top: 10px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three.map {
+        height: 105px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three img {
+        height: 100px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content {
+        height: 100px;
+        font-size: 18px;
+        padding: 0 20px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content td {
+        padding: 10px 0;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-three .map-content img {
+        width: 25px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td {
+        padding: 0 5px;
+    }
+
+    .detail-img .img-bottomcontent .part-four h1 {
+        position: relative;
+        margin-top: 0px;
+    }
+
+    .detail-img .img-bottomcontent .part-four h1 span {
+        padding: 0 10px;
+        font-size: 16px;
+        top: -5px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td.right-img {
+        width: 20px;
+    }
+
+    .detail .detail-img .img-bottomcontent .part-four td.tick-img {
+        width: 15px;
+    }
+
+    .detail .tabs ul li {
+        padding: 6px 0;
+    }
+
+    .detail .tabs ul li img {
+        width: 27px;
+    }
+
+    /************03-02-2015***********/
+    /*Booking*/
+    .booking.heading-space {
+        bottom: 52px;
+    }
+
+    .booking .part-one {
+        padding: 10px 0 0 0;
+    }
+
+    .booking .part-one td {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .booking .part-one td.hdng {
+        font-size: 18px;
+        padding-left: 20px;
+    }
+
+    .booking .part-one td {
+        border-bottom: 1px solid #0b4a4d;
+    }
+
+    .booking .part-two {
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    .booking .tabs ul li {
+        padding: 6px 0;
+    }
+
+    .booking .tabs ul li img {
+        width: 47px;
+    }
+
+    .booking .part-three, .booking .part-four {
+        position: relative;
+        margin-top: 10px;
+    }
+
+    .booking .part-three.map {
+        height: 105px;
+    }
+
+    .booking .part-three img {
+        height: 100px;
+    }
+
+    .booking .part-three .map-content {
+        height: 100px;
+        font-size: 18px;
+        padding: 0 20px;
+    }
+
+    .booking .part-three .map-content td {
+        padding: 10px 0;
+    }
+
+    .booking .part-three .map-content img {
+        width: 20px;
+    }
+
+    .booking .part-four td {
+        padding: 0 5px 20px 5px;
+    }
+
+    .booking .part-four h1 {
+        position: relative;
+        margin-top: 0px;
+    }
+
+    .booking .part-four h1 span {
+        padding: 0 10px 0 0;
+        font-size: 16px;
+        top: -5px;
+    }
+
+    .booking .part-four td.right-img {
+        width: 20px;
+        padding-right: 20px;
+    }
+
+    .booking .part-four p {
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .booking .dates {
+        padding: 20px 10px 20px 10px;
+    }
+
+    .booking .confrmnt {
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+
+    .booking .confrmnt ul li.img {
+        width: 50px;
+    }
+
+    .booking .confrmnt ul li.img img {
+        width: 30px;
+    }
+
+    .booking .confrmnt ul li.txt {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    .booking .prices th {
+        font-size: 15px;
+    }
+
+    .booking .prices td {
+        font-size: 17px;
+    }
+
+    .booking .prices td span {
+        font-size: 11px;
+    }
+
+    .booking .prices td.quantity li img {
+        width: 30px;
+    }
+
+    .detail .detail-img .btn-rnw-review {
+        font-size: 17px;
+        height: 50px;
+        line-height: 47px;
+    }
+
+    .detail .detail-img .btn-rnw-review img {
+        width: 35px;
+    }
+
+    .part-four .row-review .stars img {
+        width: 20px;
+    }
+
+    .detail .row-venue {
+        margin-top: 8px;
+    }
+
+    .detail .row-venue .vote {
+        padding: 5px 8px;
+        margin-right: 5px;
+    }
+
+    .detail .row-venue .vote .no {
+        font-size: 11px;
+        line-height: 10px;
+        margin-left: 10px;
+        vertical-align: -4px;
+        width: 30px;
+    }
+
+    .detail .row-venue .arrow {
+        height: 25px;
+        width: 30px;
+    }
+
+    .detail .detail-img .send-question-btn {
+        font-size: 17px;
+        height: 50px;
+        line-height: 47px;
+    }
+
+    .detail .detail-img .send-question-btn img {
+        width: 35px;
+    }
+
+    /*reviews*/
+    .reviews {
+        bottom: 104px;
+    }
+
+    .reviews .review-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    /*checkin*/
+    .checkin {
+        bottom: 104px;
+    }
+
+    .checkin .checkin-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    /*photos*/
+    .photos {
+        bottom: 104px;
+    }
+
+    .photos .photos-heading {
+        background-size: 10px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .photos .thumb-container .thumb {
+        width: 120px;
+        margin: 8px;
+    }
+
+    .detail .detail-img .part-four .times th {
+        padding: 5px;
+    }
+
+    .detail .detail-img .part-four .times td {
+        padding: 3px;
+    }
+
+    .detail .detail-img .part-four .contacts td {
+        padding: 3px;
+    }
+
+    .lake-owner {
+        bottom: 104px;
+    }
+
+    .rating .stars img {
+        width: 30px;
+    }
+
+    .detail .detail-img .img-bottomcontent .your-utr h5 {
+        font-size: 55px;
+    }
 
     /*03/20/2015*/
-
     /*bot-link-popup*/
-    .bot-link-popup{bottom:48px;}
-    .bot-link-popup .links-me a{ padding:12px;  margin:8px 0;}
-    .pop-navigation{ height:34px; margin:-10px -10px 0 -10px;}
+    .bot-link-popup {
+        bottom: 48px;
+    }
 
+    .bot-link-popup .links-me a {
+        padding: 12px;
+        margin: 8px 0;
+    }
 
-
+    .pop-navigation {
+        height: 34px;
+        margin: -10px -10px 0 -10px;
+    }
 
     /*bookmark*/
-    .bookmark .heading{font-size:18px; margin-bottom:12px;  padding:10px 0;}
-    .bookmark .row-list{height:auto;}
-    .bookmark .row-list .info{top:60px;}
-    .bookmark .row-list .visit-lake .delete{ font-size:11px;  padding:5px 22px 5px 5px; width:60px; margin-right:16px; vertical-align:-6px; }
-    .bookmark .row-list .btn-booking{ padding:8px; margin-top:28px;}
+    .bookmark .heading {
+        font-size: 18px;
+        margin-bottom: 12px;
+        padding: 10px 0;
+    }
 
+    .bookmark .row-list {
+        height: auto;
+    }
 
+    .bookmark .row-list .info {
+        top: 60px;
+    }
+
+    .bookmark .row-list .visit-lake .delete {
+        font-size: 11px;
+        padding: 5px 22px 5px 5px;
+        width: 60px;
+        margin-right: 16px;
+        vertical-align: -6px;
+    }
+
+    .bookmark .row-list .btn-booking {
+        padding: 8px;
+        margin-top: 28px;
+    }
 
     /*connect-accounts*/
-    .connect-accounts{padding:12px;}
-    .connect-accounts .heading{font-size:18px; margin-bottom:12px;  padding:6px 0;}
-    .connect-accounts .row-account{ margin-bottom:16px;}
-    .connect-accounts .row-account .l{ padding:10px;}
-    .connect-accounts .row-account .r{width:75px; padding:11% 6px 6px 6px; font-size:12px; }
-    .connect-accounts .connected-as{font-size:10px; padding-left:35px; margin-top:6px;}
-    .connect-accounts .account{padding-top:4px;height:26px;}
-    .connect-accounts .account img{width:25px; margin-right:10px; }
-    .connect-accounts .post-activity{font-size:12px; margin-top:6px; }
-    .connect-accounts .chkbox{ width:25px; height:25px;  vertical-align:-10px; margin-left:25px;}
+    .connect-accounts {
+        padding: 12px;
+    }
 
+    .connect-accounts .heading {
+        font-size: 18px;
+        margin-bottom: 12px;
+        padding: 6px 0;
+    }
 
+    .connect-accounts .row-account {
+        margin-bottom: 16px;
+    }
 
+    .connect-accounts .row-account .l {
+        padding: 10px;
+    }
+
+    .connect-accounts .row-account .r {
+        width: 75px;
+        padding: 11% 6px 6px 6px;
+        font-size: 12px;
+    }
+
+    .connect-accounts .connected-as {
+        font-size: 10px;
+        padding-left: 35px;
+        margin-top: 6px;
+    }
+
+    .connect-accounts .account {
+        padding-top: 4px;
+        height: 26px;
+    }
+
+    .connect-accounts .account img {
+        width: 25px;
+        margin-right: 10px;
+    }
+
+    .connect-accounts .post-activity {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    .connect-accounts .chkbox {
+        width: 25px;
+        height: 25px;
+        vertical-align: -10px;
+        margin-left: 25px;
+    }
 
     /*My Tickets*/
-    .myticket .heading{font-size:18px; margin:16px 0; padding:8px;}
-    .myticket .row-ticket{ padding:8px;}
-    .myticket .row-ticket .r{ width:70px; padding:12% 6px 6px 6px; font-size:12px;  margin:8px; }
-    .myticket .row-ticket .l .no{font-size:25px; padding:5px 0;}
-    .myticket .row-ticket table{font-size:14px; }
-    .myticket .row-ticket table td{padding:2px 0; min-width:80px;}
-    .myticket .row-ticket table td:first-child{padding-right:10px;}
+    .myticket .heading {
+        font-size: 18px;
+        margin: 16px 0;
+        padding: 8px;
+    }
+
+    .myticket .row-ticket {
+        padding: 8px;
+    }
+
+    .myticket .row-ticket .r {
+        width: 70px;
+        padding: 12% 6px 6px 6px;
+        font-size: 12px;
+        margin: 8px;
+    }
+
+    .myticket .row-ticket .l .no {
+        font-size: 25px;
+        padding: 5px 0;
+    }
+
+    .myticket .row-ticket table {
+        font-size: 14px;
+    }
+
+    .myticket .row-ticket table td {
+        padding: 2px 0;
+        min-width: 80px;
+    }
+
+    .myticket .row-ticket table td:first-child {
+        padding-right: 10px;
+    }
 
     /*send-feedback*/
-    .ncr-content.send-feedback{ bottom:105px;}
+    .ncr-content.send-feedback {
+        bottom: 105px;
+    }
+
     /*Contact Us*/
-    .ncr-content.contact-us{ bottom:105px;}
+    .ncr-content.contact-us {
+        bottom: 105px;
+    }
+
     /*suggest-location*/
-    .ncr-content.suggest-location{  bottom:105px;}
+    .ncr-content.suggest-location {
+        bottom: 105px;
+    }
 
 }

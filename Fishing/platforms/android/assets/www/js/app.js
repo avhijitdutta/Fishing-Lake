@@ -51,16 +51,19 @@ app.config(['$routeProvider',"$keyboardProvider",
         $routeProvider.
             when("/",{
                 title:"Sign Up",
+                animation:"slide",
                 templateUrl:"view/signup.html",
                 controller:"signupCtrl"
             })
             .when("/emailreg",{
               title:"Sign Up",
+              animation:"slide",
               templateUrl:"view/email-registration.html",
               controller:"emailRegCtrl"
             })
             .when("/loginpage",{
                 title:"Login Page",
+                animation:"slide",
                 templateUrl:"view/loginpage.html",
                 controller:"loginPageCtrl"
             })
@@ -113,43 +116,43 @@ app.config(['$routeProvider',"$keyboardProvider",
             })
             .when('/confirm', {
                 title: 'Confirm Booking',
-                templateUrl:'view/ticket-screen.html',
-                controller :'ticketBookCtrl'
+                templateUrl: 'view/ticket-screen.html',
+                controller: 'ticketBookCtrl'
             })
             .when('/mybookmark', {
                 title: 'My Bookmark',
-                templateUrl:'view/my-bookmarks.html',
-                controller :'bookmarkCtrl'
+                templateUrl: 'view/my-bookmarks.html',
+                controller: 'bookmarkCtrl'
             })
             .when('/mytickets', {
                 title: 'My Tickets',
-                templateUrl:'view/my-tickets.html',
-                controller :'myTicketCtrl'
+                templateUrl: 'view/my-tickets.html',
+                controller: 'myTicketCtrl'
             })
             .when('/connectac', {
                 title: 'Connect Account',
-                templateUrl:'view/connect-accounts.html',
-                controller :'connectAccCtrl'
+                templateUrl: 'view/connect-accounts.html',
+                controller: 'connectAccCtrl'
             })
             .when('/suggestLocation', {
                 title: 'Suggest Location',
-                templateUrl:'view/suggest-location.html',
-                controller :'suggestCtrl'
+                templateUrl: 'view/suggest-location.html',
+                controller: 'suggestCtrl'
             })
             .when('/sendFeedback', {
                 title: 'Send Feedback',
-                templateUrl:'view/send-feedback.html',
-                controller :'feedbackCtrl'
+                templateUrl: 'view/send-feedback.html',
+                controller: 'feedbackCtrl'
             })
             .when('/reportBug', {
                 title: 'Report Bug',
-                templateUrl:'view/report-bug.html',
-                controller :'reportCtrl'
+                templateUrl: 'view/report-bug.html',
+                controller: 'reportCtrl'
             })
             .when('/contactus', {
                 title: 'Contact Us',
-                templateUrl:'view/contact-us.html',
-                controller :'contactCtrl'
+                templateUrl: 'view/contact-us.html',
+                controller: 'contactCtrl'
             })
             .otherwise({
                 redirectTo: '/'
@@ -164,7 +167,9 @@ app.run(['$location', '$rootScope','keyboardHeight',"$keyboard", function($locat
         window.history.back();
     }
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-
+        $rootScope.anim=current.$$route.animation;
+        $rootScope.title=current.$$route.title;
+        console.log(current.$$route.title);
     });
 }]);
 

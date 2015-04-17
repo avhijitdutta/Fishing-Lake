@@ -11,6 +11,7 @@ D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\com\ionic\
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$2.class \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$3.class \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard.class \
+D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\com\paypal\cordova\sdk\PayPalMobileCordovaPlugin.class \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$1.class \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$2$1$1.class \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$2$1.class \
@@ -112,4 +113,5 @@ D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes\plugin\htt
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\dexedLibs\classes-4343ca09e7868c92590b382b7c847c04.jar \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\dexedLibs\google-play-services-70de02637f3494589ffff2179ecb4b75.jar \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\dexedLibs\android-support-v4-5ac62c45de46a63da1db988acccadf22.jar \
+D:\Client Project\Fishing\Fishing\platforms\android\ant-build\dexedLibs\PayPalAndroidSDK-2.8.8-7687bd14118987c1955038ba0cdedcaf.jar \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\dexedLibs\google-volley-3a32b4095f947043cf939bc3899da9e7.jar \

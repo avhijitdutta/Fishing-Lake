@@ -114,7 +114,7 @@ body{font-size:13px;}
 
 
 .lakes .list{ bottom:52px; padding:7px;}
-.lakes .row-list { margin-bottom:13px; height:182px }
+.lakes .row-list { margin-bottom:32px; height:182px }
 .lakes .row-list img, .lakes .row-list .info { max-height:115px; }
 .lakes .row-list .left-content { width:80%; font-size:12px; padding:0 0 10px 15px; }
 .lakes .row-list .info .name{ font-size:18px;  }
@@ -236,5 +236,21 @@ body{font-size:13px;}
 
     .rating .stars img{
         width: 25px;
+    }
+
+    .pop-filter .fc-grid .fc-day-number {
+        font-size: 14px;
+    }
+
+    .pop-filter .inner-content td, .pop-filter .inner-content th {
+        font-size: 12px;
+    }
+
+    .pop-filter .booking .dates {
+        padding: 0;
+    }
+
+    .pop-filter .fc-text-arrow {
+        vertical-align: 1px;
     }
 }

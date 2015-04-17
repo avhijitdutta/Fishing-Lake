@@ -1,29 +1,20 @@
 <div class="page">
-  <!-------------- ncr-header -------------------->
-   <ng-include src="'templates/header.html'"></ng-include>
-  <!-------------- ncr-content start-------------------->
-  <div class="ncr-content photos">
-  <div class="photos-heading" align="center">
-      Himley Hall Top Pool
-  </div>
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content photos">
+        <div class="photos-heading" align="center">
+            Himley Hall Top Pool
+        </div>
 
-  <div class="thumb-container">
-  	<div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-    <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-  </div>
-   
-  </div>
-  <!-------------- ncr-content end-------------------->
+        <div class="thumb-container">
+            <div class="thumb" ng-repeat="lake in lake_image"><img ng-src="{{lake.url}}" alt=""></div>
+        </div>
+
+    </div>
+    <!-------------- ncr-content end-------------------->
 
 
-  <!-------------- ncr-footer -------------------->
+    <!-------------- ncr-footer -------------------->
     <ng-include src="'templates/footer.html'"></ng-include>
 </div>

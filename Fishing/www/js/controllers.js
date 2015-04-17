@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-app.controller('homeCtrl',['$rootScope','$scope','$location','localFactory','homeservice','$timeout', function($rootScope,$scope,$location,localFactory,homeservice,$timeout){
+app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$timeout', '$route', function ($rootScope, $scope, $location, localFactory, $timeout, $route) {
+
+    console.log(tabs);
     currentPage="homeCtrl";
     $scope.tabs = tabs;
     $scope.toggle = function (id) {
@@ -13,7 +15,6 @@ app.controller('homeCtrl',['$rootScope','$scope','$location','localFactory','hom
        this.tab.active=inactive;
        this.tab.inactive=active;
        this.tab.state = !this.tab.state;
-       console.log($scope.tabs);
     };
 
     $scope.openSearch=function(value)
@@ -21,11 +22,15 @@ app.controller('homeCtrl',['$rootScope','$scope','$location','localFactory','hom
         $location.path("Search");
     }
 
-    $scope.listCollection=collection;
+    $scope.listCollection = $route.current.locals.homeData.lake_category;
 
     $scope.viewDetail=function(value)
     {
-        $location.path("lakelist");
+        $location.path("lakelist/" + value);
+    }
+
+    $scope.quickSearch = function (value) {
+        $location.path("lakelist/adsearch");
     }
 
     $scope.openSearch=function(value)
@@ -34,23 +39,26 @@ app.controller('homeCtrl',['$rootScope','$scope','$location','localFactory','hom
     }
 }]);
 
-app.controller('searchCtrl',['$rootScope','$scope','$location','localFactory','homeservice','$route', function($rootScope,$scope,$location,localFactory,homeservice,$route){
+app.controller('searchCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', 'storeData', function ($rootScope, $scope, $location, localFactory, $route, storeData) {
     currentPage="searchCtrl";
+
+    $scope.is_search = true;
+
     $scope.tabs = tabs;
 
     $scope.filterOptions=[
         {
-            id:1,
+            id: 3,
             name:"Fish Species",
             url:"images/ico-fish.png"
         },
         {
-            id:2,
+            id: 1,
             name:"Accessibility",
             url:"images/ico-accessibility.png"
         },
         {
-            id:3,
+            id: 2,
             name:"Fishing Rules",
             url:"images/ico-ts.png"
         }
@@ -64,17 +72,25 @@ app.controller('searchCtrl',['$rootScope','$scope','$location','localFactory','h
         this.tab.state = !this.tab.state;
     };
 
+    // filter data
+    $scope.filterData =
+    {
+        1: {data: storeData.getData().loginData.lake_amentites, name: 'amentites', value: 'Accessibility'},
+        2: {data: storeData.getData().loginData.lake_rules, name: 'rules', value: 'Fishing Rules'},
+        3: {data: storeData.getData().loginData.lake_spacies, name: 'spacies', value: 'Fish Species'}
+    };
+    console.log($scope.filterData);
+
     $scope.showList=function(){
-        $location.path("lakelist");
+
+        $location.path("lakelist/advanceSearch");
     }
 
-    // filter data
-    $scope.filterData=[{id:1,data:facilites},{id:2,data:fishingRules},{id:3,data:fishSpecies}];
-
     $scope.rightPanel=false;
-    $scope.currentFilter=fishSpecies;
+    $scope.currentFilter = "";
     $scope.showFilter=function(value)
     {
+        $scope.currentFilter = $scope.filterData[value];
         if($scope.rightPanel)
         {
             $scope.rightPanel=false;
@@ -98,41 +114,40 @@ app.controller('searchCtrl',['$rootScope','$scope','$location','localFactory','h
     /**** search list page****/
     $scope.bookNow=function()
     {
-        $location.path("lakelist");
+        $location.path("lakelist/adsearch");
     }
 
     $scope.toggleItem=function(value,flag)
     {
-        for(var i=0;i<$scope.currentFilter.length;i++)
+        for (var i = 0; i < $scope.currentFilter['data'].length; i++)
         {
-            if($scope.currentFilter[i].id==value.id)
+            if ($scope.currentFilter['data'][i].id == value.id)
             {
                 if(flag)
                 {
-                    if($scope.currentFilter[i].specimen)
+                    if ($scope.currentFilter['data'][i].specimen)
                     {
-                        $scope.currentFilter[i].specimen=false;
+                        $scope.currentFilter['data'][i].specimen = false;
                     }else{
-                        $scope.currentFilter[i].specimen=true;
+                        $scope.currentFilter['data'][i].specimen = true;
                     }
                 }else{
-                    if($scope.currentFilter[i].active)
+                    if ($scope.currentFilter['data'][i].active)
                     {
-                        $scope.currentFilter[i].active=false;
+                        $scope.currentFilter['data'][i].active = false;
 
                     }else{
 
-                        $scope.currentFilter[i].active=true;
+                        $scope.currentFilter['data'][i].active = true;
                     }
                 }
             }
 
         }
     }
-
 }]);
 
-app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','$compile',"uiCalendarConfig","homeservice", function($rootScope,$scope,$location,localFactory,$compile,uiCalendarConfig,homeservice){
+app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$compile', "uiCalendarConfig", function ($rootScope, $scope, $location, localFactory, $compile, uiCalendarConfig) {
     currentPage="bookingCtrl";
     $scope.date="None Selected";
     $scope.totalPrice=0;
@@ -241,28 +256,89 @@ app.controller('bookingCtrl',['$rootScope','$scope','$location','localFactory','
     }
 }]);
 
-app.controller('lakeListCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
+app.controller('lakeListCtrl', ['$rootScope', '$scope', '$location', 'localFactory', "$route", 'storeData', function ($rootScope, $scope, $location, localFactory, $route, storeData) {
     currentPage = "lakeListCtrl";
-    $scope.lackList=lacks;
-
+    $scope.lackList = $route.current.locals.homeData.lake_cat_listing;
     $scope.lakeDetailView=function(value)
     {
+
         $location.path("lakeDetail/"+value);
+    }
+
+    $scope.bookmark = function (lake) {
+
+        var postData = {lake_id: lake.id, user_no: storeData.getData().loginData.user_details.user_no};
+        var bookMark = localFactory.post('favorite_lake', postData);
+        bookMark.success(function (data) {
+            console.log(data);
+            localFactory.unload();
+            if (data.result) {
+                for (var i = 0; i < $scope.lackList.length; i++) {
+                    if ($scope.lackList[i]['id'] == lake.id) {
+
+                        if (data.is_fev) {
+
+                            $scope.lackList[i]['fav_id'] = 999;
+
+                        } else {
+
+                            $scope.lackList[i]['fav_id'] = "";
+                        }
+
+                    }
+                }
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+
+            } else {
+
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+            }
+        });
+
+        bookMark.error(function (data, status, headers, config) {
+
+        });
     }
 }]);
 
 
 app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory','$route','$routeParams', function($rootScope,$scope,$location,localFactory,$route,$routeParams){
-    console.log($routeParams);
+
     $scope.lakeId=$routeParams.id;
     currentPage="lakeDetail";
-    $scope.lackList=lacks;
-    $scope.lakeDetail={};
-    for(var i=0;i<$scope.lackList.length;i++)
+
+    // store data in local storage in recent items
+    $scope.recentItems = {value: []};
+    if (localFactory.getLocalItem('recent_items')) {
+        $scope.recentItems = $.parseJSON(localFactory.getLocalItem('recent_items'));
+        if ($.inArray($scope.lakeId, $scope.recentItems) < 0) {
+            $scope.recentItems['value'].push($scope.lakeId);
+            localFactory.setLocalItem('recent_items', JSON.stringify($scope.recentItems));
+        }
+
+    }
+    else {
+        $scope.recentItems['value'].push($scope.lakeId);
+        localFactory.setLocalItem('recent_items', JSON.stringify($scope.recentItems));
+    }
+
+    console.log(localFactory.getLocalItem('recent_items'));
+
+    $scope.lakeDetail = "";
+    if ($route.current.locals.homeData.result)
     {
-        if($scope.lackList[i]['id']==$route.current.params.id)
-        {
-            $scope.lakeDetail=$scope.lackList[i];
+        $scope.lakeDetail = $route.current.locals.homeData.lake_category[0];
+
+        if ($scope.lakeDetail.fav_id == "") {
+
+            $scope.lakeDetail.fav_id = false;
+        } else {
+
+            $scope.lakeDetail.fav_id = true;
         }
     }
 
@@ -276,9 +352,9 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
     }
 
-    $scope.showReview=function()
+    $scope.showReview = function (id)
     {
-        $location.path("review");
+        $location.path("review/" + id);
     }
 
     $scope.showShare=function()
@@ -286,9 +362,9 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
         window.plugins.socialsharing.share('Message only');
     }
 
-    $scope.showMorePhoto=function()
+    $scope.showMorePhoto = function (id)
     {
-        $location.path("photos");
+        $location.path("photos/" + id);
     }
 
 
@@ -316,8 +392,150 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
         }
     }
 
+    $scope.lake_venue = "";
+    $scope.lake_pricing = [];
+    $scope.lake_timing = [];
+    $scope.lake_image = [];
+    $scope.lake_review = [];
+    $scope.other_lake = [];
+    var postData = {lake_id: $scope.lakeDetail.id};
     //function to 'open' a tab
     $scope.openTab = function (tab) {
+        switch (tab) {
+            case 1:
+                if ($scope.lake_venue == "") {
+
+                    var lakePricing = localFactory.post('lake_venue', postData);
+                    lakePricing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.result) {
+                            $scope.lake_venue = data;
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakePricing.error(function (data, status, headers, config) {
+
+                    });
+                }
+                break;
+            case 2:
+                if ($scope.lake_pricing.length < 1) {
+                    var lakePricing = localFactory.post('lake_pricing', postData);
+                    lakePricing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.result) {
+                            $scope.lake_pricing = data.lake_pricing;
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakePricing.error(function (data, status, headers, config) {
+
+                    });
+                }
+                break;
+            case 3:
+                if ($scope.lake_image.length < 1) {
+                    var lakeTimeing = localFactory.post('lake_timing', postData);
+                    lakeTimeing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.result) {
+                            $scope.lake_timing = data.lake_timing;
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakeTimeing.error(function (data, status, headers, config) {
+
+                    });
+                }
+                break;
+            case 4:
+
+                break;
+            case 5:
+                if ($scope.lake_review.length < 1) {
+                    var lakeTimeing = localFactory.post('review', postData);
+                    lakeTimeing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.result) {
+                            $scope.lake_review = chunk(data.lake_review, 2);
+                            console.log($scope.lake_review);
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakeTimeing.error(function (data, status, headers, config) {
+
+                    });
+                }
+
+                break;
+            case 6:
+
+                if ($scope.lake_image.length < 1) {
+                    var lakeTimeing = localFactory.post('lake_image', postData);
+                    lakeTimeing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.result) {
+                            $scope.lake_image = chunk(data.lake_image, 4);
+                            console.log($scope.lake_image);
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakeTimeing.error(function (data, status, headers, config) {
+
+                    });
+                }
+
+
+                break;
+            case 7:
+                if ($scope.other_lake.length < 1) {
+                    var lakeTimeing = localFactory.post('other_lake', postData);
+                    lakeTimeing.success(function (data) {
+                        console.log(data);
+                        localFactory.unload();
+                        if (data.results) {
+                            $scope.other_lake = chunk(data.other_lake, 4);
+                            console.log($scope.other_lake);
+                        } else {
+                            localFactory.alert(data.msg, function () {
+
+                            }, "Message", 'OK');
+                        }
+                    });
+
+                    lakeTimeing.error(function (data, status, headers, config) {
+
+                    });
+                }
+
+        }
+
+
         //check if tab is already open
         if ($scope.isOpenTab(tab)) {
             //if it is, remove it from the activeTabs array
@@ -326,6 +544,74 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
             //if it's not, add it!
             $scope.activeTabs.push(tab);
         }
+    }
+
+    $scope.showLakeDetail = function (value) {
+        $location.path("lakeDetail/" + value);
+    }
+
+    // Ask a question
+    $scope.askquestion = "";
+    $scope.postFaq = function () {
+        if ($scope.askquestion != "") {
+            var postData = {lake_id: $scope.lakeDetail.id, user_no: 2, faq: $scope.askquestion};
+            var lakeTimeing = localFactory.post('post_faq', postData);
+            lakeTimeing.success(function (data) {
+                console.log(data);
+                localFactory.unload();
+                if (data.result) {
+
+                    localFactory.alert(data.msg, function () {
+
+                    }, "Message", 'OK');
+
+                } else {
+
+                    localFactory.alert(data.msg, function () {
+
+                    }, "Message", 'OK');
+                }
+            });
+
+            lakeTimeing.error(function (data, status, headers, config) {
+
+            });
+        }
+    }
+
+
+    $scope.bookmark = function () {
+
+        var postData = {lake_id: $scope.lakeDetail.id, user_no: 2};
+        var bookMark = localFactory.post('favorite_lake', postData);
+        bookMark.success(function (data) {
+            localFactory.unload();
+            if (data.result) {
+
+                if (data.is_fev) {
+
+                    $scope.lakeDetail.fav_id = true;
+
+                } else {
+
+                    $scope.lakeDetail.fav_id = false;
+                }
+
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+
+            } else {
+
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+            }
+        });
+
+        bookMark.error(function (data, status, headers, config) {
+
+        });
     }
 
     $scope.bookOnline=true;
@@ -457,7 +743,7 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
 }]);
 
-app.controller('loginPageCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
+app.controller('loginPageCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', function ($rootScope, $scope, $location, localFactory, storeData) {
     $scope.submitForm = function() {
 
         // check to make sure the form is completely valid
@@ -467,24 +753,30 @@ app.controller('loginPageCtrl',['$rootScope','$scope','$location','localFactory'
             localFactory.load();
             var login = localFactory.post('login', postData);
             login.success(function (data) {
-                console.log(data);
                 localFactory.unload();
+
                 if (data.result) {
+
+                    var objData = {loginData: data};
+                    storeData.setData(objData);
                     $location.path("home");
+
                 } else {
+
                     localFactory.alert(data.msg, function () {
 
                     }, "Message", 'OK');
                 }
 
             });
+
             login.error(function (data, status, headers, config) {
                 localFactory.unload();
             });
 
         } else {
 
-            localFactory.alert("Please enter valid userid", function () {
+            localFactory.alert("Please Enter Valid User ID", function () {
 
             }, "Message", 'OK');
         }
@@ -494,10 +786,36 @@ app.controller('loginPageCtrl',['$rootScope','$scope','$location','localFactory'
 
 app.controller('forgotPassCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
 
+    $rootScope.enterAnimation = "slideLeft";
+    $rootScope.exitAnimation = "slideRight";
+
     $scope.submitForm = function() {
         // check to make sure the form is completely valid
+        alert($scope.userForm.$valid);
         if ($scope.userForm.$valid) {
-            localFactory.alert("An email with instructions to reset password has been sent to your email address.",function(){
+
+            console.log($scope.user);
+            var postData = $scope.user;
+            localFactory.load();
+            var forgot = localFactory.post('forget_password', postData);
+            forgot.success(function (data) {
+                console.log(data);
+
+                localFactory.unload();
+
+                localFactory.alert("An email with instructions to reset password has been sent to your email address.", function () {
+
+                }, "Message", 'OK');
+
+            });
+            forgot.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
+
+
+        } else {
+
+            localFactory.alert("Enter valid email id", function () {
 
             },"Message",'OK');
         }
@@ -511,7 +829,26 @@ app.controller('emailRegCtrl',['$rootScope','$scope','$location','localFactory',
         // check to make sure the form is completely valid
         if ($scope.userForm.$valid) {
             console.log($scope.user);
-            $location.path("home");
+            var postData = $scope.user;
+            localFactory.load();
+            var signup = localFactory.post('signup', postData);
+            signup.success(function (data) {
+                console.log(data);
+                localFactory.unload();
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+                if (data.result) {
+                    $location.path("home");
+                }
+
+            });
+
+            signup.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
+
+
         }
     };
 
@@ -526,13 +863,25 @@ app.controller('signupCtrl',['$rootScope','$scope','$location','localFactory', f
 
 }]);
 
-app.controller('reviewsCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
+app.controller('reviewsCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', function ($rootScope, $scope, $location, localFactory, $route) {
+    $scope.review = [];
+    if ($route.current.locals.homeData.result) {
+        $scope.review = $route.current.locals.homeData.lake_review;
+    }
     $scope.bookOnline=true;
     $scope.bookText="Write a Review";
     $scope.bookImg="images/ico-writereview.png";
 }]);
 
-app.controller('photosCtrl',['$rootScope','$scope','$location','localFactory', function($rootScope,$scope,$location,localFactory){
+app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', function ($rootScope, $scope, $location, localFactory, $route) {
+
+    console.log($route.current.locals.homeData);
+    $scope.lake_image = [];
+    if ($route.current.locals.homeData.result) {
+
+        $scope.lake_image = $route.current.locals.homeData.lake_image;
+    }
+    console.log($scope.lake_image);
     $scope.bookOnline=true;
     $scope.bookText="Upload Photos";
     $scope.bookImg="images/ico-upload.png";
@@ -998,10 +1347,37 @@ app.controller('ticketBookCtrl', ['$rootScope', '$scope', '$location', 'localFac
 
 }]);
 
-app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
-    $scope.lakeList = lacks;
-    $scope.deleteBookmark = function (obj) {
+app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', 'storeData', function ($rootScope, $scope, $location, localFactory, $route, storeData) {
+    $scope.lackList = $route.current.locals.homeData.lake_cat_listing;
+    console.log($scope.lackList);
+    $scope.deleteBookmark = function (lake) {
+        var postData = {lake_id: lake.id, user_no: storeData.getData().loginData.user_details.user_no};
+        var bookMark = localFactory.post('favorite_lake', postData);
+        bookMark.success(function (data) {
+            console.log(data);
+            localFactory.unload();
+            if (data.result) {
+                for (var i = 0; i < $scope.lackList.length; i++) {
+                    if ($scope.lackList[i]['id'] == lake.id) {
 
+                        $scope.lackList.splice(i, 1);
+                    }
+                }
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+
+            } else {
+
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+            }
+        });
+
+        bookMark.error(function (data, status, headers, config) {
+
+        });
     }
 
     $scope.linkBookMark = function (obj) {
@@ -1036,25 +1412,91 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory', f
         $location.path("lakelist");
     }
 
-    $scope.showMePopup = function (event, id) {
-        $(event.target).addClass('active');
-        $scope.openPopUp(id);
+    $scope.footerItems = [
+        {id: 1, name: 'Add Photo', value: 'addPic', active: false},
+        {id: 2, name: 'Me', value: 'me', active: false},
+        {id: 3, name: 'Nearby', value: 'near', active: false},
+        {id: 4, name: "More", value: 'more', active: false}
+    ];
+
+    $scope.meList = [
+        {id: 1, name: 'Bookmarks', goto: 'mybookmark'},
+        {id: 2, name: 'Connect Accounts', goto: 'connectac'},
+        {id: 3, name: 'My Tickets', goto: 'mytickets'}
+    ];
+    $scope.moreList = [
+        {id: 1, name: 'Send Feedback', goto: 'sendFeedback'},
+        {id: 2, name: 'Contact us', goto: 'contactus'},
+        {id: 3, name: 'Report a bug', goto: 'reportBug'},
+        {id: 4, name: 'Suggest a location', goto: 'suggestLocation'}
+    ];
+
+    // if set previous tab
+    for (var i = 0; i < $scope.footerItems.length; i++) {
+        if ($scope.footerItems[i]['id'] == $rootScope.currentTab) {
+
+            $scope.footerItems[i]['active'] = true;
+            break;
+        }
+    }
+
+    $scope.showMePopup = function (item) {
+
+        $rootScope.currentTab = item.id;
+
+        for (var i = 0; i < $scope.footerItems.length; i++) {
+            if ($scope.footerItems[i]['id'] == item.id) {
+                $scope.footerItems[i]['active'] = true;
+
+            } else {
+
+                $scope.footerItems[i]['active'] = false;
+            }
+        }
+
+        if (item.id == 1) {
+            $rootScope.popupMask = false;
+            $scope.addPic();
+        } else if (item.id == 3) {
+
+            $rootScope.popupMask = false;
+            $location.path("lakelist/nearby");
+
+        } else {
+            $rootScope.popupMask = true;
+            $scope.openPopUp(item.value);
+        }
+
     }
 
     $scope.closePopUp = function (event) {
-        $scope.closePopUp(id)
+
+        $scope.closePopUp();
     }
 
     $scope.openPopUp = function (id) {
-        $('#' + id).show();
-        $('#' + id).addClass('slideInUp' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+
+        if (id == 'more') {
+
+            $scope.currentPopContent = $scope.moreList;
+
+        } else {
+
+            $scope.currentPopContent = $scope.meList;
+        }
+
+
+        $('#me').show();
+        $('#me').addClass('slideInUp' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $(this).show();
             $(this).removeClass('slideInUp' + ' animated')
         });
     }
 
-    $scope.closePopUp = function (id) {
-        $('#' + id).addClass('slideOutDown' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    $scope.closePopUp = function () {
+
+        $rootScope.popupMask = false;
+        $('#me').addClass('slideOutDown' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $(this).hide();
             $(this).removeClass('slideOutDown' + ' animated')
         });
@@ -1077,7 +1519,22 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory', f
     $scope.signout = 0;
 
     $scope.logOut = function () {
+        $rootScope.popupMask = false;
         $location.path("/");
+    }
+
+
+    $scope.navigate = function (path) {
+        $rootScope.popupMask = false;
+        $location.path(path);
+    }
+
+    $scope.payment = function () {
+        $rootScope.popupMask = false;
+    }
+
+    $scope.rateApp = function () {
+        $rootScope.popupMask = false;
     }
 
 }]);
@@ -1109,4 +1566,20 @@ app.controller('headerCtrl',['$rootScope','$scope','$location','localFactory', f
     {
         $location.path("Search");
     }
+
+    $scope.userRecentItems = function () {
+
+        if (localFactory.getLocalItem('recent_items')) {
+            $location.path("lakelist/recentitems");
+        } else {
+
+        }
+    }
+
+    $scope.userBookItems = function () {
+
+        $location.path("mybookmark");
+
+    }
+
 }]);

@@ -86,8 +86,7 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
             console.log('Error',error.message);
         }
     };
-    localFactory.setLocalItem = function(key,value,removable){
-        localFactory.flushables[key] = removable;
+    localFactory.setLocalItem = function (key, value) {
         window.localStorage.setItem(key, value);
     };
     localFactory.getLocalItem = function(key){
@@ -226,6 +225,8 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
         }
         return true;
     };
+
+
     localFactory.arrMonth=["JAN","FEV","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
     localFactory.arrDay=["SUN","MON","TUE","WED","THU","FRI","SAT","SUN"];
     return localFactory;

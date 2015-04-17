@@ -1,54 +1,66 @@
 <div class="page">
-  <!-------------- ncr-header -------------------->
+    <!-------------- ncr-header -------------------->
     <ng-include src="'templates/header.html'"></ng-include>
-  <!-------------- ncr-content start-------------------->
-  <div class="ncr-content no-footer listing">
-  
-    <!-------------- tab --------------------> 
-    <div class="tabs">
-      <ul>
-          <li ng-repeat="tab in tabs" ng-click="toggle(tab.id)"  ng-class="{'active':tab.state}"> <img ng-src="{{tab.active}}">
-              <p>{{tab.name}}</p>
-          </li>
-      </ul>
-      <div class="clr"></div>
-  </div>
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content no-footer listing">
 
-    <!-------------- quick search -------------------->     
-    <div class="ncr-qcksearch" align="center">
-      <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td ng-click="viewDetail()" align="left" class="left-content">
-          <h2>Quick Search</h2>
-          <div>Current Location <span ng-repeat="tab in tabs" ng-show="tab.state==false">{{tab.name}} &nbsp;</span> </div>
-          </td>
-          <td class="right-content" ng-click="openSearch()"><img src="images/ico-magnify.png" alt="">
-           <div class="advsrch-txt">Advanced Search</div>
-           </td>
-        </tr>
-      </table>
-    </div>
-    <!-------------- list -------------------->     
-    <div class="list">
-      <div class="row-list" ng-repeat="list in listCollection" ng-click="viewDetail(list.id)"> <img ng-src="{{list.url}}" alt="" >
-        <div class="info">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td align="left" class="left-content"> <div class="new-review" ng-if="list.newReview"> New Review</div> <div class="name">{{list.name}}</div></td>
-              <td align="right"><div class="rating">
-                  <div class="seats"> <span class="price">{{list.noOfLocation}}</span> LOCATIONS</div>
-                </div></td>
-            </tr>
-          </table>
+        <!-------------- tab -------------------->
+        <div class="tabs">
+            <ul>
+                <li ng-repeat="tab in tabs" ng-click="toggle(tab.id)" ng-class="{'active':tab.state}"><img
+                        ng-src="{{tab.active}}">
+
+                    <p>{{tab.name}}</p>
+                </li>
+            </ul>
+            <div class="clr"></div>
         </div>
-      </div>
+
+        <!-------------- quick search -------------------->
+        <div class="ncr-qcksearch" align="center">
+            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td ng-click="quickSearch()" align="left" class="left-content">
+                        <h2>Quick Search</h2>
+
+                        <div>Current Location <span ng-repeat="tab in tabs" ng-show="tab.state==false">{{tab.name}} &nbsp;</span>
+                        </div>
+                    </td>
+                    <td class="right-content" ng-click="openSearch()"><img src="images/ico-magnify.png" alt="">
+
+                        <div class="advsrch-txt">Advanced Search</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-------------- list -------------------->
+        <div class="list">
+            <div class="row-list" ng-repeat="list in listCollection" ng-click="viewDetail(list.cat_id)"><img
+                    src="images/listing_img1.jpg" alt="">
+
+                <div class="info">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" class="left-content">
+                                <div class="new-review" ng-if="list.flag=='true'"> New Review</div>
+                                <div class="name">{{list.cat_name}}</div>
+                            </td>
+                            <td align="right">
+                                <div class="rating">
+                                    <div class="seats"><span class="price">{{list.total_lake}}</span> LOCATIONS</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
-    
-  </div>
-  <!-------------- ncr-content end-------------------->
+    <!-------------- ncr-content end-------------------->
 
     <ng-include src="'templates/footer.html'"></ng-include>
-  <!-------------- ncr-footer -------------------->
-  
+    <!-------------- ncr-footer -------------------->
+
 </div>
 

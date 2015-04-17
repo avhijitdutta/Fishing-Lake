@@ -1136,6 +1136,7 @@ D:\Client Project\Fishing\Fishing\platforms\android\assets\www\js\angular\ng-cal
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\js\api\keyboardService.js \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\js\customDirective\pageSlider.js \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.ionic.keyboard \
+D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.paypal.cordova.mobilesdk \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\org.apache.cordova.camera \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\org.apache.cordova.dialogs \
@@ -1144,6 +1145,8 @@ D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\plugin.go
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\plugin.http.request \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
+D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.paypal.cordova.mobilesdk\www \
+D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\com.paypal.cordova.mobilesdk\www\cdv-plugin-paypal-mobile-sdk.js \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www\SocialSharing.js \
 D:\Client Project\Fishing\Fishing\platforms\android\assets\www\plugins\org.apache.cordova.camera\www \

@@ -7,7 +7,7 @@ These restrictions can all be combined as needed:
 'AEC' - matches either attribute or element or class name
 */
 angular.module('page',[])
-.directive('mobileSlider', function () {
+    .directive('mobileSlider', ['$browser', '$location', '$rootScope', function ($browser, $location, $rootScope) {
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             require: '?ngClass',/*^ -- Look for the controller on parent elements, not just on the local scope ? -- Don't raise an error if the controller isn't found*/
@@ -16,48 +16,103 @@ angular.module('page',[])
                  //@ reads the attribute value, = provides two-way binding, & works with functions
             },
             link: function ($scope, element, attrs) {//Embed a custom controller in the directive
-                element.bind('click', function () {
-                    //element.html('You clicked me!');
-                });
+                console.log(attrs);
+
             }, //DOM manipulation
             controller: ['$scope',"$route","$location","$rootScope",function($scope,$route,$location,$rootScope) {
-
-                $scope.animationClass={'slideLeft':'slide-left','slideRight':'slide-right','slideIn':"at-view-slide-in-top",slideOut:"at-view-slide-out-bottom",fadeIn:'at-view-fade-in',fadeOut:'at-view-fade-out'};
+                //alert($scope.ngClass);
+                $scope.animationClass = {'slideLeft': 'slide', 'slideRight': 'slide-right', 'slideIn': "slidedown", slideOut: "at-view-slide-out-bottom", fadeIn: 'slide-pop', fadeOut: 'at-view-fade-out'};
 
                 // Use this function if you want PageSlider to automatically determine the sliding direction based on the state history
-                var l = $rootScope.stateHistory.length,
-                    state = window.location.hash;
+                /* var l = $rootScope.stateHistory.length,
+                 state = window.location.hash;
 
-                if (l === 0) {
+                 if (l === 0) {
                     $rootScope.stateHistory.push(state);
-                    slidePageFrom($scope.animationClass.fadeIn);
-                    return;
-                }
+                 slidePageFrom(2);
+                 return;
+                 }
                 if (state === $rootScope.stateHistory[l-2]) {
                     console.log("pop");
                     $rootScope.stateHistory.pop();
-                    slidePageFrom($rootScope.animation, 1);
-                } else {
-                    $rootScope.stateHistory.push(state);
-                    slidePageFrom($rootScope.animation);
-                }
+                 slidePageFrom(0);
+                 } else {
+                 $rootScope.stateHistory.push(state);
+                 slidePageFrom(1);
+                 }*/
                 //console.log($rootScope.stateHistory);
                 // Use this function directly if you want to control the sliding direction outside PageSlider
-                function slidePageFrom(page,prevFlag) {
-                    if(prevFlag)
-                    {
-                        $rootScope.animation=$scope.animationClass.slideOut;
-                    }else
-                    {
-                        $rootScope.animation=$scope.animationClass.slideIn;
-                    }
+                function slidePageFrom(prevFlag) {
+
+                    $rootScope.animation = $rootScope.anim;
+                    /* if(prevFlag==0)
+                     {
+                     $rootScope.animation='reverse '+$rootScope.anim;
+
+                     }else if(prevFlag==1){
+
+                     $rootScope.animation=$rootScope.anim;
+
+                     }else{
+                     $rootScope.animation=$scope.animationClass['fadeIn'];
+                     }*/
 
                 }
 
             }]
 
         }
-});
+    }]).directive('backAnimation', ['$browser', '$location', function ($browser, $location) {
+        return {
+            link: function (scope, element) {
+
+                $browser.onUrlChange(function (newUrl) {
+                    if ($location.absUrl() === newUrl) {
+                        console.log('Back');
+                        element.addClass('reverse');
+                    }
+                });
+
+                scope.__childrenCount = 0;
+                scope.$watch(function () {
+                    scope.__childrenCount = element.children().length;
+                });
+
+                scope.$watch('__childrenCount', function (newCount, oldCount) {
+                    if (newCount !== oldCount && newCount === 1) {
+                        element.removeClass('reverse');
+                    }
+                });
+            }
+        };
+    }]).directive('stopEvent', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                element.bind(attr.stopEvent, function (e) {
+                    e.stopPropagation();
+                });
+            }
+        };
+    }).directive('imagePlaceholder', function ($window) {
+
+        return function (scope, elem, attr) {
+
+            var image = angular.element($window.document.createElement('img'));
+            image.attr('src', attr.imageSource);
+            image.addClass('ng-hide');
+            $window.document.body.appendChild(image[0]);
+
+            elem.attr('src', attr.imagePlaceholder);
+
+            image.on('load', function () {
+                elem.attr('src', image.attr('src'));
+                image.remove();
+            });
+
+        };
+
+    });
 
 angular.module("keyboard",[])
     .directive('keyboardAttach',['keyboardHeight', function(keyboardHeight) {
@@ -183,11 +238,4 @@ angular.module('validation.match').filter('myCurrency', ['$filter', function ($f
         return '$' + input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 }]);
-/*
-window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-function keyboardShowHandler(e){
-    $('#project-body').animate({
-        scrollTop: $('#').position().top + parseInt($("#project-body").scrollTop())
-    }, 1000);
-}*/

@@ -5,7 +5,7 @@
         <div ng-hide="showAddReview">
             <div class="heading">
                 <label>Write a review of
-                Himley Hall Top Pool</label>
+                    Himley Hall Top Pool</label>
             </div>
             <div class="stars">
                 How many stars would you give this lake?
@@ -29,6 +29,7 @@
         </div>
 
         <div class="write-review" ng-show="showAddReview"><label>Write your review for others to read</label>
+
             <div class="fld-review">
                 <textarea>
 
@@ -39,7 +40,8 @@
                 <div class="chk-box" ng-class="{'checked':check}" ng-click="chengeCheck()"></div>
                 <div class="txt">
                     <h3>Post as Anonymous</h3>
-                    Your review will show your name as registered on your account unless you tick this box.</div>
+                    Your review will show your name as registered on your account unless you tick this box.
+                </div>
             </div>
             <div class="share">Share with
                 <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
@@ -61,7 +63,7 @@
 
             <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
 
-            <td align="center" ng-if="lakeId=='owner' ">Edit your lake details </td>
+            <td align="center" ng-if="lakeId=='owner' ">Edit your lake details</td>
 
             <td align="right">&nbsp;</td>
         </tr>
@@ -72,16 +74,20 @@
 <div class="ncr-content detail heading-space no-footer">
 <div class="detail-img">
 <img src="images/listing_img1.jpg" alt="">
+
 <div class="img-content">
     <div class="left-content">
         <div class="name">Himley Hall Top Pool</div>
         WOLVERHAMPTON<br>
         <a href="#/review" class="reviews">6 Reviews</a>
+
         <p>Day tickets from</p>
+
         <div class="price">£6</div>
     </div>
     <div class="right-content">
         <div class="votes">4.6<br>
+
             <p>17<br>
                 Votes</p>
         </div>
@@ -134,6 +140,7 @@
 </div>
 <div class="part-three map">
     <img src="images/detail-map.png" alt="">
+
     <div class="map-content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -151,7 +158,8 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
         <tr>
             <td><h1 class="one"><span>The Venue</span></h1></td>
-            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}" alt=""></td>
+            <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}"
+                                       alt=""></td>
         </tr>
     </table>
     <div class="tab" ng-show="isOpenTab(1)">
@@ -159,6 +167,7 @@
             <ul>
                 <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)">
                     <img ng-src="{{tab.url}}">
+
                     <p>{{tab.name}}</p>
                 </li>
             </ul>
@@ -209,7 +218,7 @@
                 </tr>
                 <tr>
                     <td class="tick-img"><img alt="" src="images/tick.png"></td>
-                    <td>cat and dog food </td>
+                    <td>cat and dog food</td>
                 </tr>
             </table>
         </div>
@@ -258,7 +267,7 @@
                 </tr>
                 <tr>
                     <td class="tick-img"><img alt="" src="images/tick.png"></td>
-                    <td>cat and dog food </td>
+                    <td>cat and dog food</td>
                 </tr>
             </table>
         </div>
@@ -307,7 +316,7 @@
                 </tr>
                 <tr>
                     <td class="tick-img"><img alt="" src="images/tick.png"></td>
-                    <td>cat and dog food </td>
+                    <td>cat and dog food</td>
                 </tr>
             </table>
         </div>
@@ -326,12 +335,11 @@
             <tr>
                 <th>&nbsp;</th>
                 <th>Standard</th>
-                <th align="left">Members</th>
+
             </tr>
             <tr>
                 <td align="right">Day</td>
                 <td align="center">£7.50</td>
-                <td rowspan="7"  valign="top" width="45%">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. </td>
             </tr>
             <tr>
                 <td align="right">24 Hour</td>
@@ -418,22 +426,23 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(4)">
         <tr>
             <td><h1 class="one"><span>Contact Details</span></h1></td>
-            <td class="right-img"><img  alt="" ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}"></td>
+            <td class="right-img"><img alt=""
+                                       ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}"></td>
         </tr>
     </table>
     <div class="contacts" ng-show="isOpenTab(4)">
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td align="right">Lake Contact</td>
-                <td >Testing Name</td>
+                <td>Testing Name</td>
             </tr>
             <tr>
                 <td align="right">Phone</td>
-                <td >01234 567 890</td>
+                <td>01234 567 890</td>
             </tr>
             <tr>
                 <td align="right">Email</td>
-                <td >testing@testing.com</td>
+                <td>testing@testing.com</td>
             </tr>
 
         </table>
@@ -446,48 +455,67 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(5)">
             <tr>
                 <td><h1 class="one"><span>Reviews - 7 Available</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(5),'deactive-tab-img':!isOpenTab(5)}" alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(5),'deactive-tab-img':!isOpenTab(5)}"
+                                           alt=""></td>
             </tr>
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(5)">
             <div class="row-review">
                 <div class="review">
                     <div class="reviewer">A. Reviewer</div>
-                    <div class="stars"><img src="images/star-review.png" alt=""> <img src="images/star-review.png" alt=""> <img src="images/star-review.png" alt=""> <img src="images/star-off-review.png" alt=""> <img src="images/star-off-review.png" alt=""></div>
+                    <div class="stars"><img src="images/star-review.png" alt=""> <img src="images/star-review.png"
+                                                                                      alt=""> <img
+                            src="images/star-review.png" alt=""> <img src="images/star-off-review.png" alt=""> <img
+                            src="images/star-off-review.png" alt=""></div>
                     <div class="clr"></div>
                 </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis. Sed eget lobortis nisi. Proin cursus odio nisi, at tincidunt ligula dignissim et. Morbi feugiat diam orci, eget aliquam mauris varius ac. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque efficitur lorem id felis eleifend, at maximus leo vulputate. Sed tempor tincidunt massa, sit amet scelerisque leo interdum in. Etiam ac est ac nisl tincidunt ultricies. Quisque porta dui arcu, non vehicula ipsum malesuada ac. Nulla facilisi. </div>
+                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et
+                    congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante
+                    rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit
+                    amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex
+                    dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis.
+                    Sed eget lobortis nisi. Proin cursus odio nisi, at tincidunt ligula dignissim et. Morbi feugiat diam
+                    orci, eget aliquam mauris varius ac. Cum sociis natoque penatibus et magnis dis parturient montes,
+                    nascetur ridiculus mus. Pellentesque efficitur lorem id felis eleifend, at maximus leo vulputate.
+                    Sed tempor tincidunt massa, sit amet scelerisque leo interdum in. Etiam ac est ac nisl tincidunt
+                    ultricies. Quisque porta dui arcu, non vehicula ipsum malesuada ac. Nulla facilisi.
+                </div>
             </div>
-            <div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png"  alt=""> Read more reviews</div>
-            <div class="btn-rnw-review war"><img src="images/ico-writereview.png"  alt=""> Write a Review</div>
+            <div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png" alt=""> Read more
+                reviews
+            </div>
+            <div class="btn-rnw-review war"><img src="images/ico-writereview.png" alt=""> Write a Review</div>
         </div>
     </div>
 </div>
-    <!---
-    <div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png"  alt=""> Read more reviews</div>
-    <div class="btn-rnw-review war"><img src="images/ico-writereview.png"  alt=""> Write a Review</div>
-    -->
+<!---
+<div class="btn-rnw-review" ng-click="showReview()"><img src="images/ico-morereview.png"  alt=""> Read more reviews</div>
+<div class="btn-rnw-review war"><img src="images/ico-writereview.png"  alt=""> Write a Review</div>
+-->
 <div class="img-bottomcontent">
     <div class="part-four">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(6)">
             <tr>
                 <td><h1 class="one"><span>Photos - 23 Available</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(6),'deactive-tab-img':!isOpenTab(6)}" alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(6),'deactive-tab-img':!isOpenTab(6)}"
+                                           alt=""></td>
             </tr>
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(6)">
             <div class="photos">
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
-                <div class="thumb"><img src="images/thumb-pic.jpg"  alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
+                <div class="thumb"><img src="images/thumb-pic.jpg" alt=""></div>
             </div>
-            <div class="btn-rnw-review" ng-click="showMorePhoto()"><img src="images/ico-morereview.png"  alt=""> See more photos</div>
-            <div class="btn-rnw-review"><img src="images/ico-upload.png"  alt=""> Upload a photo</div>
+            <div class="btn-rnw-review" ng-click="showMorePhoto()"><img src="images/ico-morereview.png" alt=""> See more
+                photos
+            </div>
+            <div class="btn-rnw-review"><img src="images/ico-upload.png" alt=""> Upload a photo</div>
         </div>
     </div>
 </div>
@@ -500,18 +528,44 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td><h1 class="one"><span>Other Lakes at this Venue</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}" alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}"
+                                           alt=""></td>
             </tr>
         </table>
 
         <div class="collapsed-content" ng-show="isOpenTab(7)">
-            <div class="row-venue"><div class="l"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool</div> <div class="arrow"></div><div class="clr"></div></div>
-            <div class="row-venue"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool <div class="arrow"></div><div class="clr"></div></div>
-            <div class="row-venue"><div class="vote"><strong>3.4</strong><div class="no">4 Votes</div></div>Himley Hall Bottom Pool <div class="arrow"></div><div class="clr"></div></div>
+            <div class="row-venue">
+                <div class="l">
+                    <div class="vote"><strong>3.4</strong>
+
+                        <div class="no">4 Votes</div>
+                    </div>
+                    Himley Hall Bottom Pool
+                </div>
+                <div class="arrow"></div>
+                <div class="clr"></div>
+            </div>
+            <div class="row-venue">
+                <div class="vote"><strong>3.4</strong>
+
+                    <div class="no">4 Votes</div>
+                </div>
+                Himley Hall Bottom Pool
+                <div class="arrow"></div>
+                <div class="clr"></div>
+            </div>
+            <div class="row-venue">
+                <div class="vote"><strong>3.4</strong>
+
+                    <div class="no">4 Votes</div>
+                </div>
+                Himley Hall Bottom Pool
+                <div class="arrow"></div>
+                <div class="clr"></div>
+            </div>
         </div>
     </div>
 </div>
-
 
 
 <div class="img-bottomcontent">
@@ -519,14 +573,15 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(8)">
             <tr>
                 <td><h1 class="one"><span>Ask a question</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(8),'deactive-tab-img':!isOpenTab(8)}" ></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(8),'deactive-tab-img':!isOpenTab(8)}">
+                </td>
             </tr>
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(8)">
             <div class="question">
-                <textarea name="textarea" id="textarea"  rows="5"></textarea>
+                <textarea name="textarea" id="textarea" rows="5"></textarea>
             </div>
-            <div class="send-question-btn"><img src="images/ico-question.png"  alt="">Send my question</div>
+            <div class="send-question-btn"><img src="images/ico-question.png" alt="">Send my question</div>
         </div>
     </div>
 </div>

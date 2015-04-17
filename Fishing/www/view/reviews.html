@@ -1,76 +1,34 @@
 <div class="page">
-  <!-------------- ncr-header -------------------->
-  <ng-include src="'templates/header.html'"></ng-include>
-  <!-------------- ncr-content start-------------------->
-  <div class="ncr-content reviews">
-  <div class="review-heading" align="center">
-      Himley Hall Top Pool
-              
-  </div>
-  	<div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis. Sed </div>
-                </div></div>    
-    <div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis.  </div>
-                </div></div>
-    <div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis. Sed </div>
-                </div></div>    
-    <div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis.  </div>
-                </div></div>
-    <div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis. Proin libero nulla, sodales quis venenatis sit amet, semper ac dolor. Nunc et elit vitae magna venenatis efficitur. Vestibulum quis leo quis ex dictum mattis eu molestie metus. Praesent nisi purus, eleifend in orci eu, iaculis pulvinar felis. Sed </div>
-                </div></div>    
-    <div class="part-four">
-                
-                <div class="row-review">
-                <div class="review">
-                <div class="reviewer">A. Reviewer</div>
-                <div class="stars"><img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-review.png"> <img alt="" src="images/star-off-review.png"> <img alt="" src="images/star-off-review.png"></div> 
-                <div class="clr"></div>
-                </div>
-                <div class="comment">Fusce egestas, lectus blandit commodo tempor, elit tortor sagittis ligula, et congue ex orci et tellus. Donec ornare porttitor nisi, eu ornare leo egestas sed. Nullam eu ante rutrum, auctor libero sit amet, dignissim felis.  </div>
-                </div></div>
-  </div>
-  <!-------------- ncr-content end-------------------->
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content reviews">
+        <div class="review-heading" align="center">
+            Himley Hall Top Pool
 
-  <!-------------- ncr-footer -------------------->
-  <ng-include src="'templates/footer.html'"></ng-include>
+        </div>
+        <div class="part-four" ng-repeat="reviewitem in review">
+            <div class="row-review">
+                <div class="review">
+                    <div class="reviewer">{{reviewitem.first_name}} {{reviewitem.last_name}}</div>
+                    <div class="stars">
+                        <img alt="" src="images/star-review.png">
+                        <img alt="" src="images/star-review.png">
+                        <img alt="" src="images/star-review.png">
+                        <img alt="" src="images/star-off-review.png">
+                        <img alt="" src="images/star-off-review.png">
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="comment">
+                    {{reviewitem.review}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------- ncr-content end-------------------->
+
+    <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
 
 </div>
