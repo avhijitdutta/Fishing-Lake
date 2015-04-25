@@ -136,14 +136,14 @@ own at this venue</div>
               </div>
 
               <div class="lo-form">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr ng-repeat="address in formData.address">
-                <td align="right">{{address.name}}</td>
-                <td>
-                <div class="fld">
-                    <input type="text" ng-model="address.value"/> <span class="click"
-                                                                        ng-click="emptyInput($event)"></span>
-                </div>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr ng-repeat="address in formData.address">
+                          <td align="right">{{address.name}}</td>
+                          <td>
+                              <div class="fld">
+                                  <input type="text" ng-model="address.value"/> <span class="click"
+                                                                                      ng-click="emptyInput($event)"></span>
+                              </div>
             </td>
           </tr>
         </table>
@@ -156,7 +156,7 @@ own at this venue</div>
               <div class="venue-des">
                   <textarea ng-model="formData.desc"> </textarea>
               </div>
-       <div class="venue-address"><div class="add"><span>List your facilities</span> </div></div>
+              <div class="venue-address"><div class="add"><span>List your facilities</span> </div></div>
 
               <div class="list-facility">
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -168,9 +168,11 @@ own at this venue</div>
                   </table>
               </div>
 
-              <div class="venue-address"><div class="add"><span>Fishing Rules</span> </div></div>
+              <div class="venue-address">
+                  <div class="add"><span>Fishing Rules</span></div>
+              </div>
 
-       <div class="list-facility">
+              <div class="list-facility">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr ng-repeat="item in formData.list_rules">
           <td>{{item.name}}</td>
@@ -195,10 +197,10 @@ own at this venue</div>
 
         <tr ng-repeat="item in formData.list_spacies">
             <td>{{item.name}}</td>
-            <td ng-class="{'no':item.active}" ng-click="itemActive(item,formData.list_spacies)"></td>
-            <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,formData.list_spacies)"></td>
-            <td> </td>
-            <td ng-class="{'yes':item.specimen}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+            <td ng-class="{'no':!item.normal}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+            <td ng-class="{'yes':item.normal}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+            <td></td>
+            <td ng-class="{'yes':item.specimen}" ng-click="itemToggle(item,formData.list_spacies,true)"></td>
         </tr>
 
     </table>
@@ -249,16 +251,16 @@ own at this venue</div>
               </div>
 
               <div class="lo-form">
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-             <tr ng-repeat="field in formData.contact_details">
-                 <td >{{field.name}}</td>
-                 <td>
-                     <div class="fld"><input type="{{field.type}}" ng-model="field.value"/><span class="click"
-                                                                                                 ng-click="emptyInput($event)"></span>
-                     </div>
-                 </td>
-             </tr>
-        </table>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr ng-repeat="field in formData.contact_details">
+                          <td>{{field.name}}</td>
+                          <td>
+                              <div class="fld"><input type="{{field.type}}" ng-model="field.value"/><span class="click"
+                                                                                                          ng-click="emptyInput($event)"></span>
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
     </div>
 
 <div class="venue-address"><div class="add"><span>Photos</span> </div></div>

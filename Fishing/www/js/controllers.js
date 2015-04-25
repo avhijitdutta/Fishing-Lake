@@ -426,7 +426,6 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
 
     var map;
     var lakeLatLong;
-
     function initialize() {
         lakeLatLong = new google.maps.LatLng($scope.lakeDetail.lake_category.latitude, $scope.lakeDetail.lake_category.longitude);
         var mapOptions = {
@@ -1165,7 +1164,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.formData['desc'] = "";
     $scope.formData['list_amenitites'] = $scope.list_amenitites;
     $scope.formData['list_rules'] = $scope.list_rules;
-    $scope.formData['list_spacies'] = fishSpecies;
+    $scope.formData['list_spacies'] = $scope.lakeData.list_spacies;
     $scope.formData['lake_pricing'] = $scope.lakeData.lake_pricing;
     $scope.formData['contact_details'] =
         [
@@ -1194,23 +1193,33 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         }
     }
 
-    $scope.itemToggle=function(item,fishSpecies)
+    $scope.itemToggle = function (item, fishSpecies, species)
     {
         var length=fishSpecies.length;
         for(var i=0;i<length;i++)
         {
             if(fishSpecies[i].id==item.id)
             {
-                if(item.specimen)
-                {
-                    fishSpecies[i].specimen=false;
+                if (species) {
+                    if (item.specimen) {
+                        fishSpecies[i].specimen = 0;
 
+                    } else {
+                        fishSpecies[i].specimen = 1;
+                    }
                 }else
                 {
-                    fishSpecies[i].specimen=true;
+                    if (item.normal) {
+                        fishSpecies[i].normal = 0;
+
+                    } else {
+                        fishSpecies[i].normal = 1;
+                    }
                 }
             }
+
         }
+
     }
 
     //rightPanelAddMember

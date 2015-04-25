@@ -55,8 +55,8 @@
 <!-------------- ncr-header -------------------->
 <ng-include src="'templates/header.html'"></ng-include>
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
             <td>&nbsp;</td>
 
             <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
@@ -180,7 +180,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
                     <tr ng-repeat="amenities in lakeDetail.list_amenitites" id="{{amenities.id}}">
-                    <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""
+                        <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""
                                                                                       src="images/ico-cross-big.png">
                         </td>
                         <td class="tick-img" ng-if="amenities.amenitites_id!=''"><img alt="" src="images/tick.png"></td>
@@ -193,7 +193,7 @@
             <div class="part-four" ng-show="tab == 2">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="rules in lakeDetail.list_rules" id="{{rules.id}}">
-                    <td class="tick-img" ng-if="rules.rule_id==''"><img alt="" src="images/ico-cross-big.png"></td>
+                        <td class="tick-img" ng-if="rules.rule_id==''"><img alt="" src="images/ico-cross-big.png"></td>
                         <td class="tick-img" ng-if="rules.rule_id!=''"><img alt="" src="images/tick.png"></td>
                         <td>{{rules.name}}</td>
                     </tr>
@@ -204,7 +204,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr ng-repeat="spacies in lakeDetail.list_spacies" id="{{spacies.id}}">
-                        <td class="tick-img" ng-if="spacies.fish_species_id==''"><img alt=""
+                            <td class="tick-img" ng-if="spacies.fish_species_id==''"><img alt=""
                                                                                           src="images/ico-cross-big.png">
                             </td>
                             <td class="tick-img" ng-if="spacies.fish_species_id!=''"><img alt="" src="images/tick.png">
@@ -232,7 +232,7 @@
                     <th>Standard</th>
                 </tr>
                 <tr ng-repeat="price in lakeDetail.lake_pricing">
-                <td align="right">{{price.description}}</td>
+                    <td align="right">{{price.description}}</td>
                     <td align="center">£&nbsp;{{price.price}}</td>
                 </tr>
             </table>
@@ -256,7 +256,7 @@
                     <th>Closing</th>
                 </tr>
                 <tr ng-repeat="lake in lakeDetail.lake_timing">
-                <td align="right">{{lake.day}}</td>
+                    <td align="right">{{lake.day}}</td>
                     <td align="center">{{lake.opening_time}}</td>
                     <td align="center">{{lake.closing_time}}</td>
                 </tr>
@@ -303,8 +303,8 @@
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(5)">
             <div class="row-review" ng-repeat="review in lakeDetail.lake_review">
-            <div class="review">
-                    <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
+                <div class="review">
+                <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
                     <div class="stars">
                         <img src="images/star-review.png" alt="">
                         <img src="images/star-review.png" alt="">
@@ -372,7 +372,7 @@
 
             <div class="row-venue" ng-repeat="row in lakeDetail.other_lake" stop-event='click'
                  ng-click="showLakeDetail(row.id)">
-            <div class="vote"><strong>{{row.rate}}</strong>
+                <div class="vote"><strong>{{row.rate}}</strong>
 
                     <div class="no">{{row.total_vote}} Votes</div>
                 </div>
