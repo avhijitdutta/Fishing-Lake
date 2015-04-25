@@ -9,18 +9,23 @@
             </ul>-->
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th class="border-bottom">Fish Species</th>
-                    <th colspan="2" class="small-txt border-bottom">Normal /Specimine</th>
+                    <th class="border-bottom">{{currentFilter.value}}</th>
+                    <th colspan="2" class="small-txt border-bottom" ng-show="currentFilter.name=='spacies'">Normal
+                        /Specimine
+                    </th>
+
+                    <th colspan="2" class="small-txt border-bottom" ng-show="currentFilter.name!='spacies'">Access</th>
                 </tr>
 
-                <tr ng-repeat="item in currentFilter">
+                <tr ng-repeat="item in currentFilter.data">
                     <td class="border-bottom">{{item.name}}</td>
-                    <td class="small-txt border-bottom"><img
-                            ng-class="{'active-img':item.active,'deactive-img':!item.active}"
-                            ng-click="toggleItem(item,false)"></td>
-                    <td class="small-txt border-bottom"><img
-                            ng-class="{'active-img':item.specimen,'deactive-img':!item.specimen}"
-                            ng-click="toggleItem(item,true)"></td>
+                    <td class="small-txt border-bottom" ng-click="toggleItem(item,false)"><img
+                            ng-class="{'active-img':item.active,'deactive-img':!item.active}"></td>
+
+                    <td class="small-txt border-bottom" ng-show="currentFilter.name=='spacies'"
+                        ng-click="toggleItem(item,true)">
+                        <img ng-class="{'active-img':item.specimen,'deactive-img':!item.specimen}">
+                    </td>
                 </tr>
 
             </table>
@@ -29,22 +34,25 @@
         </div>
     </div>
     <!-------------- ncr-header -------------------->
-    <div class="ncr-header">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-                <td class="settings" ng-click="goBack()">
-                    <div class="header-fish"><img src="images/header-fish.png" alt=""></div>
-                </td>
-                <td align="right" class="title">
-                    <div class="header-tag"><img src="images/header-history.png" alt=""></div>
-                    <div class="header-tag"><img src="images/header-tag.png" alt=""></div>
-                </td>
-                <td align="right" class="settings">
-                    <div class="header-magnify"><img src="images/ico-magnify.png" alt=""></div>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <ng-include src="'templates/header.html'"></ng-include>
+    <!--  <div class="ncr-header">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td class="settings" ng-click="goBack()">
+                      <div class="header-fish"><img src="images/header-fish.png" alt=""></div>
+                  </td>
+                  <td align="right" class="title">
+                      <div class="header-tag"><img src="images/header-history.png" alt=""></div>
+                      <div class="header-tag"><img src="images/header-tag.png" alt=""></div>
+                  </td>
+                  <td align="right" class="settings">
+                      <div class="header-magnify"><img src="images/ico-magnify.png" alt=""></div>
+                  </td>
+              </tr>
+          </table>
+      </div>-->
+
+
     <!-------------- ncr-content start-------------------->
     <div class="ncr-content no-footer listing">
 
@@ -65,8 +73,8 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="left" class="left-content"><img src="images/search-pin.png" alt=""></td>
-                        <td><h2>Current Location</h2></td>
-                        <td align="right"><img src="images/search-cross.png" alt=""></td>
+                        <td> <input type="text" ng-model="address" id="location-search" class="location controls" placeholder="Current Location"/></td>
+                        <td align="right" ng-click="resetLocation()"><img src="images/search-cross.png" alt=""></td>
                     </tr>
                 </table>
             </div>

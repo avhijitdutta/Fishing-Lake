@@ -1,59 +1,79 @@
 <div class="page">
- <div class="signup" id="scroll">
- <div class="signup-heading">
- Sign up and get started
- <span>It will take less than 5 seconds</span> <div class="cross" ng-click="goBack()"><img src="images/icon-cross.png"  alt=""></div> </div>
- <div class="fb-connect"><img src="images/fb-connect.png" alt=""><div>We will never post anything without your permission</div></div>
- <!--<div class="signup-email"><img src="images/signup-email.png" alt=""></div>-->
- <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
- <div class="signup-email-form">
+    <div class="signup" id="scroll">
+        <div class="signup-heading">
+            Sign up and get started
+            <span>It will take less than 5 seconds</span>
 
-    <div class="row" ng-class="{'error':userForm.email.$invalid && !userForm.email.$pristine}">
-       <input type="email" name="email" placeholder="Enter your email address" ng-model="user.email"  required>
-       <img src="images/ico-exclamation.png"  alt="" ng-show="userForm.email.$pristine">
-       <img src="images/ico-right.png"  alt="" ng-show="userForm.email.$valid">
-        <img src="images/ico-cross-big.png" alt="" ng-show="userForm.email.$invalid && !userForm.email.$pristine">
-       <div class="clr"></div>
+            <div class="cross" ng-click="goBack()"><img src="images/icon-cross.png" alt=""></div>
+        </div>
+        <div class="fb-connect" ng-click="fbLogin()"><img src="images/fb-connect.png" alt="">
+
+            <div>We will never post anything without your permission</div>
+        </div>
+        <!--<div class="signup-email"><img src="images/signup-email.png" alt=""></div>-->
+        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+            <div class="signup-email-form">
+
+                <div class="row" ng-class="{'error':userForm.email_id.$invalid && !userForm.email_id.$pristine}">
+                    <input type="email" name="email_id" placeholder="Enter your email address" ng-model="user.email_id"
+                           required>
+                    <img src="images/ico-exclamation.png" alt="" ng-show="userForm.email_id.$pristine">
+                    <img src="images/ico-right.png" alt="" ng-show="userForm.email_id.$valid">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.email_id.$invalid && !userForm.email_id.$pristine">
+
+                    <div class="clr"></div>
+                </div>
+
+                <div class="note" ng-show="userForm.email_id.$invalid">
+                    You will receive a confirmation email to this
+                    address once you have completed registration
+                </div>
+
+                <div class="row"
+                     ng-class="{'error':userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine}">
+                    <input type="email" name="confirm_email" placeholder="Confirm your email address"
+                           ng-model="user.confirm_email" required match="user.email_id">
+                    <img src="images/ico-right.png" alt="" ng-show="userForm.confirm_email.$valid">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine ">
+                    <img src="images/ico-exclamation.png" alt="" ng-show="userForm.confirm_email.$pristine">
+
+                    <div class="clr"></div>
+                </div>
+
+                <div class="note" ng-show="userForm.confirm_email.$pristine">Please re-enter your email address</div>
+
+                <div class="error-note" ng-show="userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine">
+                    Email addresses do not match
+                </div>
+
+                <div class="row" ng-class="{'error':userForm.password.$invalid && !userForm.password.$pristine}">
+                    <input type="password" name="password" placeholder="Choose a password" ng-model="user.password"
+                           required ng-pattern="/^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.password.$invalid && !userForm.password.$pristine">
+                    <img src="images/ico-exclamation.png" alt="" ng-show="userForm.password.$pristine">
+
+                    <div class="clr"></div>
+                </div>
+
+                <div class="note" ng-show="userForm.password.$invalid">
+                    Must be at least 6 characters, at least one must be a capital letter and at lest one must be a
+                    number.
+                </div>
+
+            </div>
+            <div class="msg" ng-hide="userForm.$valid">
+                <img src="images/ico-exclamation-blue.png" alt="">
+
+                <div class="info">
+                    Please enter your email address and choose
+                    a password to secure your account
+                </div>
+            </div>
+            <button type="submit" class="btn-create-account" ng-disabled="userForm.$invalid">Create my account</button>
+        </form>
     </div>
-
-    <div class="note">
-       You will receive a confirmation email to this
-       address once you have completed registration
-    </div>
-
-    <div class="row" ng-class="{'error':userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine}">
-       <input type="email" name="confirm_email" placeholder="Confirm your email address" ng-model="user.confirm_email" required match="user.email">
-       <img src="images/ico-right.png" alt="" ng-show="userForm.confirm_email.$valid">
-       <img src="images/ico-cross-big.png"  alt=""  ng-show="userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine ">
-       <img src="images/ico-exclamation.png"  alt="" ng-show="userForm.confirm_email.$pristine">
-       <div class="clr"></div>
-    </div>
-
-   <div class="note" ng-show="userForm.confirm_email.$pristine">Please re-enter your email address</div>
-
-   <div class="error-note" ng-show="userForm.confirm_email.$invalid && !userForm.confirm_email.$pristine">Email addresses do not match</div>
-
-   <div class="row" ng-class="{'error':userForm.password.$invalid && !userForm.password.$pristine}">
-       <input type="password" name="password" placeholder="Choose a password" ng-model="user.password" required ng-pattern="/^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/">
-       <img src="images/ico-cross-big.png"  alt="" ng-show="userForm.password.$invalid && !userForm.password.$pristine">
-       <img src="images/ico-exclamation.png"  alt="" ng-show="userForm.password.$pristine">
-       <div class="clr"></div>
-   </div>
-
-   <div class="note" ng-show="userForm.password.$invalid">
-       Must be at least 6 characters, at least one must be a capital letter and at lest one must be a number.
-   </div>
-
- </div>
- <div class="msg" ng-hide="userForm.$valid">
-     <img src="images/ico-exclamation-blue.png"  alt="">
-     <div class="info">
-        Please enter your email address and choose
-        a password to secure your account
-     </div>
- </div>
- <button type="submit" class="btn-create-account" ng-disabled="userForm.$invalid">Create my account</button>
-</form>
- </div>
 </div>
 

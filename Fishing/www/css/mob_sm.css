@@ -758,4 +758,13 @@
         height: 18px;
         font-size: 15px;
     }
+
+    .btn-updated {
+        padding: 8px;
+        width: 23%;
+    }
+
+    .btn-updated img {
+        width: 14px;
+    }
 }

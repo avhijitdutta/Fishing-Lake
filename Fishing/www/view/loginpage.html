@@ -1,9 +1,10 @@
 <div class="page">
     <div class="signup">
         <div class="signup-heading">
-            Sign in <div class="cross" ng-click="goBack()"><img src="images/icon-cross.png"  alt=""></div>
+            Sign in
+            <div class="cross" ng-click="goBack()"><img src="images/icon-cross.png" alt=""></div>
         </div>
-        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate >
+        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="signin-form">
                 <div class="row">
                     <input type="email" name="email_id" placeholder="Email or username" ng-model="user.email_id"
@@ -14,6 +15,7 @@
 
                 <div class="row">
                     <input type="password" name="password" placeholder="Password" ng-model="user.password" required>
+
                     <div class="clr"></div>
                 </div>
 
@@ -22,6 +24,6 @@
                 <a class="forgot-pass" href="#/forgot">Forgot Password?</a>
             </div>
         </form>
-        <div class="fb-connect"><img src="images/fb-login.png" alt=""></div>
+        <div class="fb-connect" ng-click="fbLogin()"><img src="images/fb-login.png" alt=""></div>
     </div>
 </div>

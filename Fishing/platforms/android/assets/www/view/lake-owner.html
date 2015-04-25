@@ -147,12 +147,13 @@ own at this venue</div>
   <!-------------- ncr-content start-------------------->
   <div class="ncr-content lake-owner heading-space ">
   <div class="preview-as-visitor" ng-click="showPrev()">Preview as a visitor</div>
-  <div class="lake-name"><div class="fld"><input type="text" placeholder="Himley Hall Top Pool"/> <span class="click" ng-click="emptyInput($event)"></span> </div><a class="btn-update" ng-click="updateLakeName($event)"><img src="images/ico-write.png"  alt="">Update</a> <!--<a class="btn-updated"><img src="images/ico-tick-bgreen.png"  alt="">Update</a>--></div>
-  	<div class="cover-photo"><div class="upload"><img src="images/ico-upload.png" alt="">Upload</div>
+  <div class="lake-name"><div class="fld"><input type="text" value="{{lakeData.lake_category.leke_name}}" placeholder="Enter Lake Name"/> <span class="click" ng-click="emptyInput($event)"></span> </div><a class="btn-update" ng-click="updateLakeName($event)"><img src="images/ico-write.png"  alt="">Update</a> <!--<a class="btn-updated"><img src="images/ico-tick-bgreen.png"  alt="">Update</a>--></div>
+  	<div class="cover-photo">
+        <div class="upload" ng-click="uploadImg()"> <img src="images/ico-upload.png" alt="">Upload</div>
     	<img src="images/listing_img1.jpg" alt="">
-        </div>
+    </div>
 
-       <div class="cont-area"> <div class="venue-address"><div class="add"><span>Venue Address</span> <a class="btn-update" ng-click="updateVenue($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
+    <div class="cont-area"> <div class="venue-address"><div class="add"><span>Venue Address</span> <a class="btn-update" ng-click="updateVenue($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
 
     <div class="lo-form">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -160,7 +161,7 @@ own at this venue</div>
             <td align="right">{{aad.name}}</td>
             <td>
                 <div class="fld">
-                    <input type="text" ng-model="vanueAddModel[aad.name]"/> <span class="click" ng-click="emptyInput($event)"></span>
+                    <input type="text" value="{{aad.value}}"/> <span class="click" ng-click="emptyInput($event)"></span>
                 </div>
             </td>
           </tr>
@@ -170,7 +171,7 @@ own at this venue</div>
 
 <div class="venue-address"><div class="add"><span>The venue description</span> <a class="btn-update" ng-click="updateDesc($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
 <div class="venue-des">
-    <textarea></textarea>
+    <textarea> </textarea>
 </div>
        <div class="venue-address"><div class="add"><span>List your facilities</span> </div></div>
 

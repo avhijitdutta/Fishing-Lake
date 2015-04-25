@@ -9,23 +9,11 @@
 
         <div class="form">
             <div class="fld select">
-                <select name="select" id="select">
-                    <option>I am sending you feedback about...</option>
-                    <option>App generally</option>
-                    <option>Lakes pages</option>
-                    <option>Search functions</option>
-                    <option>Home page</option>
-                    <option>Font size</option>
-                    <option>Payment system</option>
-                    <option>Login system</option>
-                    <option>Bookmarks</option>
-                    <option>I want to suggest a new feature</option>
-                    <option>I want to suggest a new lake</option>
-                    <option>Other</option>
+                <select name="select" ng-options="obj.type for obj in options track by obj.id" ng-model="feedBackType">
                 </select>
             </div>
             <div class="fld">
-                <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+                <textarea name="textarea" id="textarea" cols="45" rows="5" ng-model="feedback"></textarea>
             </div>
         </div>
 

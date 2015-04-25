@@ -3,10 +3,22 @@
         <tr>
             <td class="settings" ng-click="goBack()"><div class="header-fish"> <img src="images/header-fish.png" alt=""> </div></td>
             <td align="right" class="title">
-                <div class="header-tag"><img src="images/header-history.png" alt=""></div>
-                <div class="header-tag"><img src="images/header-tag.png" alt=""></div>
+                <div class="header-tag" ng-click="userRecentItems()"><img src="images/header-history.png" alt=""></div>
+                <div class="header-tag" ng-click="userBookItems()">
+                    <div class="msg">!</div>
+                </div>
+                <div><img src="images/header-tag.png" alt=""></div>
             </td>
-            <td align="right" class="settings" ng-click="openSearch()"><img src="images/ico-magnify.png" alt=""></td>
+            <td align="right" class="settings" ng-click="openSearch()" ng-if="!is_search">
+                <img src="images/ico-magnify.png" alt="">
+            </td>
+
+            <td align="right" class="settings" ng-if="is_search">
+                <div class="header-magnify">
+                    <img src="images/ico-magnify.png" alt="">
+                </div>
+            </td>
+
         </tr>
     </table>
 </div>

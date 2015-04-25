@@ -1,29 +1,4 @@
 <div class="page">
-<div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
-<div class="pop-filter rating" ng-class="{'pop-animate': rightPanelAddMember}">
-    <div class="inner-content ">
-        <div class="heading">
-            <label>
-                Add membership details
-            </label>
-        </div>
-
-        <div class="write-review"><label>Write your membership details</label>
-            <div class="fld-review">
-                <textarea>
-
-                </textarea>
-            </div>
-        </div>
-
-        <div class="btn-add-review" ng-click="addReview()">
-            <img src="images/ico-write.png" alt="">
-           Update Details
-        </div>
-    </div>
-
-</div>
-
 <div class="pop-screen-overlay" ng-click="hidePanelTime()" ng-show="rightPanelTime"></div>
 <div class="pop-filter timing" ng-class="{'pop-animate': rightPanelTime}">
 <div class="inner-content">
@@ -104,8 +79,6 @@ own at this venue</div>
 
 
 </div>
-
-
     <div class="inner-content" ng-show="showClaimForm">
         <div class="heading-claim" align="center"><span>Your Lake? Claim it!</span> Woodgrove Farm</div>
         <div class="address"><strong>Address</strong>
@@ -147,20 +120,29 @@ own at this venue</div>
   <!-------------- ncr-content start-------------------->
   <div class="ncr-content lake-owner heading-space ">
   <div class="preview-as-visitor" ng-click="showPrev()">Preview as a visitor</div>
-  <div class="lake-name"><div class="fld"><input type="text" placeholder="Himley Hall Top Pool"/> <span class="click" ng-click="emptyInput($event)"></span> </div><a class="btn-update" ng-click="updateLakeName($event)"><img src="images/ico-write.png"  alt="">Update</a> <!--<a class="btn-updated"><img src="images/ico-tick-bgreen.png"  alt="">Update</a>--></div>
-  	<div class="cover-photo"><div class="upload"><img src="images/ico-upload.png" alt="">Upload</div>
-    	<img src="images/listing_img1.jpg" alt="">
-        </div>
+      <div class="lake-name">
+          <div class="fld"><input type="text" ng-model="formData.lakeName" placeholder="Enter Lake Name"/> <span
+                  class="click" ng-click="emptyInput($event)"></span></div>
+          <a class="btn-update" ng-click="updateLakeName($event)"><img src="images/ico-write.png" alt="">Update</a>
+          <!--<a class="btn-updated"><img src="images/ico-tick-bgreen.png"  alt="">Update</a>--></div>
+      <div class="cover-photo">
+          <div class="upload" ng-click="uploadImg()"><img src="images/ico-upload.png" alt="">Upload</div>
+          <img src="images/listing_img1.jpg" alt="">
+      </div>
+      <form name="editLake" novalidate>
+          <div class="cont-area">
+              <div class="venue-address">
+                  <div class="add"><span>Venue Address</span></div>
+              </div>
 
-       <div class="cont-area"> <div class="venue-address"><div class="add"><span>Venue Address</span> <a class="btn-update" ng-click="updateVenue($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
-
-    <div class="lo-form">
+              <div class="lo-form">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr ng-repeat="aad in vanueAdd">
-            <td align="right">{{aad.name}}</td>
-            <td>
+            <tr ng-repeat="address in formData.address">
+                <td align="right">{{address.name}}</td>
+                <td>
                 <div class="fld">
-                    <input type="text" ng-model="vanueAddModel[aad.name]"/> <span class="click" ng-click="emptyInput($event)"></span>
+                    <input type="text" ng-model="address.value"/> <span class="click"
+                                                                        ng-click="emptyInput($event)"></span>
                 </div>
             </td>
           </tr>
@@ -168,30 +150,32 @@ own at this venue</div>
     </div>
 
 
-<div class="venue-address"><div class="add"><span>The venue description</span> <a class="btn-update" ng-click="updateDesc($event)"><img src="images/ico-write.png"  alt="">Update</a></div></div>
-<div class="venue-des">
-    <textarea></textarea>
-</div>
+              <div class="venue-address">
+                  <div class="add"><span>The venue description</span></div>
+              </div>
+              <div class="venue-des">
+                  <textarea ng-model="formData.desc"> </textarea>
+              </div>
        <div class="venue-address"><div class="add"><span>List your facilities</span> </div></div>
 
-       <div class="list-facility">
-       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr ng-repeat="item in facilites">
-    <td>{{item.name}}</td>
-    <td ng-class="{'no':item.active}" ng-click="itemActive(item,facilites)"></td>
-    <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,facilites)"></td>
-  </tr>
-</table>
-</div>
+              <div class="list-facility">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr ng-repeat="item in formData.list_amenitites">
+                          <td>{{item.name}}</td>
+                          <td ng-class="{'no':!item.active}" ng-click="itemActive(item,formData.list_amenitites)"></td>
+                          <td ng-class="{'yes':item.active}" ng-click="itemActive(item,formData.list_amenitites)"></td>
+                      </tr>
+                  </table>
+              </div>
 
-       <div class="venue-address"><div class="add"><span>Fishing Rules</span> </div></div>
+              <div class="venue-address"><div class="add"><span>Fishing Rules</span> </div></div>
 
        <div class="list-facility">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr ng-repeat="item in fishingRules">
-        <td>{{item.name}}</td>
-        <td ng-class="{'no':item.active}" ng-click="itemActive(item,fishingRules)"></td>
-        <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,fishingRules)"></td>
+      <tr ng-repeat="item in formData.list_rules">
+          <td>{{item.name}}</td>
+          <td ng-class="{'no':item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
+          <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
       </tr>
 </table>
 </div>
@@ -209,13 +193,13 @@ own at this venue</div>
         <td>Specimen</td>
       </tr>
 
-      <tr ng-repeat="item in fishSpecies">
-        <td>{{item.name}}</td>
-        <td ng-class="{'no':item.active}" ng-click="itemActive(item,fishSpecies)"> </td>
-        <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,fishSpecies)"></td>
-        <td> </td>
-        <td ng-class="{'yes':item.specimen}" ng-click="itemToggle(item,fishSpecies)"></td>
-      </tr>
+        <tr ng-repeat="item in formData.list_spacies">
+            <td>{{item.name}}</td>
+            <td ng-class="{'no':item.active}" ng-click="itemActive(item,formData.list_spacies)"></td>
+            <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,formData.list_spacies)"></td>
+            <td> </td>
+            <td ng-class="{'yes':item.specimen}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+        </tr>
 
     </table>
 </div>
@@ -225,16 +209,14 @@ own at this venue</div>
 <div class="lo-form">
     <table width="80%" border="0" cellspacing="0" cellpadding="0">
 
-      <tr ng-repeat="item in pricesArr">
-        <td align="right" width="40%">{{item.name}}</td>
-        <td><div class="fld"> <input readonly ng-value="item.name" type="text"/> <span class="click" ng-click="updateFish(item)"></span> </div></td>
-      </tr>
-
-      <tr>
-        <td align="right">Options</td>
-        <td><div class="fld ad-details"><input type="text" ng-click="showAddBox()" readonly value="Add Details"/></div></td>
-      </tr>
-
+        <tr ng-repeat="item in formData.lake_pricing">
+            <td align="right" width="40%">{{item.description}}</td>
+            <td>
+                <div class="fld"><input ng-model="item.price" type="text"/> <span class="click"
+                                                                                  ng-click="emptyInput($event)"></span>
+                </div>
+            </td>
+        </tr>
     </table>
 </div>
 
@@ -260,22 +242,33 @@ own at this venue</div>
 </div>
 
 
-<div class="venue-address"><div class="add"><span>Contact Details</span> <a class="btn-update" ng-click="updateContactDetail()"><img src="images/ico-write.png"  alt="">Update</a></div></div>
+              <div class="venue-address">
+                  <div class="add"><span>Contact Details</span>
+                      <!--<a class="btn-update" ng-click="updateContactDetail()"><img src="images/ico-write.png"  alt="">Update</a>-->
+                  </div>
+              </div>
 
-    <div class="lo-form">
+              <div class="lo-form">
          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr ng-repeat="field in contactDetail">
-            <td >{{field.name}}</td>
-            <td><div class="fld"><input type="{{field.type}}" ng-model="contactDetailModel[field.name]" /><span class="click" ng-click="emptyInput($event)"></span></div></td>
-          </tr>
+             <tr ng-repeat="field in formData.contact_details">
+                 <td >{{field.name}}</td>
+                 <td>
+                     <div class="fld"><input type="{{field.type}}" ng-model="field.value"/><span class="click"
+                                                                                                 ng-click="emptyInput($event)"></span>
+                     </div>
+                 </td>
+             </tr>
         </table>
     </div>
 
 <div class="venue-address"><div class="add"><span>Photos</span> </div></div>
 <div class="photos">
-  <div class="thumb" ng-repeat="item in photoList"><img ng-src="{{item.url}}"  alt=""><div class="delete" ng-click="removePhoto(item)"><img src="images/ico-cross.png"  alt=""></div></div>
+    <div class="thumb" ng-repeat="item in formData.lake_image"><img ng-src="{{item.url}}" alt="">
 
-  <div class="thumb upload"><img src="images/img-upload.png"  alt="" ng-click="uploadImage()"> </div>
+        <div class="delete" ng-click="removePhoto(item)"><img src="images/ico-cross.png" alt=""></div>
+    </div>
+
+    <div class="thumb upload"><img ng-src="images/img-upload.png" alt="" ng-click="uploadImage()"></div>
 </div>
 
 <div class="venue-address"><div class="add"><span>Link another lake</span> <a class="btn-update btn-add" ng-click="showRightLake()"><img src="images/ico-plus.png"  alt="">Add</a></div></div>
@@ -284,7 +277,7 @@ own at this venue</div>
 
     </div>
 
-
+      </form>
   </div>
   <!-------------- ncr-content end-------------------->
 

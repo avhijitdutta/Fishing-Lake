@@ -2888,13 +2888,12 @@ label.css-label {
 }
 
 .active-img {
-
-    content: url("../images/ico-cross-big.png");
+    content: url("../images/tick.png");
 }
 
 .deactive-img {
+    content: url("../images/ico-cross-big.png");
 
-    content: url("../images/tick.png");
 }
 
 .active-tab-img {
@@ -2944,7 +2943,6 @@ label.css-label {
     background: inherit
 }
 
-
 /* animation css*/
 
 /* Slide animation */
@@ -2954,6 +2952,7 @@ label.css-label {
     width: 100%;
     height: 100%;
 }
+
 .page-size.slide.ng-enter,
 .page-size.slide.ng-leave {
     -webkit-transition: all 1s ease;
@@ -2961,32 +2960,38 @@ label.css-label {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .page-size.slide.ng-enter {
     left: 100%;
 }
+
 .page-size.slide.ng-enter-active {
     left: 0;
 }
+
 .page-size.slide.ng-leave {
     left: 0;
 }
+
 .page-size.slide.ng-leave-active {
     left: -100%;
 }
 
-.reverse.page-size.slide.ng-enter {
+.reverse .page-size.slide.ng-enter {
     left: -100%;
 }
-.reverse.page-size.slide.ng-enter-active {
+
+.reverse .page-size.slide.ng-enter-active {
     left: 0;
-}
-.reverse.page-size.slide.ng-leave {
-    left: 0;
-}
-.reverse.page-size.slide.ng-leave-active {
-    left: 100%;
 }
 
+.reverse .page-size.slide.ng-leave {
+    left: 0;
+}
+
+.reverse .page-size.slide.ng-leave-active {
+    left: 100%;
+}
 
 /* Slidedown */
 .page-size.slidedown {
@@ -2994,6 +2999,7 @@ label.css-label {
     width: 100%;
     height: 100%;
 }
+
 .page-size.slidedown.ng-enter,
 .page-size.slidedown.ng-leave {
     -webkit-transition: all 1s ease;
@@ -3001,28 +3007,36 @@ label.css-label {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .page-size.slidedown.ng-enter {
     top: -100%;
 }
+
 .page-size.slidedown.ng-enter-active {
     top: 0;
 }
+
 .page-size.slidedown.ng-leave {
     top: 0;
 }
+
 .page-size.slidedown.ng-leave-active {
     top: 100%;
 }
-.reverse.page-size.slidedown.ng-enter {
+
+.reverse .page-size.slidedown.ng-enter {
     top: 100%;
 }
-.reverse.page-size.slidedown.ng-enter-active {
+
+.reverse .page-size.slidedown.ng-enter-active {
     top: 0;
 }
-.reverse.page-size.slidedown.ng-leave {
+
+.reverse .page-size.slidedown.ng-leave {
     top: 0;
 }
-.reverse.page-size.slidedown.ng-leave-active {
+
+.reverse .page-size.slidedown.ng-leave-active {
     top: -100%;
 }
 
@@ -3032,6 +3046,7 @@ label.css-label {
     right: 0;
     height: 100%;
 }
+
 .page-size.slideup.ng-enter,
 .page-size.slideup.ng-leave {
     -webkit-transition: all 1s ease;
@@ -3039,38 +3054,48 @@ label.css-label {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .page-size.slideup.ng-enter {
     top: 100%;
 }
+
 .page-size.slideup.ng-enter-active {
     top: 0;
 }
+
 .page-size.slideup.ng-leave {
     top: 0;
 }
+
 .page-size.slideup.ng-leave-active {
     top: -100%;
 }
-.reverse.page-size.slideup.ng-enter {
+
+.reverse .page-size.slideup.ng-enter {
     top: -100%;
 }
-.reverse.page-size.slideup.ng-enter-active {
+
+.reverse .page-size.slideup.ng-enter-active {
     top: 0;
-}
-.reverse.page-size.slideup.ng-leave {
-    top: 0;
-}
-.reverse.page-size.slideup.ng-leave-active {
-    top: 100%;
 }
 
+.reverse .page-size.slideup.ng-leave {
+    top: 0;
+}
+
+.reverse .page-size.slideup.ng-leave-active {
+    top: 100%;
+}
 
 /* Pop in/out animation */
 .page-size.pop {
     position: absolute;
-    left: 0; right: 0;
-    top: 0; bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
+
 .page-size.pop.ng-enter,
 .page-size.pop.ng-leave {
     -webkit-transition: all 1s ease;
@@ -3078,6 +3103,7 @@ label.css-label {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .page-size.pop.ng-enter {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
@@ -3085,6 +3111,7 @@ label.css-label {
     -o-transform: scale(0);
     transform: scale(0);
 }
+
 .page-size.pop.ng-enter-active,
 .page-size.pop.ng-leave,
 .page-size.pop.ng-leave-active {
@@ -3094,8 +3121,9 @@ label.css-label {
     -o-transform: scale(1);
     transform: scale(1);
 }
-.page-size.pop.ng-leave-active {}
 
+.page-size.pop.ng-leave-active {
+}
 
 /* Fade in/out */
 .page-size.fade {
@@ -3104,6 +3132,7 @@ label.css-label {
     height: 100%;
     opacity: 1;
 }
+
 .page-size.fade.ng-enter,
 .page-size.fade.ng-leave {
     -webkit-transition: all 1s ease;
@@ -3111,19 +3140,22 @@ label.css-label {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .page-size.fade.ng-enter {
     opacity: 0;
 }
+
 .page-size.fade.ng-enter-active {
     opacity: 1;
 }
+
 .page-size.fade.ng-leave {
     opacity: 1;
 }
+
 .page-size.fade.ng-leave-active {
     opacity: 0;
 }
-
 
 /* Flip animation */
 .content {
@@ -3131,6 +3163,7 @@ label.css-label {
     -moz-perspective: 600px;
     perspective: 600px;
 }
+
 .page-size.flip {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
@@ -3145,6 +3178,7 @@ label.css-label {
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
+
 .page-size.flip.ng-enter {
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -3152,6 +3186,7 @@ label.css-label {
     transform: rotateY(-180deg);
     z-index: 800;
 }
+
 .page-size.flip.ng-enter-active {
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
@@ -3159,6 +3194,7 @@ label.css-label {
     transform: rotateY(0deg);
     z-index: 900;
 }
+
 .page-size.flip.ng-leave {
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
@@ -3166,6 +3202,7 @@ label.css-label {
     transform: rotateY(0deg);
     z-index: 900;
 }
+
 .page-size.flip.ng-leave-active {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -3174,7 +3211,6 @@ label.css-label {
     z-index: 800;
 }
 
-
 /* Rotate animation */
 .page-size.rotate {
     -webkit-animation-duration: 1s;
@@ -3182,18 +3218,21 @@ label.css-label {
     -o-animation-duration: 1s;
     animation-duration: 1s;
 }
+
 .page-size.ng-leave.rotate {
     -webkit-animation-name: rotate-leave;
     -moz-animation-name: rotate-leave;
     -o-animation-name: rotate-leave;
     animation-name: rotate-leave;
 }
+
 .page-size.ng-enter.rotate {
     -webkit-animation-name: rotate-enter;
     -moz-animation-name: rotate-enter;
     -o-animation-name: rotate-enter;
     animation-name: rotate-enter;
 }
+
 @-webkit-keyframes rotate-leave {
     0% {
         -webkit-transform-origin: center center;
@@ -3210,6 +3249,7 @@ label.css-label {
         opacity: 0;
     }
 }
+
 @-webkit-keyframes rotate-enter {
     0% {
         -webkit-transform-origin: center center;
@@ -3243,6 +3283,7 @@ label.css-label {
         opacity: 0;
     }
 }
+
 @-moz-keyframes rotate-enter {
     0% {
         -moz-transform-origin: center center;
@@ -3259,6 +3300,7 @@ label.css-label {
         opacity: 1;
     }
 }
+
 @-o-keyframes rotate-leave {
     0% {
         -o-transform-origin: center center;
@@ -3275,6 +3317,7 @@ label.css-label {
         opacity: 0;
     }
 }
+
 @-o-keyframes rotate-enter {
     0% {
         -o-transform-origin: center center;
@@ -3292,7 +3335,6 @@ label.css-label {
     }
 }
 
-
 /* slide-pop screen animation */
 .page-size.slide-pop {
     left: 0;
@@ -3300,6 +3342,7 @@ label.css-label {
     width: 100%;
     height: 100%;
 }
+
 .page-size.slide-pop.ng-enter,
 .page-size.slide-pop.ng-leave {
     -webkit-transition: all 1s linear;
@@ -3307,6 +3350,7 @@ label.css-label {
     -o-transition: all 1s linear;
     transition: all 1s linear;
 }
+
 .page-size.slide-pop.ng-enter {
     opacity: 0;
     -webkit-transform: scale(.5);
@@ -3315,6 +3359,7 @@ label.css-label {
     -o-transform: scale(.5);
     transform: scale(.5);
 }
+
 .page-size.slide-pop.ng-enter-active {
     opacity: 1;
     -webkit-transform: scale(1);
@@ -3323,16 +3368,18 @@ label.css-label {
     -o-transform: scale(1);
     transform: scale(1);
 }
+
 .page-size.slide-pop.ng-leave {
     left: 0;
     opacity: .5;
 }
+
 .page-size.slide-pop.ng-leave-active {
     left: -100%;
     opacity: 0;
 }
 
-.reverse.page-size.slide-pop.ng-enter {
+.reverse .page-size.slide-pop.ng-enter {
     opacity: .5;
     left: -100%;
     -webkit-transform: scale(1);
@@ -3341,11 +3388,13 @@ label.css-label {
     -o-transform: scale(1);
     transform: scale(1);
 }
-.reverse.page-size.slide-pop.ng-enter-active {
+
+.reverse .page-size.slide-pop.ng-enter-active {
     opacity: 1;
     left: 0;
 }
-.reverse.page-size.slide-pop.ng-leave {
+
+.reverse .page-size.slide-pop.ng-leave {
     opacity: .5;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -3355,7 +3404,8 @@ label.css-label {
     left: 0;
     right: 0;
 }
-.reverse.page-size.slide-pop.ng-leave-active {
+
+.reverse .page-size.slide-pop.ng-leave-active {
     opacity: 0;
     -webkit-transform: scale(.5);
     -moz-transform: scale(.5);
@@ -3417,7 +3467,7 @@ label.css-label {
     left: 0;
     right: 0;
     padding: 10px;
-    z-index: 99;
+    z-index: 101;
     bottom: 62px;
     display: none;
 }
@@ -3602,7 +3652,7 @@ label.css-label {
 .myticket .tab li {
     list-style: none;
     display: inline-block;
-    width: 48%;
+    width: 47%;
     padding: 1%;
     text-align: center;
 }
@@ -3918,6 +3968,17 @@ label.css-label {
     top: -2px;
 }
 
+.pop-up-mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #222222;
+    opacity: 0.3;
+    z-index: 90;
+}
+
 /*animation css */
 .animated {
     -webkit-animation-duration: 1s;
@@ -3986,4 +4047,37 @@ label.css-label {
 .slideOutDown {
     -webkit-animation-name: slideOutDown;
     animation-name: slideOutDown;
+}
+
+html, body, #map-canvas , #map_canvas{
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+#map_canvas{
+    height: 90px;
+}
+
+.pac-container {
+    font-family: Roboto;
+}
+
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.location{
+    height: 33px;
+    width: 100%;
+    background: #0b4a4d;
+    color: #fff;
 }

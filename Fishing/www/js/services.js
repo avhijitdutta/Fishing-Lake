@@ -1,8 +1,9 @@
-app.service('storeData', function () {
+app.service('storeData', ['localFactory', function (localFactory) {
     var self = this;
-    self.currentData = {loginData: ""};
+    self.currentData = {loginData: "", currentLake: {}, latLong: {}};
     self.cityData = "";
     this.setData = function (obj) {
+
         if (obj.loginData) {
             var data = $.extend({}, obj.loginData);
             for (var i = 0; i < data.lake_amentites.length; i++) {
@@ -20,19 +21,38 @@ app.service('storeData', function () {
                 data.lake_spacies[i]['specimen'] = true;
             }
             self.currentData['loginData'] = data;
-            console.log(self.currentData['loginData']);
+            localFactory.setLocalItem('loginData', JSON.stringify(self.currentData));
+        }
+
+        if (obj.currentLake) {
+
+            self.currentData['currentLake'] = obj.currentLake;
+        }
+
+        if (obj.latLong) {
+            self.currentData['latLong'] = obj.latLong;
         }
     }
 
-    this.getData = function () {
-        return this.currentData;
+
+    this.getData = function (value) {
+
+        if (value) {
+            return  self.currentData;
+
+        } else {
+            return $.parseJSON(localFactory.getLocalItem('loginData'));
+        }
+
+
     }
 
     this.resetData = function () {
 
+        localFactory.setLocalItem('loginData', '');
     }
 
-});
+}]);
 
 app.service("paypal", function () {
     var self = this;
@@ -47,8 +67,8 @@ app.service("paypal", function () {
     }
 
     this.clientIDs = {
-        "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
-        "PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
+        "PayPalEnvironmentProduction": "ATHQ3qjWVtvERFBwYCFw4S6uj9GuDfwNNW1SXRoNdCLbzFjqdpy_fHmavB6xkXqh1pVpA11pBa8J76uz",
+        "PayPalEnvironmentSandbox": "Acw0Mb7Pvmfq-dN9W0EhQoiHr21ikv3hT3TBGU3Axwe_S1hfPVdCHGM47do9h8Pt7uwqvx4oNE0EfvDM"
     };
 
     this.init = function () {
@@ -61,6 +81,7 @@ app.service("paypal", function () {
         //alert(JSON.stringify(self.configuration()));
         // must be called
         // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
+        //PayPalEnvironmentSandbox PayPalEnvironmentProduction
         PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", self.configuration(),
             self.onPrepareRender);
     }
@@ -71,7 +92,7 @@ app.service("paypal", function () {
 
     this.createPayment = function () {
         // for simplicity use predefined amount
-        var paymentDetails = new PayPalPaymentDetails("50.00", "0.00", "0.00");
+        var paymentDetails = new PayPalPaymentDetails(self.paymentData['amount'], "0.00", "0.00");
         var payment = new PayPalPayment(self.paymentData['amount'], self.paymentData['currencyType'], self.paymentData['marchentName'], "Sale",
             paymentDetails);
         return payment;
@@ -80,7 +101,7 @@ app.service("paypal", function () {
     this.configuration = function () {
         // for more options see `paypal-mobile-js-helper.js`
         var config = new PayPalConfiguration({
-            merchantName: "My test shop",
+            merchantName: "Rafael Camargo",
             merchantPrivacyPolicyURL: "https://mytestshop.com/policy",
             merchantUserAgreementURL: "https://mytestshop.com/agreement"
         });

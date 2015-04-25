@@ -85,17 +85,17 @@ var lacks=[
 var facilites=[
     {name:"Wheel chair access",active:true,id:1},
     {name:"Peg Types (platforms / bank / gravel)",active:true,id:2},
-    {name:"Rod licence required",active:false,id:3},
+    {name: "Rod licence required", active: true, id: 3},
     {name:"Parking",active:true,id:4},
-    {name:"Toilets",active:false,id:5},
-    {name:"Café",active:false,id:6},
-    {name:"Camping",active:false,id:7},
+    {name: "Toilets", active: true, id: 5},
+    {name: "Café", active: true, id: 6},
+    {name: "Camping", active: true, id: 7},
     {name:"Tackle hire",active:true,id:8},
-    {name:"Bait / tackle shop",active:false,id:9},
+    {name: "Bait / tackle shop", active: true, id: 9},
     {name:"Children allowed",active:true,id:10},
     {name:"Fires / BBQ",active:true,id:11},
     {name:"Dogs",active:true,id:12},
-    {name:"Boat hire",active:false,id:13},
+    {name: "Boat hire", active: true, id: 13},
     {name:"Hire for Competition",active:true,id:14}
 ];
 

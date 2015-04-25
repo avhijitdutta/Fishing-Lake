@@ -12,27 +12,16 @@
                             <th style="text-align:center">Quantity</th>
                         </tr>
                         <tr class="value" ng-repeat="price in arrPrices">
-                            <td>{{price.name}}</td>
-                            <td>£ {{price.price || myCurrency}}</td>
+                            <td>{{price.price_name}}</td>
+                            <td>£ {{price.price}}</td>
                             <td class="quantity">
                                 <ul>
-                                    <li ng-click="qtyPlusMin(price.id,0)"><img src="images/minus.png" alt=""></li>
+                                    <li ng-click="qtyPlusMin(price.price_id,0)"><img src="images/minus.png" alt=""></li>
                                     <li>{{price.qty}}</li>
-                                    <li ng-click="qtyPlusMin(price.id,1)"><img src="images/plus.png" alt=""></li>
+                                    <li ng-click="qtyPlusMin(price.price_id,1)"><img src="images/plus.png" alt=""></li>
                                 </ul>
                             </td>
                         </tr>
-                        <!-- <tr>
-                             <td>Child <span>(under 16)</span></td>
-                             <td>£3.000</td>
-                             <td class="quantity">
-                                 <ul>
-                                     <li><img src="images/minus.png" alt=""></li>
-                                     <li>0</li>
-                                     <li><img src="images/plus.png" alt=""></li>
-                                 </ul>
-                             </td>
-                         </tr>-->
                     </table>
 
                     <div class="clr"></div>
@@ -64,7 +53,9 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="hdng">Location</td>
-                    <td class="contnt">Himley Park, Dudley,<br>West Midlands, DY3 4DF</td>
+                    <td class="contnt"> {{selectedLake.address1}},{{selectedLake.address2}},<br>{{selectedLake.town}},
+                        {{selectedLake.country}}
+                    </td>
                     <td></td>
                 </tr>
                 <tr>
@@ -85,7 +76,7 @@
                 <tr>
                     <td class="hdng">Price</td>
                     <td class="nonselctd" ng-class="{'nonselctd': totalPrice < 1 , 'contnt': totalPrice > 0} ">
-                        {{totalPrice}}
+                        &pound; {{totalPrice}}
                     </td>
                     <td></td>
                 </tr>
@@ -110,54 +101,6 @@
             </ul>
             <div class="clr"></div>
         </div>
-
-        <!--<div class="search-btn">Confirm your date below</div>
-        <div class="tabs">
-          <ul>
-            <li ng-repeat="tab in tabs" ng-class="{active:isSet(tab)}" ng-click="setTab(tab)"> <img ng-src="{{tab.url}}">
-              <p>{{tab.name}}</p>
-            </li>
-          </ul>
-          <div class="clr"></div>
-        </div>-->
-
-        <!-------------- Location Start-------------------->
-        <!--  <div class="location" ng-show="tab == 3">
-          <div class="part-three map">
-              <img src="images/detail-map.png" alt="">
-                  <div class="map-content">
-                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                              <td><img src="images/ico-direction-arrow.png" alt=""></td>
-                              <td>1.3km</td>
-                          </tr>
-                          <tr>
-                              <td colspan="2" style="padding:0;">Directions</td>
-                          </tr>
-                      </table>
-
-                  </div>
-              </div>
-          <div class="part-four">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                      <td><h1 class="one"><span>Location</span></h1>  </td>
-                      <td class="right-img"><img src="images/arrow-blue.png" alt=""></td>
-                  </tr>
-                  </table>
-                  <p>Himley Park, Dudley, West Midlands, DY3 4DF</p>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                      <td><h1 class="one"><span>Lake Rules</span></h1></td>
-                      <td class="right-img"><img src="images/arrow-blue.png" alt=""></td>
-                  </tr>
-              </table>
-              <p>Himley Park, Dudley, West Midlands, DY3 4DF</p>
-          </div>
-          <div class="clr"></div>
-          </div>-->
-        <!-------------- Location End-------------------->
-
 
     </div>
     <!-------------- ncr-content end-------------------->

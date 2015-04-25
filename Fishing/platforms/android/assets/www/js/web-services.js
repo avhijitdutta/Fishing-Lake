@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//http://ncrts.com/fishing_lake/webservice/
 app.factory("webservice", function () {
     var e = {};
     var t = "http://ncrts.com/fishing_lake/webservice/";

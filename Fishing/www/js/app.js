@@ -50,8 +50,9 @@ Array.prototype.removeValue = function(name, value){
 }
 
 var currentPage="";
+var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing',['ngRoute','ngAnimate','ui.calendar',"ngTouch","page","keyboard","validation.match","RatingApp","nvKeyboard"]);
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova']);
 app.config(['$routeProvider',"$keyboardProvider",
     function($routeProvider,$keyboardProvider) {
         $keyboardProvider.init({
@@ -61,8 +62,14 @@ app.config(['$routeProvider',"$keyboardProvider",
             footerID: false,
             binders : 'input[type="text"],textarea,input[type="password"],input[type="tel"],input[type="email"]'
         });
+
+        if (window.localStorage.getItem('loginData') && window.localStorage.getItem('loginData') != "" && window.localStorage.getItem('loginData') != null) {
+
+            defaultPath = "/home";
+        }
+
         $routeProvider.
-            when("/",{
+            when("/signup", {
                 title:"Sign Up",
                 animation: "slide",
                 templateUrl:"view/signup.html",
@@ -98,7 +105,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                         var lakeCategory = localFactory.post('lake_category', postData);
                         lakeCategory.success(function (data) {
                             defer.resolve(data);
-                            localFactory.unload();
+
                         });
 
                         lakeCategory.error(function (data, status, headers, config) {
@@ -126,17 +133,18 @@ app.config(['$routeProvider',"$keyboardProvider",
 
                         //cat_id=1&user_no=1&fishing_type=1&fish_spacies=1&fish_rules=1&lake_amenitites=1&latitude=56.939191&longitude=23.989926
                         var postData = {latitude: 56.939191, longitude: 23.989926};
-
+                        /*postData={}
+                         postData = storeData.getData()['latLong'];*/
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
 
-                            var lake_amenites = storeData.getData().loginData.lake_amentites;
+                            var lake_amenites = storeData.getData(true).loginData.lake_amentites;
                             var lakeAmenites = [];
 
-                            var lake_rules = storeData.getData().loginData.lake_rules;
+                            var lake_rules = storeData.getData(true).loginData.lake_rules;
                             var lakeRules = [];
 
-                            var fishSpacies = storeData.getData().loginData.lake_spacies;
+                            var fishSpacies = storeData.getData(true).loginData.lake_spacies;
 
                             for (var i = 0; i < lake_amenites.length; i++) {
                                 if (lake_amenites[i]['active']) {
@@ -163,8 +171,21 @@ app.config(['$routeProvider',"$keyboardProvider",
                             }
                             postData['fishing_type'] = fishType.join();
 
-                        } else if ($route.current.params.id == "recentitems") {
+                        } else if ($route.current.params.id == "quickSearch") {
+
+                            var fishType = []
+                            for (var i = 0; i < tabs.length; i++) {
+                                if (!tabs[i]['state']) {
+                                    fishType.push(tabs[i]['id']);
+                                }
+                            }
+                            postData['fishing_type'] = fishType.join();
+
+                        }
+                        else if ($route.current.params.id == "recentitems") {
+
                             postData['lake_ids'] = $.parseJSON(localFactory.getLocalItem('recent_items'))['value'].join();
+
                         } else if ($route.current.params.id != "nearby") {
 
                             postData['cat_id'] = $route.current.params.id;
@@ -209,10 +230,29 @@ app.config(['$routeProvider',"$keyboardProvider",
                     }
                 }
             })
-            .when('/booking', {
+            .when('/booking/:id', {
                 title: 'Booking',
                 templateUrl:'view/booking.html',
-                controller :'bookingCtrl'
+                controller: 'bookingCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var postData = {lake_id: $route.current.params.id};
+                        var lakeCategory = localFactory.post('lake_details', postData);
+                        lakeCategory.success(function (data) {
+                            defer.resolve(data);
+                            localFactory.unload();
+                        });
+
+                        lakeCategory.error(function (data, status, headers, config) {
+                            defer.reject(data);
+                            localFactory.unload();
+                        });
+
+                        return defer.promise;
+                    }
+                }
             })
             .when('/review/:id', {
                 title: 'Review',
@@ -267,7 +307,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                 templateUrl:'view/checkin.html',
                 controller :'checkinCtrl'
             })
-            .when('/owner', {
+            .when('/owner/:id', {
                 title: 'Photos',
                 templateUrl:'view/lake-owner.html',
                 controller :'lakeOwner'
@@ -335,11 +375,11 @@ app.config(['$routeProvider',"$keyboardProvider",
                 controller: 'contactCtrl'
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: defaultPath
             });
     }]);
 app.value("keyboardHeight",0);
-app.run(['$location', '$rootScope','keyboardHeight',"$keyboard", function($location,$rootScope,keyboardHeight,$keyboard) {
+app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData) {
     $keyboard.restrictSpecialChar();
     $rootScope.stateHistory = [];
 
@@ -350,8 +390,64 @@ app.run(['$location', '$rootScope','keyboardHeight',"$keyboard", function($locat
     {
         window.history.back();
     }
+
+    $rootScope.fbLogin = function () {
+
+        $cordovaFacebook.getLoginStatus()
+            .then(function (success) {
+                console.log(success);
+
+                if (success.status == 'connected') {
+
+                    $location.path("home");
+
+                } else {
+
+                    $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+                        .then(function (success) {
+                            console.log(success);
+                            var credential = {
+                                email_id: success.email,
+                                facebook_id: success.id,
+                                first_name: success.first_name,
+                                last_name: success.last_name,
+                                fb_url: success.link
+                            };
+                            var login = localFactory.post('login', credential);
+                            login.success(function (data) {
+                                localFactory.unload();
+
+                                if (data.result) {
+
+                                    data['loginType'] = '1';// login type 1 means fb
+                                    var objData = {loginData: data};
+                                    storeData.setData(objData);
+                                    $location.path("home");
+
+                                } else {
+
+                                    localFactory.alert(data.msg, function () {
+
+                                    }, "Message", 'OK');
+                                }
+
+                            });
+
+                            login.error(function (data, status, headers, config) {
+                                localFactory.unload();
+                            });
+
+                        }, function (error) {
+                            // error
+                        });
+                }
+            }, function (error) {
+                console.log(error);
+            });
+    }
+
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-        $rootScope.anim = current.$$route.animation;
+        //$rootScope.anim = current.$$route.animation;
         $rootScope.title = current.$$route.title;
         console.log(current.$$route.title);
     });
@@ -377,47 +473,6 @@ function backKeyDown()
         navigator.app.exitApp();
 
     }else{
-
         window.history.back();
     }
 }
-
-
-/*
- app.animation('.page-size', function() {
- return {
- enter: function(element, done) {
-
- $(element).addClass('slideup');
- //run the animation here and call done when the animation is complete
- return function(cancelled) {
- //this (optional) function will be called when the animation
- //completes or when the animation is cancelled (the cancelled
- //flag will be set to true if cancelled).
- };
- },
- leave: function(element, done) {
-
- },
- move: function(element, done) {
-
- },
- //animation that can be triggered before the class is added
- beforeAddClass: function(element, className, done) {
-
- },
-
- //animation that can be triggered after the class is added
- addClass: function(element, className, done) {
-
- },
- //animation that can be triggered before the class is removed
- beforeRemoveClass: function(element, className, done) {
-
- },
- //animation that can be triggered after the class is removed
- removeClass: function(element, className, done) {
-
- }
- };
- });*/

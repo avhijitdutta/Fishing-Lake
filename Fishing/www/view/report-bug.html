@@ -12,41 +12,31 @@
 
         <div class="form">
             <div class="fld select">
-                <select name="select" id="select">
-                    <option>The bug I have found relates to...</option>
-                    <option>Logging in</option>
-                    <option>Lakes Pages</option>
-                    <option>Payment Systems</option>
-                    <option>Search Functions</option>
-                    <option>Claim my lake systems</option>
-                    <option>Contact forms</option>
-                    <option>Bookmarks</option>
-                    <option>Other</option>
+                <select name="select" ng-options="obj.name for obj in options track by obj.id" ng-model="feedBackType">
                 </select>
             </div>
 
             <div class="row-chk">
                 <div class="l">This has happened only once</div>
-                <div class="chk-box"></div>
+                <div class="chk-box" ng-click="toggleChecked()" ng-class="{'checked':happen_time}"></div>
                 <div class="clr"></div>
             </div>
             <div class="row-chk">
-                <div class="l">I have been able to repeat this bug by following
-                    the steps below
+                <div class="l">I have been able to repeat this bug by following the steps below
                 </div>
-                <div class="chk-box checked"></div>
                 <div class="clr"></div>
             </div>
 
             <div class="fld">
-                <textarea name="textarea" id="textarea" cols="45" rows="5">Write about the bug here. Please be as
-                    detailed as possible, and if you can tell us exactly what you were doing/did when you found the bug.
-                </textarea>
+                <textarea name="textarea" id="textarea" cols="45" rows="5" ng-model="feedback"
+                          placeholder="Write about the bug here. Please be as detailed as possible, and if you can tell us exactly what you were doing/did when you found the bug."> </textarea>
             </div>
 
             <div class="upload">
                 <div class="l">Where appropriate, please upload a screenshot of the bug you found.</div>
-                <div class="btn-upload"><img src="images/ico-upload.png" alt="">Upload a screenshot</div>
+                <div class="btn-upload" ng-click="uploadImg()"><img src="images/ico-upload.png" alt="">Upload a
+                    screenshot
+                </div>
             </div>
         </div>
 

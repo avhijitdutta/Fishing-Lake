@@ -12,5 +12,7 @@
 	<preference name="fullscreen" value="false" />
 	<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     <content src="index.html" />
+	<access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="mailto:*" />
     <access origin="*" />
 </widget>

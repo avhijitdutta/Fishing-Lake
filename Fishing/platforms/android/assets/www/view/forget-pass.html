@@ -1,16 +1,19 @@
 <div class="page">
- <div class="signup">
-<div class="signup-heading">
-  Forgot Password <div class="cross" ng-click="goBack()"><img alt="" src="images/arrow-back.png"></div></div>
- <div class="signin-form">
-   <form name="form" class="css-form" novalidate ng-submit="submitForm(userForm.$valid)">
-       <div class="row">
-         <input type="email" name="forgotPass" placeholder="Email" ng-model="forgotPass" required>
-         <div class="clr"></div>
-       </div>
-       <button class="btn-create-account" type="submit" ng-disabled="userForm.$invalid">Send</button>
-   </form>
- </div>
+    <div class="signup">
+        <div class="signup-heading">
+            Forgot Password
+            <div class="cross" ng-click="goBack()"><img alt="" src="images/arrow-back.png"></div>
+        </div>
+        <div class="signin-form">
+            <form name="userForm" class="css-form" novalidate ng-submit="submitForm(userForm.$valid)">
+                <div class="row">
+                    <input type="email" name="email_id" placeholder="Email" ng-model="user.email_id" required>
 
- </div>
+                    <div class="clr"></div>
+                </div>
+                <button class="btn-create-account" type="submit">Send</button>
+            </form>
+        </div>
+
+    </div>
 </div>

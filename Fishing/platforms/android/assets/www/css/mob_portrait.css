@@ -54,7 +54,7 @@
     }
 
     .ncr-header td .header-tag .msg {
-        left: 6%;
+        left: 20%;
         width: 18px;
         height: 18px;
         font-size: 15px;
@@ -599,7 +599,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-three .map-content {
-        height: 100px;
+        height: 105px;
         font-size: 18px;
         padding: 0 20px;
     }
@@ -733,7 +733,7 @@
     }
 
     .booking .dates {
-        padding: 20px 10px 20px 10px;
+        padding: 0px 0px 20px 0px;;
     }
 
     .booking .confrmnt {
@@ -1023,7 +1023,15 @@
 
     /*suggest-location*/
     .ncr-content.suggest-location {
-        bottom: 105px;
+        bottom: 95px;
     }
 
+    .btn-updated{
+        padding: 8px;
+        width: 23%;
+    }
+
+    .btn-updated img {
+        width: 14px;
+    }
 }

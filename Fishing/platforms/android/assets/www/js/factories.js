@@ -30,8 +30,7 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
     localFactory.isMobile = true;
     
     localFactory.flushables = [];
-//    localFactory.flushables.push('device_id');
-//    localFactory.flushables.push('os_type');
+
 
     localFactory.post = function(slug,dataPost){
         localFactory.checkInternet();
@@ -41,9 +40,7 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
             data: $.param(dataPost),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
-        //.success(function(data){
-         //   return data;
-        //})
+
         http.error(function(data, status, headers, config) {
             localFactory.unload();
             console.debug("Error Status : ", status);
@@ -60,11 +57,9 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
             url: webservice.getService(slug),
             data: $.param(dataGet)
         });
-        //.success(function(data){
-        //return data;
-        // });
+
         http.error(function(data, status, headers, config) {
-             localFactory.unload();
+            localFactory.unload();
             console.debug("Error Status : ", status);
         });
         return http;
@@ -86,8 +81,7 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
             console.log('Error',error.message);
         }
     };
-    localFactory.setLocalItem = function(key,value,removable){
-        localFactory.flushables[key] = removable;
+    localFactory.setLocalItem = function (key, value) {
         window.localStorage.setItem(key, value);
     };
     localFactory.getLocalItem = function(key){
@@ -226,6 +220,8 @@ app.factory("localFactory", ['$http','webservice' ,function($http,webservice){
         }
         return true;
     };
+
+
     localFactory.arrMonth=["JAN","FEV","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
     localFactory.arrDay=["SUN","MON","TUE","WED","THU","FRI","SAT","SUN"];
     return localFactory;

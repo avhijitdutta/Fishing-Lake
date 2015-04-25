@@ -2,10 +2,7 @@ D:\Client Project\Fishing\Fishing\platforms\android\ant-build\CordovaApp-debug-u
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\CordovaApp.ap_ \
 D:\Client Project\Fishing\Fishing\platforms\android\ant-build\classes.dex \
 D:\workspace\chatapp\platforms\android\CordovaLib\ant-build\classes.jar \
-D:\Client Project\Fishing\Fishing\platforms\android\libs\google-play-services.jar \
-D:\Client Project\Fishing\Fishing\platforms\android\libs\android-support-v4.jar \
 D:\Client Project\Fishing\Fishing\platforms\android\libs\PayPalAndroidSDK-2.8.8.jar \
-D:\Client Project\Fishing\Fishing\platforms\android\libs\google-volley.jar \
 D:\Client Project\Fishing\Fishing\platforms\android\libs\arm64-v8a\libcardioDecider.so \
 D:\Client Project\Fishing\Fishing\platforms\android\libs\armeabi\libcardioDecider.so \
 D:\Client Project\Fishing\Fishing\platforms\android\libs\armeabi-v7a\libcardioDecider.so \

@@ -4048,3 +4048,36 @@ label.css-label {
     -webkit-animation-name: slideOutDown;
     animation-name: slideOutDown;
 }
+
+html, body, #map-canvas, #map_canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+#map_canvas {
+    height: 90px;
+}
+
+.pac-container {
+    font-family: Roboto;
+}
+
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.location {
+    height: 33px;
+    width: 100%;
+    background: #0b4a4d;
+    color: #fff;
+}

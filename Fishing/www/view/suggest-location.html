@@ -12,25 +12,31 @@
         <div class="form">
             <div class="fld">
                 <div class="icon"></div>
-                <input type="text" value="Current Location"/>
+                <input type="text" ng-model="address" id="pac-input" class="controls" placeholder="Current Location"/>
 
-                <div class="cross"><img src="images/search-cross.png" alt=""></div>
+                <div class="cross" ng-click="resetAddress()"><img src="images/search-cross.png" alt=""></div>
             </div>
 
             <div class="fld">
-                The name of this location is...
-                <div class="cross"><img src="images/search-cross.png" alt=""></div>
+                <input type="text" ng-model="locationName" placeholder="Name of the location"/>
+
+                <div class="cross" ng-click="locationName=''"><img src="images/search-cross.png" alt=""></div>
             </div>
 
 
-            <div class="btn-upload"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+            <div class="btn-upload" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo
+            </div>
 
 
             <div class="share-with">Share with <img src="images/ico-twitter.png" alt=""> <img src="images/ico-fb.png"
                                                                                               alt=""></div>
             <div class="map">
-                <div class="pointer"></div>
-                <img src="images/detail-map.png" alt=""></div>
+
+                <div class="pointer">
+
+                </div>
+                <div id="map_canvas"></div>
+            </div>
 
 
         </div>
