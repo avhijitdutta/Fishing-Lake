@@ -56,8 +56,8 @@
 <ng-include src="'templates/header.html'"></ng-include>
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-            <td>&nbsp;</td>
+        <tr>
+        <td>&nbsp;</td>
 
             <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
 
@@ -304,7 +304,7 @@
         <div class="collapsed-content" ng-show="isOpenTab(5)">
             <div class="row-review" ng-repeat="review in lakeDetail.lake_review">
                 <div class="review">
-                <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
+                    <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
                     <div class="stars">
                         <img src="images/star-review.png" alt="">
                         <img src="images/star-review.png" alt="">
@@ -372,7 +372,7 @@
 
             <div class="row-venue" ng-repeat="row in lakeDetail.other_lake" stop-event='click'
                  ng-click="showLakeDetail(row.id)">
-                <div class="vote"><strong>{{row.rate}}</strong>
+            <div class="vote"><strong>{{row.rate}}</strong>
 
                     <div class="no">{{row.total_vote}} Votes</div>
                 </div>

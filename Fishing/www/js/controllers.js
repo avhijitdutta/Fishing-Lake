@@ -1141,19 +1141,20 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.list_rules = $scope.lakeData.list_rules;
     $scope.list_amenitites = $scope.lakeData.list_amenitites;
 
-    for (var i = 0; i < $scope.list_rules; i++) {
-        if ($scope.list_rules[i]['rule_id']) {
-            $scope.list_rules['active'] = true;
+    for (var i = 0; i < $scope.list_rules.length; i++) {
+        if ($scope.list_rules[i]['rule_id'] != "") {
+
+            $scope.list_rules[i]['active'] = true;
         } else {
-            $scope.list_rules['active'] = false;
+            $scope.list_rules[i]['active'] = false;
         }
     }
 
-    for (var i = 0; i < $scope.list_amenitites; i++) {
-        if ($scope.list_amenitites[i]['amenitites_id']) {
-            $scope.list_rules['active'] = true;
+    for (var i = 0; i < $scope.list_amenitites.length; i++) {
+        if ($scope.list_amenitites[i]['amenitites_id'] != "") {
+            $scope.list_amenitites[i]['active'] = true;
         } else {
-            $scope.list_rules['active'] = false;
+            $scope.list_amenitites[i]['active'] = false;
         }
     }
 
@@ -1174,6 +1175,28 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         ];
     $scope.formData['lake_image'] = $scope.lakeData.lake_image;
 
+    $scope.lakeTimeing = [];
+
+    for (var i = 0; i < $scope.lakeData.lake_timing.length; i++) {
+
+        var openHours = (parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) - 12 : parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1));
+        var openMinutes = parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(3));
+        var openMidday = ((parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? "PM" : "AM");
+
+        var closeHours = (parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1)) > 12) ? parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1)) - 12 : parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1));
+        var closeMinutes = parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(3));
+        var closeMidday = ((parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? "PM" : "AM");
+        var is_close = ($scope.lakeData.lake_timing[i]['is_close'] == 1) ? true : false;
+
+        var temp = {};
+        temp['Opening'] = {hours: openHours, minutes: openMinutes, midday: openMidday, close: is_close};
+        temp['name'] = $scope.lakeData.lake_timing[i]['day'];
+        temp['Closing'] = {hours: closeHours, minutes: closeMinutes, midday: closeMidday, close: is_close};
+        $scope.lakeTimeing.push(temp);
+    }
+
+    $scope.formData['lake_timing'] = $scope.lakeTimeing;
+    console.log($scope.formData['lake_timing']);
     $scope.itemActive=function(item,facilites)
     {
         var length=facilites.length;
@@ -1237,23 +1260,15 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         }
     }
 
-    //right panel open clock
 
-    $scope.days=[
-        {name:"Monday",Opening:{hours:08,minutes:10,midday:"AM"},Closing:{hours:08,minutes:10,midday:"AM"},close:false},
-        {name:"Tuesday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Wednesday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Thursday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Friday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:true},
-        {name:"Saturday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Sunday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false}
-    ]
+    $scope.days = $scope.formData['lake_timing'];
 
 
     $scope.rightPanelTime=false;
     $scope.selectedTime={};
     $scope.addTime=function(days,isOpening)
     {
+
         if(isOpening)
         {
             $scope.selectedTime=days.Opening;
@@ -1272,9 +1287,18 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         }
     }
 
+    $scope.CloseDate = function () {
+        console.log($scope.selectedTime);
+    }
+
     $scope.hidePanelTime=function()
     {
         $scope.rightPanelTime=false;
+    }
+
+    $scope.updateOpening = function () {
+
+        $scope.rightPanelTime = false;
     }
 
     $scope.increseTime=function(isHours,isPlus)
@@ -1331,19 +1355,6 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         }
     }
 
-    $scope.contactDetailModel={};
-
-    $scope.updateContactDetail=function()
-    {
-        console.log($scope.contactDetailModel);
-    }
-
-    $scope.updateOpening=function()
-    {
-        console.log($scope.contactDetailModel);
-    }
-    //end of contact details model
-
     //right panel add another lake
     $scope.rightPanelLake=false;
     $scope.showRightLake=function()
@@ -1385,11 +1396,6 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.removePhoto=function(value)
     {
         $scope.photoList.removeValue('id',value.id);
-    }
-
-    $scope.uploadImage=function()
-    {
-
     }
 
     //lakelist details
@@ -1462,6 +1468,55 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.bookNow = function () {
 
         console.log($scope.formData);
+    }
+
+    $scope.uploadImg = function (thmbImg) {
+
+        var options = {
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            $scope.imageURI = imageURI;
+            localFactory.load();
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_lake_image';
+            var options = new FileUploadOptions();
+            options.fileKey = "lake_img";
+            options.fileName = $scope.imageURI.substr($scope.imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.user_no = storeData.getData().loginData.user_details.user_no;
+            params.lake_id = $scope.lakeId;
+
+            options.params = params;
+
+            $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
+                .then(function (result) {
+                    localFactory.unload();
+                    localFactory.alert('Image uploaded successfully', function () {
+
+                    }, "Message", 'OK');
+
+                    $location.path('home');
+
+                }, function (err) {
+
+                    console.log("error");
+                    console.log(err);
+
+                }, function (progress) {
+
+                    console.log("constant progress updates");
+                    console.log(progress);
+                });
+
+        }, function (err) {
+            console.log(err);
+        });
     }
 
 }]);
