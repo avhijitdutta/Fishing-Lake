@@ -758,12 +758,18 @@
         height: 18px;
         font-size: 15px;
     }
-    .btn-updated{
+
+    .btn-updated {
         padding: 8px;
         width: 23%;
     }
 
     .btn-updated img {
         width: 14px;
+    }
+
+    .pop-filter.add-lake .inner-content .info {
+        font-size: 12px;
+        background-size: 34px;
     }
 }

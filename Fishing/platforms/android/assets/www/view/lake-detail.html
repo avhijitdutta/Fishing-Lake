@@ -57,7 +57,7 @@
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td>&nbsp;</td>
+        <td>&nbsp;</td>
 
             <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
 
@@ -71,13 +71,13 @@
 <!-------------- ncr-content start-------------------->
 <div class="ncr-content detail heading-space no-footer">
 <div class="detail-img">
-<img src="images/listing_img1.jpg" alt="">
-
+<img ng-src="{{lakeDetail.profile_pic}}" alt="">
 <div class="img-content">
     <div class="left-content">
         <div class="name">{{lakeDetail.lake_category.leke_name}}</div>
         {{lakeDetail.lake_category.town }}<br>
-        <a href="#/review/{{lakeDetail.lake_category.id}}" class="reviews">{{lakeDetail.lake_category.total_review}} Reviews</a>
+        <a href="#/review/{{lakeDetail.lake_category.id}}" class="reviews">{{lakeDetail.lake_category.total_review}}
+            Reviews</a>
 
         <p>Day tickets from</p>
 
@@ -128,9 +128,7 @@
 
             <li>
                 <span style="color:#128b91;">Details</span><br>
-                Course Fishing<br>
-                Specimen Carp<br>
-                5 Acre Lake <br>
+                {{lakeDetail.lake_category.desc}}
                 <span><img src="images/ico-wheel-chair.png" alt=""></span>
                 <span><img src="images/ico-men-women.png" alt=""></span>
                 <span><img src="images/ico-private.png" alt=""></span>
@@ -139,7 +137,7 @@
         <div class="clr"></div>
     </div>
     <div class="part-three map">
-       <!-- <img src="images/detail-map.png" alt="">-->
+        <!-- <img src="images/detail-map.png" alt="">-->
         <div id="map-canvas"></div>
         <div class="map-content">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -266,7 +264,8 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(4)">
             <tr>
                 <td><h1 class="one"><span>Contact Details</span></h1></td>
-                <td class="right-img"><img alt=""  ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}">
+                <td class="right-img"><img alt=""
+                                           ng-class="{'active-tab-img':isOpenTab(4),'deactive-tab-img':!isOpenTab(4)}">
                 </td>
             </tr>
         </table>
@@ -304,21 +303,24 @@
                 <div class="review">
                     <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
                     <div class="stars">
-                        <img src="images/star-review.png" alt="">
-                        <img src="images/star-review.png" alt="">
-                        <img src="images/star-review.png" alt="">
-                        <img src="images/star-off-review.png" alt="">
-                        <img src="images/star-off-review.png" alt=""></div>
+                    <img src="images/star-review.png" alt="">
+                    <img src="images/star-review.png" alt="">
+                    <img src="images/star-review.png" alt="">
+                    <img src="images/star-off-review.png" alt="">
+                    <img src="images/star-off-review.png" alt=""></div>
                     <div class="clr"></div>
                 </div>
                 <div class="comment">
                     {{review.review}}
                 </div>
             </div>
-            <div class="btn-rnw-review" ng-click="showReview(lakeDetail.lake_category.id)"><img src="images/ico-morereview.png"> Read more reviews
+            <div class="btn-rnw-review" ng-click="showReview(lakeDetail.lake_category.id)"><img
+                    src="images/ico-morereview.png"> Read more reviews
 
             </div>
-            <div class="btn-rnw-review war" ng-click="showRate()"><img src="images/ico-writereview.png" alt=""> Write a Review</div>
+            <div class="btn-rnw-review war" ng-click="showRate()"><img src="images/ico-writereview.png" alt=""> Write a
+                Review
+            </div>
         </div>
     </div>
 </div>
@@ -339,11 +341,13 @@
             <div class="photos">
                 <div class="thumb" ng-repeat="image in lakeDetail.lake_image"><img ng-src="{{image.url}}" alt=""></div>
             </div>
-            <div class="btn-rnw-review" ng-click="showMorePhoto(lakeDetail.lake_category.id)"><img src="images/ico-morereview.png"
+            <div class="btn-rnw-review" ng-click="showMorePhoto(lakeDetail.lake_category.id)"><img
+                    src="images/ico-morereview.png"
                                                                                      alt=""> See more
                 photos
             </div>
-            <div class="btn-rnw-review" ng-click="uploadImg()"><img src="images/ico-upload.png" alt=""> Upload a photo</div>
+            <div class="btn-rnw-review" ng-click="uploadImg()"><img src="images/ico-upload.png" alt=""> Upload a photo
+            </div>
         </div>
     </div>
 </div>
@@ -356,15 +360,15 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td><h1 class="one"><span>Other Lakes at this Venue</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}"
-                                           alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}" alt=""></td>
             </tr>
         </table>
 
         <div class="collapsed-content" ng-show="isOpenTab(7)">
 
-            <div class="row-venue" ng-repeat="row in lakeDetail.other_lake" stop-event='click' ng-click="showLakeDetail(row.id)">
-                <div class="vote"><strong>{{row.rate}}</strong>
+            <div class="row-venue" ng-repeat="row in lakeDetail.other_lake" stop-event='click'
+                 ng-click="showLakeDetail(row.id)">
+            <div class="vote"><strong>{{row.rate}}</strong>
 
                     <div class="no">{{row.total_vote}} Votes</div>
                 </div>

@@ -1,0 +1,32 @@
+<div class="page">
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content tagimg">
+        <div class="checkin-heading" align="center">
+            Publish
+        </div>
+
+        <div class="attach-photo"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+        <div class="checked-in">
+            <img src="images/user-photo.jpg" alt="">
+        </div>
+
+        <div class="form">
+            <div class="note">Tag a Lake</div>
+            <div class="row">
+                <input type="email" name="confirm_email" placeholder="Tap to search" ng-model="user.confirm_email"
+                       required match="user.email_id">
+
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"
+                                                ng-click="toggleSocial(item)"></div>
+    </div>
+    <!-------------- ncr-content end-------------------->
+
+
+    <!-------------- ncr-footer -------------------->
+    <ng-include src="'templates/footer.html'"></ng-include>
+</div>

@@ -71,7 +71,7 @@
 <!-------------- ncr-content start-------------------->
 <div class="ncr-content detail heading-space no-footer">
 <div class="detail-img">
-<img src="images/listing_img1.jpg" alt="">
+<img ng-src="{{lakeDetail.profile_pic}}" alt="">
 
 <div class="img-content">
     <div class="left-content">
@@ -129,9 +129,7 @@
 
             <li>
                 <span style="color:#128b91;">Details</span><br>
-                Course Fishing<br>
-                Specimen Carp<br>
-                5 Acre Lake <br>
+                {{lakeDetail.lake_category.desc}}
                 <span><img src="images/ico-wheel-chair.png" alt=""></span>
                 <span><img src="images/ico-men-women.png" alt=""></span>
                 <span><img src="images/ico-private.png" alt=""></span>
@@ -140,12 +138,11 @@
         <div class="clr"></div>
     </div>
     <div class="part-three map">
-        <!-- <img src="images/detail-map.png" alt="">-->
         <div id="map-canvas"></div>
         <div class="map-content">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><img src="images/ico-direction-arrow.png" alt=""></td>
+                    <td ng-click="showDirection()"><img src="images/ico-direction-arrow.png" alt=""></td>
                     <td>1.3km</td>
                 </tr>
                 <tr>

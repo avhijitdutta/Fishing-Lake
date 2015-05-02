@@ -50,26 +50,26 @@ Array.prototype.removeValue = function(name, value){
 }
 
 var currentPage="";
-var defaultPath="/signup";
+var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing',['ngRoute','ngAnimate','ui.calendar',"ngTouch","page","keyboard","validation.match","RatingApp","nvKeyboard",'ngCordova']);
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova']);
 app.config(['$routeProvider',"$keyboardProvider",
     function($routeProvider,$keyboardProvider) {
         $keyboardProvider.init({
-            scrollPaneID: '#scroll',
-            headerID: false,
+            scrollPaneID: '.scroll',
+            headerID: '.ncr-header',
             bodyID: '.page',
-            footerID: false,
+            footerID: '.ncr-footer',
             binders : 'input[type="text"],textarea,input[type="password"],input[type="tel"],input[type="email"]'
         });
 
-        if(window.localStorage.getItem('loginData') && window.localStorage.getItem('loginData')!="" && window.localStorage.getItem('loginData')!=null){
+        if (window.localStorage.getItem('loginData') && window.localStorage.getItem('loginData') != "" && window.localStorage.getItem('loginData') != null) {
 
-            defaultPath="/home";
+            defaultPath = "/home";
         }
 
         $routeProvider.
-            when("/signup",{
+            when("/signup", {
                 title:"Sign Up",
                 animation: "slide",
                 templateUrl:"view/signup.html",
@@ -133,8 +133,9 @@ app.config(['$routeProvider',"$keyboardProvider",
 
                         //cat_id=1&user_no=1&fishing_type=1&fish_spacies=1&fish_rules=1&lake_amenitites=1&latitude=56.939191&longitude=23.989926
                         var postData = {latitude: 56.939191, longitude: 23.989926};
-                        /*postData={}
-                        postData = storeData.getData()['latLong'];*/
+                      /*  var postData={};*/
+
+                       /* postData = storeData.getData()['latLong'];*/
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
 
@@ -171,7 +172,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                             }
                             postData['fishing_type'] = fishType.join();
 
-                        }else if($route.current.params.id == "quickSearch"){
+                        } else if ($route.current.params.id == "quickSearch") {
 
                             var fishType = []
                             for (var i = 0; i < tabs.length; i++) {
@@ -233,7 +234,7 @@ app.config(['$routeProvider',"$keyboardProvider",
             .when('/booking/:id', {
                 title: 'Booking',
                 templateUrl:'view/booking.html',
-                controller :'bookingCtrl',
+                controller: 'bookingCtrl',
                 resolve: {
                     homeData: function ($route, $q, localFactory) {
                         localFactory.load();
@@ -308,7 +309,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                 controller :'checkinCtrl'
             })
             .when('/owner/:id', {
-                title: 'Photos',
+                title: 'Lake Owner',
                 templateUrl:'view/lake-owner.html',
                 controller :'lakeOwner'
             })
@@ -347,7 +348,26 @@ app.config(['$routeProvider',"$keyboardProvider",
             .when('/mytickets', {
                 title: 'My Tickets',
                 templateUrl: 'view/my-tickets.html',
-                controller: 'myTicketCtrl'
+                controller: 'myTicketCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory, storeData) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var postData = {};
+                        postData['user_no'] = storeData.getData().loginData.user_details.user_no;
+                        var myBookMark = localFactory.post('past_future_ticket', postData);
+                        myBookMark.success(function (data) {
+                            defer.resolve(data);
+                            localFactory.unload();
+                        });
+
+                        myBookMark.error(function (data, status, headers, config) {
+                            defer.reject(data);
+                            localFactory.unload();
+                        });
+                        return defer.promise;
+                    }
+                }
             })
             .when('/connectac', {
                 title: 'Connect Account',
@@ -379,7 +399,7 @@ app.config(['$routeProvider',"$keyboardProvider",
             });
     }]);
 app.value("keyboardHeight",0);
-app.run(['$location', '$rootScope','keyboardHeight',"$keyboard",'$cordovaFacebook','localFactory','storeData', function($location,$rootScope,keyboardHeight,$keyboard,$cordovaFacebook,localFactory,storeData) {
+app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData) {
     $keyboard.restrictSpecialChar();
     $rootScope.stateHistory = [];
 
@@ -391,27 +411,27 @@ app.run(['$location', '$rootScope','keyboardHeight',"$keyboard",'$cordovaFaceboo
         window.history.back();
     }
 
-    $rootScope.fbLogin=function(){
+    $rootScope.fbLogin = function () {
 
         $cordovaFacebook.getLoginStatus()
-            .then(function(success) {
+            .then(function (success) {
                 console.log(success);
 
-                if(success.status=='connected'){
+                if (success.status == 'connected') {
 
                     $location.path("home");
 
-                }else {
+                } else {
 
-                    $cordovaFacebook.login(["public_profile","email","user_friends"])
+                    $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                         .then(function (success) {
                             console.log(success);
                             var credential = {
                                 email_id: success.email,
-                                facebook_id:success.id,
-                                first_name:success.first_name,
-                                last_name:success.last_name,
-                                fb_url:success.link
+                                facebook_id: success.id,
+                                first_name: success.first_name,
+                                last_name: success.last_name,
+                                fb_url: success.link
                             };
                             var login = localFactory.post('login', credential);
                             login.success(function (data) {
@@ -419,7 +439,7 @@ app.run(['$location', '$rootScope','keyboardHeight',"$keyboard",'$cordovaFaceboo
 
                                 if (data.result) {
 
-                                    data['loginType']='1';// login type 1 means fb
+                                    data['loginType'] = '1';// login type 1 means fb
                                     var objData = {loginData: data};
                                     storeData.setData(objData);
                                     $location.path("home");

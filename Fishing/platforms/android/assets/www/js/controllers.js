@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$timeout', '$route','$cordovaGeolocation','storeData', function ($rootScope, $scope, $location, localFactory, $timeout, $route,$cordovaGeolocation,storeData) {
+app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$timeout', '$route', '$cordovaGeolocation', 'storeData', function ($rootScope, $scope, $location, localFactory, $timeout, $route, $cordovaGeolocation, storeData) {
     currentPage="homeCtrl";
     storeData.setData(storeData.getData());
     $scope.tabs = tabs;
@@ -41,23 +41,22 @@ app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory',
         .getCurrentPosition(posOptions)
         .then(function (position) {
 
-            var latLong={latLong:{latitude:position.coords.latitude,longitude:position.coords.longitude}};
+            var latLong = {latLong: {latitude: position.coords.latitude, longitude: position.coords.longitude}};
             storeData.setData(latLong);
             localFactory.unload();
-        }, function(err)
-        {
+        }, function (err) {
             localFactory.unload();
             alert(err);
 
         });
 }]);
 
-app.controller('searchCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', 'storeData','$cordovaGeolocation', function ($rootScope, $scope, $location, localFactory, $route, storeData,$cordovaGeolocation) {
+app.controller('searchCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', 'storeData', '$cordovaGeolocation', function ($rootScope, $scope, $location, localFactory, $route, storeData, $cordovaGeolocation) {
     currentPage="searchCtrl";
     $scope.is_search = true;
     $scope.tabs = tabs;
-    $scope.lat="";
-    $scope.long="";
+    $scope.lat = "";
+    $scope.long = "";
     $scope.filterOptions=[
         {
             id: 3,
@@ -159,42 +158,43 @@ app.controller('searchCtrl', ['$rootScope', '$scope', '$location', 'localFactory
         }
     }
 
-    var latLong={};
-    $scope.address="";
+    var latLong = {};
+    $scope.address = "";
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
     $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
 
-            latLong={latLong:{latitude:position.coords.latitude,longitude:position.coords.longitude}};
+            latLong = {latLong: {latitude: position.coords.latitude, longitude: position.coords.longitude}};
             storeData.setData(latLong);
-            var input =(document.getElementById('location-search'));
+            var input = (document.getElementById('location-search'));
             var autocomplete = new google.maps.places.Autocomplete(input);
 
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
                 if (!place.geometry) {
                     return;
                 }
-                var latLong={latLong:{latitude:place.geometry.location.lat(),longitude:place.geometry.location.lng()}};
+                var latLong = {latLong: {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()}};
                 storeData.setData(latLong);
             });
 
-        }, function(err)
-        {
+        }, function (err) {
             alert(err);
         });
 
-    $scope.resetLocation=function(){
+    $scope.resetLocation = function () {
         storeData.setData(latLong);
-        $scope.address="";
+        $scope.address = "";
     }
 }]);
 
-app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$compile', "uiCalendarConfig",'storeData','$routeParams','$route','paypal', function ($rootScope, $scope, $location, localFactory, $compile, uiCalendarConfig,storeData,$routeParams,$route,paypal) {
+app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$compile', "uiCalendarConfig", 'storeData', '$routeParams', '$route', 'paypal', function ($rootScope, $scope, $location, localFactory, $compile, uiCalendarConfig, storeData, $routeParams, $route, paypal) {
     currentPage="bookingCtrl";
     paypal.init();
-    $scope.selectedLake= $route.current.locals.homeData.lake_category;
+    $scope.lakeDetails=$route.current.locals.homeData;
+    $scope.selectedLake = $route.current.locals.homeData.lake_category;
+    console.log( $scope.lakeDetails);
     $scope.date="None Selected";
     $scope.totalPrice=0;
     $scope.ticket="";
@@ -234,18 +234,20 @@ app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
     $scope.tab = 1;
 
-    $scope.arrPrices=[
-        {price_id:1,price_name:"Day",price:5.53,qty:0,totalPrice:0.00},
-        {price_id:2,price_name:"Child",price:2.33,qty:0,totalPrice:0.00}
-    ]
+    $scope.arrPrices=$scope.lakeDetails.lake_pricing;
 
-    $scope.totalPrice=0.00;
+    for(var i=0;i<$scope.arrPrices.length;i++){
+        $scope.arrPrices[i]['qty']=0;
+        $scope.arrPrices[i]['totalPrice']=0.00
+    }
+
+    $scope.totalPrice = 0.00;
     $scope.qtyPlusMin=function(id,sign){
         $scope.ticket="";
-        $scope.totalPrice=0.00;
+        $scope.totalPrice = 0.00;
         for(var i=0;i<$scope.arrPrices.length;i++)
         {
-            if($scope.arrPrices[i]['price_id']==id)
+            if ($scope.arrPrices[i]['price_id'] == id)
             {
                 if(sign==1)
                 {
@@ -258,14 +260,14 @@ app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactor
                         $scope.arrPrices[i]['qty']=$scope.arrPrices[i]['qty']-1;
                     }
                 }
-                $scope.arrPrices[i]['totalPrice']=parseInt($scope.arrPrices[i]['qty'])*parseFloat($scope.arrPrices[i]['price']);
+                $scope.arrPrices[i]['totalPrice'] = parseInt($scope.arrPrices[i]['qty']) * parseFloat($scope.arrPrices[i]['price']);
             }
 
-            $scope.totalPrice=(parseFloat($scope.arrPrices[i]['totalPrice'])+parseFloat($scope.totalPrice)).toFixed(2);
+            $scope.totalPrice = (parseFloat($scope.arrPrices[i]['totalPrice']) + parseFloat($scope.totalPrice)).toFixed(2);
 
             if($scope.arrPrices[i]['qty']>0)
             {
-                $scope.ticket+=$scope.arrPrices[i]['price_name']+" "+$scope.arrPrices[i]['qty']+",";
+                $scope.ticket += $scope.arrPrices[i]['description'] + " " + $scope.arrPrices[i]['qty'] + ",";
 
             }
         }
@@ -300,23 +302,21 @@ app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactor
     $scope.bookImg = "";
 
 
-
     //confirm ticket booking
     $scope.bookNow = function () {
 
-        var setData={
-            amount:$scope.totalPrice,
-            currencyType:"EUR",
-            marchentName:"Hot Fishing"
+        var setData = {
+            amount: $scope.totalPrice,
+            currencyType: "EUR",
+            marchentName: "Hot Fishing"
         }
 
         paypal.setData(setData);
-        var onSuccess=function(payment) {
+        var onSuccess = function (payment) {
             console.log(JSON.stringify(payment));
-            if(payment.response.state=='approved')
-            {
+            if (payment.response.state == 'approved') {
                 localFactory.load();
-                var postData = {lake_id: $routeParams.id, user_no: storeData.getData().loginData.user_details.user_no,date:$scope.date,json:JSON.stringify($scope.arrPrices)};
+                var postData = {lake_id: $routeParams.id, user_no: storeData.getData().loginData.user_details.user_no, date: $scope.date, json: JSON.stringify($scope.arrPrices)};
                 var bookMark = localFactory.post('lake_booking', postData);
                 bookMark.success(function (data) {
                     localFactory.unload();
@@ -331,11 +331,11 @@ app.controller('bookingCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
         }
 
-        var onCancel=function(result) {
+        var onCancel = function (result) {
 
         }
 
-        paypal.uiPayment(onSuccess,onCancel);
+        paypal.uiPayment(onSuccess, onCancel);
 
 
     }
@@ -391,7 +391,7 @@ app.controller('lakeListCtrl', ['$rootScope', '$scope', '$location', 'localFacto
 }]);
 
 
-app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory','$route','$routeParams','storeData',"$cordovaFileTransfer",'$cordovaCamera','$cordovaGeolocation', function($rootScope,$scope,$location,localFactory,$route,$routeParams,storeData,$cordovaFileTransfer,$cordovaCamera,$cordovaGeolocation){
+app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', '$routeParams', 'storeData', "$cordovaFileTransfer", '$cordovaCamera', '$cordovaGeolocation', function ($rootScope, $scope, $location, localFactory, $route, $routeParams, storeData, $cordovaFileTransfer, $cordovaCamera, $cordovaGeolocation) {
 
     $scope.lakeId=$routeParams.id;
     currentPage="lakeDetail";
@@ -425,13 +425,13 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
         }
     }
 
-    var obj={currentLake:$scope.lakeDetail};
+    var obj = {currentLake: $scope.lakeDetail};
     storeData.setData(obj);
 
     var map;
     var lakeLatLong;
     function initialize() {
-        lakeLatLong = new google.maps.LatLng($scope.lakeDetail.lake_category.latitude,$scope.lakeDetail.lake_category.longitude);
+        lakeLatLong = new google.maps.LatLng($scope.lakeDetail.lake_category.latitude, $scope.lakeDetail.lake_category.longitude);
         var mapOptions = {
             zoom: 4,
             center: lakeLatLong,
@@ -459,15 +459,14 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
             .getCurrentPosition(posOptions)
             .then(function (position) {
 
-                var current=new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 localFactory.unload();
                 plugin.google.maps.external.launchNavigation({
                     "from": current,
                     "to": lakeLatLong
                 });
 
-            }, function(err)
-            {
+            }, function (err) {
                 alert(err);
             });
 
@@ -491,12 +490,12 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
     $scope.bookNow=function()
     {
-        $location.path("booking/"+ $scope.lakeId);
+        $location.path("booking/" + $scope.lakeId);
     }
 
-    $scope.showOwner=function(id)
+    $scope.showOwner = function (id)
     {
-        $location.path("owner/"+id);
+        $location.path("owner/" + id);
     }
     //initiate an array to hold all active tabs
     $scope.activeTabs = [];
@@ -527,14 +526,14 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
     $scope.showLakeDetail = function (value) {
 
-        $location.path("lakeDetail/"+value);
+        $location.path("lakeDetail/" + value);
     }
 
     // Ask a question
     $scope.askquestion = "";
     $scope.postFaq = function () {
         if ($scope.askquestion != "") {
-            var postData = {lake_id: $scope.lakeDetail.id, user_no: 2, faq: $scope.askquestion};
+            var postData = {lake_id: $scope.lakeId, user_no: storeData.getData().loginData.user_details.user_no, faq: $scope.askquestion};
             var lakeTimeing = localFactory.post('post_faq', postData);
             lakeTimeing.success(function (data) {
                 console.log(data);
@@ -562,7 +561,7 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
     $scope.bookmark = function () {
 
-        var postData = {lake_id: $scope.lakeDetail.id, user_no: 2};
+        var postData = {lake_id: $scope.lakeId, user_no: storeData.getData().loginData.user_details.user_no};
         var bookMark = localFactory.post('favorite_lake', postData);
         bookMark.success(function (data) {
             localFactory.unload();
@@ -620,21 +619,21 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
     }
 
     /*show hide add review and */
-    $scope.reviewData="";
+    $scope.reviewData = "";
     $scope.showAddReview=false;
     $scope.addReview=function(){
         if($scope.showAddReview)
         {
-            if($scope.reviewData!=""){
+            if ($scope.reviewData != "") {
 
-                var postData = {lake_id: $scope.lakeDetail.id, user_no: storeData.getData().loginData.user_details.user_no,review:$scope.reviewData};
+                var postData = {lake_id: $scope.lakeDetail.id, user_no: storeData.getData().loginData.user_details.user_no, review: $scope.reviewData};
                 var bookMark = localFactory.post('post_review', postData);
                 bookMark.success(function (data) {
                     localFactory.unload();
                     if (data.result) {
 
-                        $scope.showAddReview=false;
-                        $scope.rightPanel=false; // filter out
+                        $scope.showAddReview = false;
+                        $scope.rightPanel = false; // filter out
 
                     } else {
 
@@ -745,7 +744,7 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
         }
     }
 
-    $scope.uploadImg=function(){
+    $scope.uploadImg = function () {
 
         var options = {
             destinationType: Camera.DestinationType.NATIVE_URI,
@@ -754,23 +753,23 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
             encodingType: Camera.EncodingType.JPEG
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageURI) {
-            $scope.imageURI=imageURI;
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            $scope.imageURI = imageURI;
             localFactory.load();
-            var serverURL='http://ncrts.com/fishing_lake/webservice/post_lake_image';
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_lake_image';
             var options = new FileUploadOptions();
-            options.fileKey="lake_img";
-            options.fileName=$scope.imageURI.substr($scope.imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
+            options.fileKey = "lake_img";
+            options.fileName = $scope.imageURI.substr($scope.imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
 
             var params = {};
             params.user_no = storeData.getData().loginData.user_details.user_no;
-            params.lake_id=$scope.lakeId;
+            params.lake_id = $scope.lakeId;
 
-                options.params = params;
+            options.params = params;
 
             $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
-                .then(function(result) {
+                .then(function (result) {
                     localFactory.unload();
                     localFactory.alert('Image uploaded successfully', function () {
 
@@ -778,7 +777,7 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
 
                     $location.path('home');
 
-                }, function(err) {
+                }, function (err) {
 
                     console.log("error");
                     console.log(err);
@@ -789,13 +788,13 @@ app.controller('lakeDetailCtrl',['$rootScope','$scope','$location','localFactory
                     console.log(progress);
                 });
 
-        }, function(err) {
+        }, function (err) {
             console.log(err);
         });
     }
 }]);
 
-app.controller('loginPageCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData','$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, storeData, $cordovaFacebook) {
+app.controller('loginPageCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', '$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, storeData, $cordovaFacebook) {
     $scope.submitForm = function() {
 
         // check to make sure the form is completely valid
@@ -809,7 +808,7 @@ app.controller('loginPageCtrl', ['$rootScope', '$scope', '$location', 'localFact
 
                 if (data.result) {
 
-                    data['loginType']=0;
+                    data['loginType'] = 0;
                     var objData = {loginData: data};
                     storeData.setData(objData);
                     $location.path("home");
@@ -874,7 +873,7 @@ app.controller('forgotPassCtrl',['$rootScope','$scope','$location','localFactory
 
 }]);
 
-app.controller('emailRegCtrl',['$rootScope','$scope','$location','localFactory','$cordovaFacebook', function($rootScope,$scope,$location,localFactory,$cordovaFacebook){
+app.controller('emailRegCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, $cordovaFacebook) {
 
     $scope.submitForm = function() {
         // check to make sure the form is completely valid
@@ -904,7 +903,7 @@ app.controller('emailRegCtrl',['$rootScope','$scope','$location','localFactory',
     };
 }]);
 
-app.controller('signupCtrl',['$rootScope','$scope','$location','localFactory','$cordovaFacebook', function($rootScope,$scope,$location,localFactory,$cordovaFacebook){
+app.controller('signupCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, $cordovaFacebook) {
 
     $scope.signupEmail=function()
     {
@@ -921,42 +920,39 @@ app.controller('reviewsCtrl', ['$rootScope', '$scope', '$location', 'localFactor
     $scope.bookText="Write a Review";
     $scope.bookImg="images/ico-writereview.png";
 
-    $scope.bookNow=function(){
-        $scope.showAddReview=false;
-        if($scope.rightPanel)
-        {
-            $scope.rightPanel=false;
+    $scope.bookNow = function () {
+        $scope.showAddReview = false;
+        if ($scope.rightPanel) {
+            $scope.rightPanel = false;
 
-        }else{
+        } else {
 
-            $scope.rightPanel=true;
+            $scope.rightPanel = true;
         }
     }
 
-    $scope.rightPanel=false;
+    $scope.rightPanel = false;
 
     // filter click function
-    $scope.hideRightPanel=function(value)
-    {
-        $scope.rightPanel=false; // filter out
+    $scope.hideRightPanel = function (value) {
+        $scope.rightPanel = false; // filter out
     }
 
     /*show hide add review and */
-    $scope.reviewData="";
-    $scope.showAddReview=false;
-    $scope.addReview=function(){
-        if($scope.showAddReview)
-        {
-            if($scope.reviewData!=""){
+    $scope.reviewData = "";
+    $scope.showAddReview = false;
+    $scope.addReview = function () {
+        if ($scope.showAddReview) {
+            if ($scope.reviewData != "") {
 
-                var postData = {lake_id: $scope.lakeDetail.id, user_no: storeData.getData().loginData.user_details.user_no,review:$scope.reviewData};
+                var postData = {lake_id: $scope.lakeDetail.id, user_no: storeData.getData().loginData.user_details.user_no, review: $scope.reviewData};
                 var bookMark = localFactory.post('post_review', postData);
                 bookMark.success(function (data) {
                     localFactory.unload();
                     if (data.result) {
 
-                        $scope.showAddReview=false;
-                        $scope.rightPanel=false; // filter out
+                        $scope.showAddReview = false;
+                        $scope.rightPanel = false; // filter out
 
                     } else {
 
@@ -972,50 +968,46 @@ app.controller('reviewsCtrl', ['$rootScope', '$scope', '$location', 'localFactor
             }
 
 
-        }else{
-            $scope.showAddReview=true;
+        } else {
+            $scope.showAddReview = true;
         }
 
     }
 
     /* stars rating */
-    $scope.rating =1;
-    $scope.rateFunction = function(rating) {
+    $scope.rating = 1;
+    $scope.rateFunction = function (rating) {
         console.log(rating);
     };
 
     /*check box*/
-    $scope.check=false;
+    $scope.check = false;
 
-    $scope.chengeCheck=function(){
-        if($scope.check)
-        {
-            $scope.check=false;
-        }else{
-            $scope.check=true;
+    $scope.chengeCheck = function () {
+        if ($scope.check) {
+            $scope.check = false;
+        } else {
+            $scope.check = true;
         }
     }
     /*end of checkbox*/
 
-    $scope.socialList=[
-        {url:'images/ico-twitter.png',id:1,deactiveUrl:'images/ico-twitter.png',activeUrl:'images/ico-twitter-blue.png',flag:false},
-        {url:'images/ico-fb.png',id:2,deactiveUrl:'images/ico-fb.png',activeUrl:'images/ico-fb-blue.png',flag:false}
+    $scope.socialList = [
+        {url: 'images/ico-twitter.png', id: 1, deactiveUrl: 'images/ico-twitter.png', activeUrl: 'images/ico-twitter-blue.png', flag: false},
+        {url: 'images/ico-fb.png', id: 2, deactiveUrl: 'images/ico-fb.png', activeUrl: 'images/ico-fb-blue.png', flag: false}
     ]
 
-    $scope.toggleSocial=function(value){
-        for(var i=0;$scope.socialList.length;i++)
-        {
-            if(value.id==$scope.socialList[i]['id'])
-            {
-                if(value.flag)
-                {
-                    $scope.socialList[i]['url']=$scope.socialList[i]['deactiveUrl'];
-                    $scope.socialList[i]['flag']=false;
+    $scope.toggleSocial = function (value) {
+        for (var i = 0; $scope.socialList.length; i++) {
+            if (value.id == $scope.socialList[i]['id']) {
+                if (value.flag) {
+                    $scope.socialList[i]['url'] = $scope.socialList[i]['deactiveUrl'];
+                    $scope.socialList[i]['flag'] = false;
 
-                }else{
+                } else {
 
-                    $scope.socialList[i]['url']=$scope.socialList[i]['activeUrl'];
-                    $scope.socialList[i]['flag']=true;
+                    $scope.socialList[i]['url'] = $scope.socialList[i]['activeUrl'];
+                    $scope.socialList[i]['flag'] = true;
                 }
             }
         }
@@ -1024,7 +1016,7 @@ app.controller('reviewsCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
 }]);
 
-app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route','$cordovaCamera','$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory, $route,$cordovaCamera,$cordovaFileTransfer) {
+app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$route', '$cordovaCamera', '$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory, $route, $cordovaCamera, $cordovaFileTransfer) {
 
     console.log($route.current.locals.homeData);
     $scope.lake_image = [];
@@ -1037,7 +1029,7 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.bookText="Upload Photos";
     $scope.bookImg="images/ico-upload.png";
 
-    $scope.bookNow=function(){
+    $scope.bookNow = function () {
 
         var options = {
             destinationType: Camera.DestinationType.NATIVE_URI,
@@ -1046,23 +1038,23 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
             encodingType: Camera.EncodingType.JPEG
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageURI) {
-            $scope.imageURI=imageURI;
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            $scope.imageURI = imageURI;
             localFactory.load();
-            var serverURL='http://ncrts.com/fishing_lake/webservice/post_lake_image';
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_lake_image';
             var options = new FileUploadOptions();
-            options.fileKey="lake_img";
-            options.fileName=$scope.imageURI.substr($scope.imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
+            options.fileKey = "lake_img";
+            options.fileName = $scope.imageURI.substr($scope.imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
 
             var params = {};
             params.user_no = storeData.getData().loginData.user_details.user_no;
-            params.lake_id=$scope.lakeId;
+            params.lake_id = $scope.lakeId;
 
             options.params = params;
 
             $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
-                .then(function(result) {
+                .then(function (result) {
                     localFactory.unload();
                     localFactory.alert('Image uploaded successfully', function () {
 
@@ -1070,7 +1062,7 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
 
                     $location.path('home');
 
-                }, function(err) {
+                }, function (err) {
 
                     console.log("error");
                     console.log(err);
@@ -1081,7 +1073,7 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
                     console.log(progress);
                 });
 
-        }, function(err) {
+        }, function (err) {
             console.log(err);
         });
     }
@@ -1125,55 +1117,89 @@ app.controller('checkinCtrl',['$rootScope','$scope','$location','localFactory', 
 
 }]);
 
-app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','storeData', function($rootScope,$scope,$location,localFactory,storeData){
+app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData',"$cordovaCamera","$cordovaFileTransfer", function ($rootScope, $scope, $location, localFactory, storeData,$cordovaCamera,$cordovaFileTransfer) {
 
     $scope.showPrev=function(){
 
-        $location.path("lakeDetail/owner");
+        //$location.path("lakeDetail");
     }
 
-    $scope.emptyInput=function($event){
-
-        $($event.currentTarget).prev().val("");
-    }
-
-    $scope.lakeData=storeData.getData(true).currentLake;
+    $scope.lakeData = storeData.getData(true).currentLake;
 
     console.log($scope.lakeData);
-    $scope.uploadImg=function(){
 
-    }
-
-    $scope.vanueAdd=[
-        {name:'Street',value:$scope.lakeData['lake_category']['address1']},
-        {name:'Stree1',value:$scope.lakeData['lake_category']['address1']},
-        {name:"City",value:$scope.lakeData['lake_category']['city']},
-        {name:"Country",value:$scope.lakeData['lake_category']['country']},
-        {name:"Post",value:$scope.lakeData['lake_category']['postcode']},
-        {name:"Town",value:$scope.lakeData['lake_category']['town']}
+    $scope.vanueAdd=
+    [
+        {name: 'Street', value: $scope.lakeData['lake_category']['address1']},
+        {name: 'Street1', value: $scope.lakeData['lake_category']['address1']},
+        {name: "City", value: $scope.lakeData['lake_category']['city']},
+        {name: "Country", value: $scope.lakeData['lake_category']['country']},
+        {name: "Post", value: $scope.lakeData['lake_category']['postcode']},
+        {name: "Town", value: $scope.lakeData['lake_category']['town']}
     ];
 
-    $scope.vanueAdd=[
-        {name:'Street',value:"Street"},
-        {name:'Stree1',value:'Stree1'},
-        {name:"City",value:'City'},
-        {name:"Country",value:'Country'},
-        {name:"Post",value:'Post'},
-        {name:"Town",value:'Town'}
-    ];
+    $scope.list_rules = $scope.lakeData.list_rules;
+    $scope.list_amenitites = $scope.lakeData.list_amenitites;
 
-    $scope.vanueAddModel={};
+    for (var i = 0; i < $scope.list_rules.length; i++) {
+        if ($scope.list_rules[i]['rule_id'] != "") {
 
-    $scope.updateVenue=function($event)
-    {
-        $scope.updateColor($event.target);
+            $scope.list_rules[i]['active'] = true;
+        } else {
+            $scope.list_rules[i]['active'] = false;
+        }
     }
 
-    $scope.facilites=facilites;
+    for (var i = 0; i < $scope.list_amenitites.length; i++) {
+        if ($scope.list_amenitites[i]['amenitites_id'] != "") {
+            $scope.list_amenitites[i]['active'] = true;
+        } else {
+            $scope.list_amenitites[i]['active'] = false;
+        }
+    }
 
-    $scope.fishingRules=fishingRules;
+    //update contact details
+    $scope.formData = {};
+    $scope.formData['lakeName'] = $scope.lakeData.lake_category.leke_name;
+    $scope.formData['id']=$scope.lakeData.lake_category.id;
+    /*$scope.formData['address'] = $scope.vanueAdd;*/
+    $scope.formData['desc'] =$scope.lakeData.lake_category.desc;
+    $scope.formData['list_amenitites'] = $scope.list_amenitites;
+    $scope.formData['list_rules'] = $scope.list_rules;
+    $scope.formData['list_spacies'] = $scope.lakeData.list_spacies;
+    $scope.formData['lake_pricing'] = $scope.lakeData.lake_pricing;
+    $scope['contact_details'] =
+        [
+            {name: "Contact Person", type: "text", value: $scope.lakeData.lake_category.contact_person},
+            {name: "Contact Number", type: "tel", value: $scope.lakeData.lake_category.contact_number},
+            {name: "Email", type: "email", value: $scope.lakeData.lake_category.email}
+        ];
+    $scope.formData['lake_image'] = $scope.lakeData.lake_image;
 
-    $scope.fishSpecies=fishSpecies;
+    $scope.lakeTimeing = [];
+
+    for (var i = 0; i < $scope.lakeData.lake_timing.length; i++) {
+
+        var openHours = (parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) - 12 : parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1));
+        var openMinutes = parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(3));
+        var openMidday = ((parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? "PM" : "AM");
+
+        var closeHours = (parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1)) > 12) ? parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1)) - 12 : parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(0, 1));
+        var closeMinutes = parseInt($scope.lakeData.lake_timing[i]['closing_time'].substr(3));
+        var closeMidday = ((parseInt($scope.lakeData.lake_timing[i]['opening_time'].substr(0, 1)) > 12) ? "PM" : "AM");
+        var is_close = ($scope.lakeData.lake_timing[i]['is_close'] == 1) ? true : false;
+
+        var temp = {};
+        temp['Opening'] = {hours: openHours, minutes: openMinutes, midday: openMidday};
+        temp['name'] = $scope.lakeData.lake_timing[i]['day'];
+        temp['Closing'] = {hours: closeHours, minutes: closeMinutes, midday: closeMidday};
+        temp['close']=is_close;
+        temp['id']=$scope.lakeData.lake_timing[i]['id'];
+        $scope.lakeTimeing.push(temp);
+    }
+
+   /* $scope.days = */
+    console.log($scope.lakeTimeing);
     $scope.itemActive=function(item,facilites)
     {
         var length=facilites.length;
@@ -1193,57 +1219,33 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         }
     }
 
-    $scope.itemToggle=function(item,fishSpecies)
+    $scope.itemToggle = function (item, fishSpecies, species)
     {
         var length=fishSpecies.length;
         for(var i=0;i<length;i++)
         {
             if(fishSpecies[i].id==item.id)
             {
-                if(item.specimen)
-                {
-                    fishSpecies[i].specimen=false;
+                if (species) {
+                    if (item.specimen) {
+                        fishSpecies[i].specimen = 0;
 
+                    } else {
+                        fishSpecies[i].specimen = 1;
+                    }
                 }else
                 {
-                    fishSpecies[i].specimen=true;
+                    if (item.normal) {
+                        fishSpecies[i].normal = 0;
+
+                    } else {
+                        fishSpecies[i].normal = 1;
+                    }
                 }
             }
+
         }
-    }
 
-    /* prices add and update in a lake*/
-    $scope.pricesArr=[
-        {name:"24 Hour",val:10,id:1},
-        {name:"Night",val:20,id:2},
-        {name:"Children",val:30,id:3},
-        {name:"OAP",val:40,id:4},
-        {name:"Students",val:50,id:5}
-    ];
-
-    /*filter*/
-
-    $scope.rightPanel=false;
-
-    // filter click function
-    $scope.hideRightPanel=function(value)
-    {
-        $scope.rightPanel=false; // filter out
-        $scope.rightPanelAddMember=false;
-
-    }// filter click function
-
-
-    //update fish
-    $scope.updateFish=function(fishObj)
-    {
-        for(var i=0;i<$scope.pricesArr.length;i++)
-        {
-            if($scope.pricesArr[i].id==fishObj.id)
-            {
-                $scope.pricesArr.removeValue('id',fishObj.id);
-            }
-        }
     }
 
     //rightPanelAddMember
@@ -1261,31 +1263,26 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         }
     }
 
-    //right panel open clock
 
-    $scope.days=[
-        {name:"Monday",Opening:{hours:08,minutes:10,midday:"AM"},Closing:{hours:08,minutes:10,midday:"AM"},close:false},
-        {name:"Tuesday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Wednesday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Thursday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Friday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:true},
-        {name:"Saturday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false},
-        {name:"Sunday",Opening:{hours:08,minutes:00,midday:"AM"},Closing:{hours:08,minutes:00,midday:"AM"},close:false}
-    ]
+    $scope.days = $scope.lakeTimeing;
 
 
     $scope.rightPanelTime=false;
     $scope.selectedTime={};
     $scope.addTime=function(days,isOpening)
     {
+
         if(isOpening)
         {
-            $scope.selectedTime=days.Opening;
+            $scope.selectedTime=days;
+            $scope.selectedTime['open']=true;
         }
         else{
-            $scope.selectedTime=days.Closing;
+            $scope.selectedTime=days;
+            $scope.selectedTime['open']=false;
         }
 
+        console.log($scope.selectedTime);
         if($scope.rightPanelTime)
         {
             $scope.rightPanelTime=false;
@@ -1296,85 +1293,132 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         }
     }
 
+    $scope.CloseDate = function () {
+        //$scope.selectedTime.close=true;
+    }
+
     $scope.hidePanelTime=function()
     {
         $scope.rightPanelTime=false;
     }
 
+    $scope.updateOpening = function () {
+
+        $scope.rightPanelTime = false;
+    }
+
     $scope.increseTime=function(isHours,isPlus)
     {
+        if($scope.selectedTime['open']){
 
-        if(isHours)
-        {
-            if(isPlus)
+            if(isHours)
             {
-                $scope.selectedTime.hours=$scope.selectedTime.hours + 1;
-                if($scope.selectedTime.hours>12)
+                if(isPlus)
                 {
-                    $scope.selectedTime.hours=$scope.selectedTime.hours-12;
+                    $scope.selectedTime['Opening'].hours=$scope.selectedTime['Opening'].hours + 1;
+                    if($scope.selectedTime['Opening'].hours>12)
+                    {
+                        $scope.selectedTime['Opening'].hours=$scope.selectedTime['Opening'].hours-12;
+                    }
                 }
-            }
-            else
-            {
-                $scope.selectedTime.hours=$scope.selectedTime.hours - 1;
-                if($scope.selectedTime.hours<0)
+                else
                 {
-                    $scope.selectedTime.hours=12;
+                    $scope.selectedTime['Opening'].hours=$scope.selectedTime['Opening'].hours - 1;
+                    if($scope.selectedTime['Opening'].hours<0)
+                    {
+                        $scope.selectedTime['Opening'].hours=12;
+                    }
+                }
+
+            }else{
+
+                if(isPlus) {
+                    $scope.selectedTime['Opening'].minutes= $scope.selectedTime['Opening'].minutes + 1;
+                    if($scope.selectedTime['Opening'].minutes>60)
+                    {
+                        $scope.selectedTime['Opening'].minutes=$scope.selectedTime['Opening'].minutes-60;
+                    }
+                }
+                else{
+                    $scope.selectedTime['Opening'].minutes=$scope.selectedTime['Opening'].minutes - 1;
+                    if($scope.selectedTime['Opening'].minutes<0)
+                    {
+                        $scope.selectedTime['Opening'].minutes=60;
+                    }
                 }
             }
 
         }else{
-
-            if(isPlus) {
-                $scope.selectedTime.minutes= $scope.selectedTime.minutes + 1;
-                if($scope.selectedTime.minutes>60)
+            if(isHours)
+            {
+                if(isPlus)
                 {
-                    $scope.selectedTime.minutes=$scope.selectedTime.minutes-60;
+                    $scope.selectedTime['Closing'].hours=$scope.selectedTime['Closing'].hours + 1;
+                    if($scope.selectedTime['Closing'].hours>12)
+                    {
+                        $scope.selectedTime['Closing'].hours=$scope.selectedTime['Closing'].hours-12;
+                    }
                 }
-            }
-            else{
-                $scope.selectedTime.minutes=$scope.selectedTime.minutes - 1;
-                if($scope.selectedTime.minutes<0)
+                else
                 {
-                    $scope.selectedTime.minutes=60;
+                    $scope.selectedTime['Closing'].hours=$scope.selectedTime['Closing'].hours - 1;
+                    if($scope.selectedTime['Closing'].hours<0)
+                    {
+                        $scope.selectedTime['Closing'].hours=12;
+                    }
+                }
+
+            }else{
+
+                if(isPlus) {
+                    $scope.selectedTime['Closing'].minutes= $scope.selectedTime['Closing'].minutes + 1;
+                    if($scope.selectedTime['Closing'].minutes>60)
+                    {
+                        $scope.selectedTime['Closing'].minutes=$scope.selectedTime['Closing'].minutes-60;
+                    }
+                }
+                else{
+                    $scope.selectedTime['Closing'].minutes=$scope.selectedTime['Closing'].minutes - 1;
+                    if($scope.selectedTime['Closing'].minutes<0)
+                    {
+                        $scope.selectedTime['Closing'].minutes=60;
+                    }
                 }
             }
         }
+
 
     }
 
     // midday change
     $scope.changeMidday=function()
     {
-        if($scope.selectedTime.midday=="AM")
+        console.log($scope.selectedTime);
+        if($scope.selectedTime['open'])
         {
-            $scope.selectedTime.midday="PM";
+            if($scope.selectedTime['Opening'].midday=="AM")
+            {
+                $scope.selectedTime['Opening'].midday="PM";
 
+            }else{
+                $scope.selectedTime['Opening'].midday="AM";
+            }
         }else{
-            $scope.selectedTime.midday="AM";
+            if($scope.selectedTime['Closing'].midday=="AM")
+            {
+                $scope.selectedTime['Closing'].midday="PM";
+
+            }else{
+                $scope.selectedTime['Closing'].midday="AM";
+            }
         }
+
     }
 
-    //update contact details
-    $scope.contactDetail=[
-        {name:"Contact Person",type:"text"},
-        {name:"Contact Number",type:"tel"},
-        {name:"Email",type:"email"}
-    ];
+    //lakelist details
+    $scope.nearByLacks=[
 
-    $scope.contactDetailModel={};
-
-    $scope.updateContactDetail=function()
-    {
-        console.log($scope.contactDetailModel);
-    }
-
-    $scope.updateOpening=function()
-    {
-        console.log($scope.contactDetailModel);
-    }
-    //end of contact details model
-
+    ]
     //right panel add another lake
     $scope.rightPanelLake=false;
     $scope.showRightLake=function()
@@ -1382,10 +1426,26 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         if($scope.rightPanelLake)
         {
             $scope.rightPanelLake=false;
-
         }else{
 
-            $scope.rightPanelLake=true;
+            localFactory.load();
+            var postData={lake_id:$scope.lakeData.lake_category.id,user_no:storeData.getData().loginData.user_details.user_no,latitude:$scope.lakeData.lake_category.latitude,longitude:$scope.lakeData.lake_category.longitude};
+            var remove = localFactory.post('nearby_lake', postData);
+            remove.success(function (data) {
+
+
+                if (data.result) {
+                    console.log(data);
+                    $scope.nearByLacks=data.nearby_lake;
+                    localFactory.unload();
+                    $scope.rightPanelLake=true;
+                }
+
+            });
+
+            remove.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
         }
     }
 
@@ -1401,62 +1461,90 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         }
     }
 
-    //owner lake photo
-    $scope.photoList=[
-        {id:1,url:"images/thumb-pic.jpg"},
-        {id:2,url:"images/thumb-pic.jpg"},
-        {id:3,url:"images/thumb-pic.jpg"},
-        {id:4,url:"images/thumb-pic.jpg"},
-        {id:5,url:"images/thumb-pic.jpg"},
-        {id:6,url:"images/thumb-pic.jpg"},
-        {id:7,url:"images/thumb-pic.jpg"}
-    ];
-
     // lake list search
     $scope.removePhoto=function(value)
     {
-        $scope.photoList.removeValue('id',value.id);
+        localFactory.load();
+        var postData={img_id:value.id};
+        var remove = localFactory.post('delete_image', postData);
+        remove.success(function (data) {
+            console.log(data);
+            if (data.result) {
+
+                $scope.formData.lake_image.removeValue('id',value.id);
+                localFactory.unload();
+                localFactory.alert(data.msg, function () {
+
+                }, "Message", 'OK');
+            }
+
+        });
+
+        remove.error(function (data, status, headers, config) {
+            localFactory.unload();
+        });
+
+
     }
-
-    $scope.uploadImage=function()
-    {
-
-    }
-
-    //lakelist details
-    $scope.nearByLacks=[
-        {id:1,name:"Himley Hall Pool",is_claim:false,added:true,can_add:false,claim_already:false},
-        {id:2,name:"Himley Hall bottom lake",is_claim:false,added:false,can_add:true,claim_already:false},
-
-        {id:3,name:"Bradley Farm Fishing Lake",is_claim:false,added:false,can_add:false,claim_already:true},
-        {id:4,name:"Swansen View Pool",is_claim:false,added:false,can_add:false,claim_already:true},
-
-        {id:5,name:"Woodgrove Farm",is_claim:true,added:false,can_add:false,claim_already:false},
-        {id:6,name:"Top-hill River cabin",is_claim:true,added:false,can_add:false,claim_already:false},
-        {id:7,name:"Crossing Pond (upton)",is_claim:true,added:false,can_add:false,claim_already:false}
-    ]
 
     // for show claim box
     $scope.showClaimForm=false;
-
-    $scope.showClaimBox=function()
+    $scope.currentClaimData={};
+    $scope.showClaimBox=function(obj)
     {
         $scope.showClaimForm=true;
+        $scope.currentClaimData=obj;
+        console.log($scope.currentClaimData);
     }
 
     //update claimlake detail and model
     $scope.claimLakeDetails=[
-        {name:"Email",type:"email",placeHolder:"Enter your email address"},
-        {name:"Name",type:"text",placeHolder:"Your name"},
-        {name:"phone",type:"tel",placeHolder:"Contact phone no"}
+        {name:"email_id",type:"email",placeHolder:"Enter your email address",value:""},
+        {name:"name",type:"text",placeHolder:"Your name",value:""},
+        {name:"ph",type:"tel",placeHolder:"Contact phone no",value:""}
     ];
 
-    $scope.claimLakeModel={};
+    $scope.claimFormData={};
+    $scope.claimFormData.claimLakeDetails=$scope.claimLakeDetails;
+
+    $scope.submitForm = function() {
+
+        // check to make sure the form is completely valid
+        if ($scope.claimForm.$valid) {
+
+            var postData = {user_no:storeData.getData().loginData.user_details.user_no,lake_id:$scope.lakeData.lake_category.id};
+            for(var i=0;i<$scope.claimFormData.claimLakeDetails.length;i++){
+                postData[$scope.claimFormData.claimLakeDetails[i]['name']]=$scope.claimFormData.claimLakeDetails[i]['value'];
+            }
+
+            localFactory.load();
+            var login = localFactory.post('lake_claim', postData);
+            login.success(function (data) {
+                localFactory.unload();
+
+                if (data.result) {
+
+                    $scope.showClaimForm=false;
+                    $scope.rightPanelLake=false;
+                } else {
+
+                    localFactory.alert(data.msg, function () {
+
+                    }, "Message", 'OK');
+                }
+
+            });
+
+            login.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
+
+        }
+    };
 
     $scope.claimLakeUpdate=function()
     {
         $scope.showClaimForm=false;
-        console.log($scope.claimLakeModel);
     }
 
     $scope.addLake=function(item){
@@ -1482,14 +1570,164 @@ app.controller('lakeOwner',['$rootScope','$scope','$location','localFactory','st
         $(event).find('img').attr("src", 'images/ico-tick-bgreen.png');
     }
 
-    $scope.updateDesc=function($event)
-    {
-        //$scope.updateColor($event.target);
-    }
-
     $scope.bookOnline = true;
     $scope.bookText = "Submit";
 
+    $scope.bookNow = function () {
+        console.log($scope.days);
+        if($scope.editLake.$valid){
+            var lakeTime=[];
+            for(var i=0;i<$scope.days.length;i++){
+                var tempObj={id:$scope.days[i]['id'],day:$scope.days[i]['name'],lake_id:$scope.lakeData.lake_category.id};
+                var closeHours=(($scope.days[i]['Closing']['midday']=="PM")?parseInt($scope.days[i]['Closing']['hours'])+12:parseInt($scope.days[i]['Closing']['hours']));
+                closeHours=((closeHours<9)?'0'+closeHours:closeHours);
+                var CloseMinutes=(($scope.days[i]['Closing']['minutes']<9)?'0'+$scope.days[i]['Closing']['minutes']:$scope.days[i]['Closing']['minutes']);
+                tempObj['closing_time']=closeHours+":"+CloseMinutes;
+
+                var openHours=(($scope.days[i]['Opening']['midday']=="PM")?parseInt($scope.days[i]['Opening']['hours'])+12:parseInt($scope.days[i]['Opening']['hours']));
+                openHours=((openHours<9)?'0'+openHours:openHours);
+                var openMinutes=((parseInt($scope.days[i]['Opening']['minutes'])<9)?'0'+$scope.days[i]['Opening']['minutes']:$scope.days[i]['Opening']['minutes']);
+                tempObj['opening_time']=openHours+":"+openMinutes;
+                lakeTime.push(tempObj);
+            }
+            $scope.formData['lake_timing']=lakeTime;
+
+            var lakeadd={};
+            for(var i=0;i<$scope.vanueAdd.length;i++){
+                lakeadd[$scope.vanueAdd[i]['name']]=$scope.vanueAdd[i]['value'];
+            }
+            $scope.formData['address']=lakeadd;
+
+            var contact_details={}
+            for(var i=0;i<$scope.contact_details.length;i++){
+                contact_details[$scope.contact_details[i]['name']]=$scope.contact_details[i]['value'];
+            }
+            $scope.formData['contact_details']=contact_details;
+            console.log($scope.formData);
+        }else{
+
+            localFactory.alert('Please fix the all error in form.', function () {
+
+            }, "Message", 'OK');
+        }
+    }
+
+    $scope.uploadImg = function () {
+
+        var options = {
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+           var imageURI = imageURI;
+            localFactory.load();
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_lake_image';
+            var options = new FileUploadOptions();
+            options.fileKey = "lake_img";
+            options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.lake_id = $scope.lakeData.lake_category.id;
+
+            options.params = params;
+
+            $cordovaFileTransfer.upload(serverURL, imageURI, options)
+                .then(function (result) {
+                    localFactory.unload();
+                    console.log(result);
+
+                    localFactory.alert('Image uploaded successfully', function () {
+
+                    }, "Message", 'OK');
+
+                    $location.path('home');
+
+                }, function (err) {
+
+                    console.log("error");
+                    console.log(err);
+
+                }, function (progress) {
+
+                    console.log("constant progress updates");
+                    console.log(progress);
+                });
+
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    $scope.uploadProfileImg = function () {
+
+        var options = {
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            var imageURI = imageURI;
+            $scope.lakeData.profile_pic=imageURI;
+            localFactory.load();
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_profile_image';
+            var options = new FileUploadOptions();
+            options.fileKey = "lake_img";
+            options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.lake_id = $scope.lakeData.lake_category.id;
+
+            options.params = params;
+
+            $cordovaFileTransfer.upload(serverURL, imageURI, options)
+                .then(function (result) {
+                    localFactory.unload();
+                    localFactory.alert('Image update successfully', function () {
+
+                    }, "Message", 'OK');
+                }, function (err) {
+
+                    console.log("error");
+                    console.log(err);
+
+                }, function (progress) {
+
+                    console.log("constant progress updates");
+                    console.log(progress);
+                });
+
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    $scope.removeLake=function(obj){
+
+        localFactory.load();
+        var postData={linked_lake_id:obj.id,lake_id:$scope.lakeData.lake_category.id};
+        var remove = localFactory.post('remove_link', postData);
+        remove.success(function (data) {
+            if (data.result) {
+                $scope.lakeData['other_lake'].removeValue('id',obj.id);
+                localFactory.unload();
+                localFactory.alert(data.msg, function () {
+                }, "Message", 'OK');
+            }
+
+        });
+
+        remove.error(function (data, status, headers, config) {
+            localFactory.unload();
+        });
+
+    }
 }]);
 
 app.controller('ticketBookCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
@@ -1600,16 +1838,20 @@ app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFacto
     }
 
     $scope.linkBookMark = function (obj) {
+
         $location.path("lakeDetail/1");
+
     }
 
     $scope.goBooking = function (obj) {
-        $location.path("booking/"+obj.id);
+
+        $location.path("booking/" + obj.id);
+
     }
 
 }]);
 
-app.controller('myTicketCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+app.controller('myTicketCtrl', ['$rootScope', '$scope', '$location', 'localFactory','$route', function ($rootScope, $scope, $location, localFactory,$route) {
     $scope.tab = 1;
     $scope.futureTicket = function () {
         $scope.tab = 2;
@@ -1619,6 +1861,11 @@ app.controller('myTicketCtrl', ['$rootScope', '$scope', '$location', 'localFacto
         $scope.tab = 1;
     }
 
+    $scope.tickets = $route.current.locals.homeData;
+
+    $scope.showTicketDetail=function(){
+
+    }
 }]);
 
 app.controller('connectAccCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
@@ -1626,7 +1873,7 @@ app.controller('connectAccCtrl', ['$rootScope', '$scope', '$location', 'localFac
 }]);
 
 
-app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','storeData','$cordovaFacebook','$cordovaCamera', function($rootScope,$scope,$location,localFactory,storeData,$cordovaFacebook,$cordovaCamera){
+app.controller('footerCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', '$cordovaFacebook', '$cordovaCamera', function ($rootScope, $scope, $location, localFactory, storeData, $cordovaFacebook, $cordovaCamera) {
     $scope.showList=function(){
         $location.path("lakelist");
     }
@@ -1641,14 +1888,16 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
     $scope.meList = [
         {id: 1, name: 'Bookmarks', goto: 'mybookmark'},
         {id: 2, name: 'Connect Accounts', goto: 'connectac'},
-        {id: 3, name: 'My Tickets', goto: 'mytickets'}
+        {id: 3, name: 'My Tickets', goto: 'mytickets'},
+        {id: 4, name: 'Sign Out', goto: 'signout'}
     ];
 
     $scope.moreList = [
         {id: 1, name: 'Send Feedback', goto: 'sendFeedback'},
         {id: 2, name: 'Contact us', goto: 'contactus'},
         {id: 3, name: 'Report a bug', goto: 'reportBug'},
-        {id: 4, name: 'Suggest a location', goto: 'suggestLocation'}
+        {id: 4, name: 'Suggest a location', goto: 'suggestLocation'},
+        {id: 4, name: 'Rate in app store', goto: 'rate'}
     ];
 
     // if set previous tab
@@ -1704,7 +1953,6 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
             $scope.currentPopContent = $scope.meList;
         }
 
-
         $('#me').show();
         $('#me').addClass('slideInUp' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $(this).show();
@@ -1735,25 +1983,30 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
             saveToPhotoAlbum: false
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageURI) {
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
             var image = document.getElementById('myImage');
             image.src = imageURI;
-        }, function(err) {
+        }, function (err) {
             // error
         });
 
-        $cordovaCamera.cleanup().then(function(){
+        $cordovaCamera.cleanup().then(function () {
 
-        },false); // only for FILE_URI
+        }, false); // only for FILE_URI
     }
 
 
     $scope.signout = 0;
 
+
+    $scope.changeSignOut=function(value){
+        $scope.signout=value;
+    }
+
     $scope.logOut = function () {
         $rootScope.popupMask = false;
 
-        if(storeData.getData()['loginData'] && storeData.getData()['loginData']['loginType']==0){
+        if (storeData.getData()['loginData'] && storeData.getData()['loginData']['loginType'] == 0) {
 
             var postData = {user_no: storeData.getData().loginData.user_details.user_no};
             var logout = localFactory.post('logout_user', postData);
@@ -1767,7 +2020,7 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
                 localFactory.unload();
             });
 
-        }else {
+        } else {
 
             $cordovaFacebook.logout()
                 .then(function (success) {
@@ -1775,14 +2028,19 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
                     $location.path("/signup");
                 }, function (error) {
                     // error
-            });
+                });
         }
     }
 
 
     $scope.navigate = function (path) {
         $rootScope.popupMask = false;
-        $location.path(path);
+        if(path=='rate'){
+
+        }else{
+            $location.path(path);
+        }
+
     }
 
     $scope.payment = function () {
@@ -1796,81 +2054,79 @@ app.controller('footerCtrl',['$rootScope','$scope','$location','localFactory','s
 }]);
 
 
-app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory','storeData','$cordovaCamera','$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory,storeData,$cordovaCamera,$cordovaFileTransfer) {
+app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', '$cordovaCamera', '$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory, storeData, $cordovaCamera, $cordovaFileTransfer) {
     $scope.bookOnline = true;
     $scope.bookText = "Send my bug report";
-    $scope.options=storeData.getData().loginData['bug_lising'];
-    $scope.feedBackType= $scope.options[0];
-    $scope.feedback="";
-    $scope.imageURI="";
-    $scope.happen_time=false;
-    $scope.bookNow=function(){
+    $scope.options = storeData.getData().loginData['bug_lising'];
+    $scope.feedBackType = $scope.options[0];
+    $scope.feedback = "";
+    $scope.imageURI = "";
+    $scope.happen_time = false;
+    $scope.bookNow = function () {
 
-        if($scope.feedback=="")
-        {
+        if ($scope.feedback == "") {
             localFactory.alert("Please enter description of bug.", function () {
 
             }, "Message", 'OK');
         }
 
-        if($scope.imageURI=="")
-        {
+        if ($scope.imageURI == "") {
             localFactory.alert("Please upload bug screen shot.", function () {
 
             }, "Message", 'OK');
         }
 
-        if($scope.feedback!="" && $scope.imageURI!=''){
-                localFactory.load();
-                var serverURL='http://ncrts.com/fishing_lake/webservice/send_bug_report';
-                var options = new FileUploadOptions();
-                options.fileKey="lake_img";
-                options.fileName=$scope.imageURI.substr($scope.imageURI.lastIndexOf('/')+1);
-                options.mimeType="image/jpeg";
+        if ($scope.feedback != "" && $scope.imageURI != '') {
+            localFactory.load();
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/send_bug_report';
+            var options = new FileUploadOptions();
+            options.fileKey = "lake_img";
+            options.fileName = $scope.imageURI.substr($scope.imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
 
-                var params = {};
-                params.user_no = storeData.getData().loginData.user_details.user_no;
-                params.bug_details=$scope.feedback;
-                params.happen_time=$scope.happen_time;
-                params.bug_id= $scope.feedBackType['id'];
-                options.params = params;
+            var params = {};
+            params.user_no = storeData.getData().loginData.user_details.user_no;
+            params.bug_details = $scope.feedback;
+            params.happen_time = $scope.happen_time;
+            params.bug_id = $scope.feedBackType['id'];
+            options.params = params;
 
-                $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
-                    .then(function(result) {
-                        localFactory.unload();
-                        localFactory.alert('Bug posting successfully', function () {
+            $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
+                .then(function (result) {
+                    localFactory.unload();
+                    localFactory.alert('Bug posting successfully', function () {
 
-                        }, "Message", 'OK');
+                    }, "Message", 'OK');
 
-                        $location.path('home');
+                    $location.path('home');
 
-                    }, function(err) {
+                }, function (err) {
 
-                        console.log("error");
-                        console.log(err);
+                    console.log("error");
+                    console.log(err);
 
-                    }, function (progress) {
+                }, function (progress) {
 
-                        console.log("constant progress updates");
-                        console.log(progress);
+                    console.log("constant progress updates");
+                    console.log(progress);
                 });
         }
     }
 
 
-    $scope.toggleChecked=function(){
+    $scope.toggleChecked = function () {
 
-        if($scope.happen_time){
+        if ($scope.happen_time) {
 
-            $scope.happen_time=false;
+            $scope.happen_time = false;
 
-        }else{
+        } else {
 
-            $scope.happen_time=true;
+            $scope.happen_time = true;
         }
     }
 
-    $scope.uploadImg=function(){
+    $scope.uploadImg = function () {
 
         var options = {
             destinationType: Camera.DestinationType.NATIVE_URI,
@@ -1879,27 +2135,27 @@ app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory
             encodingType: Camera.EncodingType.JPEG
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageURI) {
-            $scope.imageURI=imageURI;
-        }, function(err) {
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            $scope.imageURI = imageURI;
+        }, function (err) {
             console.log(err);
         });
     }
 
 }]);
 
-app.controller('contactCtrl', ['$rootScope', '$scope', '$location', 'localFactory','storeData', function ($rootScope, $scope, $location, localFactory,storeData) {
+app.controller('contactCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', function ($rootScope, $scope, $location, localFactory, storeData) {
     $scope.bookOnline = true;
     $scope.bookText = "Send my message";
 
-    $scope.options=storeData.getData().loginData['feedback_list'];
-    $scope.feedBackType= $scope.options[0];
-    $scope.info="";
+    $scope.options = storeData.getData().loginData['feedback_list'];
+    $scope.feedBackType = $scope.options[0];
+    $scope.info = "";
 
-    $scope.bookNow=function(){
-        if($scope.info!=""){
+    $scope.bookNow = function () {
+        if ($scope.info != "") {
 
-            var postData = {user_no: storeData.getData().loginData.user_details.user_no,sub:$scope.feedBackType['type'],info:$scope.info};
+            var postData = {user_no: storeData.getData().loginData.user_details.user_no, sub: $scope.feedBackType['type'], info: $scope.info};
             var logout = localFactory.post('contact_us', postData);
             logout.success(function (data) {
                 localFactory.unload();
@@ -1915,33 +2171,30 @@ app.controller('contactCtrl', ['$rootScope', '$scope', '$location', 'localFactor
         }
     }
 
-    $scope.callSupport=function()
-    {
+    $scope.callSupport = function () {
         document.location.href = "tel:0800 000 000";
     }
 
-    $scope.openEmail=function()
-    {
+    $scope.openEmail = function () {
         window.location.href = "mailto:info@hotfishin.com?subject=Fishing App Feedback...";
     }
 
-    $scope.openFb=function()
-    {
+    $scope.openFb = function () {
         var ref = window.open('http://www.facebook.com', '_blank', 'location=no');
     }
 
 }]);
 
-app.controller('feedbackCtrl', ['$rootScope', '$scope', '$location', 'localFactory','storeData', function ($rootScope, $scope, $location, localFactory,storeData) {
+app.controller('feedbackCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', function ($rootScope, $scope, $location, localFactory, storeData) {
     $scope.bookOnline = true;
     $scope.bookText = "Send my feedback";
-    $scope.options=storeData.getData().loginData['feedback_list'];
-    $scope.feedBackType= $scope.options[0];
-    $scope.feedback="";
+    $scope.options = storeData.getData().loginData['feedback_list'];
+    $scope.feedBackType = $scope.options[0];
+    $scope.feedback = "";
 
-    $scope.bookNow=function(){
-        if($scope.feedback!=""){
-            var postData = {user_no: storeData.getData().loginData.user_details.user_no,feedback_id:$scope.feedBackType['id'],feedback:$scope.feedback};
+    $scope.bookNow = function () {
+        if ($scope.feedback != "") {
+            var postData = {user_no: storeData.getData().loginData.user_details.user_no, feedback_id: $scope.feedBackType['id'], feedback: $scope.feedback};
             var logout = localFactory.post('send_feedback', postData);
             logout.success(function (data) {
                 localFactory.unload();
@@ -1958,15 +2211,15 @@ app.controller('feedbackCtrl', ['$rootScope', '$scope', '$location', 'localFacto
     }
 }]);
 
-app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactory','$cordovaCamera','storeData','$cordovaGeolocation','$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory,$cordovaCamera,storeData,$cordovaGeolocation,$cordovaFileTransfer) {
+app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaCamera', 'storeData', '$cordovaGeolocation', '$cordovaFileTransfer', function ($rootScope, $scope, $location, localFactory, $cordovaCamera, storeData, $cordovaGeolocation, $cordovaFileTransfer) {
     $scope.bookOnline = true;
     $scope.bookText = "Suggest this location";
     $scope.bookImg = "images/thumb.png";
-    $scope.imageURI="";
-    $scope.lat="";
-    $scope.long="";
-    $scope.locationName="";
-    $scope.uploadImage=function(){
+    $scope.imageURI = "";
+    $scope.lat = "";
+    $scope.long = "";
+    $scope.locationName = "";
+    $scope.uploadImage = function () {
 
         var options = {
             destinationType: Camera.DestinationType.NATIVE_URI,
@@ -1975,9 +2228,9 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
             encodingType: Camera.EncodingType.JPEG
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageURI) {
-            $scope.imageURI=imageURI;
-        }, function(err) {
+        $cordovaCamera.getPicture(options).then(function (imageURI) {
+            $scope.imageURI = imageURI;
+        }, function (err) {
             console.log(err);
         });
     }
@@ -1987,10 +2240,10 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
     $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
-           $scope.lat  = position.coords.latitude;
-           $scope.long = position.coords.longitude;
+            $scope.lat = position.coords.latitude;
+            $scope.long = position.coords.longitude;
 
-            var latlng = new google.maps.LatLng($scope.lat,$scope.long);
+            var latlng = new google.maps.LatLng($scope.lat, $scope.long);
             var mapOptions = {
                 zoom: 15,
                 center: latlng,
@@ -2008,15 +2261,14 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
             var destinationMarker = new google.maps.Marker({
                 map: map,
-                position: new google.maps.LatLng($scope.lat,$scope.long),
-                draggable:false
+                position: new google.maps.LatLng($scope.lat, $scope.long),
+                draggable: false
             });
             geocodePosition(destinationMarker.getPosition(),
-                function(obj)
-                {
+                function (obj) {
 
                 });
-            var input =(document.getElementById('pac-input'));
+            var input = (document.getElementById('pac-input'));
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.bindTo('bounds', map);
             var infowindow = new google.maps.InfoWindow();
@@ -2025,7 +2277,7 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
                 anchorPoint: new google.maps.Point(0, -29)
             });
 
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 infowindow.close();
                 marker.setVisible(false);
                 var place = autocomplete.getPlace();
@@ -2050,41 +2302,38 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
                         (place.address_components[1] && place.address_components[1].short_name || ''),
                         (place.address_components[2] && place.address_components[2].short_name || '')
                     ].join(' ');
-                    $scope.lat  = place.geometry.location.lat();
+                    $scope.lat = place.geometry.location.lat();
                     $scope.long = place.geometry.location.lng();
                 }
             });
 
-        }, function(err)
-        {
+        }, function (err) {
             alert(err);
         });
 
 
-
-
-   function geocodePosition(pos,callBack){
+    function geocodePosition(pos, callBack) {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({
             latLng: pos
-        }, function(responses) {
+        }, function (responses) {
             if (responses && responses.length > 0) {
                 console.log(responses[0]);
-                callBack.call(this,responses[0]);
+                callBack.call(this, responses[0]);
 
             }
         });
-   }
-
-    $scope.resetAddress=function(){
-        $scope.address="";
-        $scope.lat="";
-        $scope.long="";
     }
 
-    $scope.bookNow=function(){
+    $scope.resetAddress = function () {
+        $scope.address = "";
+        $scope.lat = "";
+        $scope.long = "";
+    }
 
-        if($scope.lat==""){
+    $scope.bookNow = function () {
+
+        if ($scope.lat == "") {
 
             localFactory.alert("Select location Name.", function () {
 
@@ -2092,14 +2341,14 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
             return;
         }
 
-        if($scope.locationName==""){
+        if ($scope.locationName == "") {
             localFactory.alert("Enter name of the lake.", function () {
 
             }, "Message", 'OK');
             return;
         }
 
-        if($scope.imageURI==""){
+        if ($scope.imageURI == "") {
             localFactory.alert("Please attach a image.", function () {
 
             }, "Message", 'OK');
@@ -2107,24 +2356,23 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
         }
 
 
+        if ($scope.imageURI != '') {
 
-        if($scope.imageURI!=''){
-
-            var serverURL='http://ncrts.com/fishing_lake/webservice/suggest_lake';
+            var serverURL = 'http://ncrts.com/fishing_lake/webservice/suggest_lake';
             var options = new FileUploadOptions();
-            options.fileKey="lake_img";
-            options.fileName=$scope.imageURI.substr($scope.imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
+            options.fileKey = "lake_img";
+            options.fileName = $scope.imageURI.substr($scope.imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
 
             var params = {};
             params.user_no = storeData.getData().loginData.user_details.user_no;
-            params.sugg_name=$scope.locationName;
-            params.latitude=$scope.lat;
-            params.longitude= $scope.long;
+            params.sugg_name = $scope.locationName;
+            params.latitude = $scope.lat;
+            params.longitude = $scope.long;
             options.params = params;
             localFactory.load();
             $cordovaFileTransfer.upload(serverURL, $scope.imageURI, options)
-                .then(function(result) {
+                .then(function (result) {
                     localFactory.unload();
                     localFactory.alert('Location post successfully.', function () {
 
@@ -2132,7 +2380,7 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
                     $location.path('home');
 
-                }, function(err) {
+                }, function (err) {
                     localFactory.unload();
                     console.log("error");
                     console.log(err);

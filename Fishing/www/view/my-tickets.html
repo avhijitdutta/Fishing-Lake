@@ -11,13 +11,13 @@
         </ul>
 
         <div id="past-ticket" ng-swipe-right="futureTicket()" ng-show="tab==1">
-            <div class="row-ticket past" ng-repeat="ticket in [1,2,3,4,5]">
+            <div class="row-ticket past" ng-repeat="ticket in tickets.ticket_details">
                 <div class="l">
-                    <div class="no">JAK-827-22A</div>
+                    <div class="no">{{ticket.ticket_no}}</div>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td valign="top">Location:</td>
-                            <td valign="top">Himley Park, Dudley, West Midlands, DY3 4DF</td>
+                            <td valign="top">{{ticket.vanue_name}}</td>
                         </tr>
                         <tr>
                             <td valign="top">Ticket type:</td>
@@ -25,11 +25,12 @@
                         </tr>
                         <tr>
                             <td valign="top">Date:</td>
-                            <td valign="top">20th March 2015</td>
+                            <!--<td valign="top">20th March 2015</td>-->
+                            <td valign="top">{{ticket.booking_date}}</td>
                         </tr>
                         <tr>
                             <td valign="top">Price:</td>
-                            <td valign="top">£9.00</td>
+                            <td valign="top">£{{ticket.price}}</td>
                         </tr>
                     </table>
                 </div>
@@ -38,13 +39,13 @@
         </div>
 
         <div id="future-ticket" ng-swipe-left="pastTicket()" ng-show="tab==2">
-            <div class="row-ticket" ng-repeat="ticket in [1,2,3,4,5]">
+            <div class="row-ticket" ng-repeat="ticket in tickets.future_ticket">
                 <div class="l">
-                    <div class="no">JAK-827-22A</div>
+                    <div class="no">{{ticket.ticket_no}}</div>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td valign="top">Location:</td>
-                            <td valign="top">Himley Park, Dudley,West Midlands, DY3 4DF</td>
+                            <td valign="top">{{ticket.vanue_name}}</td>
                         </tr>
                         <tr>
                             <td valign="top">Ticket type:</td>
@@ -53,16 +54,16 @@
                         </tr>
                         <tr>
                             <td valign="top">Date:</td>
-                            <td valign="top">20th March 2015</td>
+                            <td valign="top">{{ticket.booking_date}}</td>
                         </tr>
                         <tr>
                             <td valign="top">Price:</td>
-                            <td valign="top">£9.00</td>
+                            <td valign="top">£{{ticket.price}}</td>
                         </tr>
 
                     </table>
                 </div>
-                <div class="r">Tap to view ticket</div>
+                <div class="r" ng-click="showTicketDetail(ticket)">Tap to view ticket</div>
             </div>
         </div>
 

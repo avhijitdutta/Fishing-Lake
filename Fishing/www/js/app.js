@@ -56,10 +56,10 @@ var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngT
 app.config(['$routeProvider',"$keyboardProvider",
     function($routeProvider,$keyboardProvider) {
         $keyboardProvider.init({
-            scrollPaneID: '#scroll',
-            headerID: false,
+            scrollPaneID: '.scroll',
+            headerID: '.ncr-header',
             bodyID: '.page',
-            footerID: false,
+            footerID: '.ncr-footer',
             binders : 'input[type="text"],textarea,input[type="password"],input[type="tel"],input[type="email"]'
         });
 
@@ -133,8 +133,9 @@ app.config(['$routeProvider',"$keyboardProvider",
 
                         //cat_id=1&user_no=1&fishing_type=1&fish_spacies=1&fish_rules=1&lake_amenitites=1&latitude=56.939191&longitude=23.989926
                         var postData = {latitude: 56.939191, longitude: 23.989926};
-                        /*postData={}
-                         postData = storeData.getData()['latLong'];*/
+                        /*  var postData={};*/
+
+                        /* postData = storeData.getData()['latLong'];*/
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
 
@@ -308,7 +309,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                 controller :'checkinCtrl'
             })
             .when('/owner/:id', {
-                title: 'Photos',
+                title: 'Lake Owner',
                 templateUrl:'view/lake-owner.html',
                 controller :'lakeOwner'
             })
@@ -347,7 +348,26 @@ app.config(['$routeProvider',"$keyboardProvider",
             .when('/mytickets', {
                 title: 'My Tickets',
                 templateUrl: 'view/my-tickets.html',
-                controller: 'myTicketCtrl'
+                controller: 'myTicketCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory, storeData) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var postData = {};
+                        postData['user_no'] = storeData.getData().loginData.user_details.user_no;
+                        var myBookMark = localFactory.post('past_future_ticket', postData);
+                        myBookMark.success(function (data) {
+                            defer.resolve(data);
+                            localFactory.unload();
+                        });
+
+                        myBookMark.error(function (data, status, headers, config) {
+                            defer.reject(data);
+                            localFactory.unload();
+                        });
+                        return defer.promise;
+                    }
+                }
             })
             .when('/connectac', {
                 title: 'Connect Account',
@@ -373,6 +393,11 @@ app.config(['$routeProvider',"$keyboardProvider",
                 title: 'Contact Us',
                 templateUrl: 'view/contact-us.html',
                 controller: 'contactCtrl'
+            })
+            .when('/imgTag', {
+                title: 'Image tag',
+                templateUrl: 'view/tagImg.html',
+                controller: 'tagImgCtrl'
             })
             .otherwise({
                 redirectTo: defaultPath

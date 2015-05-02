@@ -12,7 +12,7 @@
                             <th style="text-align:center">Quantity</th>
                         </tr>
                         <tr class="value" ng-repeat="price in arrPrices">
-                            <td>{{price.price_name}}</td>
+                            <td>{{price.description}}</td>
                             <td>£ {{price.price}}</td>
                             <td class="quantity">
                                 <ul>
@@ -53,7 +53,9 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="hdng">Location</td>
-                    <td class="contnt"> {{selectedLake.address1}},{{selectedLake.address2}},<br>{{selectedLake.town}},  {{selectedLake.country}}</td>
+                    <td class="contnt"> {{selectedLake.address1}},{{selectedLake.address2}},<br>{{selectedLake.town}},
+                        {{selectedLake.country}}
+                    </td>
                     <td></td>
                 </tr>
                 <tr>

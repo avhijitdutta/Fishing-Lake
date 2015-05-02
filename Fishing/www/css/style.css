@@ -1736,6 +1736,13 @@ label.css-label {
     margin: 15px 0;
 }
 
+.form .row {
+    background: #062c2e;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 15px 0;
+}
+
 .signup .signup-email-form .row input {
     font-family: inherit;
     font-size: inherit;
@@ -1746,7 +1753,22 @@ label.css-label {
     background: none;
 }
 
+.form .row input {
+    font-family: inherit;
+    font-size: inherit;
+    float: left;
+    width: 80%;
+    padding: 1%;
+    color: #fff;
+    background: none;
+}
+
 .signup .signup-email-form .row img {
+    float: right;
+    width: 25px;
+}
+
+.form .row img {
     float: right;
     width: 25px;
 }
@@ -1793,6 +1815,14 @@ label.css-label {
 }
 
 .signup .signup-email-form .row.error input {
+    color: #062c2e;
+}
+
+.form .row.error {
+    background: #bdca57;
+}
+
+.form .row.error input {
     color: #062c2e;
 }
 
@@ -2287,7 +2317,7 @@ label.css-label {
 .lake-owner .lake-name .fld {
     background: #0b4a4b url(../images/search-cross.png) no-repeat right center;
     background-size: 35px;
-    width: 65%;
+    width: 97%;
     text-align: left;
     padding: 5px;
     display: inline-block;
@@ -2468,7 +2498,7 @@ label.css-label {
 }
 
 .lake-owner .cont-area .list-facility td:first-child {
-    text-align: right;
+    text-align: left;
     padding-right: 10px;
 }
 
@@ -2505,7 +2535,7 @@ label.css-label {
 }
 
 .lake-owner .opening-hours td:first-child {
-    text-align: right;
+    text-align: left;
     padding-right: 10px;
 }
 
@@ -2818,6 +2848,8 @@ label.css-label {
     text-align: center;
     margin: 20px -8px -8px -8px;
     font-size: 20px;
+    width: 104%;
+    color: #ffffff;
 }
 
 .pop-filter.add-lake .btn-update-my-lake img {
@@ -2850,7 +2882,7 @@ label.css-label {
 }
 
 .pop-filter.add-lake .inner-content .form .fld {
-    background: #062c2e url(../images/ico-exclamation.png) no-repeat right 10px center;
+    background: #062c2e;
     background-size: 35px;
     border-radius: 3px;
     padding: 10px 5px;
@@ -4080,4 +4112,120 @@ html, body, #map-canvas, #map_canvas {
     width: 100%;
     background: #0b4a4d;
     color: #fff;
+}
+
+.ncr-content .ng-invalid-required .fld {
+    background: #bdca57 !important;
+    border: 1px solid red;
+}
+
+.ncr-content .ng-invalid-required .fld input {
+    color: #000000 !important;
+}
+
+.ncr-content .ng-invalid-email .fld {
+    background: #bdca57 !important;
+    border: 1px solid red;
+}
+
+.ncr-content .ng-invalid-email .fld input {
+    color: #000000 !important;
+}
+
+.ncr-content .ng-invalid-required .venue-des {
+    background: #bdca57 !important;
+    border: 1px solid red;
+}
+
+.ncr-content .ng-invalid-required .venue-des textarea {
+    color: #000000 !important;
+}
+
+.tagimg {
+    background: #063a3d;
+}
+
+.tagimg .attach-photo {
+    margin: 6px 14px;
+    background: #062c2e;
+    color: #fff;
+    text-align: center;
+    padding: 11px;
+}
+
+.tagimg .attach-photo img {
+    width: 40px;
+    vertical-align: -4px;
+}
+
+.tagimg .checkin .checked-in {
+    margin: 0 25px;
+    color: #fff;
+    text-align: center;
+}
+
+.tagimg .checkin-heading {
+    background: #128b91 url(../images/next-arrow.png) no-repeat right 20px center;
+    background-size: 10px;
+    color: #fff;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.tagimg .share-with {
+    padding: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.tagimg .share-with {
+    padding: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.tagimg .share-with img {
+    margin: 0 10px;
+    vertical-align: middle;
+    width: 30px;
+}
+
+.tagimg .checked-in {
+    margin: 0 25px;
+    color: #fff;
+    text-align: center;
+}
+
+.tagimg .checked-in img {
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+}
+
+.tagimg .row {
+    background: #062c2e;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.tagimg .row input {
+    font-family: inherit;
+    font-size: inherit;
+    float: left;
+    width: 80%;
+    padding: 1%;
+    color: #fff;
+    background: none;
+}
+
+.tagimg .form {
+    margin: 10px;
+}
+
+.tagimg .form .note {
+    color: #128b91;
+    padding: 0 15px;
+    font-size: 12px;
 }
