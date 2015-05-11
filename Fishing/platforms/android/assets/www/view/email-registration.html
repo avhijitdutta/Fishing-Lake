@@ -8,6 +8,7 @@
         </div>
 
         <div class="fb-connect" ng-click="fbLogin()"><img src="images/fb-connect.png" alt="">
+
             <div>We will never post anything without your permission</div>
         </div>
         <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
@@ -18,7 +19,8 @@
                            required>
                     <img src="images/ico-exclamation.png" alt="" ng-show="userForm.email_id.$pristine">
                     <img src="images/ico-right.png" alt="" ng-show="userForm.email_id.$valid">
-                    <img src="images/ico-cross-big.png" alt="" ng-show="userForm.email_id.$invalid && !userForm.email_id.$pristine">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.email_id.$invalid && !userForm.email_id.$pristine">
 
                     <div class="clr"></div>
                 </div>

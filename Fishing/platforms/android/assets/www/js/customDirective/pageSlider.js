@@ -107,6 +107,7 @@ angular.module('page',[])
 
             image.on('load', function () {
                 elem.attr('src', image.attr('src'));
+                $(elem).removeClass('loader');
                 image.remove();
             });
 

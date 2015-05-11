@@ -28,8 +28,8 @@
             </div>
 
 
-            <div class="share-with">Share with <img src="images/ico-twitter.png" alt=""> <img src="images/ico-fb.png"
-                                                                                              alt=""></div>
+            <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"
+                                                    ng-click="toggleSocial(item)"></div>
             <div class="map">
 
                 <div class="pointer">

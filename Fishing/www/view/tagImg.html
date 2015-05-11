@@ -7,18 +7,17 @@
             Publish
         </div>
 
-        <div class="attach-photo"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+        <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo</div>
         <div class="checked-in">
-            <img src="images/user-photo.jpg" alt="">
+            <img ng-src="{{imageURI}}" alt="">
         </div>
 
         <div class="form">
             <div class="note">Tag a Lake</div>
             <div class="row">
-                <input type="email" name="confirm_email" placeholder="Tap to search" ng-model="user.confirm_email"
-                       required match="user.email_id">
-
-                <div class="clr"></div>
+                <angucomplete id="ex1" placeholder="Search Lakes" pause="100" selectedobject="selectedCountry"
+                              localdata="lackList" searchfields="lake_name" titlefield="lake_name" minlength="1"
+                              inputclass="form-control form-control-small" matchclass="highlight"/>
             </div>
         </div>
         <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"

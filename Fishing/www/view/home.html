@@ -36,7 +36,7 @@
         <!-------------- list -------------------->
         <div class="list">
             <div class="row-list" ng-repeat="list in listCollection" ng-click="viewDetail(list.cat_id)"><img
-                    src="images/listing_img1.jpg" alt="">
+                    ng-src="{{list.cat_img}}" alt="">
 
                 <div class="info">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">

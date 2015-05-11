@@ -1,6 +1,6 @@
 app.service('storeData', ['localFactory', function (localFactory) {
     var self = this;
-    self.currentData = {loginData: "", currentLake: {}, latLong: {}};
+    self.currentData = {loginData: "", currentLake: {}, latLong: {},currentBooking:{},currentTicket:{}};
     self.cityData = "";
     this.setData = function (obj) {
 
@@ -32,6 +32,19 @@ app.service('storeData', ['localFactory', function (localFactory) {
         if (obj.latLong) {
             self.currentData['latLong'] = obj.latLong;
         }
+
+        if(obj.currentBooking){
+
+            self.currentData['currentBooking']=obj.currentBooking;
+        }
+
+        if(obj.currentTicket){
+            self.currentData['currentTicket']=obj.currentTicket;
+        }
+
+        if(obj.social){
+            localFactory.setLocalItem('social', JSON.stringify(obj.social));
+        }
     }
 
 
@@ -43,8 +56,10 @@ app.service('storeData', ['localFactory', function (localFactory) {
         } else {
             return $.parseJSON(localFactory.getLocalItem('loginData'));
         }
+    }
 
-
+    this.getSocialData=function(){
+        return $.parseJSON(localFactory.getLocalItem('social'));
     }
 
     this.resetData = function () {
@@ -52,6 +67,15 @@ app.service('storeData', ['localFactory', function (localFactory) {
         localFactory.setLocalItem('loginData', '');
     }
 
+
+}]);
+
+app.service('ajaxSearch', ['$http', function($http){
+    return {
+        search: function(keywords){
+            return $http.post('/api/member/getuser', { "username" : keywords });
+        }
+    }
 }]);
 
 app.service("paypal", function () {

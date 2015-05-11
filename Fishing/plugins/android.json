@@ -99,6 +99,10 @@
                         {
                             "xml": "<feature name=\"Geocoder\"><param name=\"android-package\" value=\"plugin.google.maps.MyGeocoder\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -306,6 +310,9 @@
         },
         "plugin.google.maps": {
             "API_KEY_FOR_ANDROID": "528681269392-sdi51lpn3s9a41fljhldh1jb4ncuf1bu.apps.googleusercontent.com",
+            "PACKAGE_NAME": "com.fishing.fish"
+        },
+        "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "com.fishing.fish"
         }
     },

@@ -88,6 +88,7 @@ a {
 
 .ncr-header td:first-child {
     width: 9%;
+    height: 35px;
 }
 
 .ncr-header td:last-child {
@@ -688,6 +689,11 @@ label.css-label {
     border-radius: 4px;
 }
 
+.lakes .row-list img.loader{
+    width: auto;
+    margin-top: 5%;
+}
+
 .listing .row-list .image {
     float: left;
     width: 100px;
@@ -950,7 +956,8 @@ label.css-label {
     margin-bottom: 15px;
     position: relative;
     color: #4d4d4d;
-    height: 304px
+    height: 304px;
+    text-align: center;
 }
 
 .lakes .row-list img {
@@ -1736,12 +1743,13 @@ label.css-label {
     margin: 15px 0;
 }
 
-.form .row{
+.form .row {
     background: #062c2e;
     border-radius: 4px;
     padding: 10px;
     margin: 15px 0;
 }
+
 .signup .signup-email-form .row input {
     font-family: inherit;
     font-size: inherit;
@@ -1751,6 +1759,7 @@ label.css-label {
     color: #fff;
     background: none;
 }
+
 .form .row input {
     font-family: inherit;
     font-size: inherit;
@@ -1760,15 +1769,17 @@ label.css-label {
     color: #fff;
     background: none;
 }
+
 .signup .signup-email-form .row img {
     float: right;
     width: 25px;
 }
 
- .form .row img{
+.form .row img {
     float: right;
     width: 25px;
 }
+
 .signup .signup-email-form .note {
     color: #128b91;
     padding: 0 15px;
@@ -2845,7 +2856,7 @@ label.css-label {
     margin: 20px -8px -8px -8px;
     font-size: 20px;
     width: 104%;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .pop-filter.add-lake .btn-update-my-lake img {
@@ -3718,6 +3729,7 @@ label.css-label {
     font-size: 30px;
     text-align: center;
     padding: 5px 0;
+    color:#fff;
 }
 
 .myticket .row-ticket table {
@@ -4115,15 +4127,16 @@ html, body, #map-canvas, #map_canvas {
     border: 1px solid red;
 }
 
-.ncr-content .ng-invalid-required .fld input{
+.ncr-content .ng-invalid-required .fld input {
     color: #000000 !important;
 }
 
-.ncr-content .ng-invalid-email .fld{
+.ncr-content .ng-invalid-email .fld {
     background: #bdca57 !important;
     border: 1px solid red;
 }
-.ncr-content .ng-invalid-email .fld input{
+
+.ncr-content .ng-invalid-email .fld input {
     color: #000000 !important;
 }
 
@@ -4132,8 +4145,101 @@ html, body, #map-canvas, #map_canvas {
     border: 1px solid red;
 }
 
-.ncr-content .ng-invalid-required .venue-des textareas{
+.ncr-content .ng-invalid-required .venue-des textarea {
     color: #000000 !important;
 }
-/*
-.ng-invalid-email */
+
+.tagimg {
+    background: #063a3d;
+}
+
+.tagimg .attach-photo {
+    margin: 6px 14px;
+    background: #062c2e;
+    color: #fff;
+    text-align: center;
+    padding: 11px;
+}
+
+.tagimg .attach-photo img {
+    width: 40px;
+    vertical-align: -4px;
+}
+
+.tagimg .checkin .checked-in {
+    margin: 0 25px;
+    color: #fff;
+    text-align: center;
+}
+
+.tagimg .checkin-heading {
+    background: #128b91 url(../images/next-arrow.png) no-repeat right 20px center;
+    background-size: 10px;
+    color: #fff;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.tagimg .share-with {
+    padding: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.tagimg .share-with {
+    padding: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.tagimg .share-with img {
+    margin: 0 10px;
+    vertical-align: middle;
+    width: 30px;
+}
+
+.tagimg .checked-in {
+    margin: 0 25px;
+    color: #fff;
+    text-align: center;
+}
+
+.tagimg .checked-in img {
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+}
+
+.tagimg .row {
+    background: #062c2e;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.tagimg .row input {
+    font-family: inherit;
+    font-size: inherit;
+    float: left;
+    width: 80%;
+    padding: 1%;
+    color: #fff;
+    background: none;
+}
+
+.tagimg .form {
+    margin: 10px;
+}
+
+.tagimg .form .note {
+    color: #128b91;
+    padding: 0 15px;
+    font-size: 12px;
+}
+
+.carousel5{
+    width:100%;
+    height:100%;
+    background: inherit;
+}

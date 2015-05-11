@@ -6,31 +6,21 @@
     <div class="ncr-content   connect-account connect-accounts">
 
         <div class="heading">Connect Accounts</div>
-        <div class="row-account selected">
-            <div class="l">Facebook
-                <div class="connected-as">Connected as</div>
-                <div class="account"><img src="images/user-photo.jpg" alt="">Frank Johnsson</div>
-                <div class="post-activity">Post activity to my timeline
-                    <div class="chkbox checked"></div>
+        <div class="row-account" ng-repeat="account in social" ng-class="{'selected':account.is_connected}">
+            <div class="l">
+                <div class="connected-as">Connected as {{account.name}}</div>
+                <div class="account">
+                    <img ng-src="{{account.imgUrl}}" alt="">{{account.Profilename}}
+                </div>
+
+                <div class="post-activity" ng-click="check(account)">Post activity to my timeline
+                    <div class="chkbox" ng-class="{'checked':account.post_activity}"></div>
                 </div>
             </div>
-            <div class="r">Swipe to disconnect</div>
 
+            <div class="r" ng-swipe-right="disConnect(account)" ng-if="account.is_connected">Swipe to disconnect</div>
+            <div class="r" ng-click="connect(account)" ng-if="!account.is_connected">Tap to add account</div>
         </div>
-
-
-        <div class="row-account">
-            <div class="l">Twitter
-                <div class="connected-as">Connected as</div>
-                <div class="account"></div>
-                <div class="post-activity">Post activity to my timeline
-                    <div class="chkbox"></div>
-                </div>
-            </div>
-            <div class="r">Tap to add account</div>
-
-        </div>
-
 
     </div>
     <!-------------- ncr-content end-------------------->
@@ -40,5 +30,3 @@
     <ng-include src="'templates/footer.html'"></ng-include>
 
 </div>
-</body>
-</html>

@@ -1,57 +1,5 @@
 <div class="page">
-<div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
-<div class="pop-filter rating" ng-class="{'pop-animate': rightPanel}">
-    <div class="inner-content ">
-        <div ng-hide="showAddReview">
-            <div class="heading">
-                <label>Write a review of
-                    {{lakeDetail.lake_category.leke_name}}</label>
-            </div>
-            <div class="stars">
-                How many stars would you give this lake?
-                <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)">
-                </div>
-                <div class="your-rating">Your Rating
-                    <div class="rate">{{rating}} / 5</div>
-                    <div class="offer">20% of the people who rated this lake gave it 4 or more stars.</div>
-                    <div class="share">Share with
-                        <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
-                    </div>
-                </div>
-            </div>
-            <div class="btn-add-review" ng-click="addReview()">
-                <img src="images/star-gray.png" alt="">
-                Add my Rating
-            </div>
-            <div class="txt">
-                If you have few minutes,consider writing a review to help other visitors choose the best lakes.
-            </div>
-        </div>
-
-        <div class="write-review" ng-show="showAddReview"><label>Write your review for others to read</label>
-
-            <div class="fld-review">
-                <textarea ng-model="reviewData"></textarea>
-            </div>
-
-            <div class="anonymous">
-                <div class="chk-box" ng-class="{'checked':check}" ng-click="chengeCheck()"></div>
-                <div class="txt">
-                    <h3>Post as Anonymous</h3>
-                    Your review will show your name as registered on your account unless you tick this box.
-                </div>
-            </div>
-            <div class="share">Share with
-                <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
-            </div>
-        </div>
-        <div class="btn-add-review" ng-click="addReview()">
-            <img src="images/ico-write.png" alt="">
-            Add my review
-        </div>
-
-    </div>
-</div>
+<ng-include src="'templates/rating.html'"></ng-include>
 <!-------------- ncr-header -------------------->
 <ng-include src="'templates/header.html'"></ng-include>
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
@@ -71,7 +19,8 @@
 <!-------------- ncr-content start-------------------->
 <div class="ncr-content detail heading-space no-footer">
 <div class="detail-img">
-<img ng-src="{{lakeDetail.profile_pic}}" alt="">
+<img alt="" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>
+
 <div class="img-content">
     <div class="left-content">
         <div class="name">{{lakeDetail.lake_category.leke_name}}</div>
@@ -90,8 +39,8 @@
                 Votes</p>
         </div>
         <div class="bookmark" ng-click="bookmark()">
-            <img alt="" src="images/ico-tag.png" ng-show="!lakeDetail.lake_category.fav_id">
-            <img alt="" src="images/header-tag-marked.png" ng-show="lakeDetail.lake_category.fav_id">
+            <img alt="" src="images/ico-tag.png" ng-show="lakeDetail.lake_category.fav_id==''">
+            <img alt="" src="images/header-tag-marked.png" ng-show="lakeDetail.lake_category.fav_id!=''">
             Bookmark
         </div>
     </div>
@@ -137,19 +86,17 @@
         <div class="clr"></div>
     </div>
     <div class="part-three map">
-        <!-- <img src="images/detail-map.png" alt="">-->
         <div id="map-canvas"></div>
         <div class="map-content">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><img src="images/ico-direction-arrow.png" alt=""></td>
-                    <td>1.3km</td>
+                    <td ng-click="showDirection()"><img src="images/ico-direction-arrow.png" alt=""></td>
+                    <td>{{lakeDetail.distance.distance}} Miles</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="padding:0;">Directions</td>
                 </tr>
             </table>
-
         </div>
     </div>
     <div class="part-four">
@@ -177,8 +124,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
                     <tr ng-repeat="amenities in lakeDetail.list_amenitites" id="{{amenities.id}}">
-                        <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""
-                                                                                      src="images/ico-cross-big.png">
+                        <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""  src="images/ico-cross-big.png">
                         </td>
                         <td class="tick-img" ng-if="amenities.amenitites_id!=''"><img alt="" src="images/tick.png"></td>
                         <td>{{amenities.name}}</td>
@@ -199,14 +145,29 @@
 
             <div class="part-four" ng-show="tab == 3">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td> Name </td>
+
+                        <td>Normal</td>
+
+                        <td>
+                            Specimen
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr ng-repeat="spacies in lakeDetail.list_spacies" id="{{spacies.id}}">
-                            <td class="tick-img" ng-if="spacies.fish_species_id==''"><img alt=""
-                                                                                          src="images/ico-cross-big.png">
-                            </td>
-                            <td class="tick-img" ng-if="spacies.fish_species_id!=''"><img alt="" src="images/tick.png">
-                            </td>
                             <td>{{spacies.name}}</td>
+                            <td class="tick-img" ng-if="spacies.normal==0"><img alt=""  src="images/ico-cross-big.png">
+                            </td>
+                            <td class="tick-img" ng-if="spacies.normal==1"><img alt="" src="images/tick.png">
+                            </td>
+
+                            <td class="tick-img" ng-if="spacies.specimen==0"><img alt=""  src="images/ico-cross-big.png">
+                            </td>
+                            <td class="tick-img" ng-if="spacies.specimen==1"><img alt="" src="images/tick.png">
+                            </td>
                         </tr>
                     </table>
                 </table>
@@ -299,15 +260,14 @@
             </tr>
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(5)">
-            <div class="row-review" ng-repeat="review in lakeDetail.lake_review">
+            <div class="row-review" ng-repeat="review in reviewList">
                 <div class="review">
                     <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
                     <div class="stars">
-                    <img src="images/star-review.png" alt="">
-                    <img src="images/star-review.png" alt="">
-                    <img src="images/star-review.png" alt="">
-                    <img src="images/star-off-review.png" alt="">
-                    <img src="images/star-off-review.png" alt=""></div>
+                        <img alt="" src="images/star-review.png" ng-repeat="i in getNumber(review.star) track by $index">
+
+                        <img alt="" src="images/star-off-review.png" ng-repeat="j in getNumber(review.noStar) track by $index">
+                    </div>
                     <div class="clr"></div>
                 </div>
                 <div class="comment">
@@ -360,7 +320,8 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td><h1 class="one"><span>Other Lakes at this Venue</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}" alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}"
+                                           alt=""></td>
             </tr>
         </table>
 

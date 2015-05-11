@@ -36,6 +36,16 @@ if ( !Date.prototype.toISODate ) {
     }() );
 }
 
+if (!Date.prototype.displayDate) {
+    ( function () {
+        Date.prototype.displayDate = function () {
+            var arrMonth = ["JAN", "FEV", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            return this.getDate() + " " + arrMonth[this.getMonth()] + ' ' + this.getFullYear();
+        };
+
+    }() );
+}
+
 Array.prototype.removeValue = function(name, value){
 
     var array = $.map(this, function(v,i){
@@ -52,9 +62,9 @@ Array.prototype.removeValue = function(name, value){
 var currentPage="";
 var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova']);
-app.config(['$routeProvider',"$keyboardProvider",
-    function($routeProvider,$keyboardProvider) {
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova', 'angucomplete', 'angular-carousel', 'angular-loading-bar', 'ncSocials']);
+app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$twitterProvider',
+    function ($routeProvider, $keyboardProvider, cfpLoadingBarProvider, $twitterProvider) {
         $keyboardProvider.init({
             scrollPaneID: '.scroll',
             headerID: '.ncr-header',
@@ -62,6 +72,14 @@ app.config(['$routeProvider',"$keyboardProvider",
             footerID: '.ncr-footer',
             binders : 'input[type="text"],textarea,input[type="password"],input[type="tel"],input[type="email"]'
         });
+
+        $twitterProvider.init({
+            consumerKey: 'Vez5NV9FmsxizbnOEzpaPJRhy', // YOUR Twitter CONSUMER_KEY
+            consumerSecret: 'yCTm32Ycxa0gDOTyZj5FO4CHOEzQMsEPrGJvXU6v4Dm6pr1yBX', // YOUR Twitter CONSUMER_SECRET
+            callbackUrl: "ncrts.com"
+        });
+
+        cfpLoadingBarProvider.includeSpinner = false;
 
         if (window.localStorage.getItem('loginData') && window.localStorage.getItem('loginData') != "" && window.localStorage.getItem('loginData') != null) {
 
@@ -88,7 +106,7 @@ app.config(['$routeProvider',"$keyboardProvider",
                 controller:"loginPageCtrl"
             })
             .when('/forgot', {
-                title: 'Booking',
+                title: 'Forgot Password',
                 templateUrl:'view/forget-pass.html',
                 controller: 'forgotPassCtrl',
                 animation: "slide"
@@ -98,28 +116,43 @@ app.config(['$routeProvider',"$keyboardProvider",
                 templateUrl: 'view/home.html',
                 controller: 'homeCtrl',
                 resolve: {
-                    homeData: function ($route, $q, localFactory) {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation) {
                         localFactory.load();
                         var defer = $q.defer();
                         var postData = {};
                         var lakeCategory = localFactory.post('lake_category', postData);
                         lakeCategory.success(function (data) {
                             defer.resolve(data);
-
                         });
-
                         lakeCategory.error(function (data, status, headers, config) {
                             defer.reject(data);
                             localFactory.unload();
                         });
-
                         return defer.promise;
                     }
                 }
             }).when('/Search', {
                 title: 'Search Event',
                 templateUrl:'view/search.html',
-                controller :'searchCtrl'
+                controller: 'searchCtrl',
+                resolve: {
+                    geoData: function ($route, $q, localFactory, storeData, $cordovaGeolocation) {
+                        localFactory.load()
+                        var posOptions = {timeout: 10000, enableHighAccuracy: true};
+                        var defer = $q.defer();
+                        $cordovaGeolocation
+                            .getCurrentPosition(posOptions)
+                            .then(function (position) {
+
+                                var latLong = {latLong: {latitude: position.coords.latitude, longitude: position.coords.longitude}};
+                                storeData.setData(latLong);
+                                defer.resolve(latLong);
+                            }, function (err) {
+                                defer.reject(data);
+                            });
+                        return defer.promise;
+                    }
+                }
             }).when('/lakelist/:id', {
                 title: 'Lake List',
                 templateUrl:'view/lakes.html',
@@ -127,15 +160,9 @@ app.config(['$routeProvider',"$keyboardProvider",
                 resolve: {
                     homeData: function ($route, $q, localFactory, $routeParams, storeData) {
                         localFactory.load();
+                        var postData = {};
                         var defer = $q.defer();
-
-                        var cat_id = $route.current.params.id;
-
-                        //cat_id=1&user_no=1&fishing_type=1&fish_spacies=1&fish_rules=1&lake_amenitites=1&latitude=56.939191&longitude=23.989926
-                        var postData = {latitude: 56.939191, longitude: 23.989926};
-                        /*  var postData={};*/
-
-                        /* postData = storeData.getData()['latLong'];*/
+                        postData = storeData.getData(true)['latLong'];
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
 
@@ -212,21 +239,27 @@ app.config(['$routeProvider',"$keyboardProvider",
                 templateUrl:'view/lake-detail.html',
                 controller: 'lakeDetailCtrl',
                 resolve: {
-                    homeData: function ($route, $q, localFactory) {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation, storeData) {
                         localFactory.load();
                         var defer = $q.defer();
-                        var postData = {lake_id: $route.current.params.id};
-                        var lakeCategory = localFactory.post('lake_details', postData);
-                        lakeCategory.success(function (data) {
-                            defer.resolve(data);
-                            localFactory.unload();
-                        });
+                        var posOptions = {timeout: 10000, enableHighAccuracy: true};
+                        $cordovaGeolocation
+                            .getCurrentPosition(posOptions)
+                            .then(function (position) {
+                                var postData = {lake_id: $route.current.params.id, latitude: position.coords.latitude, longitude: position.coords.longitude, user_no: storeData.getData().loginData.user_details.user_no};
+                                var lakeCategory = localFactory.post('lake_details', postData);
+                                lakeCategory.success(function (data) {
+                                    defer.resolve(data);
+                                    localFactory.unload();
+                                });
 
-                        lakeCategory.error(function (data, status, headers, config) {
-                            defer.reject(data);
-                            localFactory.unload();
+                                lakeCategory.error(function (data, status, headers, config) {
+                                    defer.reject(data);
+                                    localFactory.unload();
+                                });
+                            }, function (err) {
+                                defer.reject(err);
                         });
-
                         return defer.promise;
                     }
                 }
@@ -360,7 +393,6 @@ app.config(['$routeProvider',"$keyboardProvider",
                             defer.resolve(data);
                             localFactory.unload();
                         });
-
                         myBookMark.error(function (data, status, headers, config) {
                             defer.reject(data);
                             localFactory.unload();
@@ -394,10 +426,34 @@ app.config(['$routeProvider',"$keyboardProvider",
                 templateUrl: 'view/contact-us.html',
                 controller: 'contactCtrl'
             })
+            .when('/ticketDetails', {
+                title: 'Ticket',
+                templateUrl: 'view/detailsTicket.html',
+                controller: 'ticketDetails'
+            })
             .when('/imgTag', {
                 title: 'Image tag',
                 templateUrl: 'view/tagImg.html',
-                controller: 'tagImgCtrl'
+                controller: 'tagImgCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory, storeData) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var postData = {latitude: 56.939191, longitude: 23.989926};
+                        var lakeCategory = localFactory.post('lake_cat_listing', postData);
+                        lakeCategory.success(function (data) {
+                            defer.resolve(data);
+                            localFactory.unload();
+                        });
+
+                        lakeCategory.error(function (data, status, headers, config) {
+                            defer.reject(data);
+                            localFactory.unload();
+                        });
+
+                        return defer.promise;
+                    }
+                }
             })
             .otherwise({
                 redirectTo: defaultPath
@@ -416,6 +472,13 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
         window.history.back();
     }
 
+    if (!localFactory.getLocalItem('social')) {
+        var obj = {social: [
+            {name: 'Facebook', is_connected: false, authkey: "", Profilename: "", id: 1, post_activity: true, imgUrl: "images/user-photo.jpg"},
+            {name: 'Twitter', is_connected: false, authkey: "", Profilename: "", id: 2, post_activity: false, imgUrl: "images/user-photo.jpg"}
+        ]};
+        storeData.setData(obj);
+    }
     $rootScope.fbLogin = function () {
 
         $cordovaFacebook.getLoginStatus()
@@ -438,6 +501,7 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
                                 last_name: success.last_name,
                                 fb_url: success.link
                             };
+                            console.log(credential);
                             var login = localFactory.post('login', credential);
                             login.success(function (data) {
                                 localFactory.unload();

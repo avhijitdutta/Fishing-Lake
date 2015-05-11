@@ -53,7 +53,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="hdng">Location</td>
-                    <td class="contnt"> {{selectedLake.address1}},{{selectedLake.address2}},<br>{{selectedLake.town}},
+                    <td class="contnt"> {{selectedLake.address1}}<br>{{selectedLake.town}},
                         {{selectedLake.country}}
                     </td>
                     <td></td>
@@ -69,7 +69,8 @@
                 <tr>
                     <td class="hdng">Date</td>
                     <td class="nonselctd"
-                        ng-class="{'nonselctd': date == 'None Selected' , 'contnt': date !='None Selected'} ">{{date}}
+                        ng-class="{'nonselctd': date == 'None Selected' , 'contnt': date !='None Selected'} ">
+                        {{displayDate}}
                     </td>
                     <td class="right-img" ng-click="showPopup(2)"><img class="deactive-tab-img"></td>
                 </tr>

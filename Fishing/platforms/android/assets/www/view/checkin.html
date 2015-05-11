@@ -7,11 +7,16 @@
           Himley Hall Top Pool
       </div>
 
-      <div class="attach-photo"><img src="images/ico-upload.png" alt="">Attach a photo</div>
-      <div class="checked-in"><img src="images/user-photo.jpg"  alt="">I just checked in!</div>
+      <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="" >Attach a photo</div>
+      <div class="checked-in">
+          <img src="images/user-photo.jpg"  alt="">I just checked in!
+      </div>
       <div class="who-with-you"> Who are you with? Add another person</div>
       <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)"> </div>
-      <div class="map"><div class="pointer"></div><img src="images/detail-map.png"  alt=""></div>
+      <div class="map">
+          <div class="pointer"></div>
+          <div id="map_canvas"></div>
+      </div>
   </div>
   <!-------------- ncr-content end-------------------->
 

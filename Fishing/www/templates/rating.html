@@ -1,0 +1,56 @@
+<div ng-controller="ratingCtrl">
+    <div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
+    <div class="pop-filter rating" ng-class="{'pop-animate': rightPanel}">
+        <div class="inner-content ">
+            <div ng-hide="showAddReview">
+                <div class="heading">
+                    <label>
+                        Write a review of High hill review
+                    </label>
+                </div>
+                <div class="stars">
+                    How many stars would you give this lake?
+                    <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)">
+                    </div>
+                    <div class="your-rating">Your Rating
+                        <div class="rate">{{rating}} / 5</div>
+                        <div class="offer">20% of the people who rated this lake gave it 4 or more stars.</div>
+                        <div class="share">Share with
+                            <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-add-review" ng-click="addRating()">
+                    <img src="images/star-gray.png" alt="">
+                    Add my Rating
+                </div>
+                <div class="txt">
+                    If you have few minutes,consider writing a review to help other visitors choose the best lakes.
+                </div>
+            </div>
+
+            <div class="write-review" ng-show="showAddReview"><label>Write your review for others to read</label>
+
+                <div class="fld-review">
+                    <textarea ng-model="reviewData"></textarea>
+                </div>
+
+                <div class="anonymous">
+                    <div class="chk-box" ng-class="{'checked':check}" ng-click="chengeCheck()"></div>
+                    <div class="txt">
+                        <h3>Post as Anonymous</h3>
+                        Your review will show your name as registered on your account unless you tick this box.
+                    </div>
+                </div>
+                <div class="share">Share with
+                    <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
+                </div>
+            </div>
+            <div class="btn-add-review" ng-click="addReview()">
+                <img src="images/ico-write.png" alt="">
+                Add my review
+            </div>
+
+        </div>
+    </div>
+</div>

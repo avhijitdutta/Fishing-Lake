@@ -4,11 +4,11 @@
     <!-------------- ncr-content start-------------------->
     <div class="ncr-content photos">
         <div class="photos-heading" align="center">
-            Himley Hall Top Pool
+           {{currentLake.leke_name}}
         </div>
 
         <div class="thumb-container">
-            <div class="thumb" ng-repeat="lake in lake_image"><img ng-src="{{lake.url}}" alt=""></div>
+            <div class="thumb" ng-repeat="lake in lake_image"><img ng-src="{{lake}}" alt=""></div>
         </div>
 
     </div>

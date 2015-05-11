@@ -1,83 +1,35 @@
 <div class="page">
-    <div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
-    <div class="pop-filter rating" ng-class="{'pop-animate': rightPanel}">
-        <div class="inner-content ">
-            <div ng-hide="showAddReview">
-                <div class="heading">
-                    <label>Write a review of
-                        {{lakeDetail.leke_name}}</label>
-                </div>
-                <div class="stars">
-                    How many stars would you give this lake?
-                    <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)">
-                    </div>
-                    <div class="your-rating">Your Rating
-                        <div class="rate">{{rating}} / 5</div>
-                        <div class="offer">20% of the people who rated this lake gave it 4 or more stars.</div>
-                        <div class="share">Share with
-                            <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-add-review" ng-click="addReview()">
-                    <img src="images/star-gray.png" alt="">
-                    Add my Rating
-                </div>
-                <div class="txt">
-                    If you have few minutes,consider writing a review to help other visitors choose the best lakes.
-                </div>
-            </div>
-
-            <div class="write-review" ng-show="showAddReview"><label>Write your review for others to read</label>
-
-                <div class="fld-review">
-                    <textarea ng-model="reviewData"></textarea>
-                </div>
-
-                <div class="anonymous">
-                    <div class="chk-box" ng-class="{'checked':check}" ng-click="chengeCheck()"></div>
-                    <div class="txt">
-                        <h3>Post as Anonymous</h3>
-                        Your review will show your name as registered on your account unless you tick this box.
-                    </div>
-                </div>
-                <div class="share">Share with
-                    <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)">
-                </div>
-            </div>
-            <div class="btn-add-review" ng-click="addReview()">
-                <img src="images/ico-write.png" alt="">
-                Add my review
-            </div>
-
-        </div>
-    </div>
+    <ng-include src="'templates/rating.html'"></ng-include>
     <!-------------- ncr-header -------------------->
     <ng-include src="'templates/header.html'"></ng-include>
     <!-------------- ncr-content start-------------------->
     <div class="ncr-content reviews">
         <div class="review-heading" align="center">
-            Himley Hall Top Pool
-
+            {{lakeDetail.currentLake.lake_category.leke_name}}
         </div>
-        <div class="part-four" ng-repeat="reviewitem in review">
+        <div class="part-four" ng-repeat="reviewitem in reviewList">
             <div class="row-review">
                 <div class="review">
                     <div class="reviewer">{{reviewitem.first_name}} {{reviewitem.last_name}}</div>
                     <div class="stars">
-                        <img alt="" src="images/star-review.png">
-                        <img alt="" src="images/star-review.png">
-                        <img alt="" src="images/star-review.png">
-                        <img alt="" src="images/star-off-review.png">
-                        <img alt="" src="images/star-off-review.png">
+                        <img alt="" src="images/star-review.png"
+                             ng-repeat="i in getNumber(reviewitem.star) track by $index">
+
+                        <img alt="" src="images/star-off-review.png"
+                             ng-repeat="j in getNumber(reviewitem.noStar) track by $index">
                     </div>
                     <div class="clr"></div>
                 </div>
-                <div class="comment">
-                    {{reviewitem.review}}
+                <div class="comment" ng-if="reviewitem.review!=''">
+                {{reviewitem.review}}
+                </div>
+
+                <div class="comment" ng-if="reviewitem.review==''">
+                    User have not give any review
                 </div>
             </div>
         </div>
+        <div ng-if="reviewList.length<1"> No user have not give any review.</div>
     </div>
     <!-------------- ncr-content end-------------------->
 

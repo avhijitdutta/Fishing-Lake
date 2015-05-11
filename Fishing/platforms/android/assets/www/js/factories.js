@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 app.factory("localFactory", ['$http', 'webservice' , function ($http, webservice) {
     var localFactory = {};
     localFactory.lang = {
@@ -220,7 +221,6 @@ app.factory("localFactory", ['$http', 'webservice' , function ($http, webservice
         }
         return true;
     };
-
 
     localFactory.arrMonth = ["JAN", "FEV", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     localFactory.arrDay = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];

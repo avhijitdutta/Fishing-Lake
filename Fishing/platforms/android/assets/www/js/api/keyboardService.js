@@ -37,20 +37,20 @@ angular.module('nvKeyboard', []).provider('$keyboard', function () {
                         var headerHeight = $(initValues.headerID).height() || 0;
                         var scrollPaneHeight = $(initValues.scrollPaneID).prop('scrollHeight') || 0;
 
-                         console.log('footer height', foterHeight);
-                         console.log('body height', bodyHeight);
-                         console.log('Header height', headerHeight);
-                         console.log('scrollPaneHeight height', scrollPaneHeight);
+                        console.log('footer height', foterHeight);
+                        console.log('body height', bodyHeight);
+                        console.log('Header height', headerHeight);
+                        console.log('scrollPaneHeight height', scrollPaneHeight);
 
                         var keyBoardHeight = e.keyboardHeight;
                         var bodyHeightWithoutfooter = bodyHeight - foterHeight;
                         var actualBodyHeight = bodyHeight + keyBoardHeight - 25;
                         var actualBodyHeightWithoutHeader = actualBodyHeight - headerHeight;
 
-                         console.log('keyBoardHeight ', keyBoardHeight);
-                         console.log('bodyHeightWithoutfooter', bodyHeightWithoutfooter);
-                         console.log('actualBodyHeight', actualBodyHeight);
-                         console.log('actualBodyHeightWithoutHeader', actualBodyHeightWithoutHeader);
+                        console.log('keyBoardHeight ', keyBoardHeight);
+                        console.log('bodyHeightWithoutfooter', bodyHeightWithoutfooter);
+                        console.log('actualBodyHeight', actualBodyHeight);
+                        console.log('actualBodyHeightWithoutHeader', actualBodyHeightWithoutHeader);
 
                         var elementHeight = input_offset.element.height();
                         var input_top = input_offset.top + elementHeight;

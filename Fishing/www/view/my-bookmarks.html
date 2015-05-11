@@ -15,7 +15,8 @@
                     <div class="delete" ng-click="deleteBookmark(lake)" stop-event='click'>Delete this bookmark</div>
                     Visit this fishing site
                 </div>
-                <img src="images/listing_img1.jpg" alt="">
+                <img class="loader" image-source="{{lake.profile_pic}}" image-placeholder="images/ajax-loader.gif"
+                     alt="" imageonload>
 
                 <div class="info">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -51,6 +52,7 @@
                 </div>
                 <div class="btn-booking" ng-click="goBooking(lake)">Make a booking at this site now</div>
             </div>
+            <div ng-if="lackList.length<1"> No Bookmark Found.</div>
         </div>
 
     </div>
