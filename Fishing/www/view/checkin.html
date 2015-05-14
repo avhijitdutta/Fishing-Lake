@@ -1,25 +1,26 @@
 <div class="page">
-  <!-------------- ncr-header -------------------->
-  <ng-include src="'templates/header.html'"></ng-include>
-  <!-------------- ncr-content start-------------------->
-  <div class="ncr-content checkin ">
-      <div class="checkin-heading" align="center">
-          Himley Hall Top Pool
-      </div>
+    <!-------------- ncr-header -------------------->
+    <ng-include src="'templates/header.html'"></ng-include>
+    <!-------------- ncr-content start-------------------->
+    <div class="ncr-content checkin ">
+        <div class="checkin-heading" align="center">
+            Himley Hall Top Pool
+        </div>
 
-      <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo</div>
-      <div class="checked-in">
-          <img src="images/user-photo.jpg" alt="">I just checked in!
-      </div>
-      <div class="who-with-you"> Who are you with? Add another person</div>
-      <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}" ng-click="toggleSocial(item)"> </div>
-      <div class="map">
-          <div class="pointer"></div>
-          <div id="map_canvas"></div>
-      </div>
-  </div>
-  <!-------------- ncr-content end-------------------->
+        <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+        <div class="checked-in">
+            <img src="images/user-photo.png" alt="">I just checked in!
+        </div>
+        <div class="who-with-you"> Who are you with? Add another person</div>
+        <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"
+                                                ng-click="toggleSocial(item)"></div>
+        <div class="map">
+            <div class="pointer"></div>
+            <div id="map_canvas"></div>
+        </div>
+    </div>
+    <!-------------- ncr-content end-------------------->
 
-  <!-------------- ncr-footer -------------------->
+    <!-------------- ncr-footer -------------------->
     <ng-include src="'templates/footer.html'"></ng-include>
 </div>

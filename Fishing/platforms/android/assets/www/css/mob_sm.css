@@ -119,7 +119,7 @@
     /*main content area*/
     .ncr-content {
         top: 37px;
-        bottom: 38px;
+        bottom: 52px;
     }
 
     .ncr-content.heading-space {
@@ -525,7 +525,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-three .map-content {
-        height: 100px;
+        height: 105px;
         font-size: 18px;
         padding: 0 20px;
     }
@@ -771,5 +771,10 @@
     .pop-filter.add-lake .inner-content .info {
         font-size: 12px;
         background-size: 34px;
+    }
+
+    .slider-container{
+        bottom: 0;
+        top: 92px;
     }
 }

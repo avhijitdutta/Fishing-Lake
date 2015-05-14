@@ -557,7 +557,7 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
                 console.log(data);
                 localFactory.unload();
                 if (data.result) {
-
+                    $scope.askquestion = "";
                     localFactory.alert(data.msg, function () {
 
                     }, "Message", 'OK');
@@ -686,7 +686,7 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
     $scope.uploadImg = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -916,7 +916,7 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.bookNow = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -973,16 +973,17 @@ app.controller('checkinCtrl',['$rootScope','$scope','$location','localFactory','
     $scope.twitter=false;
     $scope.fb=false;
     $scope.bookNow=function(){
-        if($scope.twitter)
+        if($scope.twitter && $twitter.checkSession())
         {
             if($twitter.checkSession()){
                 $twitter.tweet("I am just check in "+$scope.currentLake.lake_category.leke_name,function(){
-                    window.history.back();
+
                 });
             }
         }else{
             localFactory.alert("Please add twitter account in connect accounts.");
         }
+        window.history.back();
 
     }
 
@@ -1028,7 +1029,7 @@ app.controller('checkinCtrl',['$rootScope','$scope','$location','localFactory','
     $scope.uploadImage = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -1573,7 +1574,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.uploadImg = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -1623,7 +1624,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.uploadProfileImg = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -2252,7 +2253,7 @@ app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.uploadImg = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -2347,7 +2348,7 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
     $scope.uploadImage = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG
@@ -2598,7 +2599,7 @@ app.controller('tagImgCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.bookText = "Done";
     $scope.bookImg = "images/ico-check-in.png";
     $scope.lackList = $route.current.locals.homeData.lake_cat_listing;
-    $scope.imageURI = "images/user-photo.jpg";
+    $scope.imageURI = "images/user-photo.png";
     $scope.selectedCountry="";
     $scope.bookNow = function () {
 
@@ -2645,7 +2646,7 @@ app.controller('tagImgCtrl', ['$rootScope', '$scope', '$location', 'localFactory
 
                             }, "Message", 'OK');
                             $scope.selectedCountry="";
-                            $scope.imageURI=="images/user-photo.jpg";
+                            $scope.imageURI=="images/user-photo.png";
                         });
                     }
                 }else{
@@ -2707,7 +2708,7 @@ app.controller('tagImgCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.uploadImage = function () {
 
         var options = {
-            destinationType: Camera.DestinationType.NATIVE_URI,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG

@@ -9,11 +9,17 @@
             <nav ng-repeat="me in currentPopContent">
                 <a ng-if="me.goto!='signout'" ng-click="navigate(me.goto)">{{me.name}}</a>
 
-                <a ng-if="me.goto=='signout'" ng-click="changeSignOut(1)" ng-show="signout==0">Sign Out</a>
-                <a ng-if="me.goto=='signout'" class="tap" ng-show="signout==1" ng-swipe-right="changeSignOut(2)">Sign
-                    Out</a>
-                <a ng-if="me.goto=='signout'" class="swipe" ng-show="signout==2">Sign Out<span
-                        ng-click="logOut()">Yes</span></a>
+                <a ng-if="me.goto=='signout'" item-swipe on-remove="removeThing(thing)" three-d>
+                    Sign Out
+                </a>
+
+                <a ng-if="me.goto=='signout'" class="swipe">Sign Out<span ng-click="logOut()">Yes</span></a>
+
+                <!--            <a ng-if="me.goto!='signout'" ng-click="navigate(me.goto)">{{me.name}}</a>
+                                <a ng-if="me.goto=='signout'" ng-click="changeSignOut(1)" ng-show="signout==0">Sign Out</a>
+                                <a ng-if="me.goto=='signout'" class="tap" ng-show="signout==1" ng-swipe-right="changeSignOut(2)">Sign
+                                    Out</a>
+                                <a ng-if="me.goto=='signout'" class="swipe" ng-show="signout==2">Sign Out<span ng-click="logOut()">Yes</span></a>-->
             </nav>
         </div>
     </div>

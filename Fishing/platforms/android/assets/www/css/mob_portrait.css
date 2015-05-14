@@ -1040,4 +1040,8 @@
         background-size: 34px;
     }
 
+    .slider-container{
+        bottom: 0.2%;
+        top: 92px;
+    }
 }

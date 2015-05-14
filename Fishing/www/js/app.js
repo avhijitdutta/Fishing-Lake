@@ -62,7 +62,7 @@ Array.prototype.removeValue = function(name, value){
 var currentPage="";
 var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova', 'angucomplete', 'angular-carousel', 'angular-loading-bar', 'ncSocials']);
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova', 'angucomplete', 'angular-carousel', 'angular-loading-bar', 'ncSocials', 'itemSwipe']);
 app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$twitterProvider',
     function ($routeProvider, $keyboardProvider, cfpLoadingBarProvider, $twitterProvider) {
         $keyboardProvider.init({
@@ -501,7 +501,6 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
                                 last_name: success.last_name,
                                 fb_url: success.link
                             };
-                            console.log(credential);
                             var login = localFactory.post('login', credential);
                             login.success(function (data) {
                                 localFactory.unload();

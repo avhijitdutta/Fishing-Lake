@@ -9,8 +9,9 @@
             <li ng-class="{'active': carouselIndex22== 0}" ng-click="carouselIndex22=0">Past tickets</li>
             <li ng-class="{'active': carouselIndex22== 1}" ng-click="carouselIndex22=1">Future tickets</li>
         </ul>
-        <ul rn-carousel class="carousel5" rn-carousel-index="carouselIndex22">
-            <li id="past-ticket">
+        <div class="slider-container">
+            <ul rn-carousel class="carousel5" rn-carousel-index="carouselIndex22">
+                <li id="past-ticket">
                 <div class="row-ticket past" ng-repeat="ticket in tickets.ticket_details">
                     <div class="l">
                         <div class="no">{{ticket.ticket_no}}</div>
@@ -36,8 +37,8 @@
                     </div>
                     <div class="r" ng-click="deleteTicket(ticket.id)">Tap to delete ticket</div>
                 </div>
-                <div ng-if="tickets.ticket_details.length<1"> No Ticket Available</div>
-            </li>
+                    <div class='no-data' ng-if="tickets.ticket_details.length<1"> No past ticket available</div>
+                </li>
 
             <li id="future-ticket">
                 <div class="row-ticket" ng-repeat="ticket in tickets.future_ticket">
@@ -66,9 +67,10 @@
                     </div>
                     <div class="r" ng-click="showTicketDetail(ticket)">Tap to view ticket</div>
                 </div>
-                <div ng-if="tickets.future_ticket.length<1"> No Ticket Available</div>
+                <div class="no-data" ng-if="tickets.future_ticket.length<1"> You have not book any ticket.</div>
             </li>
         </ul>
+        </div>
     </div>
     <!-------------- ncr-content end-------------------->
 

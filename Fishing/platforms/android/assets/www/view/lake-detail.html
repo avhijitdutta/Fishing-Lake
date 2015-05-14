@@ -19,7 +19,7 @@
 <!-------------- ncr-content start-------------------->
 <div class="ncr-content detail heading-space no-footer">
 <div class="detail-img">
-<img alt="" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>
+<img alt="" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/no-image_large.png" alt="" imageonload>
 
 <div class="img-content">
     <div class="left-content">
@@ -145,18 +145,13 @@
 
             <div class="part-four" ng-show="tab == 3">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td> Name </td>
-
-                        <td>Normal</td>
-
-                        <td>
-                            Specimen
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td class="tick-img"><strong>Normal</strong>
+                            </td>
+                            <td class="tick-img"><strong>Specimen</strong>
+                            </td>
+                        </tr>
                         <tr ng-repeat="spacies in lakeDetail.list_spacies" id="{{spacies.id}}">
                             <td>{{spacies.name}}</td>
                             <td class="tick-img" ng-if="spacies.normal==0"><img alt=""  src="images/ico-cross-big.png">
