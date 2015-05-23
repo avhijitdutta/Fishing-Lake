@@ -3,15 +3,8 @@
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-
-
-
     .slider-container{
         bottom: 0.2%;
         top: 92px;
     }
-
-
-
-
 }

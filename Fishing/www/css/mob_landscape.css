@@ -489,7 +489,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-two ul li span {
-        width: 30px;
+        /*width: 30px;*/
     }
 
     .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
@@ -757,8 +757,8 @@
     }
 
     .photos .thumb-container .thumb {
-        width: 120px;
-        margin: 10px;
+        width: 100%;
+        margin-bottom: 4px;
     }
 
     .detail .detail-img .part-four .times th {

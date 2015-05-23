@@ -554,7 +554,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-one ul li {
-        width: 20%;
+        width: 25%;
     }
 
     .detail .detail-img .img-bottomcontent .part-one ul li + li {
@@ -582,7 +582,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-two ul li span {
-        width: 30px;
+        /*width: 30px;*/
     }
 
     .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
@@ -850,8 +850,8 @@
     }
 
     .photos .thumb-container .thumb {
-        width: 120px;
-        margin: 8px;
+        width: 100%;
+        margin-bottom: 4px;
     }
 
     .detail .detail-img .part-four .times th {
@@ -1043,5 +1043,18 @@
     .slider-container{
         bottom: 0.2%;
         top: 92px;
+    }
+
+    .lake-owner .hall-pool .remove{
+        font-size: 12px;
+    }
+
+    .lake-owner .hall-pool .remove img{
+        width: 16px;
+        vertical-align: -3px;
+    }
+
+    .lake-popup .msg{
+
     }
 }

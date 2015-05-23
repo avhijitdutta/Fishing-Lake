@@ -6,7 +6,10 @@
   <div class="ncr-content no-footer lakes">
 
       <!-------------- list images/listing_img1.jpg -------------------->
-    <div class="list">
+
+
+    <div class="list scroll">
+        <div class="categorytype"> Best For Crap</div>
         <div class="row-list" ng-repeat="lake in lackList">
             <img class="loader" image-source="{{lake.profile_pic}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>
 
@@ -37,15 +40,15 @@
                 	<tr>
                         <td align="left">{{lake.name}}<br/>
                             ${{lake.price}} {{lake.description}}<br/>
-                            {{lake.total_review}} Reviews - {{lake.total_image}} photos<br/>
+                            {{lake.total_review}} <span ng-if="lake.total_review>1">Reviews</span> <span ng-if="lake.total_review==1">Review</span> - {{lake.total_image}} <span ng-if="lake.total_image>1">Photos</span><span ng-if="lake.total_image==1">Photo</span> <br/>
                         </td>
-                        <td align="right">{{lake.distance}} Miles</td>
+                        <td align="right">{{lake.distance | number:0}} Miles</td>
                     </tr>
                 </table>
             </div>
         </div>
       </div>
-        <div ng-if="lackList.length<1"> No Lake Found.</div>
+        <div class="no-data" ng-if="lackList.length<1"> No Lake Found.</div>
     </div>
     
   </div>

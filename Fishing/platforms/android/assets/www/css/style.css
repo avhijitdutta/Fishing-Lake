@@ -1235,7 +1235,7 @@ label.css-label {
 
 .detail .detail-img .img-bottomcontent .part-one ul li {
     float: left;
-    width: 20%;
+    width: 25%;
     text-align: center;
 }
 
@@ -1271,12 +1271,12 @@ label.css-label {
 }
 
 .detail .detail-img .img-bottomcontent .part-two ul li span {
-    width: 40px;
+   /* width: 40px;*/
     display: inline-block;
     padding-top: 10px;
 }
 
-.detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
+.detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four, .lake-owner .part-four{
     position: relative;
     margin-top: 20px;
 }
@@ -1315,19 +1315,45 @@ label.css-label {
     width: 28px;
 }
 
-.detail .detail-img .img-bottomcontent .part-four td {
+.detail .detail-img .img-bottomcontent .part-four td , .owner .part-four td {
     padding: 0 15px;
     font-size: 16px;
     color: #fff;
     font-weight: normal;
 }
-
-.detail-img .img-bottomcontent .part-four h1 {
+.lake-owner h1{
+    position: relative;
+    margin-top: 0px; font-size:inherit; text-align:left;
+}
+.lake-owner h1:before{
+    content: "";
+    display: block;
+    border-top: solid 2px #063a3d;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 25%;
+    z-index: 1;
+}
+.lake-owner h1 span{
+    background: #111b1c;
+    padding: 0;
+    position: relative;
+    z-index: 5;
+    
+    color: #fff;
+    font-weight: normal;
+    top: -5px;
+}
+.lake-owner .right-img{
+    width: 40px;
+}
+.detail-img .img-bottomcontent .part-four h1 , .owner .part-four h1{
     position: relative;
     margin-top: 0px;
 }
 
-.detail-img .img-bottomcontent .part-four h1:before {
+.detail-img .img-bottomcontent .part-four h1:before ,.owner .part-four h1:before{
     content: "";
     display: block;
     border-top: solid 2px #063a3d;
@@ -1338,7 +1364,7 @@ label.css-label {
     z-index: 1;
 }
 
-.detail-img .img-bottomcontent .part-four h1 span {
+.detail-img .img-bottomcontent .part-four h1 span , .owner .part-four h1 {
     background: #111b1c;
     padding: 0 10px;
     position: relative;
@@ -1349,11 +1375,11 @@ label.css-label {
     top: -5px;
 }
 
-.detail .detail-img .img-bottomcontent .part-four td.right-img {
+.detail .detail-img .img-bottomcontent .part-four td.right-img, .owner .part-four td.right-img{
     width: 40px;
 }
 
-.detail .detail-img .img-bottomcontent .part-four td.right-img img {
+.detail .detail-img .img-bottomcontent .part-four td.right-img img, .owner .part-four td.right-img img {
     width: 100%;
     border: none;
     height: auto;
@@ -1932,6 +1958,7 @@ label.css-label {
 
 .detail .detail-img .part-four .row-review .comment {
     margin-top: 5px;
+    color: #ADB0B2;
 }
 
 .detail .detail-img .btn-rnw-review {
@@ -1957,14 +1984,15 @@ label.css-label {
 }
 
 .part-four .photos .thumb {
-    margin: 5px;
+    margin: 3px;
     display: inline-block;
-    width: 20%;
+    width: 17%;
 }
 
 .part-four .photos .thumb img {
-    height: auto;
-    border: 0;
+   height:30px;
+   width: 46px;
+   border: 0;
 }
 
 .detail .row-venue {
@@ -2175,7 +2203,7 @@ label.css-label {
 .photos .thumb-container .thumb {
     width: 130px;
     display: inline-block;
-    margin: 10px;
+    margin-bottom: 4px;
 }
 
 .photos .thumb-container .thumb img {
@@ -2525,12 +2553,30 @@ label.css-label {
     width: 20%;
 }
 
+.lake-owner .cont-area .list-facility .yes-opacity {
+    background: #8db854 url(../images/ico-tick-bgreen.png) no-repeat center;
+    background-size: 16px;
+    padding: 5px;
+    width: 20%;
+    opacity: 0.3;
+}
+
 .lake-owner .cont-area .list-facility .no {
     background: #ad3030 url(../images/ico-cross.png) no-repeat center;
     background-size: 16px;
     text-align: center;
     padding: 5px;
     width: 20%;
+
+}
+
+.lake-owner .cont-area .list-facility .no-opacity {
+    background: #ad3030 url(../images/ico-cross.png) no-repeat center;
+    background-size: 16px;
+    text-align: center;
+    padding: 5px;
+    width: 20%;
+    opacity: 0.3;
 }
 
 .lake-owner .opening-hours {
@@ -2595,15 +2641,19 @@ label.css-label {
 
 .lake-owner .hall-pool {
     margin: 30px 0;
-    font-size: 20px;
+    text-align: left;
 }
-
+.lake-owner .prices{text-align:left;}
+.lake-owner .prices label{display:block; margin-top:5px;}
+.lake-owner .prices .fld{background:#0b4a4d; padding:8px; margin:8px 0;}
+.lake-owner .prices .fld input{width:100%; background:none; color:#fff; }
 .lake-owner .hall-pool .remove {
     background: #ad3030;
     padding: 4px 10px;
     color: #062c2e;
     font-size: 14px;
     margin-left: 10px;
+    float: right;
 }
 
 .lake-owner .hall-pool .remove img {
@@ -2942,7 +2992,7 @@ label.css-label {
 
 .active-tab-img {
     content: url("../images/arrow-blue-down.png");
-
+    height: 22px;
 }
 
 .deactive-tab-img {
@@ -4266,4 +4316,91 @@ html, body, #map-canvas, #map_canvas {
     left: 0;
     right: 0;
     overflow-y: auto;
+}
+
+.scroll{
+    -webkit-overflow-scrolling: touch;
+}
+
+.categorytype{
+    position: relative;
+    /* top: 5px; */
+    font-size: 20px;
+    margin: 7px 7px;
+    color: #fff;
+}
+
+.vanue{
+    color:#fff;
+    margin: 0px 5px;
+}
+
+.moreReview{
+    color:#fff;
+    padding: 0px 10px;
+}
+
+.img-background{
+    background: #e0e0e0;
+    vertical-align: top;
+    padding: 3px 0;
+    height: 25px;
+    line-height: 26px;
+}
+.part-four .photos .thumb.img-background img{
+    height: auto;
+    width: 25px;
+    text-align: center;
+    margin-top: 6%;
+}
+
+.description{
+    text-align: left;
+}
+
+.lake-popup{
+    background: #eee;
+    border: solid 1px #8e8c89;
+    padding: 10px;
+    position: absolute;
+    width: 300px;
+    left: 39%;
+    margin-left: -125px;
+    z-index: 9999;
+    top: 15%;
+    min-height: 83px;
+    text-align: center;
+}
+
+.lake-popup .msg{
+    color: #128b91;
+    margin: 15px 0;
+}
+
+.lake-popup .info {
+    font-size: 12px;
+    background-size: 34px;
+}
+
+.lake-popup .info {
+    background: #bdca57 url(../images/ico-exclamation-blue.png) no-repeat 10px center;
+    background-size: 45px;
+    padding: 15px 15px 15px 70px;
+    color: #062c2e;
+    margin: 10px -8px;
+}
+
+.lake-popup .btn-update-my-lake {
+    background: #128b91;
+    padding: 15px;
+    text-align: center;
+    margin: 20px -8px -8px -8px;
+    font-size: 20px;
+    width: 104%;
+    color: #ffffff;
+}
+
+.lake-popup .btn-update-my-lake img {
+    vertical-align: -2px;
+    width: 24px;
 }

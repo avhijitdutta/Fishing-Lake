@@ -41,7 +41,6 @@ app.service('storeData', ['localFactory', function (localFactory) {
         if (obj.currentTicket) {
             self.currentData['currentTicket'] = obj.currentTicket;
         }
-
         if (obj.social) {
             localFactory.setLocalItem('social', JSON.stringify(obj.social));
         }

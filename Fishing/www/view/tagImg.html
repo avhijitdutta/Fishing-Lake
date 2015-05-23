@@ -2,14 +2,9 @@
     <!-------------- ncr-header -------------------->
     <ng-include src="'templates/header.html'"></ng-include>
     <!-------------- ncr-content start-------------------->
-    <div class="ncr-content tagimg">
+    <div class="ncr-content tagimg scroll">
         <div class="checkin-heading" align="center">
             Publish
-        </div>
-
-        <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo</div>
-        <div class="checked-in">
-            <img ng-src="{{imageURI}}" alt="">
         </div>
 
         <div class="form">
@@ -20,8 +15,15 @@
                               inputclass="form-control form-control-small" matchclass="highlight"/>
             </div>
         </div>
-        <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"
-                                                ng-click="toggleSocial(item)"></div>
+
+        <div class="attach-photo" ng-click="uploadImage()"><img src="images/ico-upload.png" alt="">Attach a photo</div>
+        <div class="checked-in">
+            <img ng-src="{{imageURI}}" alt="">
+        </div>
+
+
+        <!-- <div class="share-with">Share with <img ng-repeat="item in socialList" ng-src="{{item.url}}"
+                                                 ng-click="toggleSocial(item)"></div>-->
     </div>
     <!-------------- ncr-content end-------------------->
 

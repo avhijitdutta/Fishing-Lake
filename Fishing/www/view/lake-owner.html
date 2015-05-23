@@ -198,10 +198,19 @@
 
         <div class="lake-name">
             <ng-form name="fieldForm">
+                <div class="venue-address">
+                    <div class="add"><span>Lake Name</span></div>
+                </div>
                 <div class="fld">
                     <input type="text" ng-model="formData.lakeName" required placeholder="Enter Lake Name"/> <span
-                        class="click" ng-click="formData.lakeName=''"></span></div>
+                        class="click" ng-click="formData.lakeName=''"></span>
+                </div>
             </ng-form>
+        </div>
+        <div class="lake-name">
+            <div class="venue-address">
+                <div class="add"><span>Profile Image</span></div>
+            </div>
         </div>
         <div class="cover-photo">
             <div class="upload" ng-click="uploadProfileImg()"><img src="images/ico-upload.png" alt="">Upload</div>
@@ -229,6 +238,22 @@
                 </table>
             </div>
 
+            <div class="venue-address">
+                <div class="add"><span>Fishing Type</span></div>
+            </div>
+
+            <div class="list-facility">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr ng-repeat="item in formData.fishing_type">
+                        <td>{{item.name}}</td>
+                        <td ng-class="{'no':!item.active,'no-opacity':item.active}"
+                            ng-click="itemActive(item,formData.fishing_type)"></td>
+                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.fishing_type)"></td>
+                    </tr>
+                </table>
+            </div>
+
 
             <div class="venue-address">
                 <div class="add"><span>The venue description</span></div>
@@ -238,16 +263,84 @@
                     <textarea required ng-model="formData.desc"> </textarea>
                 </div>
             </ng-form>
+
             <div class="venue-address">
-                <div class="add"><span>List your facilities</span></div>
+                <div class="add"><span>How do we pay you </span></div>
+            </div>
+            <p class="description">
+                When someone books a ticket through the app
+                we need the details for us to transfer the
+                money to you. Either add your Paypal or bank
+                account details below:
+            </p>
+
+            <div class="part-four">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
+                    <tr>
+                        <td><h1 class="one"><span>Paypal</span></h1></td>
+                        <td class="right-img"><img
+                                ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}">
+                        </td>
+                    </tr>
+                </table>
+                <div class="prices" ng-show="isOpenTab(1)">
+                    <div>Paypal Email Address</div>
+                    <ng-form name="fieldForm">
+                        <div class="fld">
+                            <input type="email" required ng-model="formData.lake_acc_details.paypal_email"
+                                   placeholder="Enter paypal email"/>
+                        </div>
+                    </ng-form>
+                </div>
+            </div>
+
+            <div class="part-four">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(2)">
+                    <tr>
+                        <td><h1 class="one"><span>Bank Account</span></h1></td>
+                        <td class="right-img"><img
+                                ng-class="{'active-tab-img':isOpenTab(2),'deactive-tab-img':!isOpenTab(2)}">
+                        </td>
+                    </tr>
+                </table>
+                <div class="prices" ng-show="isOpenTab(2)">
+                    <label>Name on account</label>
+                    <ng-form name="fieldForm">
+                        <div class="fld">
+                            <input type="text" required ng-model="formData.lake_acc_details.acc_name"
+                                   placeholder="Enter account name"/>
+                        </div>
+                    </ng-form>
+
+                    <label>Sort Code</label>
+                    <ng-form name="fieldForm">
+                        <div class="fld">
+                            <input type="text" required ng-model="formData.lake_acc_details.sort_code"
+                                   placeholder="Enter sort name"/>
+                        </div>
+                    </ng-form>
+                    <label>Account Number</label>
+                    <ng-form name="fieldForm">
+                        <div class="fld">
+                            <input type="text" required ng-model="formData.lake_acc_details.acc_no"
+                                   placeholder="Enter account number"/>
+                        </div>
+                    </ng-form>
+                </div>
+            </div>
+
+            <div class="venue-address">
+            <div class="add"><span>List your facilities</span></div>
             </div>
 
             <div class="list-facility">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="item in formData.list_amenitites">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':!item.active}" ng-click="itemActive(item,formData.list_amenitites)"></td>
-                        <td ng-class="{'yes':item.active}" ng-click="itemActive(item,formData.list_amenitites)"></td>
+                        <td ng-class="{'no':!item.active,'no-opacity':item.active}"
+                            ng-click="itemActive(item,formData.list_amenitites)"></td>
+                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.list_amenitites)"></td>
                     </tr>
                 </table>
             </div>
@@ -260,8 +353,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="item in formData.list_rules">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
-                        <td ng-class="{'yes':!item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
+                        <td ng-class="{'no':item.active,'no-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.list_rules)"></td>
+                        <td ng-class="{'yes':!item.active,'yes-opacity':item.active}"
+                            ng-click="itemActive(item,formData.list_rules)"></td>
                     </tr>
                 </table>
             </div>
@@ -283,10 +378,12 @@
 
                     <tr ng-repeat="item in formData.list_spacies">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':item.normal==0}" ng-click="itemToggle(item,formData.list_spacies)"></td>
-                        <td ng-class="{'yes':item.normal==1}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+                        <td ng-class="{'no':item.normal==0,'no-opacity':item.normal==1}"
+                            ng-click="itemToggle(item,formData.list_spacies)"></td>
+                        <td ng-class="{'yes':item.normal==1,'yes-opacity':item.normal==0}"
+                            ng-click="itemToggle(item,formData.list_spacies)"></td>
                         <td></td>
-                        <td ng-class="{'yes':item.specimen==1}"
+                        <td ng-class="{'yes':item.specimen==1,'yes-opacity':item.specimen==0}"
                             ng-click="itemToggle(item,formData.list_spacies,true)"></td>
                     </tr>
 
@@ -333,12 +430,16 @@
                         <td class="open" ng-click="addTime(day,true)"><span ng-if="day.close"> Closed </span> <span
                                 ng-if="!day.close"> <span
                                 ng-if="day.Opening.hours<=9">0</span>{{day.Opening.hours}} : <span
-                                ng-if="day.Opening.minutes<=9">0</span>{{day.Opening.minutes}} </span></td>
+                                ng-if="day.Opening.minutes<=9">0</span>{{day.Opening.minutes}} </span>
+                        </td>
+
                         <td>&nbsp;</td>
+
                         <td class="close" ng-click="addTime(day,false)"><span ng-if="day.close"> Closed </span> <span
                                 ng-if="!day.close"> <span
                                 ng-if="day.Closing.hours<=9">0</span>{{day.Closing.hours}} : <span
-                                ng-if="day.Closing.minutes<=9">0</span>{{day.Closing.minutes}} </span></td>
+                                ng-if="day.Closing.minutes<=9">0</span>{{day.Closing.minutes}} </span>
+                        </td>
                     </tr>
                 </table>
             </div>

@@ -53,7 +53,7 @@ angular.module('nvKeyboard', []).provider('$keyboard', function () {
                         console.log('actualBodyHeightWithoutHeader', actualBodyHeightWithoutHeader);
 
                         var elementHeight = input_offset.element.height();
-                        var input_top = input_offset.top + elementHeight;
+                        var input_top = input_offset.top;
 
                         var adder = $(initValues.scrollPaneID).scrollTop();
 
@@ -65,7 +65,7 @@ angular.module('nvKeyboard', []).provider('$keyboard', function () {
                          */
                         if (input_top >= bodyHeightWithoutfooter) {
                             var scrollTop = input_top - bodyHeightWithoutfooter + 20 + adder;
-                            $(initValues.scrollPaneID).animate({scrollTop: scrollTop}, '400');
+                            $(initValues.scrollPaneID).animate({scrollTop: scrollTop}, '200');
                             /* console.log('scrollTop height', scrollTop);*/
                             scrolled = scrollTop;
                         } else {

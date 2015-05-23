@@ -12,64 +12,64 @@
         <div class="slider-container">
             <ul rn-carousel class="carousel5" rn-carousel-index="carouselIndex22">
                 <li id="past-ticket">
-                <div class="row-ticket past" ng-repeat="ticket in tickets.ticket_details">
-                    <div class="l">
-                        <div class="no">{{ticket.ticket_no}}</div>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td valign="top">Location:</td>
-                                <td valign="top">{{ticket.vanue_name}}</td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Ticket type:</td>
-                                <td valign="top"><span ng-repeat="price in ticket.price_name">{{price.price_name}}&nbsp;{{price.qty}}<span
-                                        ng-if="$index < ticket.price_name.length-1">,</span></span></span> </td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Date:</td>
-                                <td valign="top">{{ticket.date}}</td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Price:</td>
-                                <td valign="top">£{{ticket.price}}</td>
-                            </tr>
-                        </table>
+                    <div class="row-ticket past" ng-repeat="ticket in tickets.ticket_details">
+                        <div class="l">
+                            <div class="no">{{ticket.ticket_no}}</div>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td valign="top">Location:</td>
+                                    <td valign="top">{{ticket.vanue_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Ticket type:</td>
+                                    <td valign="top"><span ng-repeat="price in ticket.price_name">{{price.price_name}}&nbsp;{{price.qty}}<span
+                                            ng-if="$index < ticket.price_name.length-1">,</span></span></span> </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Date:</td>
+                                    <td valign="top">{{ticket.date}}</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Price:</td>
+                                    <td valign="top">£{{ticket.price}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="r" ng-click="deleteTicket(ticket.id)">Tap to delete ticket</div>
                     </div>
-                    <div class="r" ng-click="deleteTicket(ticket.id)">Tap to delete ticket</div>
-                </div>
                     <div class='no-data' ng-if="tickets.ticket_details.length<1"> No past ticket available</div>
                 </li>
 
-            <li id="future-ticket">
-                <div class="row-ticket" ng-repeat="ticket in tickets.future_ticket">
-                    <div class="l">
-                        <div class="no">{{ticket.ticket_no}}</div>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td valign="top">Location:</td>
-                                <td valign="top">{{ticket.vanue_name}}</td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Ticket type:</td>
-                                <td valign="top">1 Day, 1 Child
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Date:</td>
-                                <td valign="top">{{ticket.date}}</td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Price:</td>
-                                <td valign="top">£{{ticket.price}}</td>
-                            </tr>
+                <li id="future-ticket">
+                    <div class="row-ticket" ng-repeat="ticket in tickets.future_ticket">
+                        <div class="l">
+                            <div class="no">{{ticket.ticket_no}}</div>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td valign="top">Location:</td>
+                                    <td valign="top">{{ticket.vanue_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Ticket type:</td>
+                                    <td valign="top">1 Day, 1 Child
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Date:</td>
+                                    <td valign="top">{{ticket.date}}</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Price:</td>
+                                    <td valign="top">£{{ticket.price}}</td>
+                                </tr>
 
-                        </table>
+                            </table>
+                        </div>
+                        <div class="r" ng-click="showTicketDetail(ticket)">Tap to view ticket</div>
                     </div>
-                    <div class="r" ng-click="showTicketDetail(ticket)">Tap to view ticket</div>
-                </div>
-                <div class="no-data" ng-if="tickets.future_ticket.length<1"> You have not book any ticket.</div>
-            </li>
-        </ul>
+                    <div class="no-data" ng-if="tickets.future_ticket.length<1"> You have not book any ticket.</div>
+                </li>
+            </ul>
         </div>
     </div>
     <!-------------- ncr-content end-------------------->

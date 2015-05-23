@@ -62,7 +62,7 @@ Array.prototype.removeValue = function(name, value){
 var currentPage="";
 var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova','angucomplete','angular-carousel','angular-loading-bar','ncSocials','itemSwipe']);
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova','angucomplete','angular-carousel','angular-loading-bar','ncSocials','itemSwipe','ncrtsPopup']);
 app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitterProvider',
     function($routeProvider,$keyboardProvider,cfpLoadingBarProvider,$twitterProvider) {
         $keyboardProvider.init({
@@ -78,6 +78,15 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             consumerSecret: 'yCTm32Ycxa0gDOTyZj5FO4CHOEzQMsEPrGJvXU6v4Dm6pr1yBX', // YOUR Twitter CONSUMER_SECRET
             callbackUrl: "ncrts.com"
         });
+
+/*        var prefs = {
+            language: 'en',
+            appName: 'Fishing App',
+            iosURL: 'employee.directory',
+            androidURL: 'market://details?id=employee.directory'
+        };
+
+        $cordovaAppRateProvider.setPreferences(prefs);*/
 
         cfpLoadingBarProvider.includeSpinner = false;
 
@@ -191,7 +200,7 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                             postData['fish_rules'] = lakeRules.join();
                             postData['lake_amenitites'] = lakeAmenites.join();
 
-                            var fishType = []
+                            var fishType = [];
                             for (var i = 0; i < tabs.length; i++) {
                                 if (!tabs[i]['state']) {
                                     fishType.push(tabs[i]['id']);
@@ -201,7 +210,8 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
 
                         } else if ($route.current.params.id == "quickSearch") {
 
-                            var fishType = []
+                            var fishType = [];
+
                             for (var i = 0; i < tabs.length; i++) {
                                 if (!tabs[i]['state']) {
                                     fishType.push(tabs[i]['id']);
@@ -490,39 +500,46 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
 
                     $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                         .then(function (success) {
-                            console.log(success);
-                            var credential = {
-                                email_id: success.email,
-                                facebook_id: success.id,
-                                first_name: success.first_name,
-                                last_name: success.last_name,
-                                fb_url: success.link
-                            };
-                            var login = localFactory.post('login', credential);
-                            login.success(function (data) {
-                                localFactory.unload();
+                            console.log(JSON.stringify(success));
+                            $cordovaFacebook.api("me", ["public_profile"])
+                                .then(function(result) {
+                                   console.log(JSON.stringify(result));
+                                    var credential = {
+                                        email_id: result.email,
+                                        facebook_id: result.id,
+                                        first_name: result.first_name,
+                                        last_name: result.last_name,
+                                        fb_url: result.link
+                                    };
 
-                                if (data.result) {
+                                    var login = localFactory.post('login', credential);
+                                    login.success(function (data) {
+                                        localFactory.unload();
 
-                                    data['loginType'] = '1';// login type 1 means fb
-                                    var objData = {loginData: data};
-                                    storeData.setData(objData);
-                                    $location.path("home");
+                                        if (data.result) {
+                                            data['loginData']=1;
+                                            var objData={loginData:data};
+                                            storeData.setData(objData);
+                                            $location.path("home");
 
-                                } else {
+                                        } else {
 
-                                    localFactory.alert(data.msg, function () {
+                                            localFactory.alert(data.msg, function () {
 
-                                    }, "Message", 'OK');
-                                }
+                                            }, "Message", 'OK');
+                                        }
 
-                            });
+                                    });
 
-                            login.error(function (data, status, headers, config) {
-                                localFactory.unload();
-                            });
+                                    login.error(function (data, status, headers, config) {
+                                        localFactory.unload();
+                                    });
 
-                        }, function (error) {
+                                }, function (error) {
+                                    alert(error);
+                                });
+
+                }, function (error) {
                             // error
                         });
                 }

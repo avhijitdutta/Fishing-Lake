@@ -1,5 +1,48 @@
 <div class="page">
 <ng-include src="'templates/rating.html'"></ng-include>
+<popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"></popup>
+
+<div class="popup-mask" ng-show="showLakePopup">
+
+</div>
+
+<div class="lake-popup" ng-show="showLakePopup">
+    <form name="claimForm" novalidate ng-submit="submitForm(claimForm.$valid)">
+        <div class="inner-content">
+
+            <div class="form">
+                <ng-form name="userFieldForm" ng-repeat="item in claimLakeDetails">
+                    <div class="row"
+                         ng-class="{'error':userFieldForm.value.$invalid && !userFieldForm.value.$pristine}">
+                        <input type="{{item.type}}" name="value" placeholder="{{item.placeHolder}}" required
+                               ng-model="item.value">
+                        <img src="images/ico-exclamation.png" alt="" ng-show="userFieldForm.value.$pristine">
+                        <img src="images/ico-right.png" alt="" ng-show="userFieldForm.value.$valid">
+                        <img src="images/ico-cross-big.png" alt=""
+                             ng-show="userFieldForm.value.$invalid && !userFieldForm.value.$pristine">
+
+                        <div class="clr"></div>
+                    </div>
+                </ng-form>
+            </div>
+
+            <div class="msg">A representative of Hotfishin will contact you within the next 7 days to validate your
+                identity.
+            </div>
+
+            <div class="info" ng-show="!claimForm.$valid">
+                Please enter an email address,your name and a contact number
+            </div>
+
+            <button class="btn-update-my-lake" type="submit" ng-disabled="claimForm.$invalid"><img
+                    src="images/ico-write.png" alt=""> Update my lake
+            </button>
+
+            <!--<div class="btn-update-my-lake" ng-click="claimLakeUpdate()"><img src="images/ico-write.png"  alt=""> Update my lake</div>-->
+        </div>
+    </form>
+</div>
+
 <!-------------- ncr-header -------------------->
 <ng-include src="'templates/header.html'"></ng-include>
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
@@ -17,7 +60,7 @@
 </div>
 
 <!-------------- ncr-content start-------------------->
-<div class="ncr-content detail heading-space no-footer">
+<div class="ncr-content detail heading-space no-footer scroll">
 <div class="detail-img">
 <img alt="" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/no-image_large.png" alt="" imageonload>
 
@@ -30,7 +73,7 @@
 
         <p>Day tickets from</p>
 
-        <div class="price">£6</div>
+        <div class="price">£{{lakeDetail.day_price.price}}</div>
     </div>
     <div class="right-content">
         <div class="votes">{{lakeDetail.lake_category.rating}}<br>
@@ -49,9 +92,9 @@
 <div class="img-bottomcontent">
     <div class="part-one">
         <ul>
-            <li ng-click="showCheckIn()"><img src="images/ico-checkin.png" alt=""><br>
-                <span>Check in</span>
-            </li>
+            <!--    <li ng-click="showCheckIn()"><img src="images/ico-checkin.png" alt=""><br>
+                        <span>Check in</span>
+                    </li>-->
             <li ng-click="showDirection()"><img src="images/ico-direction.png" alt=""><br>
                 <span>Directions</span>
             </li>
@@ -77,7 +120,8 @@
 
             <li>
                 <span style="color:#128b91;">Details</span><br>
-                {{lakeDetail.lake_category.desc}}
+                <span> Game , Coarse ,Tackle Shop</span> <br>
+                <!-- {{lakeDetail.lake_category.desc}}-->
                 <span><img src="images/ico-wheel-chair.png" alt=""></span>
                 <span><img src="images/ico-men-women.png" alt=""></span>
                 <span><img src="images/ico-private.png" alt=""></span>
@@ -91,7 +135,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td ng-click="showDirection()"><img src="images/ico-direction-arrow.png" alt=""></td>
-                    <td>{{lakeDetail.distance.distance}} Miles</td>
+                    <td>{{lakeDetail.distance.distance | number:0}} Miles</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="padding:0;">Directions</td>
@@ -103,6 +147,22 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
             <tr>
                 <td><h1 class="one"><span>The Venue</span></h1></td>
+                <td class="right-img">
+                    <img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}" alt="">
+                </td>
+            </tr>
+        </table>
+        <div class="vanue" ng-show="isOpenTab(1)">
+            <!--  {{lakeDetail.lake_category.desc}}-->
+            This is the bets fishing lake I have ever been to The
+            fish are so big and I just want to stay all day
+            Read More
+        </div>
+    </div>
+    <div class="part-four">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
+            <tr>
+                <td><h1 class="one"><span>Details</span></h1></td>
                 <td class="right-img">
                     <img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}" alt="">
                 </td>
@@ -268,17 +328,20 @@
                     </div>
                     <div class="clr"></div>
                 </div>
-                <div class="comment">
-                    {{review.review}}
+                <div class="comment" ng-if="review.review!=''">
+                {{review.review}}
+                </div>
+
+                <div class="comment" ng-if="review.review==''">
+                    User have not give any review
                 </div>
             </div>
-            <div class="btn-rnw-review" ng-click="showReview(lakeDetail.lake_category.id)"><img
-                    src="images/ico-morereview.png"> Read more reviews
+            <div class='moreReview' ng-click="showReview(lakeDetail.lake_category.id)"> Read more reviews</div>
 
-            </div>
-            <div class="btn-rnw-review war" ng-click="showRate()"><img src="images/ico-writereview.png" alt=""> Write a
+            <!--<div class="btn-rnw-review" ><img src="images/ico-morereview.png"> Read more reviews </div>-->
+            <!--   <div class="btn-rnw-review war" ng-click="showRate()"><img src="images/ico-writereview.png" alt=""> Write a
                 Review
-            </div>
+         </div>-->
         </div>
     </div>
 </div>
@@ -297,15 +360,23 @@
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(6)">
             <div class="photos">
-                <div class="thumb" ng-repeat="image in lakeDetail.lake_image"><img ng-src="{{image.url}}" alt=""></div>
+                <div class="thumb" ng-if="$index+1<lakeDetail.lake_image.length"
+                     ng-repeat="image in lakeDetail.lake_image"><img ng-src="{{image.url}}" alt=""></div>
+                <div ng-if="lakeDetail.lake_category.total_image>3" class="thumb img-background"
+                     ng-click="showMorePhoto(lakeDetail.lake_category.id)"> + {{lakeDetail.lake_category.total_image -
+                    3}}
+                </div>
+                <div class="thumb img-background" ng-click="showPopupModel()"><img src="images/ico-camera.png" alt="">
+                </div>
             </div>
-            <div class="btn-rnw-review" ng-click="showMorePhoto(lakeDetail.lake_category.id)"><img
+
+            <!--<div class="btn-rnw-review" ng-click="showMorePhoto(lakeDetail.lake_category.id)"><img
                     src="images/ico-morereview.png"
-                    alt=""> See more
+                                                                                     alt=""> See more
                 photos
             </div>
-            <div class="btn-rnw-review" ng-click="uploadImg()"><img src="images/ico-upload.png" alt=""> Upload a photo
-            </div>
+            <div class="btn-rnw-review"><img src="images/ico-upload.png" alt=""> Upload a photo
+            </div>-->
         </div>
     </div>
 </div>
@@ -341,7 +412,7 @@
 </div>
 
 
-<div class="img-bottomcontent">
+<!--<div class="img-bottomcontent">
     <div class="part-four">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(8)">
             <tr>
@@ -359,7 +430,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!--<div class="send-question-btn"><img src="images/ico-question.png"  alt="">Send my question</div>-->
 </div>
 
