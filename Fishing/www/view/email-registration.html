@@ -14,6 +14,28 @@
         <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="signup-email-form">
 
+                <div class="row" ng-class="{'error':userForm.first_name.$invalid && !userForm.first_name.$pristine}">
+                    <input type="text" name="first_name" placeholder="Enter your first name" ng-model="user.first_name"
+                           required>
+                    <img src="images/ico-exclamation.png" alt="" ng-show="userForm.first_name.$pristine">
+                    <img src="images/ico-right.png" alt="" ng-show="userForm.first_name.$valid">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine">
+
+                    <div class="clr"></div>
+                </div>
+
+                <div class="row" ng-class="{'error':userForm.last_name.$invalid && !userForm.last_name.$pristine}">
+                    <input type="text" name="last_name" placeholder="Enter your last name" ng-model="user.last_name"
+                           required>
+                    <img src="images/ico-exclamation.png" alt="" ng-show="userForm.last_name.$pristine">
+                    <img src="images/ico-right.png" alt="" ng-show="userForm.last_name.$valid">
+                    <img src="images/ico-cross-big.png" alt=""
+                         ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine">
+
+                    <div class="clr"></div>
+                </div>
+
                 <div class="row" ng-class="{'error':userForm.email_id.$invalid && !userForm.email_id.$pristine}">
                     <input type="email" name="email_id" placeholder="Enter your email address" ng-model="user.email_id"
                            required>

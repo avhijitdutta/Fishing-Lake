@@ -1,6 +1,6 @@
 app.service('storeData', ['localFactory', function (localFactory) {
     var self = this;
-    self.currentData = {loginData: "", currentLake: {}, latLong: {}, currentBooking: {}, currentTicket: {}};
+    self.currentData = {loginData: "", currentLake: {}, latLong: {}, currentBooking: {}, currentTicket: {}, category: ""};
     self.cityData = "";
     this.setData = function (obj) {
 
@@ -43,6 +43,10 @@ app.service('storeData', ['localFactory', function (localFactory) {
         }
         if (obj.social) {
             localFactory.setLocalItem('social', JSON.stringify(obj.social));
+        }
+
+        if (obj.category || obj.category == "") {
+            self.currentData['category'] = obj.category;
         }
     }
 

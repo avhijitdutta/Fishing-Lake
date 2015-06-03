@@ -12,9 +12,11 @@
                 <div class="review">
                     <div class="reviewer">{{reviewitem.first_name}} {{reviewitem.last_name}}</div>
                     <div class="stars">
-                        <img alt="" src="images/star-review.png" ng-repeat="i in getNumber(reviewitem.star) track by $index">
+                        <img alt="" src="images/star-review.png"
+                             ng-repeat="i in getNumber(reviewitem.star) track by $index">
 
-                        <img alt="" src="images/star-off-review.png" ng-repeat="j in getNumber(reviewitem.noStar) track by $index">
+                        <img alt="" src="images/star-off-review.png"
+                             ng-repeat="j in getNumber(reviewitem.noStar) track by $index">
                     </div>
                     <div class="clr"></div>
                 </div>

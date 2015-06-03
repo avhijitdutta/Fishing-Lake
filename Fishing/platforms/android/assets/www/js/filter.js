@@ -1,13 +1,10 @@
-app.filter("customCurrency", function (numberFilter)
-{
-    function isNumeric(value)
-    {
+app.filter("customCurrency", function (numberFilter) {
+    function isNumeric(value) {
         return (!isNaN(parseFloat(value)) && isFinite(value));
     }
 
     return function (inputNumber, currencySymbol, decimalSeparator, thousandsSeparator, decimalDigits) {
-        if (isNumeric(inputNumber))
-        {
+        if (isNumeric(inputNumber)) {
             // Default values for the optional arguments
             currencySymbol = (typeof currencySymbol === "undefined") ? "$" : currencySymbol;
             decimalSeparator = (typeof decimalSeparator === "undefined") ? "." : decimalSeparator;
@@ -31,15 +28,13 @@ app.filter("customCurrency", function (numberFilter)
             // Compose the final result
             var result = currencySymbol + numberParts[0];
 
-            if (numberParts.length == 2)
-            {
+            if (numberParts.length == 2) {
                 result += decimalSeparator + numberParts[1];
             }
 
             return result;
         }
-        else
-        {
+        else {
             return inputNumber;
         }
     };
@@ -48,7 +43,7 @@ app.filter("customCurrency", function (numberFilter)
 app.filter('euro', function () {
     return function (text) {
         text = text.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1 ");
-        var t =  text + '<span class="desc">,00</span><span class="cur">€</span>';
+        var t = text + '<span class="desc">,00</span><span class="cur">€</span>';
         console.log(t)
         return t;
     };

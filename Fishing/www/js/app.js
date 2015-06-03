@@ -63,8 +63,9 @@ var currentPage="";
 var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
 var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova', 'angucomplete', 'angular-carousel', 'angular-loading-bar', 'ncSocials', 'itemSwipe', 'ncrtsPopup']);
-app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$twitterProvider',
-    function ($routeProvider, $keyboardProvider, cfpLoadingBarProvider, $twitterProvider) {
+app.loginBackCount = 0;
+app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$twitterProvider', '$cordovaAppRateProvider',
+    function ($routeProvider, $keyboardProvider, cfpLoadingBarProvider, $twitterProvider, $cordovaAppRateProvider) {
         $keyboardProvider.init({
             scrollPaneID: '.scroll',
             headerID: '.ncr-header',
@@ -79,14 +80,14 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
             callbackUrl: "ncrts.com"
         });
 
-        /*        var prefs = {
-         language: 'en',
-         appName: 'Fishing App',
-         iosURL: 'employee.directory',
-         androidURL: 'market://details?id=employee.directory'
+        var prefs = {
+            language: 'en',
+            appName: 'Fishing App',
+            iosURL: 'employee.directory',
+            androidURL: 'market://details?id=employee.directory'
          };
 
-         $cordovaAppRateProvider.setPreferences(prefs);*/
+        /* $cordovaAppRateProvider.setPreferences(prefs);*/
 
         cfpLoadingBarProvider.includeSpinner = false;
 
@@ -174,7 +175,6 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
                         postData = storeData.getData(true)['latLong'];
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
-
                             var lake_amenites = storeData.getData(true).loginData.lake_amentites;
                             var lakeAmenites = [];
 
@@ -209,7 +209,6 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
                             postData['fishing_type'] = fishType.join();
 
                         } else if ($route.current.params.id == "quickSearch") {
-
                             var fishType = [];
 
                             for (var i = 0; i < tabs.length; i++) {
@@ -223,7 +222,8 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
                         else if ($route.current.params.id == "recentitems") {
 
                             postData['lake_ids'] = $.parseJSON(localFactory.getLocalItem('recent_items'))['value'].join();
-
+                            var category = {category: "Recent Items"};
+                            storeData.setData(category);
                         } else if ($route.current.params.id != "nearby") {
 
                             postData['cat_id'] = $route.current.params.id;
@@ -269,7 +269,7 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
                                 });
                             }, function (err) {
                                 defer.reject(err);
-                        });
+                            });
                         return defer.promise;
                     }
                 }
@@ -419,7 +419,24 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
             .when('/suggestLocation', {
                 title: 'Suggest Location',
                 templateUrl: 'view/suggest-location.html',
-                controller: 'suggestCtrl'
+                controller: 'suggestCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation, storeData) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var posOptions = {timeout: 10000, enableHighAccuracy: true};
+                        $cordovaGeolocation
+                            .getCurrentPosition(posOptions)
+                            .then(function (position) {
+
+                                defer.resolve(position.coords);
+
+                            }, function (err) {
+                                defer.reject(err);
+                            });
+                        return defer.promise;
+                    }
+                }
             })
             .when('/sendFeedback', {
                 title: 'Send Feedback',
@@ -470,7 +487,7 @@ app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$tw
             });
     }]);
 app.value("keyboardHeight",0);
-app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData) {
+app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData', '$window', '$document', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData, $window, $document) {
     $keyboard.restrictSpecialChar();
     $rootScope.stateHistory = [];
 
@@ -556,6 +573,33 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
         $rootScope.title = current.$$route.title;
         console.log(current.$$route.title);
     });
+
+    angular.element($document)[0].addEventListener("backbutton", function () {
+        if ($location.path() === '/' || $location.path() === '/home' || $location.path() === "/signup") {
+
+            if (app.loginBackCount > 0) {
+                navigator.app.exitApp();
+            }
+            if (app.loginBackCount < 1) {
+                app.loginBackCount++;
+                setTimeout(function () {
+                    app.loginBackCount = 0;
+
+                }, 2000);
+                var tostText = "Press back button again to quit";
+                localFactory.toast(tostText, 'short', 'bottom');
+            }
+
+        } else if ($location.path() === "/confirm") {
+            $location.path('home')
+
+        } else {
+
+            window.history.back();
+        }
+
+    }, true);
+
 }]);
 
 // device APIs are available
@@ -564,20 +608,6 @@ function onDeviceReady() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    document.addEventListener("backbutton", backKeyDown, true);
 }
 
-function backKeyDown()
-{
-    if(currentPage=="historyList")
-    {
-        window.location.hash = '#/';
 
-    }else if(currentPage=="homeCtrl")
-    {
-        navigator.app.exitApp();
-
-    }else{
-        window.history.back();
-    }
-}

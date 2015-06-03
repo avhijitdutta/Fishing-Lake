@@ -429,6 +429,7 @@
     .lakes .list {
         bottom: 52px;
         padding: 8px;
+        top: 80px;
     }
 
     .lakes .row-list {
@@ -496,7 +497,7 @@
     }
 
     .detail .detail-img .left-content .name {
-        font-size: 21px;
+        font-size: 17px;
         line-height: 34px;
     }
 
@@ -515,7 +516,7 @@
 
     .detail .detail-img .left-content .price {
         color: #fff;
-        font-size: 50px;
+        font-size: 32px;
         font-weight: normal;
         line-height: 40px;
     }
@@ -1056,5 +1057,60 @@
 
     .lake-popup .msg {
 
+    }
+
+    .search-panel {
+        padding: 12px 8px;
+    }
+
+    .search-panel .search-box {
+        width: 70%;
+    }
+
+    .search-panel .search-box img {
+        width: 26px;
+    }
+
+    .search-panel .search-box input {
+        width: 84%;
+    }
+
+    .fishing-type img {
+        height: 15px;
+    }
+
+    .search-panel .fishing-type {
+        padding: 0.6% 1.5%;
+    }
+
+    .detail .image-container {
+        height: 200px;
+    }
+
+    .detail .detail-img img.loader {
+        margin-top: 20%;
+    }
+
+    .part-four .photos .thumb {
+        margin: 3px;
+        display: inline-block;
+        width: 55px;
+        height: 55px;
+        overflow: hidden;
+    }
+
+    .part-four .photos .thumb img {
+        height: 55px;
+        width: auto;
+        border: 0;
+    }
+
+    .img-background {
+        line-height: 54px;
+    }
+
+    .part-four .photos .thumb.img-background img {
+        width: 25px;
+        margin-top: 29%;
     }
 }

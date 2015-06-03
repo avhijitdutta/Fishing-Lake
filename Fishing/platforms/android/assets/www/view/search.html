@@ -3,10 +3,6 @@
     <div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
     <div class="pop-filter" ng-class="{'pop-animate': rightPanel}">
         <div class="inner-content">
-            <!--<div class="sub-heading">Locations & Travels</div>
-            <ul>
-              <li><img src="images/ico-travels.png"   alt="">Travels <div class="drop-arrow"></div></li>
-            </ul>-->
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <th class="border-bottom">{{currentFilter.value}}</th>
@@ -35,29 +31,11 @@
     </div>
     <!-------------- ncr-header -------------------->
     <ng-include src="'templates/header.html'"></ng-include>
-    <!--  <div class="ncr-header">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                  <td class="settings" ng-click="goBack()">
-                      <div class="header-fish"><img src="images/header-fish.png" alt=""></div>
-                  </td>
-                  <td align="right" class="title">
-                      <div class="header-tag"><img src="images/header-history.png" alt=""></div>
-                      <div class="header-tag"><img src="images/header-tag.png" alt=""></div>
-                  </td>
-                  <td align="right" class="settings">
-                      <div class="header-magnify"><img src="images/ico-magnify.png" alt=""></div>
-                  </td>
-              </tr>
-          </table>
-      </div>-->
-
-
     <!-------------- ncr-content start-------------------->
     <div class="ncr-content no-footer listing">
 
         <!-------------- tab -------------------->
-        <div class="tabs">
+        <!--<div class="tabs">
             <ul>
                 <li ng-repeat="tab in tabs" ng-click="toggle(tab.id)" ng-class="{'active':tab.state}"><img
                         ng-src="{{tab.active}}">
@@ -66,10 +44,18 @@
                 </li>
             </ul>
             <div class="clr"></div>
-        </div>
+        </div>-->
 
         <div class="searchlisting-outercontent">
-            <div class="searchlisting-innercontent">
+            <div class="content">
+                Select your type of fishing and enter
+                either a region, town, city or post code
+                to find fishing venues in your local area:
+            </div>
+
+            
+
+<!--            <div class="searchlisting-innercontent">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="left" class="left-content"><img src="images/search-pin.png" alt=""></td>
@@ -86,10 +72,26 @@
                     <td class="left-content"><img ng-src="{{filter.url}}" alt=""></td>
                     <td class="right-content">{{filter.name}}</td>
                 </tr>
-            </table>
+            </table>-->
 
         </div>
+<div class="search-panel">
+            <div class="search-box">
+                <img class="" src="images/ico-magnify.png"/>
+                <input type="text" placeholder="Search for places to fish">
+            </div>
 
+            <div class="fishing-type">
+                <img src="images/ico-game-active.png">
+                <span> Course</span>
+            </div>
+
+            <div class="fishing-type">
+                <img src="images/ico-game-active.png">
+                <span> Game</span>
+            </div>
+
+        </div>
 
     </div>
     <!-------------- ncr-content end-------------------->

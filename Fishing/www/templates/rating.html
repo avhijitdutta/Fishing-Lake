@@ -1,6 +1,7 @@
 <div ng-controller="ratingCtrl">
     <div class="pop-screen-overlay" ng-click="hideRightPanel()" ng-show="rightPanel"></div>
     <div class="pop-filter rating" ng-class="{'pop-animate': rightPanel}">
+        <div class='close-filter' ng-click="hideRightPanel()"></div>
         <div class="inner-content ">
             <div ng-hide="showAddReview">
                 <div class="heading">

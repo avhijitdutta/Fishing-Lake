@@ -341,6 +341,7 @@
     .lakes .list {
         bottom: 61px;
         padding: 9px;
+        top: 98px;
     }
 
     .lakes .row-list {
@@ -915,4 +916,29 @@
     .ncr-content.suggest-location {
         bottom: 120px;
     }
+
+    .search-panel .search-box {
+        width: 76%;
+    }
+
+    .search-panel .search-box img {
+        width: 34px;
+    }
+
+    .search-panel .search-box input {
+        width: 86%;
+    }
+
+    .fishing-type img {
+        height: 22px;
+    }
+
+    .detail .image-container {
+        height: 200px;
+    }
+
+    .detail .detail-img img.loader {
+        margin-top: 14%;
+    }
+
 }

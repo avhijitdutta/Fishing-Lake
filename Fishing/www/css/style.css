@@ -125,7 +125,7 @@ a {
     border-radius: 5px;
     border: 1px solid #073e41;
     display: inline-block;
-    padding: 6px 12px;
+    padding: 0 12px;
 }
 
 .ncr-header td .header-magnify {
@@ -944,7 +944,7 @@ label.css-label {
 
 .lakes .list {
     position: absolute;
-    top: 0px;
+    top: 100px;
     left: 0;
     right: 0;
     bottom: 77px;
@@ -1089,12 +1089,10 @@ label.css-label {
 .detail.heading-space {
     top: 103px;
     bottom: 158px;
-    overflow-y: scroll; /* has to be scroll, not auto */
-    -webkit-overflow-scrolling: touch;
+    /* has to be scroll, not auto */
 }
 
 .detail .detail-img {
-    position: relative;
     margin-bottom: 10px;
 }
 
@@ -1264,16 +1262,24 @@ label.css-label {
     font-size: 19px;
 }
 
+.detail .detail-img .img-bottomcontent .part-two ul li:nth-child(2) {
+    width: 24%;
+}
+
+.detail .detail-img .img-bottomcontent .part-two ul li:nth-child(3) {
+    width: 24%;
+}
+
 .detail .detail-img .img-bottomcontent .part-two ul li img {
     border: none;
-    height: auto;
-    width: 30px;
+    height: 24px;
+    width: auto;
 }
 
 .detail .detail-img .img-bottomcontent .part-two ul li span {
     /* width: 40px;*/
-    display: inline-block;
-    padding-top: 10px;
+    display: block;
+    padding-bottom: 3px;
 }
 
 .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four, .lake-owner .part-four {
@@ -1991,14 +1997,16 @@ label.css-label {
 }
 
 .part-four .photos .thumb {
-    margin: 3px;
+    margin: 6px;
     display: inline-block;
-    width: 17%;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
 }
 
 .part-four .photos .thumb img {
-    height: 30px;
-    width: 46px;
+    height: 75px;
+    width: auto;
     border: 0;
 }
 
@@ -2080,7 +2088,7 @@ label.css-label {
 }
 
 .reviews .review-heading {
-    background: #128b91 url(../images/next-arrow.png) no-repeat right 20px center;
+    background: #128b91 right 20px center;
     background-size: 10px;
     color: #fff;
     padding: 10px;
@@ -4368,16 +4376,15 @@ html, body, #map-canvas, #map_canvas {
 .img-background {
     background: #e0e0e0;
     vertical-align: top;
-    padding: 3px 0;
     height: 25px;
-    line-height: 26px;
+    line-height: 72px;
 }
 
 .part-four .photos .thumb.img-background img {
     height: auto;
     width: 25px;
     text-align: center;
-    margin-top: 6%;
+    margin-top: 33%;
 }
 
 .description {
@@ -4429,4 +4436,110 @@ html, body, #map-canvas, #map_canvas {
 .lake-popup .btn-update-my-lake img {
     vertical-align: -2px;
     width: 24px;
+}
+
+.detail .detail-img img.loader {
+    width: auto;
+    margin-top: 20%;
+    height: auto;
+    border: 0;
+}
+
+.detail .image-container {
+    text-align: center;
+    height: 300px;
+    border-bottom: 5px solid #ffffff;
+    background: -moz-linear-gradient(top, rgba(17, 27, 28, 0) 39%, rgba(17, 28, 29, 0) 41%, rgba(32, 53, 50, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(39%, rgba(17, 27, 28, 0)), color-stop(41%, rgba(17, 28, 29, 0)), color-stop(100%, rgba(32, 53, 50, 1)));
+    background: -webkit-linear-gradient(top, rgba(17, 27, 28, 0) 39%, rgba(17, 28, 29, 0) 41%, rgba(32, 53, 50, 1) 100%);
+    background: -o-linear-gradient(top, rgba(17, 27, 28, 0) 39%, rgba(17, 28, 29, 0) 41%, rgba(32, 53, 50, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(17, 27, 28, 0) 39%, rgba(17, 28, 29, 0) 41%, rgba(32, 53, 50, 1) 100%);
+    background: linear-gradient(to bottom, rgba(17, 27, 28, 0) 39%, rgba(17, 28, 29, 0) 41%, rgba(32, 53, 50, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00111b1c', endColorstr='#203532', GradientType=0);
+
+}
+
+.close-filter {
+    color: #34aadc;
+    text-decoration: none;
+    height: 25px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -12.5px;
+}
+
+.search-panel {
+    padding: 15px 12px;
+}
+
+.search-panel .search-box {
+    padding: 1%;
+    font-size: inherit;
+    background: #0b4a4D;
+    width: 82%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.search-panel .search-box img {
+    width: 35px;
+    vertical-align: middle;
+    margin: 4px 0;
+}
+
+.search-panel .search-box input {
+    background: none;
+    width: 86%;
+    color: #fff;
+    padding: 1%;
+    font-size: inherit;
+}
+
+.search-panel .fishing-type {
+    background: #0b4a4D;
+    padding: 0.7%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.fishing-type img {
+    height: 25px;
+}
+
+.search-panel .fishing-type span {
+    color: #fff;
+    display: block;
+    font-size: 11px;
+}
+
+.searchlisting-outercontent {
+    color: #fff;
+    text-align: center;
+}
+
+.search-base {
+    padding: 0 12px 15px 12px;
+    color: #fff;
+    text-align: right;
+    font-size: 12px;
+}
+
+.list-bookmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 77px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.list-bookmark .row-list {
+    height: 236px;
+}
+
+.list-bookmark .row-list .btn-booking {
+    margin-top: 58px;
 }

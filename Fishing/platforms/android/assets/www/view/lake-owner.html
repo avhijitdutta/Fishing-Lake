@@ -88,6 +88,7 @@
 
     <div class="pop-screen-overlay" ng-click="hidePanelLake()" ng-show="rightPanelLake"></div>
     <div class="pop-filter add-lake" ng-class="{'pop-animate': rightPanelLake}">
+        <div class='close-filter' ng-click="hidePanelLake()"> </div>
         <div class="inner-content" ng-hide="showClaimForm">
             <div class="heading">Link another lake you own at this venue</div>
             <div class="lake-info">Search or select from the list below
@@ -132,13 +133,13 @@
         </div>
         <form name="claimForm" novalidate ng-submit="submitForm(claimForm.$valid)">
             <div class="inner-content" ng-show="showClaimForm">
-                <div class="heading-claim" align="center"><span>Your Lake? Claim it!</span> Woodgrove Farm</div>
+                <div class="heading-claim" align="center"><span>Same Vanue ? Claim it!</span>{{currentClaimData.lake_name}}</div>
                 <div class="address"><strong>Address</strong>
-                    19 Woogrove Road,<br>
+                    {{currentClaimData.address1}},<br>
 
-                    Wolverhampton<br>
+                    {{currentClaimData.town}}<br>
 
-                    WV34 AER
+                    {{currentClaimData.country}}
                 </div>
 
                 <div class="form">
@@ -173,7 +174,8 @@
             </div>
         </form>
     </div>
-
+    <popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"></popup>
+    <popup display="showProfilePopup" from-gallery="fromGallery(true)" from-camera="fromCamera(true)"></popup>
 </div>
 
 
@@ -183,7 +185,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td>&nbsp;</td>
-            <td align="center">John, this is your lake
+            <td align="center">{{loginuserDetail.first_name}}, this is your lake
                 <div class="not-yours">(not yours?)</div>
             </td>
             <td align="right">&nbsp;</td>
@@ -193,7 +195,7 @@
 
 <!-------------- ncr-content start-------------------->
 <form name="editLake" novalidate>
-    <div class="ncr-content lake-owner heading-space ">
+    <div class="ncr-content lake-owner heading-space scroll">
         <div class="preview-as-visitor" ng-click="showPrev()">Preview as a visitor</div>
 
         <div class="lake-name">
@@ -213,7 +215,7 @@
             </div>
         </div>
         <div class="cover-photo">
-            <div class="upload" ng-click="uploadProfileImg()"><img src="images/ico-upload.png" alt="">Upload</div>
+            <div class="upload" ng-click="showProfilePopup=true"><img src="images/ico-upload.png" alt="">Upload</div>
             <img ng-src="{{lakeData.profile_pic}}" alt="">
         </div>
 
@@ -229,10 +231,27 @@
                         <td>
                             <ng-form name="fieldForm">
                                 <div class="fld">
-                                    <input type="text" required ng-model="address.value"/> <span class="click" ng-click="address.value=''"></span>
+                                    <input type="text" required ng-model="address.value"/> <span class="click"
+                                                                                                 ng-click="address.value=''"></span>
                                 </div>
                             </ng-form>
                         </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="venue-address">
+                <div class="add"><span>Water Type</span></div>
+            </div>
+
+            <div class="list-facility">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr ng-repeat="item in formData.water_type">
+                        <td>{{item.name}}</td>
+                        <td ng-class="{'no':!item.active,'no-opacity':item.active}"
+                            ng-click="itemActive(item,formData.water_type)"></td>
+                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.water_type)"></td>
                     </tr>
                 </table>
             </div>
@@ -245,12 +264,13 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="item in formData.fishing_type">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':!item.active,'no-opacity':item.active}" ng-click="itemActive(item,formData.fishing_type)"></td>
-                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}" ng-click="itemActive(item,formData.fishing_type)"></td>
+                        <td ng-class="{'no':!item.active,'no-opacity':item.active}"
+                            ng-click="itemActive(item,formData.fishing_type)"></td>
+                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.fishing_type)"></td>
                     </tr>
                 </table>
             </div>
-
 
 
             <div class="venue-address">
@@ -263,7 +283,7 @@
             </ng-form>
 
             <div class="venue-address">
-                <div class="add"><span>How do we pay you </span></div>
+                <div class="add"><span>Pay you for bookings </span></div>
             </div>
             <p class="description">
                 When someone books a ticket through the app
@@ -276,15 +296,17 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
                     <tr>
                         <td><h1 class="one"><span>Paypal</span></h1></td>
-                        <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}">
+                        <td class="right-img"><img
+                                ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}">
                         </td>
                     </tr>
                 </table>
                 <div class="prices" ng-show="isOpenTab(1)">
-                <div>Paypal Email Address</div>
+                    <div>Paypal Email Address</div>
                     <ng-form name="fieldForm">
                         <div class="fld">
-                            <input type="email" required ng-model="formData.lake_acc_details.paypal_email" placeholder="Enter paypal email"/>
+                            <input type="email" ng-required="formData.lake_acc_details.acc_name=='' ||  formData.lake_acc_details.sort_code=='' || formData.lake_acc_details.sort_code==''" ng-model="formData.lake_acc_details.paypal_email"
+                                   placeholder="Enter paypal email"/>
                         </div>
                     </ng-form>
                 </div>
@@ -302,20 +324,23 @@
                     <label>Name on account</label>
                     <ng-form name="fieldForm">
                         <div class="fld">
-                            <input type="text" required ng-model="formData.lake_acc_details.acc_name" placeholder="Enter account name"/>
+                            <input type="text" ng-required="formData.lake_acc_details.paypal_email==''" ng-model="formData.lake_acc_details.acc_name"
+                                   placeholder="Enter account name"/>
                         </div>
                     </ng-form>
 
                     <label>Sort Code</label>
                     <ng-form name="fieldForm">
                         <div class="fld">
-                                <input type="text" required ng-model="formData.lake_acc_details.sort_code" placeholder="Enter sort name"/>
+                            <input type="text" ng-model="formData.lake_acc_details.sort_code"
+                                   ng-required="formData.lake_acc_details.paypal_email==''" placeholder="Enter sort name"/>
                         </div>
                     </ng-form>
                     <label>Account Number</label>
                     <ng-form name="fieldForm">
                         <div class="fld">
-                            <input type="text" required ng-model="formData.lake_acc_details.acc_no" placeholder="Enter account number"/>
+                            <input type="text"  ng-model="formData.lake_acc_details.acc_no" ng-required="formData.lake_acc_details.paypal_email==''"
+                                   placeholder="Enter account number"/>
                         </div>
                     </ng-form>
                 </div>
@@ -329,8 +354,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="item in formData.list_amenitites">
                         <td>{{item.name}}</td>
-                        <td  ng-class="{'no':!item.active,'no-opacity':item.active}" ng-click="itemActive(item,formData.list_amenitites)"></td>
-                        <td  ng-class="{'yes':item.active,'yes-opacity':!item.active}"  ng-click="itemActive(item,formData.list_amenitites)"></td>
+                        <td ng-class="{'no':!item.active,'no-opacity':item.active}"
+                            ng-click="itemActive(item,formData.list_amenitites)"></td>
+                        <td ng-class="{'yes':item.active,'yes-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.list_amenitites)"></td>
                     </tr>
                 </table>
             </div>
@@ -343,8 +370,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr ng-repeat="item in formData.list_rules">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':item.active,'no-opacity':!item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
-                        <td ng-class="{'yes':!item.active,'yes-opacity':item.active}" ng-click="itemActive(item,formData.list_rules)"></td>
+                        <td ng-class="{'no':item.active,'no-opacity':!item.active}"
+                            ng-click="itemActive(item,formData.list_rules)"></td>
+                        <td ng-class="{'yes':!item.active,'yes-opacity':item.active}"
+                            ng-click="itemActive(item,formData.list_rules)"></td>
                     </tr>
                 </table>
             </div>
@@ -366,8 +395,10 @@
 
                     <tr ng-repeat="item in formData.list_spacies">
                         <td>{{item.name}}</td>
-                        <td ng-class="{'no':item.normal==0,'no-opacity':item.normal==1}" ng-click="itemToggle(item,formData.list_spacies)"></td>
-                        <td ng-class="{'yes':item.normal==1,'yes-opacity':item.normal==0}" ng-click="itemToggle(item,formData.list_spacies)"></td>
+                        <td ng-class="{'no':item.normal==0,'no-opacity':item.normal==1}"
+                            ng-click="itemToggle(item,formData.list_spacies)"></td>
+                        <td ng-class="{'yes':item.normal==1,'yes-opacity':item.normal==0}"
+                            ng-click="itemToggle(item,formData.list_spacies)"></td>
                         <td></td>
                         <td ng-class="{'yes':item.specimen==1,'yes-opacity':item.specimen==0}"
                             ng-click="itemToggle(item,formData.list_spacies,true)"></td>
@@ -388,8 +419,7 @@
                         <td>
                             <ng-form name="fieldForm">
                                 <div class="fld">
-                                    <input ng-model="item.price" required type="text"/> <span class="click"
-                                                                                              ng-click="emptyInput($event)"></span>
+                                    <input ng-model="item.price" required type="text"/> <span class="click" ng-click="emptyInput($event)"></span>
                                 </div>
                             </ng-form>
                         </td>
@@ -462,7 +492,7 @@
                     <div class="delete" ng-click="removePhoto(item)"><img src="images/ico-cross.png" alt=""></div>
                 </div>
 
-                <div class="thumb upload"><img ng-src="images/img-upload.png" alt="" ng-click="uploadImg()"></div>
+                <div class="thumb upload"><img ng-src="images/img-upload.png" alt="" ng-click="showCameraPopup=true"></div>
             </div>
 
             <div class="venue-address">

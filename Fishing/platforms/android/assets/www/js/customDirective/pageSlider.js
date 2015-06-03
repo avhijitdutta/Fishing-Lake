@@ -1,25 +1,25 @@
 /*The restrict option is typically set to:
 
-'A' - only matches attribute name
-'E' - only matches element name
-'C' - only matches class name
-These restrictions can all be combined as needed:
-'AEC' - matches either attribute or element or class name
-*/
-angular.module('page',[])
+ 'A' - only matches attribute name
+ 'E' - only matches element name
+ 'C' - only matches class name
+ These restrictions can all be combined as needed:
+ 'AEC' - matches either attribute or element or class name
+ */
+angular.module('page', [])
     .directive('mobileSlider', ['$browser', '$location', '$rootScope', function ($browser, $location, $rootScope) {
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
-            require: '?ngClass',/*^ -- Look for the controller on parent elements, not just on the local scope ? -- Don't raise an error if the controller isn't found*/
+            require: '?ngClass', /*^ -- Look for the controller on parent elements, not just on the local scope ? -- Don't raise an error if the controller isn't found*/
             scope: {
-                ngClass:'='
-                 //@ reads the attribute value, = provides two-way binding, & works with functions
+                ngClass: '='
+                //@ reads the attribute value, = provides two-way binding, & works with functions
             },
             link: function ($scope, element, attrs) {//Embed a custom controller in the directive
                 console.log(attrs);
 
             }, //DOM manipulation
-            controller: ['$scope',"$route","$location","$rootScope",function($scope,$route,$location,$rootScope) {
+            controller: ['$scope', "$route", "$location", "$rootScope", function ($scope, $route, $location, $rootScope) {
                 //alert($scope.ngClass);
                 $scope.animationClass = {'slideLeft': 'slide', 'slideRight': 'slide-right', 'slideIn': "slidedown", slideOut: "at-view-slide-out-bottom", fadeIn: 'slide-pop', fadeOut: 'at-view-fade-out'};
 
@@ -28,13 +28,13 @@ angular.module('page',[])
                  state = window.location.hash;
 
                  if (l === 0) {
-                    $rootScope.stateHistory.push(state);
+                 $rootScope.stateHistory.push(state);
                  slidePageFrom(2);
                  return;
                  }
-                if (state === $rootScope.stateHistory[l-2]) {
-                    console.log("pop");
-                    $rootScope.stateHistory.pop();
+                 if (state === $rootScope.stateHistory[l-2]) {
+                 console.log("pop");
+                 $rootScope.stateHistory.pop();
                  slidePageFrom(0);
                  } else {
                  $rootScope.stateHistory.push(state);
@@ -89,8 +89,9 @@ angular.module('page',[])
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                element.bind(attr.stopEvent, function (e) {
-                    e.stopPropagation();
+
+                $(element).bind(attr.stopEvent, function (e) {
+                    e.preventDefault();
                 });
             }
         };
@@ -115,24 +116,24 @@ angular.module('page',[])
 
     });
 
-angular.module("keyboard",[])
-    .directive('keyboardAttach',['keyboardHeight', function(keyboardHeight) {
+angular.module("keyboard", [])
+    .directive('keyboardAttach', ['keyboardHeight', function (keyboardHeight) {
         return{
             restrict: 'A', //E = element, A = attribute, C = class, M = comment
             scope: {
-                keyBoard:'@'
+                keyBoard: '@'
                 //@ reads the attribute value, = provides two-way binding, & works with functions
             },
             link: function ($scope, element, attrs) {//Embed a custom controller in the directive
-                $(element).on("click",function(){
-                  /* if(keyboardHeight==0)
-                   {
-                       window.addEventListener('native.keyboardshow', keyboardShowHandler);
-                       function keyboardShowHandler(e) {
-                           console.log(e);
-                           keyboardHeight= e.keyboardHeight;
-                       }
-                   }*/
+                $(element).on("click", function () {
+                    /* if(keyboardHeight==0)
+                     {
+                     window.addEventListener('native.keyboardshow', keyboardShowHandler);
+                     function keyboardShowHandler(e) {
+                     console.log(e);
+                     keyboardHeight= e.keyboardHeight;
+                     }
+                     }*/
                 });
             }//DOM manipulation
         }
@@ -147,13 +148,13 @@ angular.module('validation.match', []);
 
 angular.module('validation.match').directive('match', match);
 
-function match ($parse) {
+function match($parse) {
     return {
         require: '?ngModel',
         restrict: 'A',
-        link: function(scope, elem, attrs, ctrl) {
-            if(!ctrl) {
-                if(console && console.warn){
+        link: function (scope, elem, attrs, ctrl) {
+            if (!ctrl) {
+                if (console && console.warn) {
                     console.warn('Match validation requires ngModel to be on the element');
                 }
                 return;
@@ -161,17 +162,17 @@ function match ($parse) {
 
             var matchGetter = $parse(attrs.match);
 
-            scope.$watch(getMatchValue, function(){
+            scope.$watch(getMatchValue, function () {
                 ctrl.$validate();
             });
 
-            ctrl.$validators.match = function(){
+            ctrl.$validators.match = function () {
                 return ctrl.$viewValue === getMatchValue();
             };
 
-            function getMatchValue(){
+            function getMatchValue() {
                 var match = matchGetter(scope);
-                if(angular.isObject(match) && match.hasOwnProperty('$viewValue')){
+                if (angular.isObject(match) && match.hasOwnProperty('$viewValue')) {
                     match = match.$viewValue;
                 }
                 return match;
@@ -181,43 +182,45 @@ function match ($parse) {
 }
 
 angular.module("RatingApp", [])
-    .directive("starRating", function() {
+    .directive("starRating", function () {
         return {
-            restrict :"A",
-            template :"<img ng-repeat='star in stars' ng-class='starClass(star, $index)' ng-click='toggle($index)'>",
-            scope : {
-                ratingValue : "=",
-                max : "=",
-                onRatingSelected : "&"
+            restrict: "A",
+            template: "<img ng-repeat='star in stars' ng-class='starClass(star, $index)' ng-click='toggle($index)'>",
+            scope: {
+                ratingValue: "=",
+                max: "=",
+                onRatingSelected: "&"
             },
-            link : function(scope, elem, attrs) {
+            link: function (scope, elem, attrs) {
 
-                var updateStars = function() {
+                var updateStars = function () {
                     scope.stars = [];
-                    for ( var i = 0; i < scope.max; i++) {
+                    for (var i = 0; i < scope.max; i++) {
                         scope.stars.push({
-                            filled : i < scope.ratingValue
+                            filled: i < scope.ratingValue
                         });
                     }
                 };
 
-                scope.starClass = function(/** Star */ star, /** Integer */ idx) {
-                    var starClass ='not-filled';
+                scope.starClass = function (/** Star */ star, /** Integer */ idx) {
+                    var starClass = 'not-filled';
                     if (star.filled) {
                         starClass = 'filled';
                     }
                     return starClass;
                 };
 
-                scope.toggle = function(index) {
+                scope.toggle = function (index) {
                     scope.ratingValue = index + 1;
                     scope.onRatingSelected({
-                        rating : index + 1
+                        rating: index + 1
                     });
                 };
 
-                scope.$watch("ratingValue", function(oldVal, newVal) {
-                    if (newVal) { updateStars(); }
+                scope.$watch("ratingValue", function (oldVal, newVal) {
+                    if (newVal) {
+                        updateStars();
+                    }
                 });
             }
         };
@@ -226,10 +229,10 @@ angular.module("RatingApp", [])
 'use strict';
 
 angular.module('validation.match').filter('myCurrency', ['$filter', function ($filter) {
-    return function(input) {
+    return function (input) {
         input = parseFloat(input);
 
-        if(input % 1 === 0) {
+        if (input % 1 === 0) {
             input = input.toFixed(0);
         }
         else {

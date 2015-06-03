@@ -1,6 +1,6 @@
 app.service('storeData', ['localFactory', function (localFactory) {
     var self = this;
-    self.currentData = {loginData: "", currentLake: {}, latLong: {},currentBooking:{},currentTicket:{}};
+    self.currentData = {loginData: "", currentLake: {}, latLong: {}, currentBooking: {}, currentTicket: {},category:""};
     self.cityData = "";
     this.setData = function (obj) {
 
@@ -33,16 +33,20 @@ app.service('storeData', ['localFactory', function (localFactory) {
             self.currentData['latLong'] = obj.latLong;
         }
 
-        if(obj.currentBooking){
+        if (obj.currentBooking) {
 
-            self.currentData['currentBooking']=obj.currentBooking;
+            self.currentData['currentBooking'] = obj.currentBooking;
         }
 
-        if(obj.currentTicket){
-            self.currentData['currentTicket']=obj.currentTicket;
+        if (obj.currentTicket) {
+            self.currentData['currentTicket'] = obj.currentTicket;
         }
-        if(obj.social){
+        if (obj.social) {
             localFactory.setLocalItem('social', JSON.stringify(obj.social));
+        }
+
+        if (obj.category || obj.category=="") {
+            self.currentData['category'] = obj.category;
         }
     }
 
@@ -57,7 +61,7 @@ app.service('storeData', ['localFactory', function (localFactory) {
         }
     }
 
-    this.getSocialData=function(){
+    this.getSocialData = function () {
         return $.parseJSON(localFactory.getLocalItem('social'));
     }
 
@@ -69,10 +73,10 @@ app.service('storeData', ['localFactory', function (localFactory) {
 
 }]);
 
-app.service('ajaxSearch', ['$http', function($http){
+app.service('ajaxSearch', ['$http', function ($http) {
     return {
-        search: function(keywords){
-            return $http.post('/api/member/getuser', { "username" : keywords });
+        search: function (keywords) {
+            return $http.post('/api/member/getuser', { "username": keywords });
         }
     }
 }]);

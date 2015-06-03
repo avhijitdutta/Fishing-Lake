@@ -1,8 +1,10 @@
 <div class="ncr-header" ng-controller="headerCtrl">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td ng-if="!backButtonHide" class="settings" ng-click="goBack()"><div class="header-fish"> <img src="images/header-fish.png" alt=""> </div></td>
-            <td ng-if="backButtonHide" class="settings"> </td>
+            <td ng-if="!backButtonHide" class="settings" ng-click="goBack()">
+                <div class="header-fish"><img src="images/arrow-back.png" alt=""></div>
+            </td>
+            <td ng-if="backButtonHide" class="settings"></td>
 
             <td align="right" class="title">
                 <div class="header-tag" ng-click="userRecentItems()"><img src="images/header-history.png" alt=""></div>

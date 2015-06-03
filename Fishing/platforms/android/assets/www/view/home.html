@@ -35,8 +35,8 @@
         </div>
         <!-------------- list -------------------->
         <div class="list">
-            <div class="row-list" ng-repeat="list in listCollection" ng-click="viewDetail(list.cat_id)"><img
-                    image-source="{{list.cat_img}}" image-placeholder="images/no-image_large.png" alt="" imageonload>
+            <div class="row-list" ng-repeat="list in listCollection" ng-click="viewDetail(list.cat_id,list.cat_name)"><img
+                    image-source="{{list.cat_img}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>
 
                 <div class="info">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">

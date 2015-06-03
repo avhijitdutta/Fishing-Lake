@@ -355,6 +355,7 @@
     .lakes .list {
         bottom: 52px;
         padding: 7px;
+        top: 80px;
     }
 
     .lakes .row-list {
@@ -422,8 +423,9 @@
     }
 
     .detail .detail-img .left-content .name {
-        font-size: 23px;
+        font-size: 18px;
         line-height: 34px;
+        min-width: 290px
     }
 
     .detail .detail-img .left-content .reviews {
@@ -441,7 +443,7 @@
 
     .detail .detail-img .left-content .price {
         color: #fff;
-        font-size: 50px;
+        font-size: 32px;
         font-weight: normal;
         line-height: 50px;
     }
@@ -508,7 +510,7 @@
     }
 
     .detail .detail-img .img-bottomcontent .part-two ul li span {
-       /* width: 30px;*/
+        /* width: 30px;*/
     }
 
     .detail .detail-img .img-bottomcontent .part-three, .detail .detail-img .img-bottomcontent .part-four {
@@ -712,7 +714,7 @@
     }
 
     .photos .thumb-container .thumb {
-        width: 100px;
+        width: 100%;
         margin-bottom: 4px;
     }
 
@@ -773,17 +775,60 @@
         background-size: 34px;
     }
 
-    .slider-container{
+    .slider-container {
         bottom: 0;
         top: 92px;
     }
 
-    .lake-owner .hall-pool .remove{
+    .lake-owner .hall-pool .remove {
         font-size: 12px;
     }
 
-    .lake-owner .hall-pool .remove img{
+    .lake-owner .hall-pool .remove img {
         width: 16px;
         vertical-align: -3px;
     }
+
+    .search-panel{
+        padding:10px 0;
+    }
+
+    .search-panel .search-box{
+        width: 68%;
+    }
+    .search-panel .search-box img{
+        width: 27px;
+    }
+    .search-panel .search-box input{
+        width: 81%;
+    }
+
+    .search-panel .fishing-type{
+
+    }
+
+    .fishing-type img{
+        height: 20px;
+    }
+
+.detail .image-container{height:200px;}
+
+
+.part-four .photos .thumb {
+    margin: 3px;
+    width: 45px;
+	height:45px;
+}
+
+.part-four .photos .thumb img {
+    height: 45px;
+}
+.img-background {
+    line-height: 44px;
+}
+
+.part-four .photos .thumb.img-background img {
+    width: 25px;
+    margin-top: 22%;
+}
 }

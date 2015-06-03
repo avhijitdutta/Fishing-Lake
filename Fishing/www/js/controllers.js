@@ -23,7 +23,7 @@ app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory',
     $scope.listCollection = $route.current.locals.homeData.lake_category;
     console.log($route.current.locals.homeData);
 
-    $scope.viewDetail = function (value) {
+    $scope.viewDetail = function (value, name) {
         localFactory.load();
         var posOptions = {timeout: 10000, enableHighAccuracy: true};
         $cordovaGeolocation
@@ -32,19 +32,28 @@ app.controller('homeCtrl', ['$rootScope', '$scope', '$location', 'localFactory',
 
                 var latLong = {latLong: {latitude: position.coords.latitude, longitude: position.coords.longitude}};
                 storeData.setData(latLong);
+
+                var category = {category: name};
+                storeData.setData(category);
+
                 $location.path("lakelist/" + value);
             }, function (err) {
                 localFactory.unload();
-                alert(err);
+                localFactory.alert("Turn on location service in your phone.", function () {
+
+                }, "Alert", "Ok");
 
             });
     }
 
     $scope.quickSearch = function (value) {
+        var category = {category: ""};
+        storeData.setData(category);
         $location.path("lakelist/quickSearch");
     }
 
     $scope.openSearch = function (value) {
+
         $location.path("Search");
     }
     localFactory.unload();
@@ -122,6 +131,8 @@ app.controller('searchCtrl', ['$rootScope', '$scope', '$location', 'localFactory
 
     /**** search list page****/
     $scope.bookNow = function () {
+        var category = {category: ""};
+        storeData.setData(category);
         $location.path("lakelist/adsearch");
     }
 
@@ -339,6 +350,7 @@ app.controller('lakeListCtrl', ['$rootScope', '$scope', '$location', 'localFacto
         $location.path("lakeDetail/" + value);
     }
 
+    $scope.category = storeData.getData(true).category;
     $scope.bookmark = function (lake) {
 
         var postData = {lake_id: lake.id, user_no: storeData.getData().loginData.user_details.user_no};
@@ -455,7 +467,7 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
     }
 
     $scope.showShare = function () {
-        window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl');
+        window.plugins.socialsharing.share('Found a great little fishing spot', null, null, 'www.ncrts.com');
     }
 
     $scope.showMorePhoto = function (id) {
@@ -466,12 +478,22 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
         $location.path("booking/" + $scope.lakeId);
     }
 
+    console.log($scope.lakeDetail)
     $scope.showOwner = function (id) {
+
         $location.path("owner/" + id);
+        /* if(parseInt($scope.lakeDetail.claim_status.status))
+         {
+
+
+         }else{
+
+         $scope.showLakePopup=true;
+         }*/
     }
 
     //initiate an array to hold all active tabs
-    $scope.activeTabs = [1, 2, 3, 4, 5, 6, 7, 8];
+    $scope.activeTabs = [6];
 
     //check if the tab is active
     $scope.isOpenTab = function (tab) {
@@ -528,6 +550,7 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
                 console.log(data);
                 localFactory.unload();
                 if (data.result) {
+
                     $scope.askquestion = "";
                     localFactory.alert(data.msg, function () {
 
@@ -649,6 +672,15 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
 
     $scope.prices = 100;
 
+    /*$scope.options = {
+     destinationType: Camera.DestinationType.FILE_URI,
+     allowEdit: true,
+     encodingType: Camera.EncodingType.JPEG,
+     targetWidth: 200,
+     targetHeight: 100,
+     quality: 99
+     };*/
+
     $scope.uploadImg = function () {
         $cordovaCamera.getPicture($scope.options).then(function (imageURI) {
             $scope.imageURI = imageURI;
@@ -716,6 +748,42 @@ app.controller('lakeDetailCtrl', ['$rootScope', '$scope', '$location', 'localFac
         {name: "ph", type: "tel", placeHolder: "Contact phone no", value: ""}
     ];
 
+    $scope.submitForm = function () {
+
+        // check to make sure the form is completely valid
+        if ($scope.claimForm.$valid) {
+            localFactory.load();
+
+            var postData = {user_no: storeData.getData().loginData.user_details.user_no, lake_id: $scope.lakeId};
+            for (var i = 0; i < $scope.claimLakeDetails.length; i++) {
+                postData[$scope.claimLakeDetails[i]['name']] = $scope.claimLakeDetails[i]['value'];
+            }
+
+            var login = localFactory.post('lake_claim', postData);
+            login.success(function (data) {
+                localFactory.unload();
+
+                if (data.result) {
+                    $scope.showLakePopup = false;
+                    localFactory.alert(data.msg, function () {
+
+                    }, "Message", 'OK');
+
+                } else {
+
+                    localFactory.alert(data.msg, function () {
+
+                    }, "Message", 'OK');
+                }
+
+            });
+
+            login.error(function (data, status, headers, config) {
+                localFactory.unload();
+            });
+
+        }
+    };
 }]);
 
 app.controller('loginPageCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', '$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, storeData, $cordovaFacebook) {
@@ -827,8 +895,13 @@ app.controller('emailRegCtrl', ['$rootScope', '$scope', '$location', 'localFacto
 
 app.controller('signupCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaFacebook', function ($rootScope, $scope, $location, localFactory, $cordovaFacebook) {
 
+    currentPage = "signupCtrl";
     $scope.signupEmail = function () {
         $location.path("emailreg");
+    }
+
+    $scope.login = function () {
+        $location.path("loginpage");
     }
 }]);
 
@@ -902,7 +975,8 @@ app.controller('photosCtrl', ['$rootScope', '$scope', '$location', 'localFactory
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 200,
-        targetHeight: 100
+        targetHeight: 100,
+        quality: 99
     };
 
 
@@ -1107,10 +1181,14 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
             $scope.list_amenitites[i]['active'] = false;
         }
     }
-    var fishinType = [
-        {id: 1, name: 'Course', active: true},
-        {id: 2, name: 'Game', active: false},
-        {id: 3, name: 'Sea', active: true}
+    var waterType = [
+        {id: 1, name: 'Lake', active: true},
+        {id: 2, name: 'Pond', active: false},
+        {id: 3, name: 'Reservoir', active: true},
+        {id: 4, name: 'Gravel Pit', active: true},
+        {id: 5, name: 'River', active: false},
+        {id: 6, name: 'Canal', active: false},
+        {id: 7, name: "Sea", active: true}
     ];
     //update contact details
     $scope.formData = {};
@@ -1123,6 +1201,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     $scope.formData['list_spacies'] = $scope.lakeData.list_spacies;
     $scope.formData['lake_pricing'] = $scope.lakeData.lake_pricing;
     $scope.formData['fishing_type'] = $scope.lakeData.lake_type;
+    $scope.formData['water_type'] = waterType;
     $scope.formData['lake_acc_details'] = $scope.lakeData.lake_acc_details;
     $scope['contact_details'] =
         [
@@ -1130,6 +1209,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
             {name: "Contact Number", type: "tel", value: $scope.lakeData.lake_category.contact_number, label: 'contact_number'},
             {name: "Email", type: "email", value: $scope.lakeData.lake_category.email, label: 'email'}
         ];
+
     $scope.formData['lake_image'] = $scope.lakeData.lake_image;
 
     $scope.lakeTimeing = [];
@@ -1174,14 +1254,14 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         for (var i = 0; i < length; i++) {
             if (fishSpecies[i].id == item.id) {
                 if (species) {
-                    if (item.specimen) {
+                    if (item.specimen == 1) {
                         fishSpecies[i].specimen = 0;
 
                     } else {
                         fishSpecies[i].specimen = 1;
                     }
                 } else {
-                    if (item.normal) {
+                    if (item.normal == 1) {
                         fishSpecies[i].normal = 0;
 
                     } else {
@@ -1189,7 +1269,6 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
                     }
                 }
             }
-
         }
     }
 
@@ -1337,8 +1416,10 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
     //right panel add another lake
     $scope.rightPanelLake = false;
     $scope.showRightLake = function () {
+        $scope.showClaimForm = false;
         if ($scope.rightPanelLake) {
             $scope.rightPanelLake = false;
+
         } else {
 
             localFactory.load();
@@ -1418,8 +1499,8 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
 
         // check to make sure the form is completely valid
         if ($scope.claimForm.$valid) {
-
-            var postData = {user_no: storeData.getData().loginData.user_details.user_no, lake_id: $scope.lakeData.lake_category.id};
+            // need to add vanue id
+            var postData = {user_no: storeData.getData().loginData.user_details.user_no, lake_id: $scope.lakeData.lake_category.id, vanue_id: 123};
             for (var i = 0; i < $scope.claimFormData.claimLakeDetails.length; i++) {
                 postData[$scope.claimFormData.claimLakeDetails[i]['name']] = $scope.claimFormData.claimLakeDetails[i]['value'];
             }
@@ -1541,19 +1622,21 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
             }, "Message", 'OK');
         }
     }
+    $scope.showCameraPopup = false;
+
+    $scope.showProfilePopup = false;
+
+    $scope.options = {
+        destinationType: Camera.DestinationType.FILE_URI,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 200,
+        targetHeight: 100,
+        quality: 80
+    };
 
     $scope.uploadImg = function () {
-
-        var options = {
-            destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 200,
-            targetHeight: 100
-        };
-
-        $cordovaCamera.getPicture(options).then(function (imageURI) {
+        $cordovaCamera.getPicture($scope.options).then(function (imageURI) {
             var imageURI = imageURI;
             localFactory.load();
             var serverURL = 'http://ncrts.com/fishing_lake/webservice/post_lake_image';
@@ -1569,6 +1652,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
 
             $cordovaFileTransfer.upload(serverURL, imageURI, options)
                 .then(function (result) {
+                    $scope.showCameraPopup = false;
                     localFactory.unload();
                     console.log(result);
 
@@ -1594,16 +1678,15 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         });
     }
 
+    $scope.profileOptions = {
+        destinationType: Camera.DestinationType.FILE_URI,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        quality: 80
+    };
+
     $scope.uploadProfileImg = function () {
-
-        var options = {
-            destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            encodingType: Camera.EncodingType.JPEG
-        };
-
-        $cordovaCamera.getPicture(options).then(function (imageURI) {
+        $cordovaCamera.getPicture($scope.profileOptions).then(function (imageURI) {
             var imageURI = imageURI;
             $scope.lakeData.profile_pic = imageURI;
             localFactory.load();
@@ -1621,6 +1704,7 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
             $cordovaFileTransfer.upload(serverURL, imageURI, options)
                 .then(function (result) {
                     localFactory.unload();
+                    $scope.showProfilePopup = false;
                     localFactory.alert('Image update successfully', function () {
 
                     }, "Message", 'OK');
@@ -1638,6 +1722,28 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
         }, function (err) {
             console.log(err);
         });
+    }
+
+
+    $scope.fromGallery = function (flag) {
+        if (flag) {
+            $scope.profileOptions['sourceType'] = Camera.PictureSourceType.PHOTOLIBRARY;
+            $scope.uploadProfileImg();
+
+        } else {
+            $scope.options['sourceType'] = Camera.PictureSourceType.PHOTOLIBRARY;
+            $scope.uploadImg();
+        }
+    }
+
+    $scope.fromCamera = function (flag) {
+        if (flag) {
+            $scope.profileOptions['sourceType'] = Camera.PictureSourceType.CAMERA;
+            $scope.uploadProfileImg();
+        } else {
+            $scope.options['sourceType'] = Camera.PictureSourceType.CAMERA;
+            $scope.uploadImg();
+        }
     }
 
     $scope.removeLake = function (obj) {
@@ -1687,6 +1793,8 @@ app.controller('lakeOwner', ['$rootScope', '$scope', '$location', 'localFactory'
             $scope.activeTabs.push(tab);
         }
     }
+
+    $scope.loginuserDetail = storeData.getData().loginData.user_details;
 
 }]);
 
@@ -1845,7 +1953,7 @@ app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFacto
     console.log($scope.lackList);
 
     $scope.deleteBookmark = function (lake) {
-        localFactory.confirm('Disconnect account from Fishing Lake.', function (yes) {
+        localFactory.confirm('Remove from bookmark ?', function (yes) {
             if (yes == 1) {
                 localFactory.load();
                 var postData = {lake_id: lake.id, user_no: storeData.getData().loginData.user_details.user_no};
@@ -1882,7 +1990,7 @@ app.controller('bookmarkCtrl', ['$rootScope', '$scope', '$location', 'localFacto
 
     $scope.linkBookMark = function (obj) {
 
-        $location.path("lakeDetail/1");
+        $location.path("lakeDetail/" + obj.id);
 
     }
 
@@ -2070,10 +2178,11 @@ app.controller('footerCtrl', ['$rootScope', '$scope', '$location', 'localFactory
             $cordovaGeolocation
                 .getCurrentPosition(posOptions)
                 .then(function (position) {
-
                     var latLong = {latLong: {latitude: position.coords.latitude, longitude: position.coords.longitude}};
                     storeData.setData(latLong);
                     $rootScope.popupMask = false;
+                    var category = {category: 'Near by'};
+                    storeData.setData(category);
                     $location.path("lakelist/nearby");
                 }, function (err) {
                     localFactory.unload();
@@ -2267,7 +2376,8 @@ app.controller('reportCtrl', ['$rootScope', '$scope', '$location', 'localFactory
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 200,
-            targetHeight: 100
+            targetHeight: 100,
+            quality: 99
         };
 
         $cordovaCamera.getPicture(options).then(function (imageURI) {
@@ -2348,7 +2458,7 @@ app.controller('feedbackCtrl', ['$rootScope', '$scope', '$location', 'localFacto
     }
 }]);
 
-app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaCamera', 'storeData', '$cordovaGeolocation', '$cordovaFileTransfer', '$twitter', function ($rootScope, $scope, $location, localFactory, $cordovaCamera, storeData, $cordovaGeolocation, $cordovaFileTransfer, $twitter) {
+app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactory', '$cordovaCamera', 'storeData', '$cordovaGeolocation', '$cordovaFileTransfer', '$twitter', '$route', function ($rootScope, $scope, $location, localFactory, $cordovaCamera, storeData, $cordovaGeolocation, $cordovaFileTransfer, $twitter, $route) {
     $scope.bookOnline = true;
     $scope.bookText = "Suggest this location";
     $scope.bookImg = "images/thumb.png";
@@ -2356,97 +2466,103 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
     $scope.lat = "";
     $scope.long = "";
     $scope.locationName = "";
+
+    $scope.options = {
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        quality: 99
+    };
+
     $scope.uploadImage = function () {
-
-        var options = {
-            destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            encodingType: Camera.EncodingType.JPEG
-        };
-
-        $cordovaCamera.getPicture(options).then(function (imageURI) {
+        $cordovaCamera.getPicture($scope.options).then(function (imageURI) {
             $scope.imageURI = imageURI;
         }, function (err) {
             console.log(err);
         });
     }
 
+    $scope.showCameraPopup = false;
 
-    var posOptions = {timeout: 10000, enableHighAccuracy: true};
-    $cordovaGeolocation
-        .getCurrentPosition(posOptions)
-        .then(function (position) {
-            $scope.lat = position.coords.latitude;
-            $scope.long = position.coords.longitude;
+    $scope.fromGallery = function () {
+        $scope.options['sourceType'] = Camera.PictureSourceType.PHOTOLIBRARY;
+        $scope.uploadImage();
+    }
 
-            var latlng = new google.maps.LatLng($scope.lat, $scope.long);
-            var mapOptions = {
-                zoom: 15,
-                center: latlng,
-                minZoom: 10,
-                zoomControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                draggable: false,
-                scrollwheel: false
+    $scope.fromCamera = function () {
+        $scope.options['sourceType'] = Camera.PictureSourceType.CAMERA;
+        $scope.uploadImage();
+    }
 
-            };
+    $scope.postion = $route.current.locals.homeData;
+    console.log($scope.lackList);
+    $scope.lat = $scope.postion.latitude;
+    $scope.long = $scope.postion.longitude;
+
+    var latlng = new google.maps.LatLng($scope.lat, $scope.long);
+    var mapOptions = {
+        zoom: 15,
+        center: latlng,
+        minZoom: 10,
+        zoomControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        draggable: false,
+        scrollwheel: false
+
+    };
 
 
-            var map = new google.maps.Map(document.getElementById('map_canvas'),
-                mapOptions);
+    var map = new google.maps.Map(document.getElementById('map_canvas'),
+        mapOptions);
 
-            var destinationMarker = new google.maps.Marker({
-                map: map,
-                position: new google.maps.LatLng($scope.lat, $scope.long),
-                draggable: false
-            });
-            geocodePosition(destinationMarker.getPosition(),
-                function (obj) {
+    var destinationMarker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng($scope.lat, $scope.long),
+        draggable: false
+    });
+    geocodePosition(destinationMarker.getPosition(),
+        function (obj) {
 
-                });
-            var input = (document.getElementById('pac-input'));
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-            var infowindow = new google.maps.InfoWindow();
-            var marker = new google.maps.Marker({
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17);  // Why 17? Because it looks good.
-                }
-
-                destinationMarker.setPosition(place.geometry.location);
-                var address = '';
-                if (place.address_components) {
-
-                    address = [
-                        (place.address_components[0] && place.address_components[0].short_name || ''),
-                        (place.address_components[1] && place.address_components[1].short_name || ''),
-                        (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                    $scope.lat = place.geometry.location.lat();
-                    $scope.long = place.geometry.location.lng();
-                }
-            });
-
-        }, function (err) {
-            alert(err);
         });
+    var input = (document.getElementById('pac-input'));
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+    var infowindow = new google.maps.InfoWindow();
+    var marker = new google.maps.Marker({
+        map: map,
+        anchorPoint: new google.maps.Point(0, -29)
+    });
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        infowindow.close();
+        marker.setVisible(false);
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+            return;
+        }
+
+        // If the place has a geometry, then present it on a map.
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+        }
+
+        destinationMarker.setPosition(place.geometry.location);
+        var address = '';
+        if (place.address_components) {
+
+            address = [
+                (place.address_components[0] && place.address_components[0].short_name || ''),
+                (place.address_components[1] && place.address_components[1].short_name || ''),
+                (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+            $scope.lat = place.geometry.location.lat();
+            $scope.long = place.geometry.location.lng();
+        }
+    });
 
 
     function geocodePosition(pos, callBack) {
@@ -2464,13 +2580,13 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
     $scope.resetAddress = function () {
         $scope.address = "";
-        $scope.lat = "";
-        $scope.long = "";
+        $scope.lat = $scope.postion.latitude;
+        $scope.long = $scope.postion.longitude;
     }
 
     $scope.bookNow = function () {
 
-        if ($scope.lat == "") {
+        if ($scope.lat == "" || $scope.long == "") {
 
             localFactory.alert("Select location Name.", function () {
 
@@ -2539,9 +2655,10 @@ app.controller('suggestCtrl', ['$rootScope', '$scope', '$location', 'localFactor
 
         }
     }
+    localFactory.unload();
 }]);
 
-app.controller('headerCtrl', ['$rootScope', '$scope', '$location', 'localFactory', function ($rootScope, $scope, $location, localFactory) {
+app.controller('headerCtrl', ['$rootScope', '$scope', '$location', 'localFactory', 'storeData', function ($rootScope, $scope, $location, localFactory, storeData) {
 
     $scope.openSearch = function (value) {
         $location.path("Search");
@@ -2550,7 +2667,8 @@ app.controller('headerCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.userRecentItems = function () {
 
         if (localFactory.getLocalItem('recent_items')) {
-
+            var category = {category: ""};
+            storeData.setData(category);
             $location.path("lakelist/recentitems");
 
         }
@@ -2686,7 +2804,7 @@ app.controller('ratingCtrl', ['$rootScope', '$scope', '$location', 'localFactory
     $scope.addReview = function () {
         if ($scope.showAddReview) {
             if ($scope.reviewData != "") {
-                var postData = {lake_id: storeData.getData(true).currentLake.lake_category.id, user_no: storeData.getData().loginData.user_details.user_no, review: $scope.reviewData, rate: $scope.rating};
+                var postData = {lake_id: storeData.getData(true).currentLake.lake_category.id, user_no: storeData.getData().loginData.user_details.user_no, review: $scope.reviewData, rate: $scope.rating, 'anonymous': check};
                 var bookMark = localFactory.post('post_review', postData);
                 bookMark.success(function (data) {
                     localFactory.unload();
@@ -2704,7 +2822,14 @@ app.controller('ratingCtrl', ['$rootScope', '$scope', '$location', 'localFactory
                             }, "Message", 'OK');
 
                          }*/
-                        var tempObj = {first_name: storeData.getData().loginData.user_details.first_name, last_name: storeData.getData().loginData.user_details.last_name, review: $scope.reviewData};
+                        var tempObj = {first_name: storeData.getData().loginData.user_details.first_name, last_name: storeData.getData().loginData.user_details.last_name, review: $scope.reviewData, rate: $scope.rating};
+
+                        if ($scope.check) {
+                            tempObj['first_name'] = "Anonyms";
+
+                            tempObj['last_name'] = "";
+                        }
+
                         $scope.reviewList.push(tempObj);
                         $scope.showAddReview = false;
                         $scope.rightPanel = false; // filter out

@@ -1,8 +1,8 @@
 <div class="page">
 <ng-include src="'templates/rating.html'"></ng-include>
-<popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"> </popup>
+<popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"></popup>
 
-<div class="popup-mask" ng-show="showLakePopup">
+<div class="popup-mask" ng-show="showLakePopup" ng-click="showLakePopup=false">
 
 </div>
 
@@ -34,9 +34,9 @@
                 Please enter an email address,your name and a contact number
             </div>
 
-            <button class="btn-update-my-lake" type="submit" ng-disabled="claimForm.$invalid"><img src="images/ico-write.png" alt=""> Update my lake </button>
-
-            <!--<div class="btn-update-my-lake" ng-click="claimLakeUpdate()"><img src="images/ico-write.png"  alt=""> Update my lake</div>-->
+            <button class="btn-update-my-lake" type="submit" ng-disabled="claimForm.$invalid"><img
+                    src="images/ico-write.png" alt=""> Submit
+            </button>
         </div>
     </form>
 </div>
@@ -46,7 +46,7 @@
 <div class="ncr-heading" align="center" ng-click="showOwner(lakeDetail.lake_category.id)">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-        <td>&nbsp;</td>
+            <td>&nbsp;</td>
 
             <td align="center" ng-if="lakeId!='owner' ">Your Lake? Claim it!</td>
 
@@ -60,7 +60,11 @@
 <!-------------- ncr-content start-------------------->
 <div class="ncr-content detail heading-space no-footer scroll">
 <div class="detail-img">
-<img alt="" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/no-image_large.png" alt="" imageonload>
+<!--<img alt="" class="loader" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>-->
+<div class="image-container">
+    <img alt="" class="loader" image-source="{{lakeDetail.profile_pic}}" image-placeholder="images/ajax-loader.gif" alt="" imageonload>
+</div>
+
 
 <div class="img-content">
     <div class="left-content">
@@ -90,9 +94,9 @@
 <div class="img-bottomcontent">
     <div class="part-one">
         <ul>
-<!--    <li ng-click="showCheckIn()"><img src="images/ico-checkin.png" alt=""><br>
-            <span>Check in</span>
-        </li>-->
+            <!--    <li ng-click="showCheckIn()"><img src="images/ico-checkin.png" alt=""><br>
+                        <span>Check in</span>
+                    </li>-->
             <li ng-click="showDirection()"><img src="images/ico-direction.png" alt=""><br>
                 <span>Directions</span>
             </li>
@@ -118,11 +122,19 @@
 
             <li>
                 <span style="color:#128b91;">Details</span><br>
-                <span> Game , Coarse ,Tackle Shop</span> <br>
-               <!-- {{lakeDetail.lake_category.desc}}-->
-                <span><img src="images/ico-wheel-chair.png" alt=""></span>
-                <span><img src="images/ico-men-women.png" alt=""></span>
-                <span><img src="images/ico-private.png" alt=""></span>
+                <span ng-repeat="type in lakeDetail.lake_type" ng-if="type.active"> {{type.name}} <br> </span>
+
+
+                <!-- {{lakeDetail.lake_category.desc}}-->
+                <img src="images/ico-wheel-chair.png" alt=""> <img src="images/ico-men-women.png" alt=""> <img src="images/ico-private.png" alt="">
+            </li>
+             <li>
+                <span style="color:#128b91;">Details</span><br>
+                <span ng-repeat="type in lakeDetail.lake_type" ng-if="type.active"> {{type.name}} <br> </span>
+
+
+                <!-- {{lakeDetail.lake_category.desc}}-->
+               
             </li>
         </ul>
         <div class="clr"></div>
@@ -142,19 +154,16 @@
         </div>
     </div>
     <div class="part-four">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(1)">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" ng-click="openTab(9)">
             <tr>
                 <td><h1 class="one"><span>The Venue</span></h1></td>
                 <td class="right-img">
-                    <img ng-class="{'active-tab-img':isOpenTab(1),'deactive-tab-img':!isOpenTab(1)}" alt="">
+                    <img ng-class="{'active-tab-img':isOpenTab(9),'deactive-tab-img':!isOpenTab(9)}" alt="">
                 </td>
             </tr>
         </table>
-        <div class="vanue" ng-show="isOpenTab(1)">
-          <!--  {{lakeDetail.lake_category.desc}}-->
-            This is the bets fishing lake I have ever been to The
-            fish are so big and I just want to stay all day
-            Read More
+        <div class="vanue" ng-show="isOpenTab(9)">
+              {{lakeDetail.lake_category.desc}}
         </div>
     </div>
     <div class="part-four">
@@ -182,7 +191,8 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
                     <tr ng-repeat="amenities in lakeDetail.list_amenitites" id="{{amenities.id}}">
-                        <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""  src="images/ico-cross-big.png">
+                        <td class="tick-img" ng-if="amenities.amenitites_id==''"><img alt=""
+                                                                                      src="images/ico-cross-big.png">
                         </td>
                         <td class="tick-img" ng-if="amenities.amenitites_id!=''"><img alt="" src="images/tick.png"></td>
                         <td>{{amenities.name}}</td>
@@ -203,26 +213,26 @@
 
             <div class="part-four" ng-show="tab == 3">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td><strong>Name</strong></td>
-                            <td class="tick-img"><strong>Normal</strong>
-                            </td>
-                            <td class="tick-img"><strong>Specimen</strong>
-                            </td>
-                        </tr>
-                        <tr ng-repeat="spacies in lakeDetail.list_spacies" id="{{spacies.id}}">
-                            <td>{{spacies.name}}</td>
-                            <td class="tick-img" ng-if="spacies.normal==0"><img alt=""  src="images/ico-cross-big.png">
-                            </td>
-                            <td class="tick-img" ng-if="spacies.normal==1"><img alt="" src="images/tick.png">
-                            </td>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td class="tick-img"><strong>Normal</strong>
+                        </td>
+                        <td class="tick-img"><strong>Specimen</strong>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="spacies in lakeDetail.list_spacies" id="{{spacies.id}}">
+                        <td>{{spacies.name}}</td>
+                        <td class="tick-img" ng-if="spacies.normal==0"><img alt="" src="images/ico-cross-big.png">
+                        </td>
+                        <td class="tick-img" ng-if="spacies.normal==1"><img alt="" src="images/tick.png">
+                        </td>
 
-                            <td class="tick-img" ng-if="spacies.specimen==0"><img alt=""  src="images/ico-cross-big.png">
-                            </td>
-                            <td class="tick-img" ng-if="spacies.specimen==1"><img alt="" src="images/tick.png">
-                            </td>
-                        </tr>
-                    </table>
+                        <td class="tick-img" ng-if="spacies.specimen==0"><img alt="" src="images/ico-cross-big.png">
+                        </td>
+                        <td class="tick-img" ng-if="spacies.specimen==1"><img alt="" src="images/tick.png">
+                        </td>
+                    </tr>
+                </table>
                 </table>
             </div>
 
@@ -317,21 +327,23 @@
                 <div class="review">
                     <div class="reviewer">{{review.first_name}} {{review.last_name}}</div>
                     <div class="stars">
-                        <img alt="" src="images/star-review.png" ng-repeat="i in getNumber(review.star) track by $index">
+                        <img alt="" src="images/star-review.png"
+                             ng-repeat="i in getNumber(review.star) track by $index">
 
-                        <img alt="" src="images/star-off-review.png" ng-repeat="j in getNumber(review.noStar) track by $index">
+                        <img alt="" src="images/star-off-review.png"
+                             ng-repeat="j in getNumber(review.noStar) track by $index">
                     </div>
                     <div class="clr"></div>
                 </div>
                 <div class="comment" ng-if="review.review!=''">
-                    {{review.review}}
+                {{review.review}}
                 </div>
 
                 <div class="comment" ng-if="review.review==''">
                     User have not give any review
                 </div>
             </div>
-            <div class='moreReview' ng-click="showReview(lakeDetail.lake_category.id)"> Read more reviews </div>
+            <div class='moreReview' ng-click="showReview(lakeDetail.lake_category.id)"> Read more reviews</div>
 
             <!--<div class="btn-rnw-review" ><img src="images/ico-morereview.png"> Read more reviews </div>-->
             <!--   <div class="btn-rnw-review war" ng-click="showRate()"><img src="images/ico-writereview.png" alt=""> Write a
@@ -355,7 +367,11 @@
         </table>
         <div class="collapsed-content" ng-show="isOpenTab(6)">
             <div class="photos">
-                <div class="thumb" ng-if="$index+1<lakeDetail.lake_image.length" ng-repeat="image in lakeDetail.lake_image"><img ng-src="{{image.url}}" alt=""></div><div  ng-if="lakeDetail.lake_category.total_image>3" class="thumb img-background" ng-click="showMorePhoto(lakeDetail.lake_category.id)"> + {{lakeDetail.lake_category.total_image - 3}}</div> <div class="thumb img-background" ng-click="showPopupModel()"><img src="images/ico-camera.png" alt=""></div>
+                <div class="thumb"
+                     ng-repeat="image in lakeDetail.lake_image"><img ng-src="{{image.url}}" alt=""></div><div ng-if="lakeDetail.lake_category.total_image>3" class="thumb img-background"
+                     ng-click="showMorePhoto(lakeDetail.lake_category.id)"> + {{lakeDetail.lake_category.total_image -
+                    3}}</div><div class="thumb img-background" ng-click="showPopupModel()"><img src="images/ico-camera.png" alt="">
+                </div>
             </div>
 
             <!--<div class="btn-rnw-review" ng-click="showMorePhoto(lakeDetail.lake_category.id)"><img
@@ -377,15 +393,16 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td><h1 class="one"><span>Other Lakes at this Venue</span></h1></td>
-                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}"  alt=""></td>
+                <td class="right-img"><img ng-class="{'active-tab-img':isOpenTab(7),'deactive-tab-img':!isOpenTab(7)}"
+                                           alt=""></td>
             </tr>
         </table>
 
         <div class="collapsed-content" ng-show="isOpenTab(7)">
 
-            <div class="row-venue" ng-repeat="row in lakeDetail.other_lake" stop-event='click' ng-click="showLakeDetail(row.id)">
-            <div class="vote"><strong>{{row.rate}}</strong>
-
+            <div class="row-venue" ng-repeat="row in lakeDetail.other_lake"
+                 ng-click="$event.stopPropagation();showLakeDetail(row.id)">
+                <div class="vote"><strong>{{row.rate}}</strong>
                     <div class="no">{{row.total_vote}} Votes</div>
                 </div>
                 {{row.leke_name}}

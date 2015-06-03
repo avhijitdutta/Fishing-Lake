@@ -36,11 +36,11 @@ if ( !Date.prototype.toISODate ) {
     }() );
 }
 
-if ( !Date.prototype.displayDate ) {
-    ( function() {
-        Date.prototype.displayDate = function() {
+if (!Date.prototype.displayDate) {
+    ( function () {
+        Date.prototype.displayDate = function () {
             var arrMonth = ["JAN", "FEV", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            return this.getDate()+" "+arrMonth[this.getMonth()]+' '+this.getFullYear();
+            return this.getDate() + " " + arrMonth[this.getMonth()] + ' ' + this.getFullYear();
         };
 
     }() );
@@ -62,9 +62,10 @@ Array.prototype.removeValue = function(name, value){
 var currentPage="";
 var defaultPath = "/signup";
 document.addEventListener("deviceready", onDeviceReady, false);
-var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova','angucomplete','angular-carousel','angular-loading-bar','ncSocials','itemSwipe','ncrtsPopup']);
-app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitterProvider',
-    function($routeProvider,$keyboardProvider,cfpLoadingBarProvider,$twitterProvider) {
+var app = angular.module('Fishing', ['ngRoute', 'ngAnimate', 'ui.calendar', "ngTouch", "page", "keyboard", "validation.match", "RatingApp", "nvKeyboard", 'ngCordova', 'angucomplete', 'angular-carousel', 'angular-loading-bar', 'ncSocials', 'itemSwipe', 'ncrtsPopup']);
+app.loginBackCount=0;
+app.config(['$routeProvider', "$keyboardProvider", 'cfpLoadingBarProvider', '$twitterProvider','$cordovaAppRateProvider',
+    function ($routeProvider, $keyboardProvider, cfpLoadingBarProvider, $twitterProvider,$cordovaAppRateProvider) {
         $keyboardProvider.init({
             scrollPaneID: '.scroll',
             headerID: '.ncr-header',
@@ -79,14 +80,14 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             callbackUrl: "ncrts.com"
         });
 
-/*        var prefs = {
-            language: 'en',
-            appName: 'Fishing App',
-            iosURL: 'employee.directory',
-            androidURL: 'market://details?id=employee.directory'
-        };
+         var prefs = {
+             language: 'en',
+             appName: 'Fishing App',
+             iosURL: 'employee.directory',
+             androidURL: 'market://details?id=employee.directory'
+         };
 
-        $cordovaAppRateProvider.setPreferences(prefs);*/
+       /* $cordovaAppRateProvider.setPreferences(prefs);*/
 
         cfpLoadingBarProvider.includeSpinner = false;
 
@@ -104,7 +105,7 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             })
             .when("/emailreg",{
               title:"Sign Up",
-              animation: "slide",
+                animation: "slide",
               templateUrl:"view/email-registration.html",
               controller:"emailRegCtrl"
             })
@@ -125,13 +126,13 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                 templateUrl: 'view/home.html',
                 controller: 'homeCtrl',
                 resolve: {
-                    homeData: function ($route, $q, localFactory,$cordovaGeolocation) {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation) {
                         localFactory.load();
                         var defer = $q.defer();
                         var postData = {};
                         var lakeCategory = localFactory.post('lake_category', postData);
                         lakeCategory.success(function (data) {
-                           defer.resolve(data);
+                            defer.resolve(data);
                         });
                         lakeCategory.error(function (data, status, headers, config) {
                             defer.reject(data);
@@ -143,12 +144,12 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             }).when('/Search', {
                 title: 'Search Event',
                 templateUrl:'view/search.html',
-                controller :'searchCtrl',
-                resolve:{
-                    geoData:function($route,$q,localFactory,storeData,$cordovaGeolocation){
+                controller: 'searchCtrl',
+                resolve: {
+                    geoData: function ($route, $q, localFactory, storeData, $cordovaGeolocation) {
                         localFactory.load()
                         var posOptions = {timeout: 10000, enableHighAccuracy: true};
-                        var defer=$q.defer();
+                        var defer = $q.defer();
                         $cordovaGeolocation
                             .getCurrentPosition(posOptions)
                             .then(function (position) {
@@ -169,12 +170,11 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                 resolve: {
                     homeData: function ($route, $q, localFactory, $routeParams, storeData) {
                         localFactory.load();
-                        var postData={};
+                        var postData = {};
                         var defer = $q.defer();
                         postData = storeData.getData(true)['latLong'];
                         postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         if ($route.current.params.id == "adsearch") {
-
                             var lake_amenites = storeData.getData(true).loginData.lake_amentites;
                             var lakeAmenites = [];
 
@@ -209,7 +209,6 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                             postData['fishing_type'] = fishType.join();
 
                         } else if ($route.current.params.id == "quickSearch") {
-
                             var fishType = [];
 
                             for (var i = 0; i < tabs.length; i++) {
@@ -223,7 +222,8 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                         else if ($route.current.params.id == "recentitems") {
 
                             postData['lake_ids'] = $.parseJSON(localFactory.getLocalItem('recent_items'))['value'].join();
-
+                            var category={category:"Recent Items"};
+                            storeData.setData(category);
                         } else if ($route.current.params.id != "nearby") {
 
                             postData['cat_id'] = $route.current.params.id;
@@ -249,27 +249,27 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                 templateUrl:'view/lake-detail.html',
                 controller: 'lakeDetailCtrl',
                 resolve: {
-                    homeData: function ($route, $q, localFactory,$cordovaGeolocation,storeData) {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation, storeData) {
                         localFactory.load();
                         var defer = $q.defer();
                         var posOptions = {timeout: 10000, enableHighAccuracy: true};
                         $cordovaGeolocation
-                        .getCurrentPosition(posOptions)
-                        .then(function (position) {
-                            var postData = {lake_id: $route.current.params.id,latitude: position.coords.latitude, longitude: position.coords.longitude,user_no:storeData.getData().loginData.user_details.user_no};
-                            var lakeCategory = localFactory.post('lake_details', postData);
-                            lakeCategory.success(function (data) {
-                                defer.resolve(data);
-                                localFactory.unload();
-                            });
+                            .getCurrentPosition(posOptions)
+                            .then(function (position) {
+                                var postData = {lake_id: $route.current.params.id, latitude: position.coords.latitude, longitude: position.coords.longitude, user_no: storeData.getData().loginData.user_details.user_no};
+                                var lakeCategory = localFactory.post('lake_details', postData);
+                                lakeCategory.success(function (data) {
+                                    defer.resolve(data);
+                                    localFactory.unload();
+                                });
 
-                            lakeCategory.error(function (data, status, headers, config) {
-                                defer.reject(data);
-                                localFactory.unload();
+                                lakeCategory.error(function (data, status, headers, config) {
+                                    defer.reject(data);
+                                    localFactory.unload();
+                                });
+                            }, function (err) {
+                                defer.reject(err);
                             });
-                        }, function (err) {
-                            defer.reject(err);
-                        });
                         return defer.promise;
                     }
                 }
@@ -397,7 +397,7 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
                         localFactory.load();
                         var defer = $q.defer();
                         var postData = {};
-                        postData['user_no'] =storeData.getData().loginData.user_details.user_no;
+                        postData['user_no'] = storeData.getData().loginData.user_details.user_no;
                         var myBookMark = localFactory.post('past_future_ticket', postData);
                         myBookMark.success(function (data) {
                             defer.resolve(data);
@@ -419,7 +419,24 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             .when('/suggestLocation', {
                 title: 'Suggest Location',
                 templateUrl: 'view/suggest-location.html',
-                controller: 'suggestCtrl'
+                controller: 'suggestCtrl',
+                resolve: {
+                    homeData: function ($route, $q, localFactory, $cordovaGeolocation, storeData) {
+                        localFactory.load();
+                        var defer = $q.defer();
+                        var posOptions = {timeout: 10000, enableHighAccuracy: true};
+                        $cordovaGeolocation
+                            .getCurrentPosition(posOptions)
+                            .then(function (position) {
+
+                                defer.resolve(position.coords);
+
+                            }, function (err) {
+                                defer.reject(err);
+                            });
+                        return defer.promise;
+                    }
+                }
             })
             .when('/sendFeedback', {
                 title: 'Send Feedback',
@@ -470,7 +487,7 @@ app.config(['$routeProvider',"$keyboardProvider",'cfpLoadingBarProvider','$twitt
             });
     }]);
 app.value("keyboardHeight",0);
-app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData) {
+app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFacebook', 'localFactory', 'storeData','$window','$document', function ($location, $rootScope, keyboardHeight, $keyboard, $cordovaFacebook, localFactory, storeData,$window,$document) {
     $keyboard.restrictSpecialChar();
     $rootScope.stateHistory = [];
 
@@ -483,7 +500,10 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
     }
 
     if (!localFactory.getLocalItem('social')) {
-        var obj={social:[{name:'Facebook',is_connected:false,authkey:"",Profilename:"",id:1,post_activity:true,imgUrl:"images/user-photo.jpg"},{name:'Twitter',is_connected:false,authkey:"",Profilename:"",id:2,post_activity:false,imgUrl:"images/user-photo.jpg"}]};
+        var obj = {social: [
+            {name: 'Facebook', is_connected: false, authkey: "", Profilename: "", id: 1, post_activity: true, imgUrl: "images/user-photo.jpg"},
+            {name: 'Twitter', is_connected: false, authkey: "", Profilename: "", id: 2, post_activity: false, imgUrl: "images/user-photo.jpg"}
+        ]};
         storeData.setData(obj);
     }
     $rootScope.fbLogin = function () {
@@ -502,8 +522,8 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
                         .then(function (success) {
                             console.log(JSON.stringify(success));
                             $cordovaFacebook.api("me", ["public_profile"])
-                                .then(function(result) {
-                                   console.log(JSON.stringify(result));
+                                .then(function (result) {
+                                    console.log(JSON.stringify(result));
                                     var credential = {
                                         email_id: result.email,
                                         facebook_id: result.id,
@@ -517,8 +537,8 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
                                         localFactory.unload();
 
                                         if (data.result) {
-                                            data['loginData']=1;
-                                            var objData={loginData:data};
+                                            data['loginData'] = 1;
+                                            var objData = {loginData: data};
                                             storeData.setData(objData);
                                             $location.path("home");
 
@@ -539,7 +559,7 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
                                     alert(error);
                                 });
 
-                }, function (error) {
+                        }, function (error) {
                             // error
                         });
                 }
@@ -553,6 +573,37 @@ app.run(['$location', '$rootScope', 'keyboardHeight', "$keyboard", '$cordovaFace
         $rootScope.title = current.$$route.title;
         console.log(current.$$route.title);
     });
+
+    angular.element($document)[0].addEventListener("backbutton", function () {
+        if ($location.path() === '/' || $location.path() === '/home' || $location.path()=== "/signup") {
+
+            if(app.loginBackCount>0)
+            {
+                navigator.app.exitApp();
+            }
+            if(app.loginBackCount<1)
+            {
+                app.loginBackCount++;
+                setTimeout(function()
+                {
+                    app.loginBackCount=0;
+
+                },2000);
+                var  tostText="Press back button again to quit";
+                localFactory.toast(tostText,'short','bottom');
+            }
+
+        }else if($location.path() === "/confirm")
+        {
+            $location.path('home')
+
+        }else{
+
+            window.history.back();
+        }
+
+    }, true);
+
 }]);
 
 // device APIs are available
@@ -561,20 +612,6 @@ function onDeviceReady() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    document.addEventListener("backbutton", backKeyDown, true);
 }
 
-function backKeyDown()
-{
-    if(currentPage=="historyList")
-    {
-        window.location.hash = '#/';
 
-    }else if(currentPage=="homeCtrl")
-    {
-        navigator.app.exitApp();
-
-    }else{
-        window.history.back();
-    }
-}

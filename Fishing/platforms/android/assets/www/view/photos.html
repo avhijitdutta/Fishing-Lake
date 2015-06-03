@@ -1,14 +1,14 @@
 <div class="page">
-    <popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"> </popup>
+    <popup display="showCameraPopup" from-gallery="fromGallery()" from-camera="fromCamera()"></popup>
     <!-------------- ncr-header -------------------->
     <ng-include src="'templates/header.html'"></ng-include>
     <!-------------- ncr-content start-------------------->
-    <div class="ncr-content photos">
+    <div class="ncr-content photos scroll">
         <div class="photos-heading" align="center">
-           {{currentLake.leke_name}}
+            {{currentLake.leke_name}}
         </div>
 
-        <div class="thumb-container">
+        <div class="thumb-container scroll">
             <div class="thumb" ng-repeat="lake in lake_image"><img ng-src="{{lake}}" alt=""></div>
         </div>
 
